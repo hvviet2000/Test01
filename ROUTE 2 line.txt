@@ -1,0 +1,170 @@
+!
+ip nat pool PRI_Gi0/0 113.164.228.218 113.164.228.218 netmask 255.255.255.248
+ip nat pool SEC_VLAN_501 192.168.200.254 192.168.200.254 netmask 255.255.255.0
+ip nat pool SEC_GI 113.164.228.220 113.164.228.220 netmask 255.255.255.248
+
+ip nat inside source route-map INTERNET_NAT interface GigabitEthernet0/1.200 overload
+ip nat inside source route-map PRI_INTERNET_NAT pool PRI_Gi0/0 overload
+ip nat inside source route-map SEC_INTERNET_NAT pool SEC_VLAN_501 overload
+
+
+interface GigabitEthernet0/1.501
+ description VietIS_CORE_01_To_ISP_WAN_FPT
+ encapsulation dot1Q 501
+ ip address 192.168.200.254 255.255.255.0
+ ip nat outside
+ ip virtual-reassembly in
+ 
+
+track 1 ip sla 1 reachability
+!
+track 2 ip sla 2 reachability
+
+
+ip access-list extended VietIS_PBR
+ deny   ip 10.1.41.0 0.0.0.255 192.168.0.0 0.0.255.255
+ deny   ip 10.1.0.0 0.0.255.255 10.1.0.0 0.0.255.255
+ permit ip host 10.1.41.9 any
+
+interface GigabitEthernet0/1.241
+ description DIRECT INTERNET QUA FPT LINE
+ encapsulation dot1Q 241
+ ip address 10.1.41.1 255.255.255.0
+ ip access-group VLAN41_ACL in
+ ip helper-address 10.1.6.10
+ ip helper-address 10.1.6.9
+ ip nat inside
+ ip virtual-reassembly in
+ standby 1 ip 10.1.41.2
+ standby 1 priority 110
+ standby 1 preempt
+ ip policy route-map PBR
+!
+
+
+ip sla 1
+ icmp-echo 113.164.228.217 source-ip 113.164.228.218
+ frequency 30
+ip sla 2
+ icmp-echo 8.8.8.8 source-ip 192.168.200.254
+ frequency 30
+ip sla schedule 2 life forever start-time now
+logging host 192.168.100.41 transport udp port 5544
+!
+route-map PRI_INTERNET_NAT permit 10
+ match ip address PRI_INTERNET_DIRECT_ACL
+ match interface GigabitEthernet0/0
+!
+route-map SEC_INTERNET_NAT permit 10
+ match ip address SEC_INTERNET_DIRECT_ACL
+ match interface GigabitEthernet0/1.501
+!
+route-map PBR permit 10
+ match ip address VietIS_PBR
+ set ip next-hop verify-availability 192.168.200.1 5 track 2
+!
+!
+!
+ip sla 1
+ icmp-echo 192.168.200.1 source-ip 192.168.200.254
+ frequency 30
+ip sla schedule 1 life forever start-time now
+!
+------------------------------------
+ip access-list extended INTERNET_DIRECT_ACL     # ACL cho Line 01
+ permit ip 192.168.100.0 0.0.0.255 any
+ permit ip 192.168.108.0 0.0.0.255 any
+ permit ip 192.168.120.0 0.0.0.255 any
+ permit icmp any any echo-reply
+ permit icmp any any echo
+ permit tcp any any eq domain
+ permit udp any any eq domain
+ permit tcp any any eq pop3
+ permit tcp any any eq 143
+ permit tcp any any eq smtp
+ permit tcp any any eq 995
+ permit tcp any any eq 993
+ permit tcp any any eq 587
+ permit tcp any any eq 465
+ permit tcp any any eq 22
+ permit tcp any any eq 2222
+ permit tcp any any eq 12222
+ permit tcp any any eq 3389
+ permit tcp any any eq 488
+ permit ip any host 115.30.7.117
+ permit ip any host 52.196.231.127
+ permit tcp any host 52.192.225.147 eq www
+ permit tcp any host 52.199.24.152 eq www
+ permit ip any host 113.190.232.25
+ permit ip any host 27.134.253.23
+ permit ip any host 153.126.148.109
+ permit ip any host 104.192.143.1
+ permit ip any host 87.98.253.108
+ permit ip any host 87.98.253.214
+ permit ip any host 192.30.253.116
+ permit ip any host 192.30.253.113
+ permit ip any host 192.30.253.112
+ permit ip any host 160.16.117.48
+ permit tcp any host 52.199.114.216 eq www
+ permit tcp any host 54.64.63.103 eq www
+ permit tcp any host 54.64.188.98 eq www
+ permit tcp any host 52.193.46.247
+ permit tcp any host 52.69.159.71
+ permit tcp any host 52.69.196.11
+ permit tcp any host 54.64.41.238
+ permit tcp any host 138.197.220.206
+ permit tcp any host 176.34.50.94
+ permit tcp any host 176.34.50.98
+ permit tcp any host 54.65.18.185
+ permit tcp any host 52.198.153.17
+ permit tcp any host 13.113.180.4
+ permit tcp any host 202.168.210.48
+ permit udp any host 202.168.210.48
+ permit tcp any host 13.113.151.126
+ permit tcp any host 52.192.15.186
+ permit tcp any host 54.65.41.131
+ permit tcp any host 52.199.185.93
+ deny   ip any any
+
+-------------------------------------
+ip access-list extended INTERNET_DIRECT_ACL_VNPT_OLD    # ACL cho Line 02
+permit ip any 113.37.33.8 0.0.0.7
+permit ip any any
+-------------------------------------
+!
+route-map INTERNET_NAT_1 permit 10
+ match ip address INTERNET_DIRECT_ACL
+ match interface GigabitEthernet0/0
+!
+route-map INTERNET_NAT_2 permit 10
+ match ip address INTERNET_DIRECT_ACL_VNPT_OLD
+ match interface GigabitEthernet0/1.501
+!
+--------------------------------------
+
+!
+track 1 ip sla 1 reachability
+!
+ip sla 1
+ icmp-echo 182.253.80.129 source-ip 182.253.80.130
+ frequency 30
+ip sla schedule 1 life forever start-time now
+!
+--------------------------------------
+!
+ip nat pool NAT_Gi0/0 113.164.228.218 113.164.228.218 netmask 255.255.255.248 # Creat Pool NAT 01
+ip nat pool NAT_Gi0/1.501 192.168.200.1 192.168.200.1 netmask 255.255.255.0 # Creat Pool NAT 02
+ip nat inside source route-map INTERNET_NAT_1 pool NAT_Gi0/0 overload  #
+ip nat inside source route-map INTERNET_NAT_2 pool NAT_Gi0/1.501 overload
+
+ip route 113.37.33.8 255.255.255.248 192.168.200.1 track 1
+ip route 0.0.0.0 0.0.0.0 113.164.228.217
+ip route 0.0.0.0 0.0.0.0 192.168.200.1 5
+
+
+
+ip access-list extended VietIS_PBR
+ deny   ip 10.1.41.0 0.0.0.255 192.168.0.0 0.0.255.255
+ deny   ip 10.1.0.0 0.0.255.255 10.1.0.0 0.0.255.255
+ permit ip host 10.1.41.9 any
+

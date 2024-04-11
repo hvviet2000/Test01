@@ -1,0 +1,389 @@
+Bản vẽ kỹ thuật:
+1. Mặt bằng bố trí  nội thất: OK
+2. Mặt bằng bố trí vách thạch cao: OK
+3. Mặt bằng bố trí ổ cắm trên bàn: 
+	+ ổ cắm trên bàn : mỗi bàn 2 ổ đôi (mỗi bàn đảm bảo cắm 4 thiết bị: 2 PC , 2 màn hình)
+	+ Bản vẽ đang để 2 ổ cắm : không ghi rõ là ổ đôi hay ổ đơn, nếu ổ đơn sẽ thiếu chỗ cắm thiết bị
+	+ Phòng học chưa có ổ cắm cho màn chiếu hay TV (gần chỗ bàn giáo viên)
+	+ Phòng họp bố trí thêm ổ cắm ở các góc: phục vụ quay cam hoặc thiết bị họp
+	+ Phía dưới logo bố trí ổ cắm đôi phục vụ trang trí lễ hội , cắm đèn , abc
+	+ Phòng máy chủ thêm ổ cắm gần cửa để cắm máy hút ẩm
+
+4.Mặt bằng bố trí ổ cắm trên trần: 
+	+ Chưa thấy bố trí điện cho WIFI (trên trần) 
+	+ Chưa thấy bố trí điện cho cam(trên trần) -  Nút điện cho Camera được thi công vào trong phòng server để đấu nối UPS
+	+ Chưa thấy bố trí điện cho máy chiếu phòng học (trên trần)
+5. 	Tách lộ
+	+ Chưa bố trí lộ cho điều hòa 
+	+ Chưa bố trí lộ cho server
+	(lộ này ưu tiên chạy 24/7 và công suất cần tính toán)
+6. Bố trí ổ mạng:
+	+ Thêm các ổ mạng sát tường cho phòng học
+	+ 1 ổ chỗ gần giáo viên khi dùng smartTV
+	+ Phòng họp: thêm ổ mạng chỗ smartTV, trên bàn cần 2 ổ, 1 ổ ven tường
+7. Sơ đồ đấu nối tủ at: 
+	+ Phòng server cần lộ riêng và lắp dưới công tơ , không lắp dưới at tổng
+	(như vậy cần 1 hộp at riêng cho phòng server)
+	--> phòng khi nháy điện chập thì không ảnh hưởng đến phòng server
+	+ Khu pantry 1 at riêng
+	
+
+
+- Điện : 
+	+ Phòng học chưa có ổ cắm cho màn chiếu hay TV (ở  tường và trên trần)
+	+ Phòng máy chủ thêm ổ cắm 
+
+	+ ổ cắm trên bàn : mỗi bàn 2 ổ đôi (mỗi bàn đảm bảo cắm 4 thiết bị: 2 PC , 2 màn hình)
+
+
+
+
+
+150m2 tại tầng 9
+Giá thuê là 14 USD/m2/tháng, thanh toán trước 03
+Giá thuê đã bao gồm phí dịch vụ và VAT
+thanh toán tiền thuê 03 tháng
+Tiền thuê định kỳ sẽ được trả bằng VND theo tỉ giá bán ra của Ngân hàng Ngoại thương Việt Nam - Vietcombank vào thời điểm thanh toán.
+
+Giá thuê USD 3 năm đầu không tăng 
+từ năm thứ 4 giá thuê sẽ được hai bên điều chỉnh cho mỗi lần ký phụ lục gia hạn, nhưng mức điều chỉnh tăng không vượt quá 10% so với mức giá thuê tại thời điểm điều chỉnh
+
+Thời gian thuê: 02 năm ( 24 tháng)
+Thời gian nhận mặt bằng dự kiến: 01/11/2021
+
+Trong thời gian tiếp nhận mặt bằng (30 ngày), khách hàng thuê được miễn phí dịch vụ nhưng phải trả tiền điện trong thời gian thi công nội thất theo công tơ.
+
+Các tiện ích và dịch vụ sau đây đã bao gồm trong phí
+dịch vụ tiêu chuẩn:
+
+1. Phí quản lý.
+2. Thu dọn vệ sinh cho toàn bộ khu vực công cộng.
+3. Nhân viên bảo vệ và camera kỹ thuật số CCTV
+24/24 giờ.
+4. Thu gom rác thải tại các điểm tập trung.
+5. Nước phục vụ các khu vệ sinh.
+6. Bảo dưỡng thang máy và điều hòa.
+7. Bảo dưỡng toàn bộ khu vực công cộng.
+
+
+Các tiện ích và dịch vụ sau không bao gồm trong phí
+dịch vụ tiêu chuẩn:
+Chi phí điện cho điều hòa, ánh sáng và các thiết bị
+khác do khách hàng thuê sử dụng tại mặt bằng
+được thuê.
+Phần điện năng do Bên thuê tiêu thụ
+tại phần diện tích thuê sẽ được tính theo đồng hồ
+đo điện do Bên cho thuê lắp đặt áp dụng theo đơn giá nhà nước.
+
+Thu dọn vệ sinh tại mặt bằng được thuê.
+Bảo dưỡng và những chi phí khác cho mặt bằng
+được thuê.
+
+Ô tô: 1.000.000VND/xe/tháng trong giờ làm việc/
+1.200.000VND/tháng cho đỗ xe 24/24h
+
+Xe máy:100.000VND/xe/tháng trong giờ làm .
+
+Phí trên chưa bao gồm cả thuế GTGT
+
+ 1.300.000 VNĐ cho chiết camera wifi 
+ Camera IP hồng ngoại không dây 2.0 Megapixel KBVISION KBONE KN-H21W
+ Đầu ghi IP 8 kênh KBVISION KX-A8128N2 1.100.000 đ (
+ IP KBVISION KX-4K8108N2 8 kênh UHD 4K, 1 Sata, Onvif, Push Video, Free DDNS 3.024.000 đ
+ 
+ https://congnghehoangnguyen.com/huong-dan-them-camera-ip-vao-dau-ghi.html
+ https://baophong.vn/huong-dan-cau-hinh-camera-ip-hikvision-chi-tiet-nhat/
+ https://camera247.vn/huong-dan-khai-bao-o-cung-may-tinh-gan-vao-camera-ip.html
+ 
+ Port mạng:
+ 
+ WS-C2960S-48TS-L   12.2(55)SE7           C2960S-UNIVERSALK9-M
+ 
+ SW rẻ: C1000-48T-4G-L
+ SW Core: 9200L-24T-4G
+
+
+4331/k9 14.000.000
+ISR Software (X86_64_LINUX_IOSD-UNIVERSALK9-M), Version 16.8.3, RELEASE SOFTWARE (fc2)
+-----------------------------------------------------------------
+Technology    Technology-package           Technology-package
+              Current       Type           Next reboot
+------------------------------------------------------------------
+appxk9           appxk9           RightToUse       appxk9
+uck9             uck9             RightToUse       uck9
+securityk9       securityk9       RightToUse       securityk9
+ipbase           ipbasek9         Permanent        ipbasek9
+
+ 
+ 
+ 48 cổng mạng LAN RJ-45 10/100 / 1000Base-T
+ 4 x 1G SFP tương thích với tất cả các loại Modul quang thông dụng như: GLC-LH-SM, GLC-SX-MMD
+ 
+ C1000-48T-4G-L		Catalyst 1000  48port GE, 4x1G SFP	  					  19,404,000 VND
+ C9200L-24T-4G-E	Catalyst 9200L 24-port data, 4 x 1G, Network Essentials	  23,238,600 VND
+ 
+ C1000-48T-4G-L		Catalyst 1000  48port GE, 4x1G SFP	  					  19,404,000 VND
+ C9200L-24T-4G-E	Catalyst 9200L 24-port data, 4 x 1G, Network Essentials	  23,238,600 VND
+ 
+ 
+ 
+ GLC-LH-SMD	"1.25G SFP 1310nm 10km DOM (Bảo hành 2 năm)"	  690k 
+ multimode rẻ hơn tý nhưng chỉ đc có <550m thôi
+ 
+ CISCO FPR2110-ASA-K9 FIREPOWER FIREWALL SECURITY APPLIANCE 
+ giá tầm 46tr chưa VAT bảo hành 12 tháng
+
+Super400 – 06 Tháng 
+2.750.000 VND 
+
+2010/thang
+
+Giga Biz
+
+ 
+ https://vnpro.vn/thu-vien/policy-based-routing-3187.html
+ 
+
+#VLAN 236 to internet qua duong 220
+
+ip nat pool SEC_GI 113.164.228.220 113.164.228.220 netmask 255.255.255.248
+ip nat inside source route-map 3_INTERNET_NAT pool SEC_GI overload
+
+#
+interface GigabitEthernet0/1.236
+ description DIRECT INTERNET 220-Test-PFS
+ encapsulation dot1Q 236
+ ip address 10.1.36.1 255.255.255.0
+ ip helper-address 10.1.6.10
+ ip helper-address 10.1.6.9
+ ip nat inside
+ ip virtual-reassembly in
+ standby 1 ip 10.1.36.2
+ standby 1 priority 110
+ standby 1 preempt
+ ip policy route-map 236_PBR
+# 
+ 
+ip access-list extended VietIS_VLAN236
+ deny   ip 10.1.36.0 0.0.0.255 192.168.0.0 0.0.255.255
+ deny   ip 10.1.0.0 0.0.255.255 10.1.0.0 0.0.255.255
+ permit ip 10.1.36.0 0.0.0.255 any
+ 
+#
+route-map 236_PBR permit 10
+ match ip address VietIS_VLAN236
+ set ip next-hop 113.164.228.220
+
+
+route-map 3_INTERNET_NAT permit 10
+ match ip address VietIS_VLAN236
+ match interface GigabitEthernet0/1.236
+ 
+
+
+
+=======================================================
+ip access-list extended VietIS_PBR
+ deny   ip 10.1.41.0 0.0.0.255 192.168.0.0 0.0.255.255
+ deny   ip 10.1.0.0 0.0.255.255 10.1.0.0 0.0.255.255
+ permit ip host x.x.x.x any
+ 
+=================
+
+1. Config Router: Dùng để backup trong trường hợp đường truyền cáp quang (trunk) chính bị ngắt
+	+ Các chức năng chính:  internal routing cho tòa nhà AC
+	+ Cung cấp DHCP cho toàn bộ mạng AC
+	+ Chuyển hướng toàn bộ internet đi theo đường FTTH
+
+2. Config Switch (core) : 4221
+	+ Chức năng chính: Trunk nối giữa AC và 3A
+	+ Chức năng backup (trường hợp cáp quang trunk bị mất)
+		- Quản lý internal VLAN cho tòa nhà AC
+		- Kết nối port internal với  4221
+		- Chuyển cấu hình thành VTP domain
+		- Cung cấp internal VLAN 250 cho toàn bộ tòa nhà AC
+3. Switch L2
+	+ Cung cấp chức năng access cho các client
+	+ Authenticate trong trường hợp bình thường
+	+ Nếu cáp trunk bị mất:
+		- Chuyển toàn bộ sang mode None Authenticate
+		- Chuyển toàn bộ port sang 1 vlan 250
+		
+3. Config Modem
+	+ Cung cấp kết nối đường truyền FTTH cho tòa nhà AC
+	+ Chuyển 1 port vào chân proxy 
+	
+4. Config Wifi
+	+ Cung cấp hệ thống WIFI cho AC
+		- Wifi Guest
+		- Wifi nội bộ
+		- Wifi internet
+	
+5. Proxy server:
+	+ Quản lý và chia sẻ internet cho nhân viên tòa AC
+	+ Chuyển sang thành VPN site to site với 3A trường hợp mất kết nối trunk
+
+
+========================================================
+Config Router
+========================================================
+https://sss.net.vn/blogs/tin-tuc/cau-hinh-router-on-stick-cho-router-isr4321-isr4331-isr4431-isr4451
+https://securityzone.vn/t/lab-12-lab-cau-hinh-nat-cho-router-cisco.169/
+#Xoa cau hinh
+
+R1#erase startup-config
+R1#reload
+========================================================
+
+========
+1. BASIC
+========
+hostname VIETIS_AC
+no banner motd
+# Console password
+line console 0
+password vit@is@875
+login
+
+
+#enable secret password
+enable secret vit@is@875
+# enalble Telnet 
+line vty 0 4
+password  vit@is@875
+login
+
+service password-encryption
+
+
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+ip name-server 8.8.8.8
+
+=========
+2. Interface
+=========
+interface GigabitEthernet0/0/0
+ description VietIS_AC_To_FTTH
+ ip address 192.168.1.254 255.255.255.0
+ ip nat outside
+ ip virtual-reassembly
+!
+interface GigabitEthernet0/0/1
+ description VietIS_AC_CORE_To_LAN_Trunking
+ no ip address
+!
+interface GigabitEthernet0/0/1.250
+ description Toa_Nha_AC_vlan 250
+ encapsulation dot1Q 250
+ ip address 10.1.50.1 255.255.255.0
+ ip nat inside
+ ip virtual-reassembly 
+ standby 1 ip 10.1.50.2
+ standby 1 priority 110
+ standby 1 preempt
+!
+==========
+3.DHCP
+==========
+ip dhcp pool VietIS_AC_VLAN250
+ network 10.1.50.0 255.255.255.0
+ default-router 10.1.50.1 
+ dns-server 208.67.222.222 
+ lease 8
+! 
+==========
+4.backup weekly
+==========
+archive
+ log config
+  logging enable
+ path tftp://192.168.100.100/$h-$t
+ write-memory
+ time-period 10080
+!
+============
+5.SNMP
+============
+snmp-server view ALL-ACCESS iso included
+snmp-server view INT-ACCESS ifEntry included
+snmp-server group GROUP1 v3 priv read ALL-ACCESS
+snmp-server user vietisuser GROUP1 v3 auth sha Vietis@123 priv des Vietis@123
+
+=========
+6. Routing
+=========
+ip nat pool PRIMARY 192.168.1.245 192.168.1.254 netmask 255.255.255.0
+ip nat inside source route-map PRI_INTERNET_NAT pool PRIMARY overload
+ip route 0.0.0.0 0.0.0.0 192.168.1.1
+
+
+
+
+
+========================================================
+Config Switch AC
+========================================================
+Sw1 làm VTP server
+Sw2 làm VTP client
+Tạo 2 VLAN 20,30 và đồng bộ 2 Switch
+
+
+========
+1.Basic
+========
+
+Switch(config)# hostname VIETIS_AC_01 
+enable secret vietis@875
+
+line vty 0 15
+# password vietis@875
+# login
+# exit
+
+line console 0
+# password vietis@875
+# login
+# exit
+
+============
+#Configure IP Addresses With Telnet Access
+
+access-switch1(config)# ip access-list standard TELNET-ACCESS
+access-switch1(config-std-nacl)# permit 216.174.200.21
+
+access-switch1(config)# line vty 0 15
+access-switch1(config-line)# access-class TELNET-ACCESS in
+access-switch1(config-line)# exit
+
+=======================
+2.Configure a Network Management IP address 
+=======================
+
+interface vlan 1
+ip address 10.1.2.50 255.255.255.0
+
+#Assign a Default Gateway to the Switch
+ip default-gateway 10.1.1.254
+
+
+Sw1(config)#vtp mode server
+Sw1(config)#vtp domain vietis_ac
+Sw1(config)#vtp password vietis@123
+Sw1(config)#vlan 250
+Sw1(config-vlan)#name AC_T7_VLAN_250
+
+
+
+=======================
+2.Configure backup
+=======================
+archive
+ log config
+  logging enable
+ path tftp://192.168.100.100/$h-$t
+ write-memory
+ time-period 10080
+ 
+ 

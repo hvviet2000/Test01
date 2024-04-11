@@ -1,0 +1,23 @@
+ip access-list extended VietIS_VLAN236
+ deny   ip 10.1.36.0 0.0.0.255 192.168.0.0 0.0.255.255
+ deny   ip 10.1.0.0 0.0.255.255 10.1.0.0 0.0.255.255
+ permit ip 10.1.36.0 0.0.0.255 any
+ 
+ 
+interface GigabitEthernet0/1.236
+ description TEST VPN
+ encapsulation dot1Q 236
+ ip address 10.1.36.1 255.255.255.0
+ ip helper-address 10.1.6.10
+ ip nat inside
+ ip virtual-reassembly in
+ standby 1 ip 10.1.36.2
+ standby 1 priority 110
+ standby 1 preempt
+
+!
+
+route-map 236_PBR permit 10
+ match ip address VietIS_VLAN236
+ set ip next-hop 113.164.228.220
+!

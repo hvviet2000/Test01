@@ -1,0 +1,92 @@
+========================================================
+Config Router
+========================================================
+
+#Xoa cau hinh
+
+R1#erase startup-config
+R1#reload
+========================================================
+
+========
+1. BASIC
+========
+hostname VIETIS_AC
+no banner motd
+# Console password
+line console 0
+password vit@is@875
+login
+
+
+#enable secret password
+enable secret vit@is@875
+# enalble Telnet 
+line vty 0 4
+password  vit@is@875
+login
+
+service password-encryption
+
+
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+ip name-server 8.8.8.8
+
+=========
+2. Interface
+=========
+interface GigabitEthernet0/0/0
+ description VietIS_AC_To_FTTH
+ ip address 192.168.201.254 255.255.255.0
+ ip nat outside
+ ip virtual-reassembly
+!
+interface GigabitEthernet0/0/1
+ description VietIS_AC_CORE_To_LAN_Trunking
+ no ip address
+!
+interface GigabitEthernet0/0/1.250
+ description Toa_Nha_AC_vlan 250
+ encapsulation dot1Q 250
+ ip address 10.1.50.1 255.255.255.0
+ ip nat inside
+ ip virtual-reassembly 
+ standby 1 ip 10.1.50.2
+ standby 1 priority 110
+ standby 1 preempt
+!
+==========
+3.DHCP
+==========
+ip dhcp pool VietIS_AC_VLAN250
+ network 10.1.50.0 255.255.255.0
+ default-router 10.1.50.1 
+ dns-server 208.67.222.222 8.8.8.8
+ lease 8
+! 
+==========
+4.backup weekly
+==========
+archive
+ log config
+  logging enable
+ path tftp://192.168.100.100/$h-$t
+ write-memory
+ time-period 10080
+!
+============
+5.SNMP
+============
+snmp-server view ALL-ACCESS iso included
+snmp-server view INT-ACCESS ifEntry included
+snmp-server group GROUP1 v3 priv read ALL-ACCESS
+snmp-server user vietisuser GROUP1 v3 auth sha Vietis@123 priv des Vietis@123
+
+=========
+6. Routing
+=========
+ip nat pool PRIMARY 192.168.1.245 192.168.1.254 netmask 255.255.255.0
+ip nat inside source route-map PRI_INTERNET_NAT pool PRIMARY overload
+ip route 0.0.0.0 0.0.0.0 192.168.1.1

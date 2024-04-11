@@ -1,0 +1,50 @@
+no ip nat inside source route-map 3_INTERNET_NAT pool SEC_GI overload
+
+Define:
+#1. Tao 1 interface 502 co dia chi IP trung voi route AC_FTTH
+#2. Tao NAT Pool AC_INTERNET
+#3. Nat inside VLAN 40 qua nat pool AC_INTERNET
+#4. Tao ACL
+
+interface GigabitEthernet0/1.502
+ description VietIS_AC_01_To_FTTH_FPT
+ encapsulation dot1Q 502
+ ip address 192.168.201.254 255.255.255.0
+ ip nat outside
+ ip virtual-reassembly in
+!
+
+
+ip nat pool AC_INTERNET 192.168.201.254 192.168.201.254 netmask 255.255.255.0
+
+
+ip nat inside source route-map VLAN40_NAT pool AC_INTERNET overload
+
+
+route-map VLAN40_NAT permit 10
+ match ip address VLAN40_PBR
+ match interface GigabitEthernet0/1.502
+ set ip next-hop 192.168.201.1
+
+ip access-list extended VLAN40_PBR
+ deny   ip 10.1.40.0 0.0.0.255 192.168.0.0 0.0.255.255
+ deny   ip 10.1.0.0 0.0.255.255 10.1.0.0 0.0.255.255
+ permit ip 10.1.40.0 0.0.0.255 any
+ 
+interface GigabitEthernet0/1.240
+ description DIRECT_INTERNET_QUA_AC_FTTH
+ encapsulation dot1Q 240
+ ip address 10.1.40.1 255.255.255.0
+ ip access-group ODC3_ACL in
+ ip helper-address 10.1.6.10
+ ip helper-address 10.1.6.9
+ ip nat inside
+ ip virtual-reassembly in
+ standby 1 ip 10.1.40.2
+ standby 1 priority 110
+ standby 1 preempt
+ ip policy route-map VLAN40_PBR
+!
+ip access-list extended ODC3_ACL
+ permit ip any any
+!

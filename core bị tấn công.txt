@@ -1,0 +1,137 @@
+
+
+
+
+ip nat inside source static tcp 192.168.100.18 93 interface GigabitEthernet0/0 93
+ip nat inside source static tcp 192.168.100.3 91 interface GigabitEthernet0/0 91
+ip nat inside source static tcp 192.168.100.3 92 interface GigabitEthernet0/0 92
+ip nat inside source static tcp 192.168.100.17 94 interface GigabitEthernet0/0 94
+ip nat inside source static tcp 192.168.100.17 81 interface GigabitEthernet0/0 81
+ip nat inside source static tcp 192.168.100.17 96 interface GigabitEthernet0/0 96
+ip nat inside source static tcp 10.1.7.66 8025 interface GigabitEthernet0/0 8025
+
+
+------------------------------------------------------------------------------------
+no ip nat inside source static tcp 10.1.7.63 4010 interface GigabitEthernet0/0 4010
+no ip nat inside source static tcp 10.1.7.64 4011 interface GigabitEthernet0/0 4011
+no ip nat inside source static tcp 10.1.7.65 4000 interface GigabitEthernet0/0 4000
+no ip nat inside source static tcp 10.1.7.66 8025 interface GigabitEthernet0/0 8025
+no ip nat inside source static tcp 10.1.7.58 8015 interface GigabitEthernet0/0 8015
+no ip nat inside source static tcp 10.1.7.58 8016 interface GigabitEthernet0/0 8016
+no ip nat inside source static tcp 10.1.7.58 8017 interface GigabitEthernet0/0 8017
+no ip nat inside source static tcp 10.1.7.58 8018 interface GigabitEthernet0/0 8018
+no ip nat inside source static tcp 10.1.7.58 8019 interface GigabitEthernet0/0 8019
+no ip nat inside source static tcp 10.1.7.40 8010 interface GigabitEthernet0/0 8010
+no ip nat inside source static tcp 10.1.7.40 8011 interface GigabitEthernet0/0 8011
+no ip nat inside source static tcp 10.1.7.40 8012 interface GigabitEthernet0/0 8012
+no ip nat inside source static tcp 10.1.7.61 8020 interface GigabitEthernet0/0 8020
+
+no ip sla 1
+ icmp-echo 113.164.228.217 source-ip 113.164.228.218
+ frequency 30
+no ip sla schedule 1 life forever start-time now
+no ip sla 2
+ icmp-echo 8.8.8.8 source-ip 192.168.200.254
+ frequency 30
+no ip sla schedule 2 life forever start-time now
+
+
+
+
+
+
+ 
+ https://sites.google.com/a/trungtamdaotao.vn/security/tan-cong-layer-2
+ https://www.interserver.net/tips/kb/troubleshoot-ddos-attack/
+ 
+ Name:    otsorch.backlog.jp
+Addresses:  52.196.55.233
+          54.248.156.46
+          13.112.177.154
+          18.180.93.214
+ 
+ ip access-list extended PRI_INTERNET_DIRECT_ACL
+ permit ip 192.168.100.0 0.0.0.255 any
+ permit ip 10.1.6.0 0.0.0.255 any
+ permit ip 10.1.7.0 0.0.0.255 any
+ permit ip 192.168.120.0 0.0.0.255 any
+ permit ip 10.1.35.0 0.0.0.255 any
+ permit icmp any any echo-reply
+ permit icmp any any echo
+ permit tcp any any eq domain
+ permit udp any any eq domain
+ permit tcp any any eq pop3
+ permit tcp any any eq 143
+ permit tcp any any eq smtp
+ permit tcp any any eq 995
+ permit tcp any any eq 993
+ permit tcp any any eq 587
+ permit tcp any any eq 465
+ permit tcp any any eq 22
+ permit tcp any any eq 3389
+ permit tcp any any eq 3398
+ permit tcp any any eq 3306
+ permit tcp any any eq 8014
+ permit tcp any host 176.34.50.98 eq 443
+ permit tcp any host 176.34.50.94 eq 443
+ permit tcp any host 52.193.6.209 eq 443
+ permit tcp any host 52.69.230.127 eq 443
+ permit tcp any host 52.199.182.209 eq www
+ permit tcp any host 13.115.50.160 eq 443
+ permit tcp any host 13.112.113.85 eq 443
+ permit tcp any host 54.92.68.218 eq 443
+ permit tcp any host 13.114.200.123 eq 443
+ permit tcp any host 121.101.82.176 eq 443
+ permit tcp any host 52.219.0.77 eq www
+ permit tcp any host 52.196.169.254 eq 443
+ permit tcp any host 13.115.195.56 eq 443
+ permit tcp any host 54.65.163.78 eq 443
+ permit tcp any host 13.112.42.56 eq 443
+ permit tcp any host 52.199.78.237 eq 443
+ permit ip host 52.199.4.63 any
+ permit tcp any host 54.178.149.157
+ permit tcp any host 13.113.245.228
+ permit tcp any host 3.114.88.71
+ permit tcp any host 54.64.149.136
+ permit tcp any host 13.115.133.22
+ permit tcp any host 18.178.210.47
+ permit tcp any host 3.114.49.116
+ permit tcp any host 13.230.182.139
+ permit tcp any host 3.115.192.252
+ permit tcp any host 18.178.71.94
+ permit tcp any host 52.193.56.206
+ permit tcp any host 153.127.106.88
+ permit tcp any host 52.198.26.167
+ permit tcp any host 54.239.96.1
+ permit tcp any host 54.239.96.26
+ permit tcp any host 202.221.159.140
+ permit tcp any host 153.127.111.156
+ permit tcp any host 3.113.215.244
+ permit tcp any host 13.78.61.196
+ permit tcp any host 13.71.134.95
+ permit tcp any host 104.215.8.183
+ permit tcp any host 54.95.55.98
+ permit ip host 153.156.28.29 any
+ permit tcp any host 153.156.28.29
+ permit tcp any host 40.79.192.5
+ permit tcp any host 52.193.148.138
+ permit tcp any host 52.193.148.191
+ permit tcp any host 18.176.109.120
+ permit tcp any host 18.181.16.253
+ permit tcp any host 52.198.219.184
+ permit tcp any host 52.69.5.11
+ permit tcp any host 3.115.127.39
+ permit tcp any host 3.113.193.214
+ permit tcp any host 54.168.19.162
+ permit tcp any host 52.193.245.225
+ permit tcp any host 52.68.152.138
+ permit tcp any host 52.197.102.169
+ permit tcp any host 52.193.83.136
+ permit tcp any host 54.248.121.195
+ permit tcp any host 54.168.158.14
+ permit tcp any host 52.192.190.140
+ permit tcp any host 52.196.55.233
+ permit tcp any host 54.248.156.46
+ permit tcp any host 13.112.177.154
+ permit tcp any host 18.180.93.214
+ deny   ip any any

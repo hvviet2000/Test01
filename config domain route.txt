@@ -1,0 +1,8 @@
+https://ipwithease.com/configure-cisco-router-as-dns-server/.
+
+ping 10.1.6.10
+ping 10.1.6.9
+
+ip dns server
+ip domain name vietis.vn
+ip domain-lookup

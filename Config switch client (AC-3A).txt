@@ -1,0 +1,69 @@
+1.Password Console
+2.Password Enable
+3.Password Telnet
+4.Ma hoa cac password
+
+
+1.Password Console
+
+Router(config)#line console 0
+Router(config-line)#password 
+Router(config-line)#login
+Router(config-line)#end
+
+2.Password Enable
+enable secret 
+Router(config)#end
+
+3.Password Telnet
+Router(config)#line vty 0 4 
+Router(config-line)#password 
+Router(config-line)#login
+Router(config-line)#end
+
+4.Ma hoa cac password
+Router#conf ter
+Router(config)#service password-encryption
+
+username vietis privilege 15 password 
+
+#config terminal
+Switch(config)#host VIETIS_SW_AC_01
+interface Vlan202
+ ip address 10.1.2.21 255.255.255.0
+!
+ntp server 10.1.6.10
+
+#======Authenticate==========#
+aaa new-model
+aaa authentication dot1x default group radius
+aaa authorization network default group radius 
+aaa accounting dot1x default start-stop group radius
+aaa session-id common
+dot1x system-auth-control
+radius-server host 10.1.3.10 auth-port 1812 acct-port 1813 key vietis.vn
+#====or=============
+radius server ACS01
+ address ipv4 10.1.3.10 auth-port 1812 acct-port 1813
+ key vietis.vn
+#====================
+
+ip default-gateway 10.1.2.1
+
+
+vlan database
+vtp mode client
+vtp domain vietis.vn
+vtp password vietis@123
+
+
+ switchport mode access
+ authentication port-control auto
+ dot1x pae authenticator
+ spanning-tree portfast
+
+PeteRouter#enable
+PeteRouter#copy tftp running-config
+Address or name of remote host []? 10.10.0.1
+Source filename []? PeteRouter_Backup
+Destination filename [running-config]? {Enter}

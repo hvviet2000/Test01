@@ -1,0 +1,20 @@
+
+ip dhcp pool VLAN55
+network 10.1.55.0 255.255.255.0
+default-router 10.1.55.1
+dns-server 8.8.8.8 8.8.4.4
+lease 0 4
+!
+
+interface Vlan55
+ip address 10.1.55.0 255.255.255.0
+
+
+Switch(config)#vlan 55             ##Tạo Vlan 55
+Switch(config)#int vlan 10
+Switch(config-if)#ip address 10.1.55.1 255.255.255.0    ##Đặt ip cho vlan 55
+Switch(config-if)#exit
+
+Switch(config)#Ip Routing
+
+ip route 10.1.55.0 255.255.255.0 10.1.55.1

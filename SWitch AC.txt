@@ -1,0 +1,97 @@
+https://thegioimang.vn/dien-dan/threads/c%E1%BA%A5u-h%C3%ACnh-aaa-tr%C3%AAn-router-cisco.2727/
+
+http://commandline.tkwebviet.com/na-30343/cau-hinh-routing-tren-switch-layer-3
+========================================================
+Config Switch AC (L3) switch
+========================================================
+Mode: SWitch server
+
+Sw1 làm VTP server (L3)
+Sw2,3 làm VTP client (L2)
+Tạo 2 VLAN 50 và đồng bộ 3 Switch
+
+
+1. Hostname : VIETIS_AC_01 
+2. Cấu hình telnet, Console
+3. VLAN
+4. Vtp domain
+5. Inter-Vlan
+6. Access List
+7. DHCP and DNS
+8. Spanning Tree and Port-channel
+9. Tftp
+10. Backup and restore
+
+
+========
+1.Basic
+========
+
+Switch(config)# hostname VIETIS_AC_01 
+enable secret vietis@875
+
+username cisco privilege 15 secret 
+
+2. Cấu hình telnet, Console
+
+line vty 0 15
+# password vietis@875
+# login
+# exit
+
+line console 0
+# password vietis@875
+# login
+# exit
+
+============
+#Configure IP Addresses With Telnet Access
+
+access-switch1(config)# ip access-list standard TELNET-ACCESS
+access-switch1(config-std-nacl)# permit 10.1.50.0 255.255.255.0
+
+access-switch1(config)# line vty 0 15
+access-switch1(config-line)# access-class TELNET-ACCESS in
+access-switch1(config-line)# exit
+
+=======================
+3. VLAN
+=======================
+
+Sw1(config)#vtp mode server
+Sw1(config)#vtp domain vietis_ac
+Sw1(config)#vtp password vietis@123
+Sw1(config)#vlan 250
+Sw1(config-vlan)#name AC_T7_VLAN_250
+
+5. Inter-Vlan
+Các Switch 2.3 vtp mode client
+!
+vlan internal allocation policy ascending
+!
+
+6. Access List: bên đó 1 nhóm lên chưa để acl
+
+7. DHCP and DNS
+
+8. 
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+
+9. SNMP
+
+snmp-server view ALL-ACCESS iso included
+snmp-server view INT-ACCESS ifEntry included
+snmp-server group GROUP1 v3 priv read ALL-ACCESS
+snmp-server user vietisuser GROUP1 v3 auth sha Vietis@123 priv des Vietis@123
+
+=======================
+10.Configure backup
+=======================
+archive
+ log config
+  logging enable
+ path tftp://192.168.100.100/$h-$t
+ write-memory
+ time-period 10080

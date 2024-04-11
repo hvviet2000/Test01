@@ -1,0 +1,92 @@
+Cisco 95 - 500 Series: hoạt động ở layer 2,3 thiết bị chuyển mạch nhỏ gọn phù hợp với mạng kích thước nhỏ, thiết bị lý tưởng giữa tính năng và khả năng chi trả cho các doanh nghiệp đang phát triển.
+Cisco Catalyst 2960-L Series : hoạt động ở layer 2 thích hợp cho việc triển khai lớp Access. Các port đều hỗ trợ GE.
+Cisco Catalyst 2960-Plus Series : hoạt động ở layer 2 thích hợp cho việc triển khai lớp Access. Các port đều hỗ trợ FE.
+Cisco Catalyst 2960-CX Series :  hoạt động ở layer 2 thích hợp cho việc triển khai lớp Access. Thiết kế nhỏ gọn không cần triển khai nhiều không gian vật lý.
+Cisco Catalyst 2960-X Series : hoạt động ở layer 2/3 phù hợp để triển khai lớp Access. Các port đều hỗ trợ GE.
+Cisco Catalyst 3560-CX Series : hoạt động ở layer 3, thiết kế nhỏ gọn dễ dàng di chuyển và lắp đặt ở nhiều không gian khác nhau.
+Cisco Catalyst 3650 Series : hoạt động ở layer 2/3 phù hợp để triển khai lớp Access hoặc Core. Thiết bị hỗ trợ truy cập có dây và không dây.
+Cisco Catalyst 3850 Series : hoạt động ở layer 2/3 phù hợp để triển khai lớp Access hoặc Core. Thiết bị hỗ trợ truy cập có dây và không dây
+
+Switch Cisco hỗ trợ các cổng giao diện(Interface Port):
+
+    Fast Ethernet port (FE).
+    Gigabit Ethernet port (GE).
+    Multigigabit Ethernet port (mGig).
+    SFP module slot (SFP).
+    Dual-Purpose port (GE/SFP).
+    10GBASE-T port (10GB-T).
+    SFP+ module slot (SFP/SFP+).
+    QSFP+ module slot (QSFP).
+
+https://cnttshop.vn/blogs/cisco/phan-biet-va-nhan-dang-cac-ky-hieu-tren-switch-cisco-1
+
+
+    LAN Lite (LL): Là hai dòng License phổ biến cho các dòng chuyển mạch 2960+ và 2960-X. Lan Lite là License cho những dòng Switch layer 2 với nhiều tình năng đi kèm như: 802.1Q trunking, (M)STP, STP extensions, CDP... và nó còn hỗ trợ 1 vài tính năng bảo mật cơ bản khác như: TACACS+, RADIUS, port security, 802.1X and DHCP snooping.license này, không cung cấp khả năng định tuyến layer 3 cũng như khả năng quản lý và bảo mật nâng cao.
+
+ 
+
+    LAN Base License (LB) : Là một dạng license đầy đủ tính năng cho dòng chuyển mạch layer 2. Nó bao gồm đầy đủ tính năng của Lan Lite cộng thêm một số tính năng mở rộng như VTP v3 và FlexLinks. VTP v3 cho phép việc quản trị thông tin VLAN topology dễ dàng hơn, đồng thời làm giảm thiểu những thay đổi không mong muốn. Ngoài ra với dạng license này, nó còn hỗ trợ nhiều tính năng cho VLAN như ISL VLAN, FlexLinks,...giúp cho links backup và hội tụ giữa những Switchs lớp Access và lớp Distribution nhanh chóng. Nhiều tính năng bảo mật mạnh cũng được tích hợp vào Lan Base license, chẳng hạn như: Flexible Authentication, Radius Change of Authorization và những đặc tính nâng cao 802.1X. Ở góc độ quản lý, dạng license này có sẵn những tính năng như: Ingress policing, Trust Boundary, AutoQoS, and DSCP mapping.
+
+ 
+
+     IP Base License (IPB) : Là dạng license mạng diện rộng được tích hợp cho Catalyst 3650 và 3850 với khả năng hỗ trợ định tuyến động. Dạng license này bao gồm tất cả các chức năng chuyển mạch layer 2 có trong LAN Base license cộng thêm một số tính năng chuyển mạch layer 3 như: Static routing, RIP, EIGRP stub, Protocol Independent Multicast (PIM) stub và OSPF for Routed Acces. Ở khía cạnh bảo mật, một số tính năng bảo mật mạng được hỗ trợ trong IP Base license, chẳng hạn: ACLs, Private VLANs, TrustSec SXP và IEEE 802.1AE (còn gọi là MACsec).
+
+     IP Services License (IPS) : Là một dạng license đầy đủ nhất.
+ 
+
+ WS-C2960S-48TS-L   12.2(55)SE7           C2960S-UNIVERSALK9-M
+ 
+ SW rẻ: C1000-48T-4G-L
+ SW Core: 9200L-24T-4G
+ 
+ 
+ 
+ 48 cổng mạng LAN RJ-45 10/100 / 1000Base-T
+ 4 x 1G SFP tương thích với tất cả các loại Modul quang thông dụng như: GLC-LH-SM, GLC-SX-MMD
+ 
+ 
+ CISCO1921/K9          FGL192423QX
+ 
+ cáp quang: 
+ 
+1. Thi công mạng LAN không đi ống ghen: từ 80.000đ/ nút trở lên
+
+2. Thi công mạng Lan đi ống ghen: 150.000đ/ nút trở lên
+
+3. Thi công mạng LAN có ống ghen, đục trần, đục xuyên tường giá từ: 180.000đ/ nút trở lên
+
+4. Thi công mạng LAN cho phân xưởng, tòa nhà, khu công nghiệp giá từ : 240.000đ/ nút trở lên
+
+5. Thi công mạng LAN ngoài trời, đi trên cao giá từ : 300.000đ/ nút trở lên
+
+6. Chạy cáp quang trong nhà, ngoài trời: 60.000đ/ mét
+
+7. Hàn cáp quang: xin liên hệ
+
+Kéo cáp quang ngầm
+5.000.000
+
+euro windows
+10k/mét
+700 hàn nối
+dây nhảy
+350k/module
+
+
+
+Mr.Cao  :  0982.315.512
+Mobile : 0982.315.512 – 0888.550.111
+Liên Hệ Ngay Gmail Viễn Thông Thành Công : Inbox.thanhcong@gmail.com
+IPNET Trụ Sở: Số 77, Ngõ 175/5 Định Công, Hoàng Mai, Hà Nội
+Tel: 0981.08.67.68 – 0969.560.360
+
+Hotline Hà Nội: 0988 588 880 
+TNHH VFV TELECOM
+
+
+F200Basic (IP tĩnh) 	200Mbps / 4Mbps 	2.200.000 VNĐ
+Super300  iP Tĩnh + 600.000đ/tháng           2.000.000 VNĐ
+Extra400   400M/24M   						1.750.
+SUPER 400                                    1.410.000 
+
+https://vnpro.vn/tin-tuc/cau-hinh-switch-port-vlans-trunk-vtp-intervlan-routing-832.html

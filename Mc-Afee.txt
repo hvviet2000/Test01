@@ -1,0 +1,51 @@
+Window:
+https://ui-usw001.mvision.mcafee.com:443/ComputerMgmt/agentPackage.get?token=b594477ec799f41b1cf38e2826ad8be812ddc905
+MAC:
+https://ui-usw001.mvision.mcafee.com:443/ComputerMgmt/agentPackage.get?token=9cf6c1a7084324c46bfdd0a56e381efa2c9af831
+
+https://www.mi2.com.vn/endpoint-security-la-gi-tim-hieu-chi-tiet-ve-giai-phap-mcafee-mvision-endpoint/
+
+
+1-Policy Ã¡ anh:
+	1- Policy update cac endpoint
+		+ Time: 11h30AM daily
+	2- Policy scan
+		+ Full scan: 11h30AM weekly Friday
+		+ Quick scan: 12hAM daily
+		+ Option: optimize sao cho phu hop nhat, khong se lam cham PC cua users
+	Cac cong ty em trien khai ho set policy quick scan daily vao cac buoi trua va full scan vao ngoai gio hanh chinh hoac cuoit tuan
+	Full scan HDD 500G thi mat thoi gian bao lau? 
+	hoac full scan o C:\ (chua OS) thoi (khoang 200G) ?
+	=> ve thoi gian minh test thu 1 may se co thong so cu the nha anh. OK vay test full scan o C thoi
+ok anh.
+2- Report:
+- So client updated / tong so 
+- Ket qua scan 
+Time: 5h30pm
+
+
+
+H?m nay xong c?c ph?n:
+- t?o file c?i cho window, MAC
+	note: remove h?ng antivirus kh?c, khi ch?y file installer - run as administrator
+- t?o policy update v? scan
+- t?o report c?c client ???c update th?nh c?ng => OK
+Next step:
+- C?i agent l?n c?c m?y window, mac kh?c
+- T?o report k?t qu? scan h?ng ng?y
+- Vi?t t?i li?u c?i ??t
+- Tao report KQ update hang ngay -> de ti anh xem no gui email ve khong :)
+OK
+		
+		
+		13245139-NAI
+		
+		
+https://www.mi2.com.vn/endpoint-security-la-gi-tim-hieu-chi-tiet-ve-giai-phap-mcafee-mvision-endpoint/
+
+McAfee Endpoint Security 10.7 l? phi?n b?n n?ng c?p ???c t?o th?nh t? nhi?u Module s?n ph?m. C? th? Endpoint Security bao g?m c?c Module sau:
+
+    McAfee Endpoint Security Threat Prevention – Ng?n ch?n m?i ?e d?a
+    McAfee Endpoint Security Firewall – T??ng l?a
+    McAfee Endpoint Security Web Control – B?o v? tr?nh duy?t
+    McAfee Endpoint Security Adaptive Threat Protection (ATP) – Requires Threat Prevention	
