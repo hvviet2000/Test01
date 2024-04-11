@@ -1,0 +1,55 @@
+allow 113.164.228.218; #VIETIS_VNPT_LL
+allow 113.164.228.219; #VIETIS
+allow 113.164.228.220; #VIetIS
+allow 113.164.228.221; #VIETIS
+allow 113.164.228.222; #VIETIS
+allow 118.70.128.119;  #VIETIS FTTH 3A
+allow 118.70.16.140;   #VIETIS FTTH AC
+allow 118.70.72.152;   #VIETIS FTTH 3A
+allow 192.168.100.0/24;# VietIS local LAN server
+allow 192.168.5.0/24;  #VPN Client TMG
+allow 192.168.8.0/24;  #Open Client VPN 3A
+allow 192.168.11.0/24; #Client VPN AC
+allow 192.168.13.0/24; #Open VPN JP
+allow 192.168.4.0/24;  #OpenVPN BK
+allow 172.16.80.0/24;  #LAN Lifenet ODC
+allow 172.16.10.0/24;  #LAN VP Japan
+allow 10.1.2.0/24;     #LAN
+allow 10.1.3.0/24;     #LAN
+allow 10.1.7.0/24;     #LAN
+allow 10.1.6.0/24;     #LAN
+allow 10.1.32.0/23;    #LAN
+allow 10.1.34.0/24;    #LAN
+allow 10.1.35.0/24;    #LAN
+allow 10.1.36.0/24;    #LAN
+allow 10.1.37.0/24;    #LAN
+allow 10.1.38.0/24;    #LAN
+allow 10.1.39.0/24;    #LAN
+allow 10.1.40.0/24;    #LAN
+allow 10.1.41.0/24;    #LAN
+allow 10.1.42.0/24;    #LAN
+allow 10.1.43.0/24;    #LAN
+allow 10.1.54.0/24;    #LAN
+allow 10.1.55.0/24;    #LAN
+allow 153.231.190.238; #thinh.daodang 15/1/2024
+allow 60.65.44.44;     #thinh.daodang 15/1/2024 
+allow 58.186.205.161;  #TT photo 31-12-2023
+allow 18.183.72.160;   #NihonJumbo  31-12-2023
+allow 54.250.157.36;   #NihonJumbo  31-12-2023
+allow 43.206.190.95;   #NihonJumbo  31-12-2023
+allow 52.199.197.228;  #NihonJumbo  31-12-2023
+allow 54.64.174.215;   #NihonJumbo 
+allow 52.69.174.1;
+allow 52.193.241.44;
+allow 52.199.126.214;
+allow 52.193.81.33;
+allow 54.64.22.158;
+allow 54.64.127.128;
+allow 54.64.113.78;
+allow 54.64.32.186;
+allow 52.192.120.11; #VIETIS.ChatGPTDemo  31/07/2023 
+allow 52.194.7.207;   #Gacha Manh.nguyenthe 31/07/2023 
+allow 54.250.234.100; #Gacha Manh.nguyenthe 31/07/2023 
+deny all;
+
+TDNJB-GQPM6-WGJDG-7PVMG-MKMQB

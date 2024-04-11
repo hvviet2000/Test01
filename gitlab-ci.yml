@@ -1,0 +1,51 @@
+#https://endertech.com/blog/how-to-setup-ci-cd-in-gitlab
+image:
+  name: amazon/aws-cli
+  entrypoint: [""]
+
+variables:
+  DOCKER_HOST: tcp://docker:2375/
+  DOCKER_IMAGE: api
+  DOCKER_TLS_CERTDIR: ""
+  DOCKER_DRIVER: overlay2
+  APP_NAME: portal-api-prod
+  STACK_NAME: portal-system-prod
+  VERSION_IMAGE: $CI_PIPELINE_IID
+
+stages:
+  - build
+  - deploy
+
+publish-docker:
+  tags:
+    - build-be
+
+  stage: build
+  only:
+    - production
+  environment: production
+  services:
+    - docker:dind
+  before_script:
+    - amazon-linux-extras install docker
+    - aws --version
+    - docker --version
+    - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $AWS_REGISTRY_HOST
+  script:
+    - aws s3 cp $BUCKET_CREDENTIAL_PROD $FILE_PATH_CREDENTIAL
+    - ls
+    - docker build . -t api -f ./compose/develop/Dockerfile
+    - docker tag api:latest $AWS_REGISTRY_HOST/$APP_NAME:1.0.$VERSION_IMAGE
+    - docker push $AWS_REGISTRY_HOST/$APP_NAME:1.0.$VERSION_IMAGE
+
+deploy:
+  tags:
+    - deploy-cloudformation
+  stage: deploy
+  only:
+    - production
+  environment: production
+  before_script:
+    - aws --version
+  script:
+    - aws cloudformation update-stack --stack-name $STACK_NAME --template-url $S3URI_PROD --parameters ParameterKey=VersionImage,ParameterValue=1.0.$VERSION_IMAGE ParameterKey=EcrName,ParameterValue=$AWS_REGISTRY_HOST/$APP_NAME --capabilities CAPABILITY_NAMED_IAM

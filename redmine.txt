@@ -1,0 +1,608 @@
+mysql -u root -p
+Vietis@123
+
+SELECT host,user,authentication_string FROM mysql.user;
+
+production:
+  adapter: mysql2
+  database: redmine
+  host: localhost
+  username: root
+  password: "Vietis@123"
+  # Use "utf8" instead of "utfmb4" for MySQL prior to 5.7.7
+  encoding: utf8mb4
+  
+
+https://blog.nvb-online.com/93-cai-dat-redmine-centos-mysql-apache-passenger
+http://code24h.com/cai-dat-redmine-su-dung-web-server-nginx-tren-centos-7-d9843.htm
+https://ducquyen.wordpress.com/2012/11/14/setup-redmine-tren-centos-6-3/
+
+
+    yum -y install ruby rubygems ruby-devel ruby-irb ruby-rdoc ruby-ri
+
+    yum -y install zlib-devel curl-devel openssl-devel httpd-devel apr-devel apr-util-devel mysql-devel gcc ruby-devel
+
+    yum -y install gcc-c++ make postgresql-devel ImageMagick-devel sqlite-devel perl-LDAP mod_perl perl-Digest-SHA
+	
+yum install curl gpg gcc gcc-c++ make patch autoconf automake bison libffi-devel libtool 
+yum install readline-devel sqlite-devel zlib-devel openssl-develh readline glibc-headers glibc-devel
+yum install mariadb-devel zlib libyaml-devel bzip2 iconv-devel ImageMagick ImageMagick-devel
+
+
+				sudo yum -y install httpd httpd-devel libcurl-devel
+				yum -y install postfix cyrus-sasl-plain mailx
+
+
+				$ sudo yum install epel-release yum-utils pygpgme
+				$ sudo yum-config-manager --enable epel
+				$ sudo yum-config-manager --add-repo https://oss-binaries.phusionpassenger.com/yum/definitions/el-passenger.repo
+
+				$ gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+				$ curl -sSL https://get.rvm.io | bash -s stable
+				
+Installing RVM to /usr/local/rvm/				
+
+alternatives --set mta /usr/sbin/sendmail.postfix
+ 
+systemctl restart postfix
+systemctl enable postfix
+systemctl restart httpd
+systemctl enable httpd
+
+				
+				$ source /opt/redmine/.rvm/scripts/rvm
+
+				rvm install 2.5
+				rvm --default use 2.5
+
+
+
+
+wget http://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
+sudo yum localinstall mysql57-community-release-el7-9.noarch.rpm
+sudo yum install mysql-community-server -y 
+
+sudo systemctl start mysqld.service
+
+sudo grep 'temporary password' /var/log/mysqld.log
+
+mysql -u root -p
+mysql>ALTER USER 'root'@'localhost' IDENTIFIED BY '9c4b10b124d24379fe64a1bc38f47e8a';
+mysql>FLUSH PRIVILEGES;
+mysql>\q
+
+mysql -u root -p
+mysql>CREATE USER 'redmine'@'localhost' identified by 'Vietis@123';
+mysql>CREATE DATABASE redmine CHARACTER SET utf8;
+mysql>GRANT ALL PRIVILEGES ON redmine.* to 'redmine'@'localhost';
+GRANT ALL PRIVILEGES ON *.* to 'root'@'%' IDENTIFIED BY "Vietis@123";
+
+
+mysql>FLUSH PRIVILEGES;
+mysql>\q
+
+
+
+sudo yum install centos-release-scl -y
+sudo yum install rh-ruby25 -y
+scl enable rh-ruby25 bash
+ruby -v
+which ruby
+/opt/rh/rh-ruby25/root/usr/bin/ruby
+
+
+cat << EOF >> /etc/profile.d/rh-ruby25.sh
+#!/bin/bash
+source /opt/rh/rh-ruby24/enable
+export X_SCLS="`scl enable rh-ruby24 'echo $X_SCLS'`"
+EOF
+
+cd ~
+curl -L http://www.redmine.org/releases/redmine-4.1.1.tar.gz -o redmine.tar.gz
+tar -xzvf redmine.tar.gz
+mv redmine-4.1.1 /var/www/redmine
+
+cd /var/www/redmine
+
+cat << EOF >> ./config/database.yml
+production:
+  adapter: mysql2
+  database: redmine
+  host: localhost
+  username: redmine
+  password: RedminePassword
+  encoding: utf8
+EOF
+
+yum install rh-ruby25-ruby-devel -y
+yum install mysql-devel -y
+gem install bundler -v 1.17.1
+Successfully installed bundler-2.1.4
+
+
+bundle install --without development test postgres sqlite
+bundle exec rake generate_secret_token
+bundle exec rake db:migrate RAILS_ENV=production
+
+
+
+
+cd redmine
+gem install passenger
+passenger-install-apache2-module
+
+
+RAILS_ENV=production bundle exec rake db:migrate
+
+
+Please edit your Apache configuration file, and add these lines:
+
+   LoadModule passenger_module /opt/rh/rh-ruby25/root/usr/local/share/gems/gems/passenger-6.0.6/buildout/apache2/mod_passenger.so
+   <IfModule mod_passenger.c>
+     PassengerRoot /opt/rh/rh-ruby25/root/usr/local/share/gems/gems/passenger-6.0.6
+     PassengerDefaultRuby /opt/rh/rh-ruby25/root/usr/bin/ruby
+   </IfModule>
+   
+cat << EOF >> /etc/httpd/conf.d/passenger.conf
+LoadModule passenger_module /opt/rh/rh-ruby24/root/usr/local/share/gems/gems/passenger-6.0.4/buildout/apache2/mod_passenger.so
+PassengerRoot /opt/rh/rh-ruby24/root/usr/local/share/gems/gems/passenger-6.0.4
+PassengerDefaultRuby /opt/rh/rh-ruby24/root/usr/bin/ruby
+SetEnv LD_LIBRARY_PATH /opt/rh/rh-ruby24/root/usr/lib64
+NameVirtualHost *:80
+<VirtualHost *:80>
+    Servername 10.10.10.193
+    DocumentRoot /var/www/redmine/public
+</VirtualHost>
+EOF
+
+
+chown -R apache. /var/www/redmine
+systemctl restart httpd
+systemctl enable httpd
+
+firewall-cmd --permanent --add-port=80/tcp
+firewall-cmd --permanent --add-port=443/tcp
+firewall-cmd --permanent --add-port=25/tcp
+sudo firewall-cmd --reload
+
+
+
+=========================================
+Restore DB command
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://www.fosslinux.com/21274/install-and-configure-redmine-on-centos-7.htm
+https://www.linuxcompatible.org/story/install-and-configure-redmine-on-centos-7/
+https://www.redmine.org/projects/redmine/wiki/redmineinstall
+
+https://news.cloud365.vn/huong-dan-cai-dat-redmine-tren-centos-7/
+
+
+$ sudo yum install curl gpg gcc gcc-c++ make patch autoconf automake bison libffi-devel libtool 
+$ sudo yum install readline-devel sqlite-devel zlib-devel openssl-develh readline glibc-headers glibc-devel
+$ sudo yum install mariadb-devel zlib libyaml-devel bzip2 iconv-devel ImageMagick ImageMagick-devel
+
+$ sudo yum install mariadb-server
+$ sudo systemctl start mariadb
+$ sudo systemctl enable mariadb
+$ sudo mysql_secure_installation
+
+Answer with Y (yes) to all these questions.
+
+$ sudo mysql
+CREATE DATABASE redmine CHARACTER SET utf8;
+GRANT ALL ON redmine.* TO 'redmine'@'%' IDENTIFIED BY 'vietis@redmine';
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+SHOW DATABASES;
+
+$ sudo yum install epel-release yum-utils pygpgme
+$ sudo yum-config-manager --enable epel
+$ sudo yum-config-manager --add-repo https://oss-binaries.phusionpassenger.com/yum/definitions/el-passenger.repo
+$ sudo yum install nginx passenger passenger-devel
+gem install passenger 
+
+Step 5: Create a New System User
+
+$ sudo useradd -m -U -r -d /opt/redmine redmine
+$ sudo usermod -a -G redmine nginx
+$ sudo chmod 750 /opt/redmine
+
+Step 6: Install Ruby
+
+$ sudo su - redmine
+$ gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+$ curl -sSL https://get.rvm.io | bash -s stable
+$ source /opt/redmine/.rvm/scripts/rvm
+
+rvm install 2.5
+rvm --default use 2.5
+
+
+
+Install Redmine on CentOS 7
+Logging in as the Redmine user.
+su - redmine
+
+$ curl -L https://www.redmine.org/releases/redmine-5.0.5.tar.gz -o redmine.tar.gz
+
+
+#$ curl -L http://www.redmine.org/releases/redmine-4.1.1.tar.gz -o redmine.tar.gz
+$ tar -xvf redmine.tar.gz
+
+Step 2: Configure the Redmine Database
+
+cp /opt/redmine/redmine-4.1.1/config/database.yml.example /op/redmine/redmine-4.1.1/config/database.yml
+vi /opt/redmine/redmine-4.1.1/config/database.yml
+
+production:
+adapter: mysql2
+database: redmine
+host: localhost
+username: redmine
+password: "vietis@redmine"
+encoding: utf8
+
+Step 3: Install Ruby Dependencies
+
+rvm install 2.5
+rvm --default use 2.5
+
+$ cd ~/redmine-4.1.1
+$ gem install bundler --no-rdoc --no-ri
+$ bundle install --without development test postgresql sqlite
+
+Step 4: Generating Keys and Migrating Database
+$ bundle exec rake generate_secret_token
+$ RAILS_ENV=production bundle exec rake db:migrate
+
+Step 5: Configure Nginx
+From ROOT
+$ exit
+
+[root@redmine ~]# passenger-config --root
+/usr/share/ruby/vendor_ruby/phusion_passenger/locations.ini
+[root@redmine ~]#
+
+[root@redmine ~]# passenger-config --root
+/opt/redmine/.rvm/gems/ruby-2.5.8/gems/passenger-6.0.6
+[root@redmine ~]#
+
+
+yum install httpd
+vi /etc/nginx/conf.d/redmine.vietis.vn.conf
+
+passenger_root /usr/share/ruby/vendor_ruby/phusion_passenger/locations.ini;
+passenger_ruby /opt/redmine/.rvm/gems/default/wrappers/ruby;
+passenger_instance_registry_dir /var/run/passenger-instreg;
+
+server {
+listen 80;
+server_name example.com www.example.com;
+
+root /opt/redmine/redmine-4.1.1/public;
+
+# log files
+access_log /var/log/nginx/example.com.access.log;
+error_log /var/log/nginx/example.com.error.log;
+
+passenger_enabled on;
+passenger_min_instances 1;
+
+client_max_body_size 10m;
+}
+
+
+
+
+
+  https://www.phusionpassenger.com/library/install/apache/
+  https://www.phusionpassenger.com/library/admin/apache/troubleshooting/
+  
+  sudo chmod o+x "/opt/redmine"
+  yum install httpd-devel
+  yum install apr-devel
+  yum install apr-util-devel
+  
+  Checking for required software...
+
+
+passenger-config --root
+
+   LoadModule passenger_module /opt/redmine/.rvm/gems/ruby-2.5.8/gems/passenger-6.0.6/buildout/apache2/mod_passenger.so
+   <IfModule mod_passenger.c>
+     PassengerRoot /opt/redmine/.rvm/gems/ruby-2.5.8/gems/passenger-6.0.6
+     PassengerDefaultRuby /opt/redmine/.rvm/gems/ruby-2.5.8/wrappers/ruby
+   </IfModule>
+
+
+
+https://news.cloud365.vn/huong-dan-cai-dat-redmine-tren-centos-7/
+
+
+
+
+redmine.vietis.com.vn 
+openssl req -new -newkey rsa:2048 -nodes -out redmine.vietis.com.vn.csr -keyout redmine.vietis.com.vn.key -subj "/C=VN/ST=084/L=024/O=VIETIS/OU=VIETIS JSC/CN=redmine.vietis.com.vn"
+
+https://kipalog.com/posts/Huong-dan-cai-open-ssl-tren-centos
+https://adminvietnam.org/cau-hinh-https-tren-centos-voi-apache/763/
+
+
+
+
+default:
+  email_delivery:
+    delivery_method: :smtp
+    smtp_settings:
+      enable_starttls_auto: true
+      address: "smtp.gmail.com" 
+      port: 465
+      domain: "smtp.gmail.com" 
+      authentication: :plain
+      user_name: "yourusername@gmail.com" 
+      password: "yourpassword" 
+	  
+    delivery_method: :smtp
+    smtp_settings:
+      enable_starttls_auto: true
+      address: "smtp.gmail.com"
+      port: 587
+      domain: "smtp.gmail.com" # 'your.domain.com' for GoogleApps
+      authentication: :plain
+      user_name: "your_email@gmail.com"
+      password: "your_password"
+
+production:
+  email_delivery:
+    delivery_method: :smtp
+    smtp_settings:
+      enable_starttls_auto: true
+      address: "smtp.gmail.com" 
+      port: 587
+      domain: "smtp.gmail.com" 
+      authentication: :plain
+      user_name: "xxxxxxxx@gmail.com" 
+      password: "xxx" 
+
+production:
+  delivery_method: :sendmail
+  
+  
+SQL
+Vietis@123
+
+
+=========
+Backup
+cd /your/directory
+sudo /opt/bitnami/ctlscript.sh stop
+sudo tar -pczvf application-backup.tar.gz /bitnami
+sudo tar -pczvf application-bin.tar.gz /opt/bitnami
+sudo /opt/bitnami/ctlscript.sh start
+
+Restore
+cd /your/directory
+sudo /opt/bitnami/ctlscript.sh stop
+sudo mv /opt/bitnami /tmp/bitnami-backup
+sudo tar -pxzvf application-backup.tar.gz -C /
+sudo tar -pxzvf application-bin.tar.gz -C /
+sudo /opt/bitnami/ctlscript.sh start
+
+
+========DB
+
+How to backup redmine?
+
+Database:
+
+/usr/bin/mysqldump -u <username> -p <password> <redmine_database> | gzip > /path/to/backup/db/redmine_`date +%y_%m_%d`.gz
+
+Attachments:
+
+rsync -a /path/to/redmine/files /path/to/backup/files
+
+How to restore redmine?
+
+Restore the database:
+
+mysql --user=root --password=rootpassword redmine_production < ./db/mysql_20130914.sql
+
+Restore files:
+
+cp -r /path/to/backup/files /path/to/redmine/files
+
+=======================================================================
+https://zlargon.github.io/blog/Redmine/redmine-backup/
+
+mysqldump -u root -h localhost -p redmine > redmine_backup.sql
+
+new server:
+CREATE DATABASE redmine_backup CHARACTER SET utf8mb4;
+mysql -u root -h localhost -p redmine_backup < redmine_backup.sql
+
+
+mysql -u root -h localhost -p redmine < redmine-24Jun2021.sql
+
+
+https://www.redmine.org/boards/2/topics/62330
+
+https://www.easyredmine.com/news/how-to-install-a-plugin-in-redmine-smoothly
+
+Head Over to Redmine App Root Folder
+cd /var/www/redmine
+cp [plugin_name]-x_x_x-pro.zip plugins/
+cd plugins
+unzip [plugin_name]-x_x_x-pro.zip
+
+cd /var/www/redmine
+bundle install --without development test --no-deployment
+
+bundle exec rake redmine:plugins NAME=[plugin_name] RAILS_ENV=production
+
+
+#rake db:migrate_plugins RAILS_ENV="production" 
+#bundle exec rake db:migrate_plugins RAILS_ENV="production"
+
+
+bundle exec rake redmine:plugins NAME=redmine_hudson RAILS_ENV="production"
+
+  405  cd /var/www/redmine
+  406  rm -fr plugins/redmine_agile
+  407  cd plugins
+  408  unzip redmine_agile-1_6_0-pro.zip
+  409  cd /var/www/redmine
+  410  bundle install
+  411  bundle exec rake redmine:plugins NAME=redmine_agile RAILS_ENV=production
+  412  touch tmp/restart.txt
+
+
+Environment:
+  Redmine version                4.1.1.stable
+  Ruby version                   2.5.5-p157 (2019-03-15) [x86_64-linux]
+  Rails version                  5.2.4.2
+  Environment                    production
+  Database adapter               Mysql2
+  Mailer queue                   ActiveJob::QueueAdapters::AsyncAdapter
+  Mailer delivery                smtp
+  
+  
+  
+mysql -u root -h localhost -p redmine < redmine-20Dec2022.sql
+Vietis@123
+
+login vis bang BOD
+
+
+authentication
+api_user
+vietis@123
+key
+4a2f3a757675238682c9ca473798548806ac092f
+visinsight
+4a2f3a757675238682c9ca473798548806ac092f
+
+
+production:
+  adapter: mysql2
+  database: redmine
+  host: localhost
+  username: root
+  password: "Vietis@123"
+  # Use "utf8" instead of "utfmb4" for MySQL prior to 5.7.7
+  encoding: utf8mb4
+
+
+
+
+
+define service{
+        use                             local-service         ; Name of service template to use
+        host_name                       redmine
+        service_description             Total Processes
+		check_command			check_local_procs!250!400!RSZDT
+        }
+
+
+
+# Define a service to check the load on the local machine. 
+
+define service{
+        use                             local-service         ; Name of service template to use
+        host_name                       redmine
+        service_description             Current Load
+		check_command			check_local_load!5.0,4.0,3.0!10.0,6.0,4.0
+        }
+
+
+
+# Define a service to check the swap usage the local machine. 
+# Critical if less than 10% of swap is free, warning if less than 20% is free
+
+define service{
+        use                             local-service         ; Name of service template to use
+        host_name                       redmine
+        service_description             Swap Usage
+	check_command			check_local_swap!20!10
+        }
+
+
+# Define a service to check the swap usage the local machine. 
+# Critical if less than 10% of disk is free, warning if less than 20% is free
+
+
+
+define service{
+        use                            local-service         ; Name of service template to use
+        host_name                       redmine
+        service_description             Root Partition
+		check_command			check_local_disk!20%!10%!/
+        }
+
+
+
+
+# Define a service to check the number of currently logged in
+# users on the local machine.  Warning if > 20 users, critical
+# if > 50 users.
+
+define service{
+        use                             local-service         ; Name of service template to use
+        host_name                       redmine
+        service_description             Current Users
+	check_command			check_local_users!20!50
+        }
+
+
+# Define a service to check the number of currently running procs
+# on the local machine.  Warning if > 250 processes, critical if
+# > 400 processes.
+
+define service{
+        use                             local-service         ; Name of service template to use
+        host_name                       redmine
+        service_description             Total Processes
+	check_command			check_local_procs!250!400!RSZDT
+        }
+
+
+
+# Define a service to check the load on the local machine. 
+
+define service{
+        use                             local-service         ; Name of service template to use
+        host_name                       redmine
+        service_description             Current Load
+	check_command			check_local_load!5.0,4.0,3.0!10.0,6.0,4.0
+        }
+
+
+
+# Define a service to check the swap usage the local machine. 
+# Critical if less than 10% of swap is free, warning if less than 20% is free
+
+define service{
+        use                             local-service         ; Name of service template to use
+        host_name                       redmine
+        service_description             Swap Usage
+	check_command			check_local_swap!20!10
+        }
+
+

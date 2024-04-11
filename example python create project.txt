@@ -1,0 +1,175 @@
+https://www.geeksforgeeks.org/command-line-arguments-in-python/
+
+https://geekflare.com/convert-string-to-datetime-python/
+
+from datetime import datetime
+
+string = "19-12-2022 09:37:56 PM"
+formatting = "%d-%m-%Y %I:%M:%S %p"
+
+## getting date separately
+print("Date:", datetime.strptime(string, formatting).date())
+
+## getting time separately
+print("Time:", datetime.strptime(string, formatting).time())
+
+str = '9-15-22'
+date_object = datetime.strptime(str, '%m-%d-%y')
+print(date_object)
+
+
+import gitlab
+from gitlab.exceptions import GitlabCreateError
+
+# Replace these with your GitLab server URL and access token
+GITLAB_URL = 'https://gitlab.example.com'
+GITLAB_ACCESS_TOKEN = 'your_access_token_here'
+
+# Replace these with your project ID and the usernames of the members to add
+PROJECT_ID = 123
+MEMBER_USERNAMES = ['user1', 'user2', 'user3']
+
+# Set the access level to DEVELOPER (40)
+ACCESS_LEVEL = gitlab.const.AccessLevel.DEVELOPER
+
+def add_members_to_project(project, member_usernames, access_level):
+    try:
+        for username in member_usernames:
+            user = gl.users.list(username=username)[0]
+            project.members.create({'user_id': user.id, 'access_level': access_level})
+            print(f"Added {username} as a developer to the project.")
+    except GitlabCreateError as e:
+        print(f"Error occurred: {e}")
+
+if __name__ == '__main__':
+    gl = gitlab.Gitlab(GITLAB_URL, private_token=GITLAB_ACCESS_TOKEN)
+    gl.auth()
+
+    project = gl.projects.get(PROJECT_ID)
+    add_members_to_project(project, MEMBER_USERNAMES, ACCESS_LEVEL)
+
+
+
+import requests
+
+# Replace these variables with your GitLab details
+GITLAB_API_URL = "https://gitlab.com/api/v4/"
+GITLAB_PRIVATE_TOKEN = "YOUR_GITLAB_PRIVATE_TOKEN"
+GITLAB_NAMESPACE = "YOUR_GITLAB_NAMESPACE"
+PROJECT_NAME = "YOUR_PROJECT_NAME"
+
+def create_gitlab_project():
+    headers = {
+        "Private-Token": GITLAB_PRIVATE_TOKEN,
+    }
+
+    # Create a new project under the specified namespace
+    data = {
+        "name": PROJECT_NAME,
+        "namespace_id": GITLAB_NAMESPACE,
+    }
+
+    try:
+        response = requests.post(
+            f"{GITLAB_API_URL}/projects",
+            headers=headers,
+            json=data,
+        )
+        response.raise_for_status()
+
+        project_url = response.json().get("web_url")
+        print(f"Project created successfully. URL: {project_url}")
+
+    except requests.exceptions.RequestException as e:
+        print(f"Failed to create project: {e}")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+
+if __name__ == "__main__":
+    create_gitlab_project()
+	
+	
+	
+import requests
+
+def create_gitlab_project(access_token, project_name):
+    gitlab_url = "https://gitlab.com/api/v4/projects"
+    headers = {
+        "Authorization": f"Bearer {access_token}"
+    }
+    data = {
+        "name": project_name,
+        "visibility": "public",  # Change this to "private" if you want a private project
+    }
+
+    try:
+        response = requests.post(gitlab_url, headers=headers, json=data)
+
+        if response.status_code == 201:
+            print(f"Project '{project_name}' created successfully in GitLab.")
+        else:
+            print(f"Failed to create project '{project_name}' in GitLab.")
+            print(f"Error: {response.text}")
+
+    except requests.exceptions.RequestException as e:
+        print(f"Error: {e}")
+
+if __name__ == "__main__":
+    gitlab_access_token = "YOUR_GITLAB_ACCESS_TOKEN"
+    project_name = "Your New Project Name"
+
+    create_gitlab_project(gitlab_access_token, project_name)
+
+
+
+===
+
+To create projects in a specific namespace using the GitLab API with Python, you can use the `python-gitlab` library, which provides convenient methods to interact with the GitLab API. Below are the steps to achieve this:
+
+1. Install the `python-gitlab` library:
+
+Make sure you have Python installed on your system and then install the `python-gitlab` library using pip:
+
+```bash
+pip install python-gitlab
+```
+
+2. Get GitLab API Token:
+
+To interact with the GitLab API, you need to generate a personal access token from your GitLab account. Go to your GitLab account Settings > Access Tokens and create a new token with the necessary permissions (e.g., "api" scope).
+
+3. Python script to create a project:
+
+Here's a Python script to create a project in a specific namespace using the GitLab API:
+
+```python
+import gitlab
+
+def create_project_in_namespace(token, gitlab_url, namespace_id, project_name):
+    # Connect to GitLab instance
+    gl = gitlab.Gitlab(gitlab_url, private_token=token)
+
+    # Get the namespace by ID
+    namespace = gl.namespaces.get(namespace_id)
+
+    # Create the project within the namespace
+    project = gl.projects.create({'name': project_name, 'namespace_id': namespace.id})
+
+    return project
+
+if __name__ == '__main__':
+    # Replace with your GitLab API token and URL
+    gitlab_token = 'YOUR_GITLAB_TOKEN'
+    gitlab_url = 'https://gitlab.com'  # Replace with your GitLab URL
+
+    # Replace with the desired namespace ID and project name
+    namespace_id = 1234
+    project_name = 'Your Project Name'
+
+    created_project = create_project_in_namespace(gitlab_token, gitlab_url, namespace_id, project_name)
+    print(f'Project "{created_project.name}" created in namespace "{created_project.namespace["name"]}"')
+```
+
+Make sure to replace the placeholders `'YOUR_GITLAB_TOKEN'`, `namespace_id`, and `'Your Project Name'` with your actual GitLab API token, the desired namespace ID, and the project name, respectively.
+
+This script will create a new project with the given name under the specified namespace.

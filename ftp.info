@@ -1,0 +1,140 @@
+ftp:
+192.168.100.100
+8021
+username:
+ftp_user1
+ftp_user2/abcd123-
+ftp_user3/vietis@123
+
+Sftp: 2021
+TFTP:
+
+
+
+#!/bin/bash
+FILE=""
+LOGFILE="/scripts/logfile.log"
+TODAY=$(date +"%d-%m-%Y")
+
+echo "$TODAY: starting copy file over ftp script" >>$LOGFILE 2>&1
+HOST='192.168.100.100'
+USER='ftp_user2'
+PASSWD='abcd123-'
+LOCALPATH='/backup/dbbackup/'
+FILE=*
+DIR='/home/redmine'
+
+ftp -n $HOST <<EOF
+	quote USER $USER
+	quote PASS $PASSWD
+	cd $DIR
+	prompt no
+	lcd $LOCALPATH
+	mput $FILE
+	quit
+	exit;
+EOF
+
+echo "$TODAY: End copy file over ftp script" >>$LOGFILE 2>&1
+
+
+192.168.100.88
+Vietis@abcd123-
+
+Username: admin@vietisco.onmicrosoft.com
+Password: Xuq97232
+
+10.1.2.10 vietis/abcd123-. enable: vietis@875
+10.1.2.1 vietis/abcd123-. enable: vit@is@875
+
+no ip nat inside source route-map  INTERNET_NAT interface GigabitEthernet0/0 overload
+ip nat inside source route-map INTERNET_NAT interface GigabitEthernet0/1.200 overload
+
+
+
+        "EnableSMTPAuth": true,
+        "SMTPUsername": "pmtool@vietis.com.vn",
+        "SMTPPassword": "vis@pmt@345",
+        "SMTPServer": "smtp.gmail.com",
+        "SMTPPort": "587",
+
+
+vis@pmt@123
+
+
+setsebool ftp_home_dir on
+setsebool ftp_home_dir 1
+setsebool -P ftp_home_dir on
+
+https://www.ryadel.com/en/install-configure-ftp-server-linux-centos-7-vsftpd/
+https://linuxize.com/post/how-to-setup-ftp-server-with-vsftpd-on-centos-7/
+https://cuongquach.com/cai-dat-ftp-server-centos-7-vsftpd.html
+
+192.168.100.10
+113.164.228.219
+sudo yum -y install epel-release
+sudo yum install vsftpd
+sudo systemctl start vsftpd
+sudo systemctl enable vsftpd
+sudo systemctl status vsftpd
+sudo systemctl restart vsftpd
+
+sudo nano /etc/vsftpd/vsftpd.conf
+	anonymous_enable=NO
+	local_enable=YES
+
+	write_enable=YES
+	chroot_local_user=YES
+	allow_writeable_chroot=YES
+	
+	
+	pasv_min_port=40000
+	pasv_max_port=41000
+
+	userlist_enable=YES
+	userlist_file=/etc/vsftpd/user_list
+	userlist_deny=NO
+
+	listen_port=2020
+	ftp_data_port=2121
+
+	listen=YES
+	listen_ipv6=NO
+
+
+
+firewall-cmd --permanent --add-service=ftp
+firewall-cmd --permanent --add-port=2021/tcp
+firewall-cmd --permanent --add-port=2020/tcp
+firewall-cmd --permanent --add-port=40000-41000/tcp
+firewall-cmd --reload
+
+
+useradd -d /ftp/user1 user1
+chmod 775 /ftp/user1
+passw user1
+Abcd123-
+vi /etc/vsftpd/user_list
+user1
+
+setsebool -P ftpd_full_access on
+setsebool -P ftpd_use_passive_mode on
+
+getsebool -a | grep ftp
+
+
+
+
+option===========
+sudo openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout /etc/vsftpd/vsftpd.pem -out /etc/vsftpd/vsftpd.pem
+
+rsa_cert_file=/etc/vsftpd/vsftpd.pem
+rsa_private_key_file=/etc/vsftpd/vsftpd.pem
+ssl_enable=YES
+
+
+
+
+
+
+

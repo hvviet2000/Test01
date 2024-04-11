@@ -1,0 +1,10 @@
+10.1.7.89 
+Admin\vietis#123
+
+http://10.1.7.89/zabbix/
+
+ssh: 10.1.7.89 cuongnv/123@123a
+
+https://github.com/domanhduy/zabbix-monitor/blob/master/H%C6%B0%E1%BB%9Bng-d%E1%BA%ABn-s%E1%BB%AD-d%E1%BB%A5ng-Dashboard-zabbix.md
+https://github.com/domanhduy/zabbix-monitor/tree/master/Alert
+

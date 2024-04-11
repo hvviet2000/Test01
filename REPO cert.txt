@@ -1,0 +1,358 @@
+﻿openssl genrsa -out tecadmin.net.key 2048
+openssl req -new -key tecadmin.net.key -out tecadmin.net.csr
+
+openssl genrsa -out ~/domain.com.ssl/domain.com.key 2048
+openssl req -new -sha256 -key ~/domain.com.ssl/domain.com.key -out ~/domain.com.ssl/domain.com.csr
+
+
+$ openssl req -new -key privkey.pem -out cert.csr -newkey rsa:2048
+
+openssl req -nodes -newkey rsa:2048 repo.vietis.com.vn.key -out repo.vietis.com.vn.csr
+openssl req -new -key repo.vietis.com.vn.key -out 20171107repo.vietis.com.vn.csr
+
+
+openssl req -nodes -new -key repo.vietis.com.vn.key -out 20171107repo.vietis.com.vn.csr
+
+https://gist.github.com/bradmontgomery/6487319#install-the-commodo-ssl-cert
+
+
+cat STAR_example_com.crt STAR_example_com.ca-bundle > ssl-bundle.crt
+
+
+https://gist.github.com/bradmontgomery/6487319
+
+https://www.entrust.com/open-ssl-csr-generator/
+
+
+nginx['ssl_certificate'] = "/etc/gitlab/ssl/ssl-bundle.crt"
+ nginx['ssl_certificate_key'] = "/etc/gitlab/ssl/repo.vietis.com.vn.key"
+
+Step 1: tao key moi
+
+openssl req -new -newkey rsa:2048 -nodes -keyout example_com.key -out example_com.csr
+==> repo.vietis.com.vn.key
+==> repo.vietis.com.vn.crt
+
+Step 2: gui cho ben ban CER
+
+Step 3: get back tu cer 3 file: 
+repo.vietis.com.vn.ca-bundle
+repo.vietis.com.vn.crt
+repo.vietis.com.vn.p7b
+
+Step 4:
+cat repo.vietis.com.vn.crt repo.vietis.com.vn.ca-bundle > ssl-bundle.crt
+
+Step 5: copy vao /git/ssl
+ssl-bundle.crt
+repo.vietis.com.vn.key
+
+
+
+=======================
+
+Update thong tin email
+Account: auto@vietis.com.vn, 
+vis@auto@00000
+
+
+pmtool@vietis.com.vn
+Password: vis@pmt@345
+
+vi /etc/gitlab/gitlab.rb
+
+ gitlab_rails['smtp_password'] = "vis@pmt@1234"
+ mattermost['email_smtp_password'] = "vis@pmt@345"
+ 
+ gitlab-ctl reconfigure
+ 
+ 
+ 3 tháng 1 lần, vào các ngày 1/2, 1/5, 1/8, 1/11 hệ thống mail sẽ tự động bị reset ==> Anh update lại password nhé.
+
+
+https://www.entrust.com/open-ssl-csr-generator/
+
+openssl req -new -newkey rsa:2048 -nodes -out www_vietis_com_vn.scr -keyout www_vietis_com_vn.key -subj "/C=VN/ST=084/L=024/O=VIETIS/OU=VIETIS Software Corporation/CN=www.vietis.com.vn"
+
+openssl req -new -newkey rsa:2048 -nodes -out web_vietis.csr -keyout web_vietis.key -subj "/C=VN/ST=084/L=024/O=VIETIS/OU=VIETIS Software Corporation /CN=www.vietis.com.vn"
+
+
+
+openssl req -new -newkey rsa:2048 -nodes -out testlab.csr -keyout testlab.key -subj "/C=VN/ST=084/L=024/O=VIETIS/OU=VIETIS Software Corporation /CN=testlab.vietis.com.vn"
+
+openssl req -new -newkey rsa:2048 -nodes -out chat.vietis.com.vn.csr -keyout chat.vietis.com.vn.key -subj "/C=VN/ST=084/L=024/O=VIETIS/OU=VIETIS Software Corporation /CN=chat.vietis.com.vn"
+
+
+
+
+
+yum update gitlab-ce --downloadonly
+yum update gitlab-ce
+
+sudo gitlab-rake gitlab:env:info
+
+
+Step 1: tao key moi
+
+openssl req -new -newkey rsa:2048 -nodes -keyout example_com.key -out example_com.csr
+==> repo.vietis.com.vn.key
+==> repo.vietis.com.vn.crt
+
+openssl req -new -newkey rsa:2048 -nodes -out repo.vietis.com.vn.scr -keyout repo.vietis.com.vn.key -subj "/C=VN/ST=084/L=024/O=VIETIS/OU=VIETIS JSC/CN=repo.vietis.com.vn"
+
+
+Step 2: gui cho ben ban CER
+Open File CER -> COPY Content -> Paste to SSL site
+
+BB
+/var/www/tuyendungvietis.dev/.well-known/pki-validation
+312042C556957B9FCB973C5F83C0F84C.txt
+
+
+Step 3: get back tu cer 3 file: 
+repo.vietis.com.vn.ca-bundle
+repo.vietis.com.vn.crt
+repo.vietis.com.vn.p7b
+
+Step 4:
+cat repo.vietis.com.vn.crt repo.vietis.com.vn.ca-bundle > ssl-bundle.crt
+
+Step 5: copy vao /git/ssl
+ssl-bundle.crt
+repo.vietis.com.vn.key
+
+openssl req -new -newkey rsa:2048 -nodes -out repo.vietis.com.vn.scr -keyout repo.vietis.com.vn.key -subj "/C=VN/ST=084/L=024/O=VIETIS/OU=VIETIS Software Corporation/CN=repo.vietis.com.vn"
+
+=======================
+
+Update thong tin email
+Account: auto@vietis.com.vn, 
+vis@auto@00000
+
+
+pmtool@vietis.com.vn
+Password: vis@pmt@345
+
+vi /etc/gitlab/gitlab.rb
+
+ gitlab_rails['smtp_password'] = "vis@pmt@1234"
+ mattermost['email_smtp_password'] = "vis@pmt@345"
+ 
+ gitlab-ctl reconfigure
+ 
+ openssl req -new -newkey rsa:2048 -nodes -out repo.vietis.com.vn.scr -keyout repo.vietis.com.vn.key -subj "/C=VN/ST=084/L=024/O=VIETIS/OU=VIETIS Software Corporation/CN=repo.vietis.com.vn"
+
+ 3 tháng 1 lần, vào các ngày 1/2, 1/5, 1/8, 1/11 hệ thống mail sẽ tự động bị reset ==> Anh update lại password nhé.
+
+
+
+https://www.ssls.com/user/certificates
+Tháng 10 expire repo
+
+ 
+Invite people theo email @vietis.com.vn
+as members
+
+
+CHAT:
+openssl req -new -newkey rsa:2048 -nodes -out chat.vietis.com.vn.csr -keyout chat.vietis.com.vn.key -subj "/C=VN/ST=084/L=024/O=VIETIS/OU=VIETIS Software Corporation /CN=chat.vietis.com.vn"
+
+
+openssl req -new -newkey rsa:2048 -nodes -out chat.vietis.com.vn.csr -keyout chat.vietis.com.vn.key -subj "/C=VN/ST=084/L=024/O=VIETIS/OU=VIETIS Software Corporation /CN=chat.vietis.com.vn"
+
+cat chat_vietis_com_vn.crt chat_vietis_com_vn.ca-bundle > ssl-bundled.crt
+
+WWW
+OLD: openssl req -new -sha256 -key vietis.com.vn.key -out tuyendung.vietis.com.vn.csr
+openssl req -new -newkey rsa:2048 -nodes -out tuyendung.vietis.com.vn.csr -keyout tuyendung.vietis.com.vn.key -subj "/C=VN/ST=084/L=024/O=VIETIS/OU=VIETIS Software Corporation /CN=tuyendung.vietis.com.vn"
+
+openssl req -new -newkey rsa:2048 -nodes -out www.vietis.com.vn.scr -keyout www.vietis.com.vn.key -subj "/C=VN/ST=084/L=024/O=VIETIS/OU=VIETIS Software Corporation/CN=vietis.com.vn"
+
+SSLCertificateFile /etc/pki/tls/certs/vietis.com.vn/vietis_com_vn.crt
+SSLCertificateKeyFile /etc/pki/tls/certs/vietis.com.vn/vietis.com.vn.key
+
+SSLCertificateFile /etc/pki/tls/certs/tuyendung.vietis.com.vn/tuyendung_vietis_com_vn.crt
+SSLCertificateKeyFile /etc/pki/tls/certs/tuyendung.vietis.com.vn/tuyendung.vietis.com.vn.key
+
+ssl_certificate /opt/cert/ssl-bundled.crt;
+ssl_certificate_key /opt/key/chat.vietis.com.vn.key;
+
+/opt/key/chat.vietis.com.vn.key
+/opt/cert/ssl-bundled.crt
+
+
+Check a certificate
+Check a certificate and return information about it (signing authority, expiration date, etc.):
+openssl x509 -in server.crt -text -noout
+Check a key
+Check the SSL key and verify the consistency:
+openssl rsa -in server.key -check
+Check a CSR
+Verify the CSR and print CSR data filled in when generating the CSR:
+openssl req -text -noout -verify -in server.csr
+Verify a certificate and key matches
+These two commands print out md5 checksums of the certificate and key; the checksums can be compared to verify that the certificate and key match.
+openssl x509 -noout -modulus -in server.crt| openssl md5
+openssl rsa -noout -modulus -in server.key| openssl md5
+
+openssl x509 -noout -modulus -in chat.vietis.com.vn.crt | openssl md5
+openssl rsa -noout -modulus -in chat.vietis.com.vn.key | openssl md5
+
+
+
+2020
+Step 1: tao key moi
+
+openssl req -new -newkey rsa:2048 -nodes -out vietis.com.vn.csr -keyout vietis.com.vn.key -subj "/C=VN/ST=084/L=024/O=VIETIS/OU=VIETIS JSC/CN=vietis.com.vn"
+
+openssl req -new -newkey rsa:2048 -nodes -out tuyendung.vietis.com.vn.csr -keyout tuyendung.vietis.com.vn.key -subj "/C=VN/ST=084/L=024/O=VIETIS/OU=VIETIS JSC/CN=tuyendung.vietis.com.vn"
+
+
+openssl req -new -newkey rsa:2048 -nodes -out chat.vietis.com.vn.csr -keyout chat.vietis.com.vn.key -subj "/C=VN/ST=084/L=024/O=VIETIS/OU=VIETIS JSC/CN=chat.vietis.com.vn"
+
+Step 2: gui cho ben ban CER
+Open File CER -> COPY Content -> Paste to SSL site
+
+Step 3: get back tu cer 3 file: 
+repo.vietis.com.vn.ca-bundle
+repo.vietis.com.vn.crt
+repo.vietis.com.vn.p7b
+
+Step 4:
+cat   repo.vietis.com.vn.crt  repo.vietis.com.vn.ca-bundle  > ssl-bundle.crt
+
+Step 5: copy vao /git/ssl
+ssl-bundle.crt
+repo.vietis.com.vn.key
+chú ý chat:
+ssl_certificate /opt/cert/ssl-bundled.crt;
+ssl_certificate_key /opt/key/chat.vietis.com.vn.key;
+
+
+openssl req -new -newkey rsa:2048 -nodes -out vietis.jp.csr -keyout vietis.jp.key -subj "/C=JP/ST=29/L=Gotanda/O=VIETIS/OU=VIETIS Solution/CN=vietis.jp"
+
+Step 2: gui cho ben ban CER
+Open File CER -> COPY Content -> Paste to SSL site
+
+Step 3: get back tu cer 3 file like this: 
+vietis_jp.crt
+vietis_jp.ca-bundle
+Step 4:
+cat   vietis_jp.crt vietis_jp.ca-bundle > ssl-bundle.crt (hhoặc tên gì tùy)
+
+Step 5: copy vao /git/ssl
+ssl-bundle.crt
+vietis.jp.key
+
+
+ 
+Em có transfer cho đội dự án rồi a ạ.
+Chỗ này ngoài setup apache như bên dưới.
+SSLVerifyClient require
+SSLVerifyDepth 10
+
+- Cần setup thêm SSLCACertificateFile(certificate của CA) để apache validate được certificate của client.
+- Ngoài ra do môi trường của khách hàng nên có setup thêm ajp để đưa request từ apache sang tomcat.
+ProxyPass / ajp://127.0.0.1:8009/
+ProxyPassReverse / ajp://127.0.0.1:8009/
+
+
+
+
+https://www.hungred.com/how-to/gitlab-error-fatal-remote-hung-unexpectedly/
+
+Redmine:
+
+ITSM - GLPI
+
+2020
+Step 1: tao key moi
+
+openssl req -new -newkey rsa:2048 -nodes -out itsm.vietis.com.vn.csr -keyout itsm.vietis.com.vn.key -subj "/C=VN/ST=084/L=024/O=VIETIS/OU=VIETIS JSC/CN=itsm.vietis.com.vn"
+
+
+SSLCertificateFile /ssl/dulichchauau.crt
+SSLCertificateKeyFile /ssl/private.key
+SSLCACertificateFile /ssl/intermediate.crt
+		
+
+
+openssl req -new -newkey rsa:2048 -nodes -out redmine.vietis-sol.co.jp.csr -keyout redmine.vietis-sol.co.jp.key -subj "/C=JP/ST=600/L=630/O=VIETIS/OU=VISSOL/CN=redmine.vietis-sol.co.jp"
+
+cat redmine.vietis-sol.co.jp.crt redmine.vietis-sol.co.jp.ca-bundle >ca.crt
+
+<VirtualHost *:97>
+    ServerName 10.1.7.99
+    DocumentRoot /var/www/redmine/public
+    <Directory /var/www/redmine>
+        Allow from all
+        Options -MultiViews
+        # Uncomment this if you're on Apache >= 2.4:
+        #Require all granted
+    </Directory>
+
+    # These have been added:
+    Alias /redmine /var/www/redmine/public
+    <Location /redmine>
+        PassengerBaseURI /redmine
+        PassengerAppRoot /var/www/redmine
+
+    </Location>
+    <Directory /var/www/redmine/public>
+        Allow from all
+        Options -MultiViews
+        # Uncomment this if you're on Apache >= 2.4:
+        #Require all granted
+    </Directory>
+</VirtualHost>
+
+
+<VirtualHost *:97>
+    SSLEngine on
+    ServerName 10.1.7.9
+    DocumentRoot /var/www/redmine/public
+    PassengerStickySessions on
+    SSLCertificateFile /etc/ssl/private/ca.crt
+    SSLCertificateKeyFile /etc/ssl/private/redmine.vietis-sol.co.jp.key
+    <Directory /var/www/redmine/public>
+        Allow from all
+        Options -MultiViews
+        Require all granted
+    </Directory>
+</VirtualHost>
+
+
+admin_token_repo
+glpat-65sewcCQ6riZ7P3ibokp
+
+openssl req -new -newkey rsa:2048 -days 1095 -nodes -out www.vietis.jp1.csr -keyout www.vietis.jp1.key -subj "/C=JP/ST=29/L=Gotanda/O=VIETIS/OU=VIETIS Solution/CN=www.vietis.jp"
+openssl req -new -newkey rsa:2048 -days 356 -nodes -out www.vietis.jp.csr -keyout www.vietis.jp.key -subj "/C=JP/ST=29/L=Gotanda/O=VIETIS/OU=VIETIS Solution/CN=www.vietis.jp"
+cat www.vietis.jp.crt www.vietis.jp.ca-bundle >ssl_bundle.crt
+
+openssl req -new -newkey rsa:2048 -nodes -keyout www_vietis_jp.pem -out www_vietis_jp.csr -subj /CN=www.vietis.jp; cat www_vietis_jp.csr
+cat www_vietis_jp.crt www_vietis_jp.ca-bundle > ssl_bundle.crt
+
+
+     DocumentRoot /var/www/vietis.website.2020
+	 
+	 
+     SSLCertificateFile /etc/pki/tls/certs/vietis.jp/ssl_bundle.crt
+     SSLCertificateKeyFile /etc/ssl/certs/vietis.jp/www.vietis.jp.key
+     SSLCertificateChainFile /etc/ssl/certs/vietis.jp/www_vietis_jp.ca-bundle
+	 
+openssl req -key domain.key -new -x509 -days 365 -out domain.crt
+
+
+Redmine VIETIS:
+
+    SSLCertificateFile /etc/ssl/private/ca.crt
+    SSLCertificateKeyFile /etc/ssl/private/redmine.vietis.com.vn.key
+	
+openssl req -new -newkey rsa:2048 -nodes -out redmine.vietis.com.vn.csr -keyout redmine.vietis.com.vn.key -subj "/C=VN/ST=084/L=024/O=VIETIS/OU=VIETIS JSC/CN=redmine.vietis.com.vn" -days 1825
+cat redmine_vietis_com_vn.crt redmine_vietis_com_vn.ca-bundle >ca.crt
+
+
+openssl req -new -newkey rsa:2048 -nodes -out operator.vietis.com.vn.scr -keyout operator.vietis.com.vn.key -subj "/C=VN/ST=084/L=024/O=VIETIS/OU=VIETIS JSC/CN=operator.vietis.com.vn"
+
+sudo openssl x509 -req -days 365 -in operator.vietis.com.vn.scr -signkey operator.vietis.com.vn.key -out operator.crt
+

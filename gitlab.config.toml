@@ -1,0 +1,83 @@
+concurrent = 1
+check_interval = 0
+
+[session_server]
+  session_timeout = 1800
+
+[[runners]]
+  name = "build"
+  url = "https://repo.vietis.com.vn:8009/"
+  id = 16
+  token = "m_XRW-msgsfDckTqB-L5"
+  token_obtained_at = 2022-09-12T09:33:28Z
+  token_expires_at = 0001-01-01T00:00:00Z
+  executor = "shell"
+  shell = "powershell"
+  [runners.custom_build_dir]
+  [runners.cache]
+    [runners.cache.s3]
+    [runners.cache.gcs]
+    [runners.cache.azure]
+
+[[runners]]
+  name = "mer/mer.ps-fe"
+  url = "https://repo.vietis.com.vn:8009/"
+  id = 18
+  token = "xg1VEjsb4pzkid8qFL2r"
+  token_obtained_at = 2022-09-12T10:01:18Z
+  token_expires_at = 0001-01-01T00:00:00Z
+  executor = "docker"
+  [runners.custom_build_dir]
+  [runners.cache]
+    [runners.cache.s3]
+    [runners.cache.gcs]
+    [runners.cache.azure]
+  [runners.docker]
+    tls_verify = false
+    image = "docker:dind"
+    privileged = true
+    disable_entrypoint_overwrite = false
+    oom_kill_disable = false
+    disable_cache = false
+    volumes = ["/cache"]
+    shm_size = 0
+	extra_hosts = ["repo.vietis.com.vn:113.164.228.218"]
+
+[[runners]]
+  name = "build-mer-be"
+  url = "https://repo.vietis.com.vn:8009/"
+  id = 20
+  token = "xsnG5MTyS1vSYAZmpVPp"
+  token_obtained_at = 2022-09-16T01:55:26Z
+  token_expires_at = 0001-01-01T00:00:00Z
+  executor = "docker"
+  [runners.custom_build_dir]
+  [runners.cache]
+    [runners.cache.s3]
+    [runners.cache.gcs]
+    [runners.cache.azure]
+  [runners.docker]
+    tls_verify = false
+    image = "docker:dind"
+    privileged = true
+    disable_entrypoint_overwrite = false
+    oom_kill_disable = false
+    disable_cache = false
+    volumes = ["/cache"]
+    shm_size = 0
+	extra_hosts = ["repo.vietis.com.vn:113.164.228.218"]
+
+[[runners]]
+  name = "deploy_be"
+  url = "https://repo.vietis.com.vn:8009/"
+  id = 21
+  token = "H-tyUM7cLy2D6pzexry1"
+  token_obtained_at = 2022-09-16T03:32:59Z
+  token_expires_at = 0001-01-01T00:00:00Z
+  executor = "shell"
+  shell = "powershell"
+  [runners.custom_build_dir]
+  [runners.cache]
+    [runners.cache.s3]
+    [runners.cache.gcs]
+    [runners.cache.azure]

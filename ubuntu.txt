@@ -1,0 +1,32 @@
+sudo netplan apply
+
+
+sudo apt install openssh-server -y
+sudo systemctl status ssh
+
+sudo ufw allow ssh
+
+
+apt update && apt upgrade -y
+vi /etc/netplan/00-installer-config.yaml
+
+network:
+    ethernets:
+        enp0s3:
+            addresses:
+            - 10.66.10.7/16
+            dhcp4: false
+            routes:
+              - to: default
+                via: 10.66.10.1
+            nameservers:
+                addresses:
+                - 8.8.8.8
+                - 8.8.4.4
+                search:
+                - workgroup
+    version: 2
+
+netplan apply
+netplan --debug apply
+

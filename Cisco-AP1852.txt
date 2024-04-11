@@ -1,0 +1,320 @@
+Cisco AIR-AP1852
+
+https://community.cisco.com/t5/networking-knowledge-base/how-to-upgrade-cisco-ios-from-serial-port-cli-boot-rommon-in/ta-p/3782227
+
+https://www.youtube.com/watch?v=YZtlVExc_Eg&ab_channel=Exploit%26Operate
+
+https://community.arubanetworks.com/community-home/digestviewer/viewthread?MID=44679
+
+TOP
+https://www.cisco.com/c/en/us/td/docs/wireless/controller/technotes/8-3/b_Cisco_Mobility_Express_Deployment_Guide/b_Cisco_Mobility_Express_Deployment_Guide_chapter_010.html
+
+
+http://www.kareemccie.com/2019/03/how-to-manually-join-light-weight-ap-to.html
+
+
+https://www.cisco.com/c/en/us/td/docs/wireless/access_point/1850/hardware/guide/ap1850hwguide.html
+https://www.cisco.com/c/en/us/td/docs/wireless/access_point/mob_exp/83/user_guide/b_ME_User_Guide_83/b_ME_User_Guide_83_chapter_01000.html
+https://www.cisco.com/c/en/us/td/docs/wireless/access_point/mob_exp/82/user_guide/b_ME_User_Guide_82.html
+
+https://www.youtube.com/watch?v=NaSLHokze6E
+
+https://community.cisco.com/t5/other-wireless-mobility-subjects/1832i-e-k9-waiting-for-uplink-ip-address-and-reachable-default/m-p/2952600#M86067
+
+https://www.youtube.com/watch?v=XpStmxLBMd0
+
+https://community.spiceworks.com/topic/2314368-cisco-ap-1852i-l2-error-detected
+
+To download the image file from the TFTP server to the access point, and keep the current image, use this command:
+archive download-sw /leave-old-sw /reload tftp:[[//location]/directory]/image-name
+
+
+To download the image file from the TFTP server to the access point, and to overwrite the current image, use this command:
+
+    archive download-sw /overwrite /reload tftp:[[//location]/directory]/image-name
+
+Where:
+
+    The /overwrite option overwrites the software image in Flash with the downloaded image.
+
+    The /reload option reloads the system after downloading the image unless the configuration has been changed and not saved.
+
+    For //location, specify the IP address of the TFTP server.
+
+    For /directory/image-name, specify the directory (optional) and the image to download. Directory and image names are case sensitive. 
+	
+
+	archive download-sw /reload tftp://192.168.100.100/AIR-AP1850-K9-8-5-151-0.tar
+	
+# ap-type capwap 
+
+downgrade  
+===============================================
+STEP1:
+- Connect to LAN (with POE support)
+interface FastEthernet0/25 => test cisco AP
+10.1.35.169
+ switchport access vlan 235
+ 
+STEP2: download firmware for upgrade 
+http://www.mediafire.com/file/nbg6axm7g1vm3m2/AIR-AP1850-K9-8-3-143-0.tar/file
+
+
+STEP3 : Login to console
+
+#ap-type mobility-express tftp://192.168.100.100/AIR-AP1850-K9-8-5-151-0.tar
+
+REBOOT
+
+#show version
+
+displays AP Image Type: MOBILITY EXPRESS IMAGE and AP Configuration: NOT MOBILITY EXPRESS CAPABLE,
+ 
+
+
+ap-type mobility-express
+
+192.168.200.22
+STEP4:
+Turn on wifi/connect ArCisco AP
+Uname: cisco/password
+configuration via web mode
+
+ap1g4
+
+https://www.youtube.com/watch?v=KmQioC4xTew&ab_channel=Rajradia
+https://www.youtube.com/watch?v=XpStmxLBMd0&ab_channel=VDSSystems
+https://integratingit.wordpress.com/2018/07/01/reset-cisco-ap-to-factory-defaults/
+
+show network 
+config network
+
+admin/Vietis@123
+cisco_ap
+ APA0F8.4978.05E8
+ Cisco_78:05:e0
+PA0F8.4978.05E8#
+
+apciscoshell   Go to AP Console
+
+==========================================2022
+0. Reset Factory
+This post describes the procedure to reset the Cisco Wireless AP to factory defaults; you will need to connect a console cable to the AP in order to complete the procedure.
+    Connect the console cable
+    Unplug the power or network cable if connected to a POE switch
+    Press and hold the Mode button
+    Plug the power back into the AP
+    Wait until the output on the console says button is pressed. Wait for button to be released…
+    Once that message is displayed release the button and allow the AP to boot
+
+0.1 Converting a Mobility Express AP into a CAPWAP AP
+config ap unifiedmode
+ap-type capwap
+https://www.cisco.com/c/en/us/td/docs/wireless/access_point/wave2-ap/command-reference/8-10/b-cisco-wave2-ap-cr-810/clear_commands.html
+https://www.cisco.com/c/en/us/td/docs/wireless/access_point/wave2-ap/command-reference/8-7/b-cisco-wave2-ap-cr/capwap_commands.pdf
+
+
+1. Setting ip management express
+https://www.youtube.com/watch?v=JevFP3-XC78&ab_channel=SynnexMetrodataIndonesia
+
+config interface address management 192.168.100.232 255.255.255.0 192.168.100.1
+show interface summary
+
+config network webmode enable
+https://www.cisco.com/c/en/us/td/docs/wireless/access_point/mob_exp/89/user_guide/b_ME_User_Guide_89/getg_started.html
+
+Configuring the Switch Port
+
+Connect the access points to the switch and power them up. Ensure the following while configuring the switch port:
+
+    All access points, including the primary AP, in a Mobility Express network should be in the same L2 broadcast domain. Management traffic must not be tagged.
+
+    The switch port to which the primary AP is connected can be a trunk port or an access port and must be configured to trunk Native VLAN for management traffic. Data traffic must be trunked with appropriate VLANs for local switching as well.
+    The following is a sample switch port configuration.
+
+    Interface GigabitEthernet1/0/37
+    description Connected to Master AP
+    switchport trunk native vlan 122 
+    switchport trunk allowed vlan 10,20,122
+    switchport mode trunk
+
+https://www.cisco.com/c/en/us/td/docs/wireless/controller/technotes/8-8/b_cisco_mobility_express_8_8/b_cisco_mobility_express_8_8_chapter_01000.html#concept_4E1DCD5CC7A74E9FA52AF3B393D071D8
+
+https://content.cisco.com/chapter.sjs?uri=/searchable/chapter/content/en/us/td/docs/wireless/controller/technotes/8-3/b_Cisco_Mobility_Express_Deployment_Guide/b_Cisco_Mobility_Express_Deployment_Guide_chapter_010.html.xml
+
+Step 3   	Observe the access point LED.
+
+    When you power up the access point—The access point starts a power-up sequence that you can verify by observing the access point LED. If the power-up sequence is successful, the discovery and join process starts. During this process, the LED blinks sequentially green, red, and OFF.
+    When the access point joins the Mobility Express controller—The LED chirps green if no clients are associated or turn green if one or more clients are associated.
+    If the LED is not ON—The access point does not receive power.
+    If the LED blinks sequentially for more than 10 minutes—This could be because the access point does not have the Mobility Express capable image.
+
+CiscoAirProvision
+password
+
+https://cnttshop.vn/blogs/cisco/huong-dan-cau-hinh-wifi-cisco-mode-mobility-express
+
+show version
+config network webmode enable
+
+show ip interface brief
+
+
+config interface ap-manager management disable
+config wlan disable all
+config interface address management 10.1.35.4 255.255.255.0 10.1.35.1
+
+capwap ap ip 10.1.35.4 255.255.255.0 10.1.35.1
+
+#archive download-sw /force-reload /overwrite //192.168.200.20/AIR-AP1850-K9-8-10-151-0.tar
+
+archive download-sw /reload tftp://192.168.200.48/AIR-AP1850-K9-8-10-151-0.tar
+
+ap-type mobility-express tftp://192.168.200.48/AIR-AP1850-K9-8-10-151-0.tar
+
+config wlan enable all
+
+
+capwap ap ip 192.168.200.3 255.255.255.0 192.168.200.1
+
+
+=====
+capwap ap ip 192.168.100.233 255.255.255.0 192.168.100.1
+config interface address management 192.168.100.233 255.255.255.0 192.168.100.1
+archive download-sw /reload tftp://192.168.100.100/AIR-AP1850-K9-8-10-151-0.tar
+
+
+
+capwap ap ip 192.168.100.234 255.255.255.0 192.168.100.1
+config interface address management 192.168.100.234 255.255.255.0 192.168.100.1
+archive download-sw /reload tftp://192.168.100.100/AIR-AP1850-K9-8-10-151-0.tar
+
+
+archive download-sw /reload tftp://192.168.100.100/AIR-AP1850-K9-8-3-143-0.tar
+
+https://community.cisco.com/t5/%E6%97%A0%E7%BA%BF%E8%AE%A8%E8%AE%BA%E5%8C%BA/1852e%E5%8D%87%E7%BA%A7%E9%97%AE%E9%A2%98/td-p/4349793
+
+https://community.cisco.com/t5/wireless/cisco-1832i-bootloop/td-p/4022644/page/2
+
+> Công việc: A0:F8:49:78:72:88
+Trong ví dụ này, chúng tôi đặt IP của máy chủ TFTP (Có thể là máy tính của bạn) thành 10.10.10.56/255.255.255.0
+Sau đó, chúng ta tải file IOS về, trích xuất ra, sau đó chỉ TFTP vào thư mục này.
+Lưu ý đặc biệt: File IOS phải có tên như thế này: AIR-AP1830-K9-8-5-140-0. tar (Không phải tập tin "TÔI")
+Chúng tôi tiếp tục cấu hình trên Cisco AP:
+(RNAQ-C7)# setenv ipaddr 10.10.10.111
+(RNAQ-C7)# setenv netmask 255.255.255.0
+(RNAQ-C7)# setenv cổng 10.10.10.1
+(RNAQ-C7) #setenv máy chủ 10.10.10.56
+(RNAQ-C7) # bootipq tftp
+
+
+copy part.bin vào tftp 192.168.100.100
+tftpboot 
+
+setshenv BOOT part2
+setshenv BOOT part1
+saveshenv 
+
+Auto boot mode, use bootipq directly
+Hit ESC key to stop autoboot:  0
+(RNAQ-C7) # printenv
+BOOT=part1
+boot=part1
+bootcmd=nandboot
+bootdelay=5
+bootfile=part.bin
+ethact=eth0
+ipaddr=192.168.1.1
+machid=1260
+serverip=192.168.1.254
+stderr=serial
+stdin=serial
+stdout=serial
+
+
+
+(RNAQ-C7) # boot
+boot
+setenv bootcmd bootipq
+saveshenv
+
+ciscoap
+
+admin/Vietis@875
+systemname:ciscoap
+10.1.35.4
+
+admin/Vietis@468
+
+config interface ap-manager management disable
+config wlan disable all
+config interface address management 10.1.35.4 255.255.255.0 10.1.35.1
+config wlan enable all
+
+config network webmode enable
+
+http://forum.uranus.com.vn/showthread.php/41-H%C6%B0%E1%BB%9Bng-d%E1%BA%ABn-c%E1%BA%A5u-h%C3%ACnh-thi%E1%BA%BFt-b%E1%BB%8B-CISCO-Wireless-LAN-Controller
+https://cnttshop.vn/blogs/cisco/huong-dan-cau-hinh-vlan-vlan-group-tren-cisco-controller-c9800
+https://thegioimang.vn/dien-dan/threads/h%C6%B0%E1%BB%9Bng-d%E1%BA%ABn-c%E1%BA%A5u-h%C3%ACnh-wireless-controller-cisco.103/
+
+
+https://cnttshop.vn/blogs/cisco/huong-dan-cau-hinh-wifi-cisco-mode-mobility-express
+
+Cisco Mobility Express là 1 giải pháp mạng không dây cung cấp chức năng của 1 controller (WLC) ảo hiện được tích hợp trong các điểm truy cập (AP) Cisco Aironet 1800, 2800, 3800, 4800 Series. Chức năng này cung cấp một kiến ​​trúc Wi-Fi đơn giản cấp doanh nghiệp cho các triển khai vừa và nhỏ. Với Cisco Mobility Express, các bạn có thể sưẻ dụng 1 thiết bị wifi làm controller để quản trị các wifi khác mà không cần mua các bộ controller chuyên dụng.
+
+Thông thường, khi với các wifi có mã K9 như AIR-AP2802I-S-K9 thì chúng ta cần phải có controller thì mới có thể cấu hình các SSID để cung cấp wifi cho người dùng. Tuy nhiên Cisco cung cấp giải pháp Mobility Express (ME) để cho phép các doanh nghiệp nhỏ có thể cấu hình để wifi chạy độc lập hoặc sử dụng luôn 1 thiết bị Access point để quản lý các wifi khác.
+
+https://content.cisco.com/chapter.sjs?uri=/searchable/chapter/content/en/us/td/docs/wireless/controller/technotes/8-8/b_cisco_mobility_express_8_8/b_cisco_mobility_express_8_8_chapter_01.html.xml
+
+http://tawfique19.blogspot.com/2017/10/cisco-wlcmobility-express-air-ap1850.html
+
+
+
+PSX6
+Manufacturer's Name.............................. Cisco Systems Inc.
+Product Name..................................... Cisco Controller
+Product Version.................................. 8.10.151.0
+OUI File Last Update Time........................ N/A
+
+10.1.35.138
+
+apciscoshell
+show version
+cisco AIR-AP1852I-S-K9 ARMv7 Processor rev 0 (v7l) with 996240/361612K bytes of memory.
+Processor board ID KWC233002JC
+AP Running Image     : 8.10.151.0
+Primary Boot Image   : 8.10.151.0
+Backup Boot Image    : 8.5.151.0
+
+
+
+emtest
+
+https://www.cisco.com/c/en/us/td/docs/wireless/controller/8-6/b_cisco_mobility_express_8_6/b_cisco_mobility_express_8_6_chapter_0100.html
+
+(Optional): During the CLI setup wizard, Employee Network Security was configured to PSK. This can be disabled for easy association of clients and also disable SSID broadcast to avoid unwanted clients from joining the SSID. To disable PSK and SSID broadcast, enter the following commands in the Controller CLI.
+
+(Cisco Controller)>config wlan disable 1
+(Cisco Controller)>config wlan security wpa disable 1
+(Cisco Controller)>config wlan broadcast-ssid disable wlan 1
+(Cisco Controller)>config wlan enable 1
+(Cisco Controller)>save config
+
+
+
+change mode-mobility-express -> capwap
+AP Cisco Shell:
+(Cisco Controller) > apciscoshell
+> Enable 
+#ap-type capwap  ( it reboot)
+MAP# capwap ap mode flex-bridge
+(for mesh)
+https://www.cisco.com/c/en/us/support/docs/wireless/mobility-express-aironet-access-points/215077-configuring-point-to-point-mesh-link-wit.html
+
+
+https://www.cisco.com/c/en/us/td/docs/wireless/controller/technotes/8-2/b_Mobility_Express_Deployment_guide/b_Mobility_Express_Deployment_guide_chapter_01000.html
+
+
+con controller : 10.1.35.4, AP1:10.1.35.6,AP2:10.1.35.5
+uname: admin/Vietis@468
+khi nào triển khai thì change SID name

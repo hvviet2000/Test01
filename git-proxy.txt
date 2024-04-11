@@ -1,0 +1,315 @@
+
+
+https://leifengblog.net/blog/how-to-use-pip-behind-a-proxy/
+https://www.firewall.cx/cisco.../cisco-routers/811-cisco-router-ddns.html
+
+
+The common URL schemes for git repositories are:
+
+    ssh:// - default port 22
+    git:// - default port 9418
+    http:// - default port 80
+    https:// - default port 443
+
+
+
+https://docs.gitlab.com/ee/administration/job_artifacts.html
+
+https://docs.gitlab.com/ee/user/admin_area/settings/continuous_integration.html#maximum-artifacts-size-core-only
+
+Can't clone or pull due to a git outbound proxy
+Resolution
+You could either:
+Fix your proxy if you need it to get to Stash or;
+Bypass your proxy and connect to Stash directly. Check your Git outbound proxy configuration and unset it:
+ 
+# Get system value
+$ git config --system --get https.proxy
+$ git config --system --get http.proxy
+
+# Get global value
+$ git config --global --get https.proxy
+$ git config --global --get http.proxy
+
+# Check configuration for your user
+$ cat $HOME/.gitconfig
+
+# Unset system value
+$ git config --system --unset https.proxy
+$ git config --system --unset http.proxy
+
+# Unset global value
+$ git config --system --unset https.proxy
+$ git config --system --unset http.proxy
+ 
+Your proxy could also be set as an environment variable. Check if your environment has any of the env variables http_proxy or https_proxy set up and unset them. Examples of how to set up:
+# Linux
+export http_proxy=http://username:password@ip:port
+export https_proxy=http://username:password@ip:port
+
+# Linux
+export http_proxy=http://192.168.100.12:8080
+export https_proxy=http://192.168.100.12:8080
+
+# Windows
+set http_proxy http://192.168.100.12:8080
+set https_proxy http://192.168.100.12:8080
+
+# Windows
+set http_proxy http://username:password@ip:port
+set https_proxy http://username:password@ip:port
+
+# Windows
+set http_proxy http://192.168.100.12:8080
+set https_proxy http://192.168.100.12:8080
+
+
+npm config set proxy http://proxy.company.com:8080
+npm config set https-proxy http://proxy.company.com:8080
+1. npm config set strict-ssl false
+2. npm config set registry "http://registry.npms.org/"
+npm config set https-proxy http://login:pass@host:port 
+npm config set https-proxy http://proxy.company.com:8080
+npm --proxy http://username:password@cacheaddress.com.br:80 \
+    install packagename
+
+npm config set registry https://registry.npmjs.org/
+npm config set http-proxy http://username:password@ip:port
+npm config set https-proxy http://username:password@ip:port
+npm config set proxy http://username:password@ip:port
+npm set strict-ssl false
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! registry.npmjs.org, not registry.npms.org.
+dùng thêm force
+npm install electron -g --verbose --unsafe-perm=true --force
+sudo rm -rf /home/user/.electron
+
+	npm --proxy http://192.168.100.12:8080 --without-ssl --insecure -g install
+	sudo npm install electron@1.6.2 -g
+	npm install electron -g --verbose --unsafe-perm=true
+	ELECTRON_SKIP_BINARY_DOWNLOAD=1 npm install
+
+https://stackoverflow.com/questions/7559648/is-there-a-way-to-make-npm-install-the-command-to-work-behind-proxy/18346387
+https://vmokshagroup.com/blog/installation-environment-setup-and-adding-proxy-to-npm-and-node-js-packages/
+https://docs.bitnami.com/aws/how-to/create-ci-pipeline/
+
+
+
+#############################################################GIT
+
+https://gist.github.com/evantoli/f8c23a37eb3558ab8765
+
+git config --global http.proxy http://192.168.100.12:8080
+
+git config --global http.proxy http://<username>:<password>@<proxy-server-url>:<port>	
+
+git config http.sslVerify false
+
+Which will result in the following in the ~/.gitconfig file:
+
+
+[http]
+[http "https://domain.com"]
+	proxy = http://proxyUsername:proxyPassword@proxy.server.com:port
+	sslVerify = false
+
+
+git config --global http.https://domain.com.proxy 
+http://proxyUsername:proxyPassword@proxy.server.com:port
+git config --global http.https://domain.com.sslVerify false
+
+
+https://stackoverflow.com/questions/25163535/unable-to-access-s3-from-cli-due-to-corporate-proxy
+
+https://stackoverflow.com/questions/25163535/unable-to-access-s3-from-cli-due-to-corporate-proxy
+
+Linux, macOS, or Unix
+
+$ export HTTP_PROXY=http://username:password@proxy.example.com:1234
+$ export HTTPS_PROXY=http://username:password@proxy.example.com:5678
+
+Windows
+
+C:\> setx HTTP_PROXY http://username:password@proxy.example.com:1234
+C:\> set HTTPS_PROXY=http://username:password@proxy.example.com:5678
+
+HTTP_PROXY=http://localhost:8080 
+HTTPS_PROXY=https://localhost:8080 
+aws cloudformation describe-stacks --no-verify-ssl
+
+
+
+git -c http.sslVerify=false clone https://domain.com/path/to/git
+
+https://gist.github.com/evantoli/f8c23a37eb3558ab8765
+
+
+git config --global --list
+git config --local --list
+git config --global --unset https.proxy
+git config --global --unset http.proxy
+
+
+replace @ with \%40
+
+
+
+
+git config --global http.proxy http://192.168.100.12:8080
+git config --global https.proxy http://192.168.100.12:8080
+git config http.sslVerify false
+
+
+npm config list
+
+npm config set registry https://registry.npmjs.org/
+npm config set http-proxy http://192.168.100.12:8080
+npm config set https-proxy http://192.168.100.12:8080
+npm config set proxy http://192.168.100.12:8080
+npm set strict-ssl false
+
+
+
+npm config rm proxy
+npm config rm https-proxy
+npm config delete proxy
+npm config delete https-proxy
+unset HTTP_PROXY
+unset HTTPS_PROXY
+unset http_proxy
+unset https_proxy
+
+npm config list
+
+npm config --global rm proxy
+npm config --global rm https-proxy
+
+
+npm install express -g --verbose --unsafe-perm=true --force
+npm install electron -g --verbose --unsafe-perm=true --force
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! registry.npmjs.org, not registry.npms.org.
+
+
+
+MAC:
+export http_proxy=192.168.100.12:8080
+export HTTP_PROXY=192.168.100.12:8080
+export https_proxy=192.168.100.12:8080
+export HTTPS_PROXY=192.168.100.12:8080
+
+
+
+Mo port install yum
+1024-65535
+
+compose:
+export https_proxy='192.168.100.12:8080'
+export http_proxy='192.168.100.12:8080'
+
+
+git clone
+git add
+git commit -m
+git push origin master
+
+git pull
+git merge
+https://www.hostinger.vn/huong-dan/huong-dan-su-dung-git-lenh-git-co-ban
+
+setx HTTP_PROXY http://username:password@proxy.example.com:1234
+set HTTPS_PROXY=http://username:password@proxy.example.com:5678
+
+Composer PHP
+
+1. Using the command prompt, go to the folder where you want to install the project, framework, packagist packet, github project, or whatever you want to install with Composer.
+
+2. Set the proxy by writing: SET HTTP_PROXY=xxx.xxx.xxx.xxx (where xxx is your proxy).
+
+3. Use composer as you usually use it from command prompt.
+Git
+
+1. If you have git installed in your system PATH, write in command prompt: git config –global http.proxy xxx.xxx.xxx.xxx
+
+=========
+# Linux
+export http_proxy=http://192.168.100.12:8080
+export https_proxy=http://192.168.100.12:8080
+
+# Windows
+set http_proxy http://192.168.100.12:8080
+set https_proxy http://192.168.100.12:8080
+
+export http_proxy=http://192.168.100.12:8080
+export https_proxy=http://192.168.100.12:8080
+
+pip install --proxy=https://192.168.100.12:8080
+
+npm config list
+
+npm config set registry https://registry.npmjs.org/
+npm config set http-proxy http://192.168.100.12:8080
+npm config set https-proxy http://192.168.100.12:8080
+npm config set proxy http://192.168.100.12:8080
+npm set strict-ssl false
+
+
+
+
+# Windows
+set http_proxy http://192.168.100.11:8080
+set https_proxy http://192.168.100.11:8080
+
+# Linux
+export http_proxy=http://192.168.100.11:8080
+export https_proxy=http://192.168.100.11:8080
+
+#git
+git config --global http.proxy http://192.168.100.11:8080
+
+yum
+[main]
+………………
+proxy=http://<Proxy-Server-IP-Address>:<Proxy_Port>
+proxy_username=<Proxy-User-Name>
+proxy_password=<Proxy-Password> 
+………………
+
+git config http.sslVerify false			
+git config --global http.sslVerify false 
+
+
+
+Email: fxvietis.linhdang@funix.edu.vn
+Pass: Funix@2022
+
+sau đó vào https://funix.udemy.com/organization/home/
+
+
+#!/bin/bash
+for branch in $(git branch --all | grep '^\s*remotes' | egrep --invert-match '(:?HEAD|master)$'); do
+    git branch --track "${branch##*/}" "$branch"
+done
+
+
+FOR /f "tokens=*" %i IN ('git branch -r ^| findstr /v "HEAD main"') DO git checkout --track %~ni
+
+ログイン - Google アカウント
+https://funix.udemy.com
+
+
+https://192.168.100.59:8009/VIETIS/glpi.git
+https://www.youtube.com/watch?v=F2pQ3LdtKPg&t=207s&ab_channel=XuanThuLab
+
+https://viblo.asia/p/cach-xu-ly-cac-loi-thuong-gap-trong-git-djeZ14XmKWz
+https://aptechbmt.edu.vn/hoc-lap-trinh/git-github/bai-4-huong-dan-su-dung-git-cac-lenh-co-ban-can-phai-biet-6.html
+https://phoenixnap.com/kb/git-pull-all-branches
+
+cd Name
+git clone Link
+#clone all branch
+git branch -r
+git fetch --all
+git branch -r | grep -v '\->' | sed "s,\x1B\[[0-9;]*[a-zA-Z],,g" | while read remote; do git branch --track "${remote#origin/}" "$remote"; done
+
+git pull --all

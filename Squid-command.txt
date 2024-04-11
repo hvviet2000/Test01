@@ -1,0 +1,612 @@
+https://www.linuxtopia.org/online_books/linux_system_administration/securing_and_optimizing_linux/chap28sec232.html
+
+https://wiki.squid-cache.org/SquidFaq/SquidMemory
+
+cache_mem 256MB
+
+sar -n DEV 1 3
+cat /sys/class/net/enp2s0/speed
+
+https://documentation.suse.com/sles/15-SP1/html/SLES-all/cha-squid.html
+
+https://quantrimang.com/tang-toc-truy-cap-internet-bang-cac-mau-refresh-cua-squid-52264
+
+http://192.168.100.12/squid-reports/
+
+https://viblo.asia/p/sarg-squid-analysis-report-generator-cong-cu-monitor-traffic-cho-squid-proxy-Do754WNJlM6
+
+https://docs.diladele.com/faq/squid/sslbump_squid_windows.html
+
+https://docs.diladele.com/faq/squid/sslbump_exlusions/skype.html
+https://www.howtoforge.com/tutorial/how-to-manage-centos-7-server-with-webmin/
+
+https://community.spiceworks.com/how_to/128459-how-to-install-squid-proxy-on-centos-7-with-webmin-apache-and-sarg
+http://roberts.bplaced.net/index.php/linux-guides/centos-6-guides/proxy-server/squid-transparent-proxy-http-https
+
+https://docs.diladele.com/faq/squid/sslbump_exlusions/skype.html
+
+https://geekdudes.wordpress.com/2015/07/13/squid-in-centos-7-and-its-integration-with-windows-server-2012r2-active-directory/
+
+yum install samba* ntp* sssd -y
+systemctl start ntpd.service 
+ntpdate dc.example.com
+
+Edit /etc/krb5.conf file
+[logging]
+ default = FILE:/var/log/krb5libs.log
+ kdc = FILE:/var/log/krb5kdc.log
+ admin_server = FILE:/var/log/kadmind.log
+
+[libdefaults]
+ dns_lookup_realm = false
+ dns_lookup_kdc=true
+ ticket_lifetime = 24h
+ renew_lifetime = 7d
+ forwardable = true
+ rdns = false
+default_realm = EXAMPLE.COM
+ default_ccache_name = KEYRING:persistent:%{uid}
+
+[realms]
+ EXAMPLE.COM = {
+ kdc = DC.EXAMPLE.COM
+ admin_server = DC.EXAMPLE.COM
+ }
+
+[domain_realm]
+ .example.com = EXAMPLE.COM
+ example.com = EXAMPLE.COM
+kdc = dc.example.com
+}
+
+
+Edit /etc/pam.d/system-auth:
+#%PAM-1.0
+# This file is auto-generated.
+# User changes will be destroyed the next time authconfig is run.
+auth required pam_env.so
+auth sufficient pam_unix.so nullok try_first_pass
+auth requisite pam_succeed_if.so uid >= 500 quiet_success
+auth sufficient pam_winbind.so use_first_pass
+auth required pam_deny.so
+
+account required pam_unix.so broken_shadow
+account sufficient pam_localuser.so
+account sufficient pam_succeed_if.so uid < 36777216 quiet
+account [default=bad success=ok user_unknown=ignore] pam_winbind.so
+account required pam_permit.so
+
+edit /etc/nsswitch.conf file to configure systemt for looking at winbind:
+passwd: files winbind
+shadow: files winbind
+group: files winbind
+
+
+edit  /etc/samba/smb.conf
+#Global Settings:
+workgroup = EXAMPLE
+interfaces = lo eth0
+hosts allow = 127. 192.168.122.
+
+
+PROMPT#@
+
+systemctl restart ntp
+systemctl restart winbind
+systemctl restart sssd
+
+
+https://www.tecmint.com/join-centos-7-to-samba4-active-directory/
+sudo yum install authconfig-gtk
+sudo authconfig-gtk
+
+    User Account Database = select Winbind
+    Winbind Domain = YOUR_DOMAIN
+    Security Model = ADS
+    Winbind ADS Realm = YOUR_DOMAIN.TLD
+    Domain Controllers = domain machines FQDN
+    Template Shell = /bin/bash
+    Allow offline login = checked
+
+	
+
+realm join –user=adminitrator@EXAMPLE.COM EXAMPLE.COM
+
+realm join  --user viet.hoang@vietis.vn VIETIS.VN
+
+
+Add following to smb.config file in section Domain Members Options
+#- Domain Members Options 
+
+security = ads
+
+realm = EXAMPLE.COM
+
+password server = DC.EXAMPLE.COM
+
+wbinfo -t
+checking the trust secret for domain EXAMPLE via RPC calls succeeded
+
+wbinfo -g
+
+EXAMPLE\winrmremotewmiusers__
+EXAMPLE\domain computers
+EXAMPLE\domain controllers
+EXAMPLE\schema admins
+EXAMPLE\enterprise admins
+EXAMPLE\cert publishers
+EXAMPLE\domain admins
+EXAMPLE\domain users
+EXAMPLE\domain guests
+EXAMPLE\group policy creator owners
+EXAMPLE\ras and ias servers
+EXAMPLE\allowed rodc password replication group
+EXAMPLE\denied rodc password replication group
+EXAMPLE\read-only domain controllers
+EXAMPLE\enterprise read-only domain controllers
+EXAMPLE\cloneable domain controllers
+EXAMPLE\protected users
+EXAMPLE\restricted
+EXAMPLE\nolimit
+
+wbinfo -u
+
+EXAMPLE\administrator
+EXAMPLE\guest
+EXAMPLE\krbtgt
+EXAMPLE\tex willer
+EXAMPLE\test
+EXAMPLE\squid
+EXAMPLE\don
+
+$ wbinfo -p #Ping domain
+$ wbinfo -t #Check trust relationship
+$ wbinfo -u #List domain users
+$ wbinfo -g #List domain groups
+$ wbinfo -n domain_account #Get the SID of a domain account
+
+====================================
+
+yum install squid -y
+
+[root@squid squid]# printf '%s\n    %s\n' 'Passw0rd01'  >> /etc/squid/password.txt
+
+[root@squid squid]# echo "test Passw0rd01" | /usr/lib64/squid/basic_ldap_auth -R -b "dc=example,dc=com" -D "cn=squid,ou=squid,dc=example,dc=com" -w  /etc/squid/password.txt -f sAMAccountName=%s -h 192.168.122.100
+
+/usr/lib64/squid/basic_ldap_auth -R -b "dc=example,dc=com" -D "cn=squid,ou=squid,dc=example,dc=com" -w  /etc/squid/password.txt -f sAMAccountName=%s -h 192.168.122.100
+/usr/lib64/squid/basic_ldap_auth -R -b "dc=vietis,dc=vn" -D "cn=authen_ldap,cn=Users,dc=vietis,dc=vn" -w /etc/squid/password.txt -f sAMAccountName=%s -h 10.1.6.10
+
+
+external_acl_type ldap_group %LOGIN /usr/lib64/squid/ext_ldap_group_acl -R -b "dc=vietis,dc=vn" -D "cn=authen_ldap,cn=Users,dc=vietis,dc=vn" -w "vietis@123" -f "(&(objectclass=person) (sAMAccountname=%u)(memberof=cn=%g,ou=SQUID,OU=GROUPS,dc=vietis,dc=vn))" -h 10.1.6.10
+
+CN=SQUID,OU=GROUPS,DC=vietis,DC=vn
+CN=SQUID,OU=GROUPS,DC=vietis,DC=vn
+
+vi /etc/squid/squid.conf
+#
+# Recommended minimum Access Permission configuration:
+#
+# Deny requests to certain unsafe ports
+http_access deny !Safe_ports
+
+# Deny CONNECT to other than secure SSL ports
+http_access deny CONNECT !SSL_ports
+
+# Only allow cachemgr access from localhost
+http_access allow localhost
+# We strongly recommend the following be uncommented to protect innocent
+# web applications running on the proxy server who think the only
+# one who can access services on "localhost" is a local user
+#http_access deny to_localhost
+
+#
+# INSERT YOUR OWN RULE(S) HERE TO ALLOW ACCESS FROM YOUR CLIENTS
+#
+
+# Example rule allowing access from your local networks.
+# Adapt localnet in the ACL section to list your (internal) IP networks
+# from where browsing should be allowed
+auth_param basic program /usr/lib64/squid/basic_ldap_auth -R -b "dc=example,dc=com" -D "cn=squid,ou=squid,dc=example,dc=com" -w "Zemun2013" -f sAMAccountName=%s -h 192.168.122.100
+auth_param basic children 5
+auth_param basic realm Please enter user name to access the internet
+auth_param basic credentialsttl 1 hour
+external_acl_type ldap_group %LOGIN /usr/lib64/squid/ext_ldap_group_acl -R -b "dc=example,dc=com" -D "cn=squid,ou=squid,dc=example,dc=com" -w "Zemun2013" -f "(&(objectclass=person) (sAMAccountname=%u)(memberof=cn=%g,ou=squid,dc=example,dc=com))" -h 192.168.122.100
+
+
+acl restricted external ldap_group restricted
+acl nolimit external ldap_group nolimit
+acl allowed_time time T 00:00-12:00
+acl blockfiles urlpath_regex -i \.[Ee][Xx][Ee]$
+
+acl rule2 url_regex -i www.ign.com
+reply_body_max_size 30 MB allowed_time
+
+http_access allow test_group !rule2 allowed_time !blockfiles
+http_access allow nolimit
+
+# And finally deny all other access to this proxy
+http_access deny all
+
+# Squid normally listens to port 3128
+http_port 3128
+
+# Uncomment and adjust the following to add a disk cache directory.
+#cache_dir ufs /var/spool/squid 100 16 256
+
+# Leave coredumps in the first cache dir
+coredump_dir /var/spool/squid
+
+#
+# Add any of your own refresh_pattern entries above these.
+#
+refresh_pattern ^ftp: 1440 20% 10080
+refresh_pattern ^gopher: 1440 0% 1440
+refresh_pattern -i (/cgi-bin/|\?) 0 0% 0
+refresh_pattern .
+
+
+PERMIT
+
+prepare file contains list of user(s)
+prepare file contains list of sites(s)
+map them in squid.conf as below
+
+    acl userlist src "/home/acl/userlist"  
+    acl whitelist urlpath_regex "/home/acl/whitelist"    
+    http_access allow userlist sitelist
+
+
+	
+external_acl_type Domain_Admin %LOGIN /usr/lib64/squid/squid_ldap_group -b "dc=abcd,dc=co,dc=uk" -D "cn=Nilesh Gavali,ou=Admin User,ou=TCS Users,ou=Staff,dc=abcd,dc=co,dc=uk" -w "123456" -f "(&(objectclass=person)(sAMAccountName=%v)(memberof=cn=lgInternetAccess,ou=Internet Access,ou=Groups,dc=abcd,dc=co,dc=uk))" -h xx.xx.2.101
+
+acl AllowDomainAdmin external Domain_Admin lgInternetAccess
+http_access allow AllowDomainAdmin 
+
+
+ow to Proxy Server With LDAP Auth.
+
+
+https://stackoverflow.com/questions/1032351/how-to-write-ldap-query-to-test-if-user-is-member-of-a-group
+
+login to your linux server and follow the step by step guide.
+
+root@proxy~] # ping www.google.com   <---- this to check if internet is working
+64 bytes from maa03s04-in-f18.1e100.net (74.125.236.50): icmp_seq=1 ttl=57 time=37.8 ms
+root@proxy~]# yum install squid nss_ldap -y
+root@proxy~]# cat /etc/squid/squid.conf > /etc/squid/squid.conf.bkp
+root@proxy~]# vi /etc/squid/squid.conf (edit some lines as following)
+#auth_param basic program /usr/lib/squid/ncsa_auth /usr/local/squid/etc/passwd <-comment this line No.274>
+auth_param basic program /usr/lib/squid/squid_ldap_auth -b "dc=server,dc=com" -f "uid=%s" -h 192.168.202.10 -d -v 3  <-- This is for ldap auth>
+
+##external_acl_type used for group authentication from ldap
+external_acl_type ldapgroups %LOGIN /usr/lib/squid/squid_ldap_group -b "dc=yourdomain,dc=com" -f "(&(cn=%g)(memberUid=%u))" -h ldapserver
+acl ldapgroup external ldapgroups squid <--Add this line after line 572. This is for group (squid) auth from ldap>
+###deny all other user not in squid group####
+http_access deny !ldapgroup
+
+acl ldapauth proxy_auth REQUIRED
+http_access allow  ldapauth
+
+To make sure your squid server talk to ldap server run the following command
+ out put should similar like this if not some thing  went wrong.
+[root@proxy ~]# /usr/lib/squid/squid_ldap_auth -b "dc=server,dc=com" -f "uid=%s" -h 192.168.202.10 -d -v 3  
+username password
+
+user filter 'uid=username', searchbase 'dc=yourdomain,dc=com'
+attempting to authenticate user 'uid=username,ou=users,dc=yourdomain,dc=com'
+OK
+
+[root@proxy ~]# /usr/lib/squid/squid_ldap_group -b "dc=yourdomain,dc=com" -f "(&(cn=%g)(memberUid=%u))" -h 192.168.202.10
+username group
+OK
+
+URL BLOC
+	
+acl bad_url dstdomain "/etc/squid3/bad-sites.acl"
+http_access deny bad_url
+
+then go to /etc/squid3/bad-sites.acl and add domains with this format
+
+.google.com
+.msn.com
+.app.facebook.com
+
+
+
+Option 1 : Specify site with in configuration file,
+
+    acl special_clients src "/etc/squid/special_client_ips.txt"
+
+    acl facebook dstdomain .facebook.com
+
+    acl orkut dstdomain .orkut.com
+
+Under http access
+
+    http_access allow facebook special_clients
+
+    http_access deny facebook
+
+    http_access deny orkut
+
+    http_access allow all
+
+Option 2 : Stick both client IP s and destination domains into lists,
+
+    acl special_clients src "/etc/squid/special_client_ips.txt"
+
+    acl bad_domains dstdomain "/etc/squid/bad_domains.txt"
+
+Under http access
+
+    http_access allow bad_domains special_clients
+
+    http_access deny bad_domains
+
+    http_access allow all
+
+    I get it from net, It work very well
+
+    Thanks cstamas
+
+	
+	https://deployeveryday.com/2016/03/07/multisquid-multisubnet.html
+	
+	Problem solved. I forgot to add the forward chain. Here's the solution:
+
+	DMZ_IFACE=192.168.1.222
+echo "%%% Transparent Proxy %%%"
+iptables -t nat -A PREROUTING -i $CLIENTIFACE -p tcp --dport 80 -j DNAT --to-destination $PROXYIP4:3128
+
+iptables -A FORWARD -i $LAN_IFACE -o $DMZ_IFACE -p tcp -s $LAN_ADDRESSES --sport $UNPRIVPORTS -d $PROXYIP4 --dport 3128 -m state --state NEW -j ACCEPT
+
+
+Router (Gateway) - 192.168.0.1
+DHCP/DNS Server  - 192.168.0.10
+Squid Server     - 192.168.0.254
+Client PCs       - 192.168.0.100-199
+
+iptables -t nat -A PREROUTING -i eth0 -m iprange --src-range 192.168.100.10-192.168.100.199 -p tcp --dport 80 -j REDIRECT --to-port 3128
+iptables -t nat -A POSTROUTING -o eth0 -m iprange --src-range 192.168.100.10-192.168.100.199 -j SNAT --to-source 192.168.100.12
+
+
+iptables -t nat -A PREROUTING -i enp2s0 -m iprange --src-range 192.168.100.10-192.168.100.199 -p tcp --dport 80 -j REDIRECT --to-port 3128
+iptables -t nat -A POSTROUTING -o enp2s0 -m iprange --src-range 192.168.100.10-192.168.100.199 -j SNAT --to-source 192.168.100.12
+
+iptables -t nat -A PREROUTING -i enp2s0 -m iprange --src-range 192.168.100.10-192.168.100.199 -p tcp --dport 443 -j REDIRECT --to-port 3128
+iptables -t nat -A PREROUTING -i enp2s0 -m iprange --src-range 10.1.32.1-10.1.41.254 -p tcp --dport 443 -j REDIRECT --to-port 3128
+  
+iptables -t nat -A PREROUTING -i eth0 -m iprange --src-range 192.168.100.10-192.168.100.199 -p tcp --dport 443 -j REDIRECT --to-port 3128
+iptables -t nat -A PREROUTING -i eth0 -m iprange --src-range 10.1.32.1-10.1.41.254 -p tcp --dport 443 -j REDIRECT --to-port 3128
+
+
+https://wiki.squid-cache.org/ConfigExamples/Intercept/IptablesPolicyRoute#When_Squid_is_in_a_DMZ_between_the_router_and_Internet
+
+
+When Squid is Internal amongst clients
+
+# IPv4 address of proxy
+PROXYIP4= 192.168.0.10
+
+# IPv6 address of proxy
+PROXYIP6= fe80:dead:beef::10
+
+# interface facing clients
+CLIENTIFACE= eth0
+
+# arbitrary mark used to route packets by the firewall. May be anything from 1 to 64.
+FWMARK= 2
+
+
+# permit Squid box out to the Internet
+iptables -t mangle -A PREROUTING -p tcp --dport 80 -s $PROXYIP4 -j ACCEPT
+ip6tables -t mangle -A PREROUTING -p tcp --dport 80 -s $PROXYIP6 -j ACCEPT
+
+# mark everything else on port 80 to be routed to the Squid box
+iptables -t mangle -A PREROUTING -i $CLIENTIFACE -p tcp --dport 80 -j MARK --set-mark $FWMARK
+iptables -t mangle -A PREROUTING -m mark --mark $FWMARK -j ACCEPT
+ip6tables -t mangle -A PREROUTING -i $CLIENTIFACE -p tcp --dport 80 -j MARK --set-mark $FWMARK
+ip6tables -t mangle -A PREROUTING -m mark --mark $FWMARK -j ACCEPT
+
+# NP: Ensure that traffic from inside the network is allowed to loop back inside again.
+iptables -t filter -A FORWARD -i $CLIENTIFACE -o $CLIENTIFACE -p tcp --dport 80 -j ACCEPT
+ip6tables -t filter -A FORWARD -i $CLIENTIFACE -o $CLIENTIFACE -p tcp --dport 80 -j ACCEPT
+
+
+# interface facing clients
+CLIENTIFACE= eth0
+
+# arbitrary mark used to route packets by the firewall. May be anything from 1 to 64.
+FWMARK= 2
+
+
+# mark everything on port 80 to be routed to the Squid box
+iptables -t mangle -A PREROUTING -i $CLIENTIFACE -p tcp --dport 80 -j MARK --set-mark $FWMARK
+iptables -t mangle -A PREROUTING -m mark --mark $FWMARK -j ACCEPT
+ip6tables -t mangle -A PREROUTING -i $CLIENTIFACE -p tcp --dport 80 -j MARK --set-mark $FWMARK
+ip6tables -t mangle -A PREROUTING -m mark --mark $FWMARK -j ACCEPT
+
+
+
+
+---------=================
+
+[root@localhost ~]# mkdir /etc/squid/ssl_cert
+[root@localhost ~]# chown -R squid.squid /etc/squid/ssl_cert
+
+[root@localhost ~]# cd /etc/squid/ssl_cert/
+[root@localhost ssl_cert]#  openssl req -new -newkey rsa:2048 -sha256 -days 365 -nodes -x509 -extensions v3_ca -keyout squid35.pem  -out squid35.pem
+
+[root@localhost ~]# /usr/lib64/squid/ssl_crtd -c -s /var/lib/ssl_db
+[root@localhost ~]# chown -R squid.squid /var/lib/ssl_db
+
+
+[root@localhost ~]# vi /etc/squid/squid.conf
+https_port 3129 intercept ssl-bump generate-host-certificates=on dynamic_cert_mem_cache_size=4MB cert=/etc/squid/ssl_cert/squid35.pem
+sslcrtd_program /usr/lib64/squid/ssl_crtd -s /var/lib/ssl_db -M 8MB  
+sslcrtd_children 16 startup=5 idle=1
+
+ssl_bump peek all                             # tập lệnh ssl_bump của Squid, phần này khá rắc rối, có thể có các khai báo riêng giống như access list ở đây, nhưng để đơn giản thì cứ peek all và splice all thôi.
+ssl_bump splice all                           #
+
+
+login.live.com
+browser.pipe.aria.microsoft.com
+prd.col.aria.browser.skypedata.akadns.net
+pipe.skype.com
+pipe.prd.skypedata.akadns.net
+config.edge.skype.com
+avatar.skype.com
+vatar-service-prod.trafficmanager.net
+avatar-service-prod-b-ne.cloudapp.net
+
+
+It's trivial to implement. Here is my config snippet:
+
+# SSL bump rules
+acl DiscoverSNIHost at_step SslBump1
+acl NoSSLIntercept ssl::server_name_regex "/usr/local/squid/etc/acl.url.nobump"
+ssl_bump peek DiscoverSNIHost
+ssl_bump splice NoSSLIntercept
+ssl_bump bump all
+
+
+
+
+
+acl restricted  src 10.0.0.128/255.0.0.128 10.85.0.0/16
+
+
+acl network1 src 172.18.88.0/255.255.255.0
+acl network2 src 172.18.89.0/255.255.255.0
+acl network3 src 172.18.90.0/255.255.255.0
+acl banned src 172.18.88.100-109
+acl banned src 172.18.89.100-109
+acl banned src 172.18.90.100-109
+
+http_access deny banned
+http_reply_access deny banned
+http_access allow network1
+http_access allow network2
+http_access allow network3
+http_reply_access allow all 
+
+acl banned_machines src '/etc/squid/denied_machines.acl'
+http_access deny banned_machines
+http_reply_access deny banned_machines 
+
+
+
+#viet add #=================
+
+acl ip-permit1 src "/etc/squid/ip_permit1.txt"
+acl website-permit1 dstdomain "/etc/squid/website_permit1.txt"
+
+http_access allow ip-permit1 website-permit1
+
+
+
+https://www.cyberciti.biz/faq/squid-content-filter-block-files/
+download all of the following files:
+MP3
+MPEG
+MPG
+AVG
+AVI
+EXE
+
+acl blockfiles urlpath_regex -i "/etc/squid/blocks.files.acl"
+# Deny all blocked extension
+error_directory /usr/share/squid/errors/English
+deny_info ERR_BLOCKED_FILES blockfiles
+http_access deny blockfiles
+
+# vi /etc/squid/blocks.files.acl
+\.exe(\?.*)?$
+\.avi(\?.*)?$
+\.bat(\?.*)?$
+\.tar(\?.*)?$
+\.mpg(\?.*)?$
+\.mp3(\?.*)?$
+\.mp4(\?.*)?$
+
+# vi /usr/share/squid/errors/English/ERR_BLOCKED_FILES
+<HTML>
+<HEAD>
+<TITLE>ERROR: Blocked file content</TITLE>
+</HEAD>
+<BODY>
+<H1>File is blocked due to new IT policy</H1>
+<p>Please contact helpdesk for more information:</p>
+<ul>
+ <li>Phone: 555-12435 (ext 44)</li>
+ <li>Email: helpdesk@nixcraft.com</li>
+</BODY>
+</HTML>
+
+
+http://nanlyx.blogspot.com/2013/04/how-to-block-file-uploads-using-squid.html
+
+https://viblo.asia/p/sarg-squid-analysis-report-generator-cong-cu-monitor-traffic-cho-squid-proxy-Do754WNJlM6
+
+
+Edit the squid configuration file “/etc/squid/squid.conf” to look like the following:
+
+acl all src all
+http_port 3128
+access_log /var/log/squid/access.log squid
+
+external_acl_type request_body %{Content-Length} /usr/bin/upload.sh
+# 1MB max upload
+acl noupload external request_body 1024000
+
+http_access deny !noupload
+http_access allow all
+
+Now create your script file:
+
+touch /usr/bin/upload.sh
+chmod 755 /usr/bin/upload.sh
+
+Add the following content to your new script file “/usr/bin/upload.sh”:
+
+#!/bin/sh
+while read size limit; do
+  if [ "${size}" -gt "${limit}" ]; then
+    echo ERR
+  else
+    echo OK
+  fi
+done
+
+Now start (restart) Squid:
+
+/etc/init.d/squid start
+
+
+sarg -x -z -d day-0
+02 3 * * * /usr/local/sarg-reports -type f -mtime +90 -delete
+sarg -d `date -v-1d +%d/%m/%Y` -x -z /var/squid/log/access.log
+
+
+* 1 * * 1-5 /usr/local/bin/sarg -x >/root/sarg.log
+
+[root@squid-proxy ~]# crontab -l
+* 1 * * 1-5 /usr/local/bin/sarg -x >/root/sarg.log
+[root@squid-proxy ~]# crontab -l
+
+delete old data
+
+output_dir /var/www/html/squid-reports
+
+
+/etc/init.d/sarg stop
+
+https://github.com/hoangdh/ghichep-pfsense/blob/master/docs/Cau-hinh-chan-website-squidguard.md
+
+https://tweenpath.net/step-by-step-procedure-for-installing-sarg-log-analyzer/
+
+
+
+https://www.tecmint.com/control-web-traffic-using-squid-and-cisco-router-in-linux/
+https://crypt.gen.nz/papers/cisco_squid_wccp/
