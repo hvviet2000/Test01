@@ -1,0 +1,74 @@
+
+rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
+yum --disablerepo="*" --enablerepo="elrepo-kernel" list available
+yum --enablerepo=elrepo-kernel install kernel-ml
+
+
+
+# mkdir /cdrom
+# mount /dev/cdrom /cdrom
+
+# vi /etc/yum.repos.d/local.repo
+
+[LocalRepo]
+name=Local Repository
+baseurl=file:///cdrom
+enabled=1
+gpgcheck=1
+
+dauvoquan/quantan123
+
+yum clean all
+uname -sr
+/etc/default/grub
+ and set GRUB_DEFAULT=0. 
+grub2-mkconfig -o /boot/grub2/grub.cfg
+
+
+uname -sr
+/etc/default/grub
+ and set GRUB_DEFAULT=0. 
+grub2-mkconfig -o /boot/grub2/grub.cfg
+
+3.10.0-514.el7.x86_64
+
+
+VietIS_SW_SRV#ping 192.168.100.78
+
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 192.168.100.78, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/204/1001 ms
+VietIS_SW_SRV#show arp | include 192.168.100.78
+Internet  192.168.100.78          0   0050.c2f0.f2b6  ARPA   Vlan100
+
+
+VietIS_SW_SRV#show mac add
+VietIS_SW_SRV#show mac address-table | include 0050.c2f0.f2b6
+ 100    0050.c2f0.f2b6    DYNAMIC     Gi1/0/44
+ 
+ VietIS_SW_01#ping 192.168.100.78
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 192.168.100.78, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/203/1007 ms
+VietIS_SW_01#show arp | include 192.168.100.78
+Internet  192.168.100.78          0   0050.c2f0.f2b6  ARPA   Vlan100
+VietIS_SW_01#show mac address-table | include 0050.c2f0.f2b6
+ 100    0050.c2f0.f2b6    DYNAMIC     Gi0/19
+VietIS_SW_01#
+
+ietIS_SW_01(config)#interface Gi
+VietIS_SW_01(config)#interface GigabitEthernet 0/19
+VietIS_SW_01(config-if)#shut
+VietIS_SW_01(config-if)#shutdown
+
+
+ no authentication port-control auto
+ no dot1x pae authenticator
+ 
+ switchport access vlan 241
+ 
+ 
+ 
+ https://iperf.fr/iperf-servers.php

@@ -1,0 +1,9 @@
+VIETIS_SW06#sh run in fa 0/8
+interface FastEthernet0/8
+description vutv                                                                                                        
+switchport access vlan 241
+
+
+
+sh mac address-table interface gi0/3
+sh ip arp  68b5.99fc.d1df

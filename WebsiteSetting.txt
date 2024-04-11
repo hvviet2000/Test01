@@ -1,0 +1,46 @@
+update website
+
+https://www.virendrachandak.com/techtalk/how-to-hide-php-version-in-the-http-headers/
+
+==========================================
+/etc/httpd/conf/httpd.conf
+
+ServerTokens Prod
+ServerSignature  Off
+
+
+==========================================
+/etc/php.ini
+expose_php = Off
+
+
+
+==========================================
+sudo /etc/nginx/nginx.conf
+http{
+    ...
+    server_tokens off;
+    ...
+}
+
+
+sudo nginx -t
+sudo sytemctl restart httpd.service
+systemctl restart nginx
+
+
+
+Hide the Server header
+sudo yum -y install nginx-module-security-headers
+nginx.conf
+load_module modules/ngx_http_security_headers_module.so;
+
+http {
+    ...
+    hide_server_tokens on;
+    ...
+}
+
+https://viblo.asia/p/http-security-headers-ByEZkwwWZQ0
+
+https://geekflare.com/http-header-implementation/

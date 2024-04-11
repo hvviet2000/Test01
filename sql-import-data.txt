@@ -1,0 +1,5 @@
+/usr/share/nginx/html/vietis.renewsite.2020
+vietis_renewsite_2020
+Vietis@2020!!!
+
+mysql -u root -p vietis_renewsite_2020 < vietis.2020.en20201130.sql

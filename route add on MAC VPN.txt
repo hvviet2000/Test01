@@ -1,0 +1,53 @@
+Mar  5 05:01:45 gitsrv-localdomain kernel: postgres invoked oom-killer: gfp_mask=0x42d0, order=1, oom_score_adj=0
+Mar  5 05:01:46 gitsrv-localdomain kernel: postgres cpuset=/ mems_allowed=0-1
+Mar  5 05:01:46 gitsrv-localdomain kernel: CPU: 8 PID: 8790 Comm: postgres Not tainted 3.10.0-327.el7.x86_64 #1
+Mar  5 05:01:46 gitsrv-localdomain kernel: Hardware name: VMware, Inc. VMware Virtual Platform/440BX Desktop Reference Platform, BIOS 6.00 09/30/2014
+Mar  5 05:01:46 gitsrv-localdomain kernel: ffff880430992280 00000000bc475f5b ffff8804336af890 ffffffff816351f1
+Mar  5 05:01:46 gitsrv-localdomain kernel: ffff8804336af920 ffffffff81630191 ffff880243916c90 ffff880243916ca8
+Mar  5 05:01:46 gitsrv-localdomain kernel: 65a454fb00000202 fffeefff00000000 0000000000000065 ffffffff81128803
+Mar  5 05:01:46 gitsrv-localdomain kernel: Call Trace:
+Mar  5 05:01:46 gitsrv-localdomain kernel: [<ffffffff816351f1>] dump_stack+0x19/0x1b
+Mar  5 05:01:46 gitsrv-localdomain kernel: [<ffffffff81630191>] dump_header+0x8e/0x214
+Mar  5 05:01:46 gitsrv-localdomain kernel: [<ffffffff81128803>] ? delayacct_end+0x63/0xb0
+Mar  5 05:01:46 gitsrv-localdomain kernel: [<ffffffff8116cdee>] oom_kill_process+0x24e/0x3b0
+Mar  5 05:01:46 gitsrv-localdomain kernel: [<ffffffff81088dae>] ? has_capability_noaudit+0x1e/0x30
+Mar  5 05:01:46 gitsrv-localdomain kernel: [<ffffffff8116d616>] out_of_memory+0x4b6/0x4f0
+Mar  5 05:01:46 gitsrv-localdomain kernel: [<ffffffff811737f5>] __alloc_pages_nodemask+0xa95/0xb90
+Mar  5 05:01:46 gitsrv-localdomain kernel: [<ffffffff811b43f9>] alloc_pages_current+0xa9/0x170
+Mar  5 05:01:46 gitsrv-localdomain kernel: [<ffffffff8151459c>] sock_alloc_send_pskb+0x22c/0x410
+Mar  5 05:01:46 gitsrv-localdomain kernel: [<ffffffff815d18be>] unix_stream_sendmsg+0x29e/0x430
+Mar  5 05:01:46 gitsrv-localdomain kernel: [<ffffffff81510d10>] sock_sendmsg+0xb0/0xf0
+Mar  5 05:01:46 gitsrv-localdomain kernel: [<ffffffff810c0a30>] ? task_numa_fault+0x8d0/0xbb0
+Mar  5 05:01:46 gitsrv-localdomain kernel: [<ffffffff811b84b5>] ? mpol_misplaced+0x195/0x1f0
+Mar  5 05:01:46 gitsrv-localdomain kernel: [<ffffffff81511281>] SYSC_sendto+0x121/0x1c0
+Mar  5 05:01:46 gitsrv-localdomain kernel: [<ffffffff81640ec9>] ? __do_page_fault+0x1f9/0x420
+Mar  5 05:01:46 gitsrv-localdomain kernel: [<ffffffff81641113>] ? do_page_fault+0x23/0x80
+Mar  5 05:01:46 gitsrv-localdomain kernel: [<ffffffff81511d0e>] SyS_sendto+0xe/0x10
+Mar  5 05:01:46 gitsrv-localdomain kernel: [<ffffffff81645909>] system_call_fastpath+0x16/0x1b
+
+Mar  5 05:01:46 gitsrv-localdomain kernel: Out of memory: Kill process 8790 (postgres) score 40 or sacrifice child
+Mar  5 05:01:46 gitsrv-localdomain kernel: Killed process 8790 (postgres) total-vm:4340524kB, anon-rss:8316kB, file-rss:761192kB
+
+ip nat inside source static tcp 10.1.7.50 8014 interface GigabitEthernet0/0 8014
+
+Guys i found the problem.
+Máy bạn đang chạy phần mềm teamviewer - vi phạm quy định chung của Công ty
+in RRAS configuration, ports.  the value was set to 5 ports.
+
+change de value.
+https://dennistt.net/2019/05/05/overriding-routing-for-vpns-on-macos/
+
+
+sudo route add -net 10.1.41.0/24 -interface ppp0
+sudo route add -host 10.x.y.2 -interface ppp0
+sudo route delete -host 10.x.y.2 -interface ppp0
+
+
+
+-Panasonic NP-TH2 (2018) giá 14tr
+
+https://www.adaxes.com/tutorials_WebInterfaceCustomization_PreventUsersFromViewingTheADStructure.htm
+
+
+
+

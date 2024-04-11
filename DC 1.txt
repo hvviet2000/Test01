@@ -1,0 +1,61 @@
+BK-Log
+Closed-projects
+	My File Backup
+COMTORS
+Door
+INTRANET
+ISMS
+operations
+PMTOOL
+PROXY
+QMS
+Quality
+Running-projects
+tftp
+
+   main: # 'main' is the GitLab 'provider ID' of this LDAP server
+     label: 'LDAP'
+     host: 'dc01.vietis.vn'
+     port: 389
+     uid: 'sAMAccountName'
+     method: 'plain' # "tls" or "ssl" or "plain"
+     bind_dn: 'CN=authen_ldap,CN=Users,DC=vietis,DC=vn'
+     password: 'vietis@123'
+     active_directory: true
+     allow_username_or_email_login: true
+     block_auto_created_users: false
+     base: 'OU=Members-Users,OU=Members,DC=vietis,DC=vn'
+	 
+	 
+	 =================================================
+	 
+Our DHCP server properties are configured as:
+
+    General TAB the, "Lease duration for DHCP clients" is set to 8 hours.
+    DNS TAB, the following radio buttons are checked:
+        "Enable DNS dynamic updates according to the settings below:
+        "Dynamically update DNS A and PTR records only if requested by the DHCP clients."
+        "Discard A and PTR records when lease is deleted."
+        "Dynamically update DNS A and PTR records for DHCP clients that do not request updates (for example, clients running Windows NT 4.0)"
+        On The Advanced DNS TAB, the Assign IP addresses dynamically to clients of: both is checked
+        "Lease duration for BOOTP clients: limited to 30 days" 
+
+
+Our DNS Server properties are configured as:
+
+    At the DNS Server level:
+        Server Aging/Scavenging Properties – "Scavenge stale resource records" is not checked.
+    At the Domain level: (Forward Lookup Zones) & (Reverse Lookup Zone)
+        Zone Aging/Scavenging Properties – "Scavenge stale resource records" is checked.
+        No-refresh interval and Refresh interval is configured at 7 hours.
+        Refresh Interval is set to 7 hours
+        Domain Host (A) Properties: "Delete this record when it becomes stale" is checked.
+        Time to live (TTL): is configured to 20 minutes.
+        (Reverse Lookup Zone)
+            At the Pointer (PTR) : "Delete this record when it becomes stale" is checked
+            Time to live (TTL): is configured to 15 minutes. 
+			
+
+dnscmd /zoneinfo contoso.com
+dnscmd /zoneresetscavengeservers vietis.vn 10.1.6.10
+dnscmd /zoneresetscavengeservers vietis.vn 10.1.6.9

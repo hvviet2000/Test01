@@ -1,0 +1,308 @@
+Little Background: Microsoft RRAS server and VPN client supports PPTP, L2TP/IPSec, SSTP and IKEv2 based VPN connection. PPTP control path is over TCP and data path over GRE. L2TP tunnel traffic is carried over IPSec transport mode and IPSec protocol internally has a control path through IKE and data path over ESP. SSTP control and data path is over TCP. IKEv2 control path is over IKE and data path over ESP.
+
+So now coming back to original question. There are multiple scenarios:
+
+1) If RRAS based VPN server is behind a firewall (i.e. a firewall is placed between Internet and RRAS server), then following ports need to be opened (bidirectional) on this firewall to allow VPN traffic to pass through: -
+
+    For PPTP:
+        IP Protocol=TCP, TCP Port number=1723 <- Used by PPTP control path
+        IP Protocol=GRE (value 47) <- Used by PPTP data path
+    For L2TP:
+        IP Protocol Type=UDP, UDP Port Number=500 <- Used by IKEv1 (IPSec control path)
+        IP Protocol Type=UDP, UDP Port Number=4500 <- Used by IKEv1 (IPSec control path)
+        IP Protocol Type=ESP (value 50) <- Used by IPSec data path
+    For SSTP:
+        IP Protocol=TCP, TCP Port number=443 <- Used by SSTP control and data path
+    For IKEv2:
+        IP Protocol Type=UDP, UDP Port Number=500 <- Used by IKEv2 (IPSec control path)
+        IP Protocol Type=UDP, UDP Port Number=4500 <- Used by IKEv2 (IPSec control path)
+        IP Protocol Type=ESP (value 50) <- Used by IPSec data path
+
+2) If RRAS server is directly connected to Internet, then you need to protect RRAS server from the Internet side (i.e. only allow access to the services on the public interface that isaccessible from the Internet side). This can be done using RRAS static filters or running Windows Firewall on the public interface (or the interface towards the Internet side). In this scenario following ports need to be opened (bidirectional) on RRAS box to allow VPN traffic to pass through
+
+For PPTP:
+
+    IP Protocol=TCP, TCP Port number=1723 <- Used by PPTP control path
+    IP Protocol=GRE (value 47) <- Used by PPTP data path
+
+For L2TP:
+
+    IP Protocol Type=UDP, UDP Port Number=500 <- Used by IKEv1 (IPSec control path)
+    IP Protocol Type=UDP, UDP Port Number=4500 <- Used by IKEv1 (IPSec control path)
+    IP Protocol Type=UDP, UDP Port Number=1701 <- Used by L2TP control/data path
+    IP Protocol Type=50 <- Used by data path (ESP)
+
+For SSTP:
+
+    IP Protocol=TCP, TCP Port number=443 <- Used by SSTP control and data path
+
+For IKEv2:
+
+    IP Protocol Type=UDP, UDP Port Number=500 <- Used by IKEv2 (IPSec control path)
+    IP Protocol Type=UDP, UDP Port Number=4500 <- Used by IKEv2 (IPSec control path)
+    IP Protocol Type=UDP, UDP Port Number=1701 <- Used by L2TP control/data path
+    IP Protocol Type=50 <- Used by data path (ESP)
+
+
+OpenVPN_configuration_examples port 1194
+
+https://www.arubacloud.com/tutorial/how-to-create-vpn-with-openvpn-windows.aspx
+https://www.liquidweb.com/kb/how-to-setup-openvpn-on-windows-server-2019/
+
+https://wiki.teltonika-networks.com/view/OpenVPN_configuration_examples
+
+
+
+https://bizflycloud.vn/tin-tuc/huong-dan-cai-dat-openvpn-client-tren-centos-rhel-7-20180309115612355.htm
+
+https://phoenixnap.com/kb/openvpn-centos
+https://anninhmang.edu.vn/cau-hinh-openvpn-tren-centos-7/
+
+https://allcloud.io/blog/configure-openvpn-authentication-using-active-directory/
+https://nerddrivel.com/2020/06/15/openvpn-server-on-centos7-with-active-directory-authentication/
+
+https://forums.openvpn.net/viewtopic.php?t=13053
+
+https://www.it-swarm-vi.com/vi/networking/thiet-lap-may-chu-openvpn-co-cau-noi-voi-ip-cong-cong-duy-nhat-nic/958848775/
+
+
+https://cuongquach.com/vpn-huong-dan-xay-dung-he-thong-openvpn.html
+https://two-oes.medium.com/how-to-setup-a-vpn-connection-with-openvpn-d2944b5ca768
+
+https://shebangthedolphins.net/vpn_openvpn_buster.html
+
+================================================== conf example
+port 1194
+proto udp
+dev tun
+
+ca /etc/openvpn/pki/ca.crt # generated keys
+cert /etc/openvpn/pki/issued/server.crt
+key /etc/openvpn/pki/private/server.key # keep secret
+dh /etc/openvpn/pki/dh.pem
+
+server 10.50.8.0 255.255.255.0 # internal tun0 connection IP
+ifconfig-pool-persist ipp.txt
+
+keepalive 10 120
+
+comp-lzo # Compression - must be turned on at both end
+persist-key
+persist-tun
+
+push "dhcp-option DNS 192.168.0.200"
+push "dhcp-option DOMAIN std.local"
+push "route 192.168.0.0 255.255.255.0"
+
+status /var/log/openvpn-status.log
+
+verb 3 # verbose mode
+
+=============================================================
+COMMAND
+
+# openvpn --version
+# ls -lah /usr/share/easy-rsa/
+# cd /etc/openvpn/
+# cp -r /usr/share/easy-rsa /etc/openvpn/
+# cd /etc/openvpn/easy-rsa/3/
+# vi vars
+set_var EASYRSA "$PWD"
+set_var EASYRSA_PKI "$EASYRSA/pki"
+set_var EASYRSA_DN "cn_only" # CHANGEABLE
+set_var EASYRSA_REQ_COUNTRY "COUNTRY" # CHANGEABLE
+set_var EASYRSA_REQ_PROVINCE "PROVINCE" # CHANGEABLE
+set_var EASYRSA_REQ_CITY "CITY" # CHANGEABLE
+set_var EASYRSA_REQ_ORG "ORG" # CHANGEABLE
+set_var EASYRSA_REQ_EMAIL "EMAIL" # CHANGEABLE
+set_var EASYRSA_REQ_OU "OU" # CHANGEABLE
+set_var EASYRSA_KEY_SIZE 2048
+set_var EASYRSA_ALGO rsa
+set_var EASYRSA_CA_EXPIRE 7500
+set_var EASYRSA_CERT_EXPIRE 365
+set_var EASYRSA_NS_SUPPORT "no"
+set_var EASYRSA_NS_COMMENT "YOUR_OWN_CA" # CHANGEABLE
+set_var EASYRSA_EXT_DIR "$EASYRSA/x509-types"
+set_var EASYRSA_SSL_CONF "$EASYRSA/openssl-1.0.cnf"
+set_var EASYRSA_DIGEST "sha256"
+=====================================================
+
+set_var EASYRSA "$PWD"
+set_var EASYRSA_PKI "$EASYRSA/pki"
+set_var EASYRSA_DN "org"
+set_var EASYRSA_REQ_COUNTRY "US"
+set_var EASYRSA_REQ_PROVINCE "CA"
+set_var EASYRSA_REQ_CITY "HANOI"
+set_var EASYRSA_REQ_ORG "VIETIS"
+set_var EASYRSA_REQ_EMAIL "IT@gmail.com"
+set_var EASYRSA_REQ_OU "VIETIS"
+set_var EASYRSA_KEY_SIZE 2048
+set_var EASYRSA_ALGO rsa
+set_var EASYRSA_CA_EXPIRE 7500
+set_var EASYRSA_CERT_EXPIRE 365
+set_var EASYRSA_NS_SUPPORT "no"
+set_var EASYRSA_NS_COMMENT "VIETIS"
+set_var EASYRSA_EXT_DIR "$EASYRSA/x509-types"
+set_var EASYRSA_SSL_CONF "$EASYRSA/openssl-1.0.cnf"
+set_var EASYRSA_DIGEST "sha256"
+
+=========================================================
+
+
+# chmod +x vars
+
+# cd /etc/openvpn/easy-rsa/3/
+# ./easyrsa init-pki
+# ./easyrsa build-ca
+
+vietis@123
+vietis@123
+
+Now type the password for your CA key and you will get your ‘ca.crt’ and ‘ca.key’ files under the ‘pki’ directory
+
+# ./easyrsa gen-req my-server nopass
+# ./easyrsa sign-req server my-server
+
+# openssl verify -CAfile pki/ca.crt pki/issued/my-server.crt
+
+pki/issued/my-server.crt: OK
+
+All server certificate keys have been created. 
+The server private key is located at the ‘pki/private/my-server.key’, 
+and the server certificate on the ‘pki/issued/my-server.crt’.
+
+
+# ./easyrsa gen-dh
+# ./easyrsa gen-crl
+
+# cp pki/ca.crt /etc/openvpn/server/
+# cp pki/issued/my-server.crt /etc/openvpn/server/
+# cp pki/private/my-server.key /etc/openvpn/server/
+
+# cp pki/dh.pem /etc/openvpn/server/
+# cp pki/crl.pem /etc/openvpn/server/
+
+
+# cd /etc/openvpn/
+
+# touch server.conf
+====================================================================================
+# OpenVPN Port, Protocol and the Tun
+port 1194
+proto udp
+dev tun
+
+# OpenVPN Server Certificate — CA, server key and certificate
+ca /etc/openvpn/server/ca.crt
+cert /etc/openvpn/server/my-server.crt
+key /etc/openvpn/server/my-server.key
+
+#DH and CRL key
+dh /etc/openvpn/server/dh.pem
+crl-verify /etc/openvpn/server/crl.pem
+
+# Network Configuration — Internal network
+# Redirect all Connection through OpenVPN Server
+server 172.26.15.0 255.255.255.0
+push "redirect-gateway def1"
+
+# Using the DNS from https://dns.watch
+push "dhcp-option DNS 192.168.0.2"
+push "dhcp-option DNS 192.168.0.3"
+push "route 192.168.0.0 255.255.255.0"
+
+#Enable multiple clients to connect with same Certificate key
+duplicate-cn
+# TLS Security
+cipher AES-256-CBC
+tls-version-min 1.2
+tls-cipher TLS-DHE-RSA-WITH-AES-256-GCM-SHA384:TLS-DHE-RSA-WITH-AES-256-CBC-SHA256:TLS-DHE-RSA-WITH-AES-128-GCM-SHA256:TLS-DHE-RSA-WITH-AES-128-CBC-SHA256
+auth SHA512
+auth-nocache
+# Other Configuration
+keepalive 20 60
+persist-key
+persist-tun
+comp-lzo yes
+daemon
+user nobody
+group nobody
+# OpenVPN Log
+log-append /var/log/openvpn.log
+verb 3
+=======================================================================+++++++++++++++
+############Firewall And NAT Configuration
+
+# echo 'net.ipv4.ip_forward = 1' >> /etc/sysctl.conf
+# echo 'net.ipv4.conf.all.accept_redirects = 0' >> /etc/sysctl.conf
+# echo 'net.ipv4.conf.all.send_redirects = 0' >> /etc/sysctl.conf
+# sysctl -p
+# sysctl -p /etc/sysctl.conf
+
+
+iptables -t nat -A POSTROUTING -s 172.26.15.0/24 -o enp2s0 -j MASQUERADE
+
+
+sudo firewall-cmd --zone=trusted --add-service openvpn
+sudo firewall-cmd --zone=trusted --add-service openvpn --permanent
+sudo firewall-cmd --add-masquerade
+sudo firewall-cmd --permanent --add-masquerade
+sudo firewall-cmd --query-masquerade
+sudo firewall-cmd --list-services --zone=trusteds
+
+SHARK=$(ip route get 10.1.6.9 | awk 'NR==1 {print $(NF-2)}')
+sudo firewall-cmd --permanent --direct --passthrough ipv4 -t nat -A POSTROUTING -s 172.26.15.0/24 -o $SHARK -j MASQUERADE
+
+firewall-cmd --reload
+sudo systemctl restart network.service
+
+sudo systemctl -f enable openvpn@server.service
+
+sudo systemctl start openvpn@server.service
+
+
+netstat -plntu | grep 1194
+
+
+https://www.digitalocean.com/community/tutorials/how-to-set-up-and-configure-an-openvpn-server-on-centos-7
+
+# firewall-cmd --get-default-zone
+# export FWZONE=$(firewall-cmd --get-default-zone)
+# firewall-cmd --permanent --add-service=openvpn
+# firewall-cmd --permanent --zone=${FWZONE} — add-interface=tun0
+
+# firewall-cmd --permanent --zone=${FWZONE} --add-masquerade
+
+
+Enable NAT for OpenVPN internal IP address ‘10.10.1.0/24’ to the external IP address ‘SERVERIP’.
+
+Client:
+cd /etc/openvpn/easy-rsa/3/
+./easyrsa gen-req client01 nopass
+./easyrsa sign-req client client01
+openssl verify -CAfile pki/ca.crt pki/issued/client01.crt
+
+# cp pki/ca.crt /etc/openvpn/client/
+# cp pki/issued/client01.crt /etc/openvpn/client/
+# cp pki/private/client01.key /etc/openvpn/client/
+
+https://www.asus.com/vn/support/FAQ/1004469/
+https://openvpn.net/vpn-client/
+
+https://openvpn.net/community-resources/how-to/
+https://support.cloudzone.vn/2021/01/28/huong-dan-cau-hinh-openvpn-server-tren-vps-centos-7/
+https://adminvietnam.org/cai-dat-openvpn-client-to-site-tren-centos-7/2212/
+
+
+https://openvpn.net/vpn-server-resources/openvpn-tunnel-session-management-options/
+
+ns-cert-type server reneg-sec 60 
+
+See --reneg-sec in The Manual v23x
+
+# Other Configuration
+#keepalive 60 600
+reneg-sec 5000
+hand-window 15
+max-clients 50
+

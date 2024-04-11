@@ -1,0 +1,59 @@
+https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/sec_data_acl/configuration/12-4t/sec-data-acl-12-4t-book/sec-cntrl-acc-vtl.html
+
+
+1. Controlling Inbound Access to a vty
+
+Router> enable
+Router# configure terminal
+
+
+=========
+Router(config)# access-list 1 deny 172.16.7.34 
+=========
+
+Router(config)# access-list 1 permit 172.16.0.0 0.0.255.255
+
+In this example, hosts on network 172.16.0.0 (other than the host denied in the prior step) pass the access list, meaning they can access the vtys identified in the line command.
+
+Router(config)# line vty 5 10
+access-class 1 in vrf-also
+
+If you do not specify the vrf-also keyword, incoming Telnet connections from interfaces that are part of a VPN routing and forwarding (VRF) instance are rejected.
+
+Router(config-line)# end
+Router# show line 5
+
+==========================
+
+line vty 0 15
+
+access-class 1 in
+
+Router(config)#access-class 1 in
+
+Router(config)#line vty 0 15
+
+
+Router(config)#access-list 1 permit 172.16.0.0 0.0.255.255
+
+Router(config)#access-list 1 deny any
+
+
+===============
+
+R1(config)#ip access-list extended VTY_ACCESS
+R1(config-ext-nacl)#10 permit tcp 172.16.1.0 0.0.0.255 any eq 22
+R1(config-ext-nacl)#500 deny ip any any log
+
+R1(config-ext-nacl)#line vty 0 4
+R1(config-line)#access-class VTY_ACCESS in
+R1(config-line)#end
+R1#
+
+===
+Router(config)#access-list 1 permit 10.1.1.10 0.0.0.0
+Router(config)#line vty 0 4
+Router(config-line)#access-class 1 in 
+access-list 1 deny any
+
+https://www.youtube.com/watch?v=m5iJL85Ev2g

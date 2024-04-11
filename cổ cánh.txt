@@ -1,0 +1,356 @@
+NAB và giá tham chiếu trong ngày giao dịch đầu tiên là 13.500 đồng/cổ phần. 
+
+TCB, VPB, TPB
+
+
+1. Râu nến phía trên rất dài -> biểu thị giá bán chênh lệch trong phiên khá lớncụ thể giá cao nhất là 21.95, trong khi giá thấp nhất ~ giá đóng cửa = 21.3
+điều này nói lên cái gì? cây nến này xuất hiện trong trend giảm (mấy phiên trước giảm, nến dài) -> có lực cầu xuất hiện -> đẩy giá bán lên cao
+
+tuy nhiên do lưc cung cũng rất mạnh (anh thấy bán tháo đấy) -> nhiều thằng cung mà cầu ko đủ nhiều để cân bằng -> giá đương nhiên giảm dần
+
+tới cuối phiên tụt tới gần bằng giá thấp nhân (chênh ít nên coi là bằng)
+
+-> lại nói lên 1 điều chốt lại là: phiên này xuất hiện lực cầu, có thể do bắt đáy, có thể do kỳ vọng nhưng ko đủ mạnh để thắng đà bán tháo
+
+-> nến này là nến hammer -> cho thấy tâm lý nhà đầu tư đang giằng co muốn mua vào rồi anh
+
+còn để chắc chắn thì phải phiên tiếp theo mới kiếm chứng được
+
++ dùng các công cụ phân tích khác để quyết định giá mua
+chính vì thế mà người ta nói ko ai mua được ở đáy, mà chỉ mua ở gần đáy thôi
+
+
+VD: râu con này dài em giải thích ở trên cho anh rồi mà ko phải lái mà xuất hiện lực cầu
+
+https://www.youtube.com/playlist?list=PLxEDYlHgfhQqKoNqO84-9un1547rJL5sZ
+
+https://vnsmartvision.com/8-mau-hinh-nen-hieu-qua-nhat/
+
+
+– Đường đỏ: Đường trung bình giản đơn 200 ngày (SMA200)
+
+– Đường xanh lam:  Đường trung bình giản đơn 50 ngày (SMA50)
+
+– Đường màu xám: Đường trung bình giản đơn 20 ngày (SMA20)
+
+Những chỉ số này rất quan trọng vì mọi nhà đầu tư (nhất là các quỹ đầu tư lớn) trên thế giới đều sử dụng các chỉ số này để giúp họ đưa ra quyết định khi giao dịch danh mục đầu tư của họ.
+
+Chỉ số quan trọng nhất là T-Line, là đường trung bình động theo hàm mũ 8 ngày (EMA8). T-Line có một số quy tắc rất đơn giản:
+
+– Bạn thấy một tín hiệu MUA nếu nến ở phía TRÊN T-Line, bạn đang ở trong UPTREND
+
+– Bạn nhìn thấy một tín hiệu BÁN nếu nến ở phía DƯỚI T-Line, bạn đang ở trong DOWNTREND
+
+Stochastics được sử dụng để chỉ ra tình trạng mua quá mức (quá mua) và bán quá mức (quá bán).
+
+Bạn nhìn thấy tín hiệu MUA vào nếu nến trong tình trạng bán quá mức, có khả năng là bạn sẽ đi vào một xu hướng tăng.
+
+Ngược lại, bạn nhìn thấy một tín hiệu BÁN nếu nến trong tình trạng mua quá mức, bạn có thể tiến vào một xu hướng giảm.
+
+https://forex-vn.com/cach-kiem-tien-bang-phan-tich-bieu-do-fx/duong-trung-binh-dong-la-gi-cach-xem-va-su-dung-duong-trung-binh-dong
+
+MBB
+SZC Công ty Cổ phần Sonadezi Châu Đức
+
+18 cổ phiếu niêm yết đến từ các DN gồm: Công ty CP Phát triển Đô Thị Từ Liêm mã (NTL), 
+Tổng công ty Viglacera – CTCP (mã VGC), 
+CTCP Xây dựng Số 3 (mã VC3), 
+Tổng Công ty Phát triển Đô thị Kinh Bắc (mã KBC) , 
+CTCP Phát triển Hạ tầng Vĩnh Phúc (IDV), 
+Tổng Công ty IDICO – CTCP (IDC), 
+CTCP Đầu tư và Công nghiệp Tân Tạ (ITA),
+CTCP Khu công nghiệp Hiệp Phước (HPI), 
+CTCP Sản xuất Kinh doanh Xuất nhập khẩu Dịch vụ và Đầu tư Tân Bình (TIX), 
+Công ty CP Long Hậu (LHG), 
+CTCP KCN Nam Tân Uyên, 
+Tổng Công ty Đầu tư và Phát triển Công nghiệp – CTCP, 
+Công ty CP Sonadezi Long Thành, 
+Tổng Công ty cổ phần Phát triển Khu Công nghiệp, CTCP Phát triển Khu Công nghiệp Tín Nghĩa, 
+Công ty CP Phát triển Đô Thị Công nghiệp số 2, CTCP Đầu tư LDG, 
+CTCP Sonadezi Châu Đức.
+
+
+https://fxdautu.com/learning/moving-average-la-gi-song-sat-ema-va-sma-la-gi-ma-loi-hai-den-vay
+
+https://online.hsc.com.vn/tin-tuc/de-dau-tu-chung-khoan-hieu-qua/nen-su-dung-cac-duong-moving-average-nhu-the-nao-la-hieu-qua.html
+
+https://cophieux.com/duong-ma-sma-ema-la-gi-cach-su-dung-duong-sma/
+
+Livestream tư vấn cổ phiếu 02.11.2020
+
+https://www.youtube.com/watch?v=ORykWNT8KG0
+
+chungkhoangtv azfin
+chứng khoán tv azfin việt nam 
+
+khóa học chứng khoán cho người mới
+
+TIG: Công bố thông tin thay đổi số lượng cổ phiếu lưu hành
+IDV: Báo cáo thường niên 2020
+
+TCB 21 bán ngay
+
+Stb mua
+PVS
+PVD
+NKG
+DXG
+TCM
+
+943 --> xét cắt lỗ 11/6/2020
+
+tiềm năng
+ACV
+DIG 20.5 mua vao
+
+VN30
+TQKS - Chiến thuật đầu tư chứng khoán phái sinh (P1)
+
+9-12-2020
+Bank: ACB, SHB, HDB, VPB
+Chứng khoán: SSI, HCM
+BĐS: HDC, HDG
+Đầu tư công: HPG, HSG, PLC, KSB, FPT.
+DẦU KHÍ: PVS, GAS
+Mọi người thích đánh chắc thì cứ đánh theo cổ này
+
+@Tran Son SSI đã qua kháng cự 21.7, nay nến xanh khá dài => Thận trọng chút nguy cơ lên kháng cự 22.3 bị chỉnh giật ngược lại hoặc sideway. 
+Nhưng với dòng tiền cuồn cuộn thế này, khả năng đó khá thấp. 
+Target 24.3-25.05 => Mai xem cách vào lệnh múc tiếp. Qua đc 2 target trên nhận định tiếp
+
+
+em vẫn tiếp tục khuyến nghị Mua LPB quanh vùng giá tham chiếu 
+NTL: MUA@22,600 Giá đất nền tại Hoài Đức tăng mạnh khi huyện được phê duyệt thành Quận vào năm 2022 và Vin phát triển KĐT Đan Phượng; khiến biên lợi nhuận dự án KĐT Bắc QL32 của NTL tăng mạnh. Tiến độ bán hàng 2021 sẽ phục hồi nhanh chóng nhờ quỹ đất có vị trí đẹp tại Hà Nội (Dịch Vọng, Hoài Đức) và Hạ Long (Bãi Muối, Núi Phạm). Tình hình tài chính lành mạnh, chi trả cổ tức đều đặn
+
+CTR: CHỜ MUA Công ty duy trì tốc độ tăng trưởng ổn định. 9 tháng đầu năm 2020, doanh thu và lợi nhuận sau thuế tăng lần lượt 15% và 35% so với cùng kỳ năm trước. Với sự hậu thuẫn từ Tập đoàn mẹ Viettel, công ty đang mở rộng sang lĩnh vực vận hành và cho thuê hạ tầng (Tower Co) với biên lợi nhuận tốt hơn mảng xây lắp truyền thống. Cơ cấu tài chính lành mạnh. Hiện cổ phiếu đang trong nhịp điều chỉnh sau khi có nhịp tăng giá 78%.
+
+LTG hỗ trợ 23/đang tích lũy
+KSB: hỗ trợ 27.5/ xu hướng tăng
+HDG: xu hướng tăng / đang cao rồi
+TTF: khó tăng
+ACB: rủi ro
+IdI 
+DBC: chờ xuống / đang tích lũy
+IDI 
+PC1: 21.8
+
+	Họ Vic giảm ko đáng kể, họ MSN và VNM tăng, họ bank tăng => VNI phiên này yên tâm rồi => MUA = > Đúng
+-	Mua tiếp IDI tiếp => Đúng. Tăng trần 6.95%
+-	Mua CTS => Đúng. Tăng trần 6.56%
+-	Mua tiếp BSI => Đúng. Tăng trần 6.57%
+-	Mua tiếp AGR => Đúng. Tăng trần 6.89%
+-	Mua cả họ chứng khoán trừ VCI => Đúng
++ HCM tăng 3.02%
++ SSI tăng 3.65%....
+-	Mua gom dần họ dầu khí:
++ PLX tăng 3.16%
++ PVT tăng 3.89%...
+-	Mua tiếp ASM => Đúng. Tăng 3.53%
+-	Mua tiếp BSR => Đúng. Tăng 5.1%
+-	Mua NDN => Đúng. Hôm nay ngó lại T+2 đã tăng 0.5%
+-	Mua CEO => Đúng. Hôm nay ngó lại T+2 đã tăng 1.3%
+-	Mua MPC => Đúng. T+2 đã tăng 1.4%
+-	Mua NVL => Đúng. T+2 đã tăng 3.63%
+-	Mua tiếp MSH =>Tạm sai. Tham chiếu. Vẫn đang chu kỳ sideway đợi breakout
+-	Mua tiếp PLP => Đúng. Hôm nay ngó lại T+2 đã tăng 0.25%
+
+-	Mã cũ phi tiếp mạnh: GIL tăng 3.42%, GTN tăng 5.33%, ANV tăng 5.58%..
+---------------------
+10-12-2020
+17-12-2020
+
+DXG -> TDH -> SCR
+
+GEX : hỏi xem
+Lên sàn
+MSB 15
+PGB 
+-----------
+https://www.youtube.com/watch?v=jgMfev_u-6Y
+http://sigmastock.net/tin-tuc/tong-hop/Dại-sú-Hoa-Ky-tham-va-lam-viec-voi-HDBank-Vietjet/119794
+
+TCBS HOANG VAN VIET so tai khoan tai 105C346458 TCBS nop tien vao TKCK 13833336666059
+CTCP CHUNG KHOAN KY THUONG
+
+ngày 6/1/2021 là ngày GDKHQ của mã BWE là mã em có tư vấn mua từ vùng giá 28 vào giữa tháng 12
+
+https://www.youtube.com/watch?v=tx1E3oW9Ags
+
+
+- Danh mục hiện tại: 13-1
+- Danh mục hiện tại: 13-1
+   + Nhóm BĐS: VHM, VRE, VIC
+   + Nhóm KCN: SZC, PHR
+   + NHóm dệt may: VGT, STK
+   + NHóm bank – tài chính: VCB, SHB, LPB, BVB, BMI
+   + Nhóm hàng tiêu dùng – bán lẻ: VNM, MWG, PNJ
+   + Nhóm công nghệ: FPT
+   + Nhóm hàng không: ACV, VJC
+   + Nhóm thủy sản: ANV
+   + Nhóm hóa chất – phân bón: DPM, BFC, DGC
+   + Nhóm khác: VEA, DVN, HAH
+
+- Danh mục có thể tham gia hôm nay:
+   + BVB giá mua 15 – 15.4
+   + DGC giá mua 50 – 51
+   + DGW giá mua 82 – 84.6
+   + ANV giá mua 24.95
+   + PTB giá mua 62
+Thêm mới DGW và PTB, còn lại đã tư vấn mua trước đó
+
+
+
+Danh mục hiện tại: 14-1
+Bank: VCB, SHB, BVB, (đã bán hết LPB)
+Bất động sản: VIC, VHM, VRE, SZC, PHR
+Chứng khoán: PVD (đã bán 50%)
+Hàng không: ACV, VJC
+Hàng tiêu dùng – bán lẻ: VNM, MWG, PNJ, DGW
+Phân bón – hóa chất: DGC, DPM, BFC
+Khác: ANV, HAH, FPT, BMI, DVN, VGT, NT2, PTB, STK, VEA, PC1
+
+Mã có thể tham gia hôm nay:
+   + ANV mua 24.5 – 25
+   + BMI mua 32.5
+   + BVB mua 15 – 15.4
+   + DGW mua 83
+   + DPM mua 19 – 19.3
+   + NT2 mua giá 25
+   + PTB giá mua 62
+   
+VTD:
+Đang có xu hướng uptrend.
+Đường giá cắt MA20, MA30
+Vol tăng dần.
+Giá phải vượt vùng 15.x với vol lớn thì sẽ là xác nhận trend rất chắc chắn.
+Mã này xác định có thể đánh trung hạn, nắm giữ khoảng 2-3 tháng sẽ đem lại lợi nhuận lớn.
+
+Chiến lược đầu tư sẽ là: VTD
+- Gom trước 50% vùng giá quanh 12.x
+- Giá vượt 15.x với vol lớn gom tiếp 50%
+
+Giá mục tiêu: 19.x đang cản 14.45, vượt cản mở mua T+ cho mục tiêu 17.9 được
+
+
+
+Khuyến nghị mua DPG (lướt sóng)
+KL: 20-30% tk
+Giá mua: 34.1-34.3
+
+
+1 là thanh khoản quá thấp dưới 2 tỷ/phiên, 100k/phiên
+2 là thanh khoản đều như bắp
+3 là giá biến động quá mạnh bất thường
+4 là những mã có lịch sử làm giá, hoặc bị phạt do vi phạm quy định
+Đây là những mã ngay từ đầu nên loại ra luôn ạ
+Khi mua 1 cp, mình phải hiểu tại sao mình mua nó, đang nằm ở giai đoạn nào, dòng tiền thông minh vào chưa, có phải dạng bo cung làm giá k? K phải ai phím là mua
+
+
+
+
+@Tran Cuong TUẦN 18-22/1/2021:
+BANK: TPB 29-34 VÀO RỔ VN30
+CK: CÁC CTY CK ĐỀU LÃI ĐẬM
+THÉP: SMC 21-25, HMC 15-19, TNA 14-16
+XI MĂNG: CP DƯỚI MỆNH SẼ VỀ MỆNH: QNC PDB BCC BTS SCJ HOM 
+SÓNG VT BIỂN: CHỜ CHỈNH VIP 10-12
+TTB 7-10
+
+PVD, BSR - Đường giá trên MA10, MA20. BB loe rộng. RSI trên 80. MACD trên đường tín hiệu => Đang ở vùng quá mua => Vẫn vào đc, tìm giá tốt để vào
+APS - Đường giá trên MA10. BB loe rộng. RSI trên 80. MACD trên đường tín hiệu. Đường xu hướng vẫn Tăng => Vẫn vào được, canh giá tốt để vào
+BSI tương tự APS TVS BVS MBS SHS 
+
+GTN 28.8 - 29
+TCL 30.8 - 31
+
+BSR quanh 12 mua ổn nhé
+GIC
+ABC  mua vào 
+BVB  mua vào 14.6 
+LBP  mua vào 14.4
+CTG  
+TCB - Ngân hàng TMCP Kỹ thương Việt Nam – Techcombank - Ngày 08/2 là ngày giao dịch không hưởng quyền nhận cổ tức đợt 1 năm 2020
+
+BSR PSD PVT PO
+DXG EVG NDN -
+
+CTR, FPT và PC1 có tiềm năng trong dài hạn, 
+
+tốc độ tăng trưởng doanh thu và lợi nhuận ở mức cao, 
+hoạt động kinh doanh ít bị ảnh hưởng bởi dịch COVID-19. 
+Đặc biệt, cổ phiếu FPT và PC1 đã duy trì được sự ổn định trong những phiên biến động mạnh của thị trường.
+
+TCB - Tỷ trọng: 15%
+MSN - Tỷ trọng: 15%
+FPT - Tỷ trọng: 15%
+DGC - Tỷ trọng: 15%
+VHM - Tỷ trọng: 10%
+HPG - Tỷ trọng: 10%
+CTR - Tỷ trọng: 5%
+GIL - Tỷ trọng: 5%
+SZC - Tỷ trọng: 5%
+PC1 - Tỷ trọng: 5%
+
+https://youtu.be/_vmkgkO1Fc8
+
+
+https://www.uplevo.com/blog/kinh-doanh/7-buoc-co-ban-can-biet-khi-kinh-doanh-online/
+https://moavietnam.com/huong-dan-ban-hang-online
+
+https://www.sapo.vn/blog/cach-ban-hang-online-thanh-cong/
+
+https://www.youtube.com/watch?v=SIj0I6c6l44&ab_channel=T%C3%A0ich%C3%ADnh%26Kinhdoanh
+
+Update 1 số Thông tin tăng vốn của các DNo năm nay 2021
+1. HCM - Tăng vốn 2:1, giá 14k/ cổ phiếu
+2. SSI – Dự Chia 10% tiền và 10% cổ
+3. VCI – Dự chia cổ tức 50% cổ phiếu ( 2:1 )
+4. VND – Dự chia 10% tiền + 30% cổ -Tăng vốn lên 5.000 tỷ
+5. SHS – Dự chia 10% TM
+6. MBS – Dự chia CP 2-1 - tăng vốn lên 2.500 tỷ
+------------------------------------
+Kế hoạch chia cổ tức của các công ty
+1. HPG chia 40% : 30% CP + 10% tiền
+2. FPT chia 10% TM 2020 + 15% CP 2021
+-------------------------------
+KẾ hoạch của 1 số Ngân hàng
+1. OCB: 25%=cp
+2. VIB: 40%=cp
+3. LPB : 10%=cp – Bán bớt CP cho tỏ chức NN
+4. ACB: 25%=cp
+5. TCB: Chưa chốt số, tin đồn lên tới 50% = cp
+6. MBB: 30% = cp, có thể thoái vốn cty con Bảo hiểm MIG.
+7. CTG: 2017-2018: 28,9%=cp chốt sau ĐHCD 15/4; trình cổ tức 2020: 5% TM+ 10%cp
+8. MSB : 15% bằng CP
+9. SHB : 20,5% = cổ phiếu ( 2019  : 10% + 2020 : 10,5% )
+
+https://www.youtube.com/watch?v=MQuNtnmDSKE&ab_channel=Ch%E1%BB%A9ngKho%C3%A1nNh%C3%A2nQu%E1%BA%A3
+
+(TPBank):30/03/21;15:58 TK: xxxx3856001 PS:  +24.200.506VND SD KHA DUNG: 24.200.506VND ND: CHUYEN LUONG THANG 03
+ PS:-14.000.000VND SD
+
+
+ 
+
+----------
+ 
+5fd5xa
+manD@b85
+
+
+https://www.youtube.com/watch?v=WWms_nQPD1k
+   
+https://batdongsan.com.vn/ban-nha-rieng-duong-le-duc-tho-phuong-my-dinh-2/ban-mat-ngo-35-gia-tri-tang-tung-ngay-pr29454238
+0016 9608 001
+Công ty Cổ phần Chứng khoán VPS
+Ngânhàng Thương mại Cổ phần Tiên Phong -Chi nhánh Hội 
+Khách hàng nộp tài khoản chứng khoán phái sinhtạiVPS:
+
+Chuyen nop tien vào TKCK phai sinh 546458 duoi 8 cua HOANG VAN VIET
+
+ketoangiaodich@vps.com.vn
+
+https://www.youtube.com/watch?v=1kEeB1uhZB8
+
+5fd5xa
+manD@b85

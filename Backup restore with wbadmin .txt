@@ -1,0 +1,14 @@
+https://www.backup-utility.com/wbadmin/delete-backup-4348.html
+
+wbadmin delete backup -KeepVersions:10 
+wbadmin get versions
+wbadmin start systemstaterecovery -version:08/25/2008-06:45
+
+
+wbadmin start systemstaterecovery -version:08/25/2008-06:45
+
+http://www.ntbackup-replacement.info/backup-and-restore-system-state-wbadmin-server-2008.php
+
+https://www.backup-utility.com/wbadmin/system-state-recovery-4348.html
+
+FCCA5855D10AF93D6448688BD497EBD8

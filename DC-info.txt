@@ -1,0 +1,36 @@
+#
+# Windows PowerShell script for AD DS Deployment
+#
+
+Import-Module ADDSDeployment
+Install-ADDSForest `
+-CreateDnsDelegation:$false `
+-DatabasePath "C:\Windows\NTDS" `
+-DomainMode "Win2012R2" `
+-DomainName "vietis.vn" `
+-DomainNetbiosName "DC-VIETIS" `
+-ForestMode "Win2012R2" `
+-InstallDns:$true `
+-LogPath "C:\Windows\NTDS" `
+-NoRebootOnCompletion:$false `
+-SysvolPath "C:\Windows\SYSVOL" `
+-Force:$true
+
+   main: # 'main' is the GitLab 'provider ID' of this LDAP server
+     label: 'LDAP'
+     host: 'dc01.vietis.vn'
+     port: 389
+     uid: 'sAMAccountName'
+     method: 'plain' # "tls" or "ssl" or "plain"
+     bind_dn: 'CN=authen_ldap,CN=Users,DC=vietis,DC=vn'
+     password: 'vietis@123'
+     active_directory: true
+     allow_username_or_email_login: true
+     block_auto_created_users: false
+     base: 'OU=Members Users,OU=Members,DC=vietis,DC=vn'
+	 
+	 
+	 
+	 %20 
+	 
+	 adPath = "ldap://a.b.c/CN=IT,\"OU=IT Groups\",OU=IT,OU=Internal,\"OU=Organization Users\",dc=domain,dc=com"

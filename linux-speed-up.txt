@@ -1,0 +1,96 @@
+Solution
+
+free -m
+
+sync; echo 1 > /proc/sys/vm/drop_caches
+sync; echo 2 > /proc/sys/vm/drop_caches
+sync; echo 3 > /proc/sys/vm/drop_caches
+swapoff -a 
+&& swapon -a
+
+https://www.2daygeek.com/add-extend-increase-swap-space-memory-file-partition-linux/
+
+sudo dd if=/dev/zero of=/swapfile1 bs=1G count=1
+ls -lh /swapfile1
+sudo chmod 600 /swapfile1
+sudo mkswap /swapfile1
+sudo swapon /swapfile1
+vi /etc/fstab
+  /swapfile1  swap  swap  defaults  0 0
+  
+reboot
+sudo free -h
+sudo free -mh  
+  https://edspencer.me.uk/posts/2017-07-30-reducing-the-amount-of-memory-used-by-gitlab/
+
+pen the gitlab config file, which should be located at /etc/gitlab/gitlab.rb.
+Reduce the postgres database cache
+
+##! **recommend value is 1/4 of total RAM, up to 14GB.** 
+postgresql['shared_buffers'] = "256MB"
+
+Reduce the concurrency level in sidekiq
+
+I set this at 15 instead of 25 as I don't have that many commits going on.
+
+sidekiq['concurrency'] = 15 #25 is the default
+
+Disable prometheus monitoring
+
+prometheus_monitoring['enable'] = false
+
+Restart gitlab and test it out:
+
+Run:
+
+gitlab-ctl reconfigure
+
+https://dzone.com/articles/top-20-git-commands-with-examples
+
+
+https://viblo.asia/p/toi-uu-nginx-va-php-fpm-cho-cac-website-co-luong-truy-cap-lon-ORNZqBVnl0n
+
+NGINX
+
+Mở file /etc/nginx/nginx.conf và điều chỉnh theo các hướng dẫn sau.
+
+max_clients = worker_processes * worker_connections
+
+số lượng người truy cập tối đa Nginx có thể phục vụ bằng thông số worker_processes nhân với worker_connections. Mặc định sau khi cài đặt Nginx thì
+
+worker_processes = 1
+worker_connections = 1024.
+
+cat /proc/cpuinfo |grep processor  
+
+
+server_tokens off;  
+
+
+
+
+
+
+
+Ví dụ server hiện tại có khoảng 4GB RAM, đang chạy cả web và DB, 
+chúng ta sẽ tính con số ước lượng là DB hoạt động khoảng 1GB và 0.5G dành cho buffer. 
+Với các con số như vậy thì dung lượng RAM còn lại cho hoạt động của php-fpm tương đương với: 4 - 1 - 0,5 = 2,5 GB RAM hoặc 2560 Mb.
+
+pm.max_children = 2560 Mb / 60 Mb = 42
+
+pm.max_children = 40
+
+pm.min_spare_servers có giá trị tương đương với 20% của pm.max_children.
+
+pm.min_spare_servers = 20% * 40 = 8
+
+
+2560	
+40	    
+64	    pm.max_children
+12.8	pm.min_spare_servers
+38.4	
+
+https://magz.techover.io/2019/12/24/toi-uu-nginx-php-fpm-cho-luong-truy-cap-lon/
+
+

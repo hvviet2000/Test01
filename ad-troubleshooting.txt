@@ -1,0 +1,153 @@
+Trụ Sở: 22/ 112, Hoàng Quốc Việt, Q. Cầu Giấy, Hà Nội
+Email: INFO@SMARTCARVN.COM
+
+Hotline: 0936 318 444
+Fanpage: https://www.facebook.com/smartcarvn/
+
+Website: https://techcar.vn/
+
+Gara Nam Trường Thành
+
+Địa chỉ: Số 1 Nguyễn Văn Huyên, Cầu Giấy, Hà Nội
+
+Điện thoại:0983381199
+
+Hotline: 1900969644
+
+Email: nttgroup.com.vn
+
+Facebook: facebook.com/ntt.dichvu
+
+
+Địa chỉ: Lô B9,11,13/D7 ngõ 25 phố Thọ Tháp, Khu ĐTM Cầu Giấy, p. Q, Cầu Giấy, Hà Nội
+Điện thoại: 092 929 29 99
+
+Địa chỉ: 105 Phố Nghĩa Tân, Nghĩa Tân, Cầu Giấy, Hà Nội
+Điện thoại: 098 331 65 55
+
+
+VietIS_SW_03(config)#int fa 0/14                                                                                        VietIS_SW_03(config-if)#no authentication port-control auto                                                             VietIS_SW_03(config-if)#no dot1x pae authenticator                                                                      VietIS_SW_03(config-if)#sw                                                                                              VietIS_SW_03(config-if)#switchport acc                                                                                  VietIS_SW_03(config-if)#switchport access vlan 232                                                                      VietIS_SW_03(config-if)#des                                                                                             VietIS_SW_03(config-if)#description truong.nguyenvuong     
+
+
+Linksys E1700
+WiFi TP-LINK  tl-wdr7300
+Tenda AC7 AC1200
+
+
+Workaround/Fix Below:
+
+Before Upgrade:
+[Unit]
+Description=Mattermost
+After=syslog.target network.target postgresql-9.4.service
+
+[Service]
+Type=notify
+WorkingDirectory=/opt/mattermost
+User=mattermost
+ExecStart=/opt/mattermost/bin/platform
+PIDFile=/var/spool/mattermost/pid/master.pid
+TimeoutStartSec=3600
+LimitNOFILE=49152
+
+[Install]
+WantedBy=multi-user.target
+
+After Upgrade:
+
+[Unit]
+Description=Mattermost
+After=syslog.target network.target postgresql-9.4.service
+
+[Service]
+Type=notify
+WorkingDirectory=/opt/mattermost
+User=mattermost
+ExecStart=/opt/mattermost/bin/mattermost
+PIDFile=/var/spool/mattermost/pid/master.pid
+TimeoutStartSec=3600
+LimitNOFILE=49152
+
+[Install]
+WantedBy=multi-user.target
+
+
+
+Seasonic, Silverstone, Antec và Corsair (đều sử dụng nguồn của Seasonic).
+
+
+Thông số kỹ thuật:
+    Chassis Tower Dell PowerEdge T40
+    Mainboard Dell PowerEdge T40
+    Intel Rapid Storage Controller 12.X
+    1 x Intel® Xeon® E-2224G Processor 8M Cache, 3.50 GHz TM-T40
+    2 x Bộ Nhớ RAM DDR4 8GB PC4-21300 ECC 2666MHz Unbuffered DIMM
+    2 x Ổ Cứng HDD Dell 2TB 3.5inch 7.2K RPM NLSAS 12Gb/s
+    DVD+/-RW Slim 8X 9.5mm Internal Drive
+
+22M
+
+
+Chassis HPE ProLiant ML30 Gen10 - 350W Power Supply
+Mainboard HPE ProLiant ML30 Gen10
+Smart Array HPE S100i SR Gen10 Sofware Raid
+1 x Intel® Xeon® E-2224 Processor 8M Cache, 3.40 GHz TM-ML30
+2 x Bộ Nhớ RAM DDR4 8GB PC4-21300 ECC 2666MHz Unbuffered DIMM
+2 x Ổ Cứng HDD HPE 1TB 3.5" SATA 6Gb/s 7.2K RPM
+1 x HPE 4Y FC NBD ML30 Gen10 SVC
+27M
+
+
+https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731968(v=ws.10)?redirectedfrom=MSDN
+1. Check if the value of ldapserverintegrity=REG DWORD:0x00000001
+under HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\NTDS\Parameters
+Dcdiag /v
+The ADAM_instance1 service was unable to log on as DC-VIETIS\admin with the currently configured password
+
+https://medium.com/@CHSuworatrai/sysvol-and-group-policy-out-of-sync-on-server-2012-r2-dcs-using-dfsr-ae79cac3f23c
+
+
+
+
+1 – 65535
+https://kb.vmware.com/s/article/1023864
+dsdbutil “list instances” quit
+
+
+
+
+Situation: a small business company has a problem to login the DC with this event
+Log Name: Active Directory Web Services
+Source: ADWS
+Event ID: 1202
+Level: Error
+Description:
+This computer is now hosting the specified directory instance, but Active Directory Web Services could not service it. Active Directory Web Services will retry this operation periodically.
+
+Directory instance: NTDS
+Directory instance LDAP port: 389
+Directory instance SSL port: 636
+
+Troubleshooting: We run dcdiag on one of DCs and receive these messages:
+DC01 failed test Connectivity.
+DC01 is not responding to directory service requests.
+Warning: DcGetDcName(PDC_REQUIRED) call failed, error 1355
+failed test LocatorCheck
+
+We find the DNS is setup using public IP address 8.8.8.8 and the Network shows Public Network. 
+Changing DNS to an internal DNS and changing the network from public to Private fixes the problem.
+
+
+
+https://serverfault.com/questions/639088/how-do-i-make-a-connection-private-on-windows-server-2012-r2
+
+
+A GUI way of making this change:
+
+    Hit Winkey + R to open Run prompt and type gpedit.msc
+    Navigate to: Computer Configuration/Windows Settings/Security Setting /Network List Manager Policies.
+    Choose your Network name in the right pane.
+    Note: To show networks not currently connected, right-click Network List Manager Policies in the left pane and choose Show All Networks.
+
+    Go to Network Location tab and change the Location type from Public to Private. enter image description here
+	

@@ -1,0 +1,102 @@
+Kích hoạt bằng key KMS
+Yêu cầu máy tính được kết nối mạng
+Windows Server 2012 R2 Datacenter
+1. Chạy CMD (admin)
+2. Nhập lệnh:
+slmgr.vbs /ipk W3GGN-FT8W3-Y4M27-J84CP-Q3VJ9
+3. Nhập lệnh:
+slmgr.vbs /skms kms.digiboy.ir
+4. Nhập lệnh:
+slmgr.vbs /ato
+
+Windows Server 2012 R2 Standard
+1. Chạy CMD (admin)
+2. Nhập lệnh:
+slmgr.vbs /ipk D2N9P-3P6X9-2R39C-7RTCD-MDVJX
+3. Nhập lệnh:
+slmgr.vbs /skms kms.digiboy.ir
+4. Nhập lệnh:
+slmgr.vbs /ato
+
+Windows Server 2012 R2 Essentials
+1. Chạy CMD (admin)
+2. Nhập lệnh:
+slmgr.vbs /ipk KNC87-3J2TX-XB4WP-VCPJV-M4FWM
+3. Nhập lệnh:
+slmgr.vbs /skms kms.digiboy.ir
+4. Nhập lệnh:
+slmgr.vbs /ato
+
+Windows Server 2012 Datacenter
+1. Chạy CMD (admin)
+2. Nhập lệnh:
+slmgr.vbs /ipk 48HP8-DN98B-MYWDG-T2DCC-8W83P
+3. Nhập lệnh:
+slmgr.vbs /skms kms.digiboy.ir
+4. Nhập lệnh:
+slmgr.vbs /ato
+
+Windows Server 2012 Standard
+1. Chạy CMD (admin)
+2. Nhập lệnh:
+slmgr.vbs /ipk XC9B7-NBPP2-83J2H-RHMBY-92BT4
+3. Nhập lệnh:
+slmgr.vbs /skms kms.digiboy.ir
+4. Nhập lệnh:
+slmgr.vbs /ato
+
+Windows Server 2012
+1. Chạy CMD (admin)
+2. Nhập lệnh:
+slmgr.vbs /ipk BN3D2-R7TKB-3YPBD-8DRP2-27GG4
+3. Nhập lệnh:
+slmgr.vbs /skms kms.digiboy.ir
+4. Nhập lệnh:
+slmgr.vbs /ato 
+
+
+Windows Server 2019 Datacenter
+
+slmgr /ipk WMDGN-G9PQG-XVVXX-R3X43-63DFG
+slmgr /skms kms.digiboy.ir
+slmgr /ato
+
+
+Windows Server 2019 Standard
+slmgr /ipk N69G4-B89J2-4G8F4-WWYCC-J464C
+slmgr /skms kms.digiboy.ir
+slmgr /ato
+
+Windows Server 2019 Datacenter
+	
+
+WMDGN-G9PQG-XVVXX-R3X43-63DFG
+
+Windows Server 2019 Standard
+	
+
+N69G4-B89J2-4G8F4-WWYCC-J464C
+
+Windows Server 2019 Essentials
+	
+
+WVDHN-86M7X-466P6-VHXV7-YY726
+slmgr /ipk N69G4-B89J2-4G8F4-WWYCC-J464C
+
+slmgr /skms kms.digiboy.ir
+
+slmgr /ato
+
+
+
+DISM /online /Set-Edition:ServerStandard /ProductKey X92KH-T2N66-7JVHY-CJD6C-CKDD2 /AcceptEula
+vietis std 2016
+X92KH-T2N66-7JVHY-CJD6C-CKDD2
+
+https://www.wintips.org/how-to-convert-server-2016-evaluation-to-licensed-version/
+
+slmgr /ipk X92KH-T2N66-7JVHY-CJD6C-CKDD2
+slmgr /ato
+
+
+87

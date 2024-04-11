@@ -1,0 +1,52 @@
+ALTER TABLE `ex1`.`hisofchangeserver` ADD COLUMN `type` TEXT NULL DEFAULT NULL AFTER `end_date`;
+
+
+c
+root@techshare.vn [~]#yum -y install epel-release
+root@techshare.vn [~]# yum -y install mongodb-server java-1.8.0-openjdk unzip wget
+root@techshare.vn [~]#systemctl start mongod
+root@techshare.vn [~]#systemctl enable mongod
+root@techshare.vn [~]#sed -i /etc/selinux/config -r -e 's/^SELINUX=.*/SELINUX=disabled/g'
+root@techshare.vn [~]#systemctl reboot
+
+user mockbuild does not exist
+yum install mock
+useradd -s /sbin/nologin mockbuild
+yum install http://dl.marmotte.net/rpms/redhat/el7/x86_64/unifi-controller-5.8.24-1.el7/unifi-controller-5.8.24-1.el7.x86_64.rpm
+
+yum -y install epel-release
+
+yum -y install mongodb-server java-1.8.0-openjdk unzip wget
+
+yum install http://dl.marmotte.net/rpms/redhat/el7/x86_64/unifi-controller-5.8.24-1.el7/unifi-controller-5.8.24-1.el7.x86_64.rpm
+systemctl enable unifi.service
+systemctl start unifi.service
+
+
+
+https://blog.barclayhowe.com/installing-ubiquiti-unifi-controller-centos-server/
+sudo firewall-cmd --add-port=8080-8081/tcp --permanent
+sudo firewall-cmd --add-port=8443/tcp --permanent
+sudo firewall-cmd --add-port=8843/tcp --permanent
+sudo firewall-cmd --add-port=8880/tcp --permanent
+sudo firewall-cmd --add-port=10000-10010/tcp --permanent
+sudo firewall-cmd --add-port=10001/udp --permanent
+sudo firewall-cmd --add-port=3478/udp --permanent
+sudo firewall-cmd --reload
+
+
+https://help.ui.com/hc/en-us/articles/204949764-UniFi-Controller-Fails-to-Start-When-Opened
+https://cuongquach.com/cai-dat-mongodb-3-4-tren-centos-7.html
+
+
+iptables -A INPUT -p tcp --dport 27017 -j ACCEPT
+
+
+3.6.0 
+
+yum install http://dl.marmotte.net/rpms/redhat/el7/x86_64/unifi-controller-5.8.24-1.el7/unifi-controller-5.8.24-1.el7.x86_64.rpm
+
+https://plone.lucidsolutions.co.nz/networking/wireless/ubiquiti-unifi/ubiquiti-unifi-controller-v4.8.18-on-a-centos-7-vm
+
+
+

@@ -1,0 +1,113 @@
+#!/bin/bash
+
+if [ "$#" = 0 ]
+
+then
+echo "Usage $0 "
+
+exit 1
+
+fi
+
+service=$1
+
+is_running=`ps aux | grep -v grep| grep -v "$0" | grep $service| wc -l | awk '{print $1}'`
+
+if [ $is_running != "0" ] ;
+
+then
+
+echo "Service $service is running"
+
+else
+
+echo
+
+initd=`ls /etc/init.d/ | grep $service | wc -l | awk '{ print $1 }'`
+
+if [ $initd = "1" ];
+
+then
+startup=`ls /etc/init.d/ | grep $service`
+
+echo -n "Found startap script /etc/init.d/${startup}. Start it? Y/n ? "
+
+read answer
+
+if [ $answer = "y" -o $answer = "Y" ];
+
+then
+echo "Starting service..."
+
+/etc/init.d/${startup} start
+
+fi
+
+fi
+
+fi
+
+obbin@linoxide:/$ ./service.sh apparmor
+Service apparmor is not running
+Found startap script /etc/init.d/apparmor. Start it? Y/n ? Y
+Starting service...
+* Starting AppArmor profiles [OK]
+
+==============================================================
+service=mattermost
+
+if (( $(ps -ef | grep -v grep | grep $service | wc -l) > 0 ))
+then
+echo "$service is running!!!"
+else
+/etc/init.d/$service start
+fi
+
+
+===========================================
+
+# vi /opt/scripts/service-monitor.sh
+
+#!/bin/bash
+serv=httpd
+sstat=stopped
+service $serv status | grep -i 'running\|stopped' | awk '{print $3}' | while read output;
+do
+echo $output
+if [ "$output" == "$sstat" ]; then
+    service $serv start
+    echo "$serv service is UP now.!" | mail -s "$serv service is DOWN and restarted now On $(hostname)" daygeek@gmail.com
+    else
+    echo "$serv service is running"
+    fi
+done
+
+
+=====================
+
+# vi /opt/scripts/service-monitor-1.sh
+
+#!/bin/bash
+serv=httpd
+sstat=$(pidof $serv | wc -l )
+if [ $sstat -gt 0 ]
+then
+echo "$serv is running fine!!!"
+else
+echo "$serv is down/dead"
+service $serv start
+echo "$serv service is UP now!!!" | mail -s "$serv service is DOWN and restarted now On $(hostname)" daygeek@gmail.com
+fi
+
+mattermost
+
+#!/bin/bash
+SERVICE=mattermost
+if P=$(pgrep $SERVICE)
+then
+    echo "$SERVICE is running, PID is $P"
+else
+    echo "$SERVICE is not running, starting..."
+    # start service if not running
+    systemctl start $SERVICE
+fi
