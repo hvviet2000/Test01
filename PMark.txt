@@ -1,0 +1,29 @@
+JIS Q 15001 là tiêu chuẩn quy định các yêu cầu đối với hệ thống quản lý đối với các tổ chức khác nhau nhằm quản lý thông tin cá nhân một cách thích hợp nhằm mục đích bảo vệ thông tin cá nhân. Bằng cách thiết lập hệ thống nội bộ dựa trên JIS Q 15001, chúng tôi có thể quản lý thông tin cá nhân một cách hiệu quả và hiệu quả.
+
+Để đạt được chứng chỉ PrivacyMark, bạn thường cần tuân theo các bước sau:
+
+    Hiểu Rõ Các Yêu Cầu: Hãy làm quen với Luật Bảo vệ Thông tin Cá nhân của Nhật Bản và các yêu cầu để đạt được chứng chỉ PrivacyMark. Các yêu cầu này có thể thay đổi theo thời gian, vì vậy rất quan trọng phải tham khảo các hướng dẫn mới nhất được cung cấp bởi METI.
+
+    Chỉ Định Một Chuyên Viên Quyền Riêng Tư: Bổ nhiệm một chuyên viên quyền riêng tư trong tổ chức của bạn. Cá nhân này sẽ chịu trách nhiệm triển khai và giám sát chính sách và thủ tục về quyền riêng tư của công ty của bạn.
+
+    Xây dựng Chính Sách Quyền Riêng Tư: Tạo ra một chính sách quyền riêng tư toàn diện mô tả cách tổ chức của bạn thu thập, sử dụng và bảo vệ thông tin cá nhân. Hãy đảm bảo rằng chính sách này phù hợp với các yêu cầu của Luật Bảo vệ Thông tin Cá nhân của Nhật Bản.
+
+    Triển Khai Thực Hành Quyền Riêng Tư: Triển khai các thực hành và thủ tục quyền riêng tư dựa trên chính sách quyền riêng tư của bạn. Điều này có thể bao gồm việc đào tạo nhân viên về cách xử lý thông tin cá nhân, thiết lập các biện pháp bảo mật dữ liệu và triển khai các thủ tục để xử lý các yêu cầu và khiếu nại liên quan đến quyền riêng tư.
+
+    Tiến Hành Kiểm Tra Nội Bộ: Tiến hành một cuộc kiểm tra nội bộ để đánh giá mức độ tuân thủ của tổ chức của bạn với Luật Bảo vệ Thông tin Cá nhân của Nhật Bản và các yêu cầu của chứng chỉ PrivacyMark. Xác định các lĩnh vực cần cải thiện và thực hiện các biện pháp khắc phục.
+
+    Nộp Đơn Xin Chứng Chỉ: Nộp đơn xin chứng chỉ PrivacyMark cho METI. Đơn xin của bạn sẽ được xem xét, và nếu đáp ứng các yêu cầu, bạn sẽ được trao chứng chỉ PrivacyMark.
+
+    Nỗ Lực Tuân Thủ: Một khi đã được chứng nhận, tiếp tục tuân thủ Luật Bảo vệ Thông tin Cá nhân của Nhật Bản và các yêu cầu của chứng chỉ PrivacyMark. Điều này bao gồm định kỳ xem xét và cập nhật chính sách và thủ tục quyền riêng tư của bạn khi cần thiết.
+
+https://privacymark.org/about/grant_and_unit.html
+JIS Q 15001 - Hệ thống quản lý bảo vệ thông tin cá nhân - yêu cầu
+
+Phạm vi thông tin được đề cập khác nhau giữa JIS Q 15001 và ISO/IEC 27001.
+ISO/IEC 27001 bao gồm tất cả thông tin do một tổ chức nắm giữ, trong khi JIS Q 15001 chỉ bao gồm thông tin cá nhân.
+
+Những điểm chính của yêu cầu JIS Q 15001
+
+    Thực hiện đánh giá rủi ro theo vòng đời của thông tin cá nhân (luồng từ khi thu thập đến khi xử lý)
+    Đặt ra các quy tắc chi tiết về việc thu thập, sử dụng và cung cấp thông tin cá nhân
+    Đặt ra các quy tắc chi tiết về [Quyền của cá nhân liên quan đến thông tin cá nhân]

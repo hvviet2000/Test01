@@ -1,0 +1,25 @@
+Mô tả công việc
+• Hỗ trợ người dùng, cài đặt, xử lý các sự cố liên quan đến hệ thống phần mềm , phần cứng máy tính, internet, mạng nội bộ
+• Quản lý hệ thống mạng và các thiết bị văn phòng: server, thiết bị lưu trữ , máy in, máy scan, máy chấm công, camera giám sát,...
+• Giám sát và cấu hình thiết bị Router, Modem, Switch, Wifi, VPN,
+
+
+Yêu cầu ứng viên
+• Tốt nghiệp Cao đẳng hoặc đại học chuyên ngành CNTT, Mạng máy tính, Quản trị mạng,...
+• Ít nhất 1 năm kinh nghiệm IT Helpdesk, IT Support.
+• Hiểu biết tốt về hệ thống mạng LAN, SERVER, hệ điều hành Window, Linux
+• Có kinh nghiệm xử lý các lỗi phần cứng, phần mềm máy tính, máy in...
+• Nhanh nhẹn, cẩn thận, trung thực, teamworks
+
+
+Ưu tiên : có kinh nghiệm
+Cấu hình và quản trị hệ thống:
+- FireWall (pfsense , Firewall Window ,)
+- Switch Layer 2 , Layer 3 , router của TP Link và Cisco (Cấu hình Rule , AccessList , Policy , VPN , QoS, …)
+- Hệ thống máy chủ AD , DNS, DHCP, FileServer 
+- Có các chứng chỉ chuyên môn liên quan là một lợi thế như: CCNA, MCSA, ...
+- Kiến thức về PFSense: Đã từng làm dự án liên quan đến PFSense hoặc có kiến thức cơ bản về nền tảng này.
+
+Quyền lợi được hưởng
+• Mức lương cơ bản : Từ  10-15 triệu 
+

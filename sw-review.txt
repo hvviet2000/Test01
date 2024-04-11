@@ -1,0 +1,228 @@
+ switchport mode access
+ authentication port-control auto
+ dot1x pae authenticator
+ spanning-tree portfast
+
+
+SW1
+interface GigabitEthernet0/21
+ switchport mode access
+  switchport access vlan 235
+ Phong sep linh
+ 
+ 
+ Switch Port No:..11 . / Switch Name:.SW-01..../To .TRUNK... Mode/ (phòng LABO1 gần tủ điện)
+ 
+ Gi0/11                       connected    trunk
+ Gi0/24    Trunking To VietIS connected    trunk
+ 
+
+SW 2: 10.1.2.12 Network Device: VietIS_SW02
+
+Fa0/13    vpn onsite         connected    80 
+Fa0/14    vpn onsite         connected    80  
+Fa0/16    "Chay may ao vargr connected    
+Fa0/26    hau.vuvan          connected    
+Fa0/27    viet.dinhduc       connected     
+Fa0/29    duc.nguyenhuu      connected    
+Fa0/31    binh.dangtho       connected    
+Fa0/32    mai.tranthithanh   connected     
+Fa0/36    bach.ngongoc       connected     
+Fa0/38    server-lifenet     connected    80
+Fa0/43    long.tranmy        connected    241 
+Fa0/40    tra cuu            connected    120 
+
+
+ SW3: 10.1.2.13
+ 
+ interface FastEthernet0/4
+ switchport access vlan 235
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/5
+ switchport access vlan 235
+ switchport mode access
+ spanning-tree portfast
+ ip dhcp snooping trust
+!
+
+
+FastEthernet0/6 
+Description datle : 10.1.41.24
+
+
+
+interface FastEthernet0/19
+ switchport access vlan 235
+ switchport mode access
+ spanning-tree portfast
+ 
+
+
+ 
+ interface FastEthernet0/32
+--> ngoi cho dau ban dung.tran
+ 
+ 
+
+ interface FastEthernet0/24
+ switchport mode access
+ authentication port-control auto
+ dot1x pae authenticator
+ spanning-tree portfast
+ ip dhcp snooping trust
+!
+
+
+
+
+SW4:
+
+
+interface FastEthernet0/1
+ switchport access vlan 100
+ switchport mode access
+ spanning-tree portfast
+!
+
+
+interface FastEthernet0/6 ==> ITter
+ switchport access vlan 120
+ switchport mode access
+ spanning-tree portfast
+!
+
+interface FastEthernet 0/20 -> serverCQMS-30-9c-23-00-c3-e7
+Anh.tran
+ switchport access vlan 241
+ switchport mode access
+ spanning-tree portfast
+ 
+ interface FastEthernet0/23
+ switchport access vlan 241
+ switchport mode access
+ spanning-tree portfast
+ 
+ 
+ 
+10.1.2.14
+Network Device: VietIS_SW04
+FastEthernet0/18 bon.ngo 
+
+
+ 
+ SW5: (Tang 3)
+ 
+
+ interface FastEthernet0/6
+ description hien.phanthi
+switchport access vlan 241
+switchport mode access
+spanning-tree portfast
+ 
+ interface FastEthernet0/31
+ switchport access vlan 235
+ switchport mode access
+ spanning-tree portfast
+ 
+ interface FastEthernet0/43
+ switchport access vlan 500
+ switchport mode access
+ spanning-tree portfast
+ 
+ interface FastEthernet0/45
+ switchport access vlan 207
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/46
+ switchport access vlan 207
+ switchport mode access
+ spanning-tree portfast
+!
+
+
+
+SW6:
+
+Fa0/20                       connected    100 
+Fa0/38                       connected    100 
+Fa0/47                       connected    100 
+Fa0/48    WIFI-LABO2         connected    235 
+
+interface FastEthernet0/20
+ switchport access vlan 100
+ switchport mode access
+ spanning-tree portfast
+!
+
+interface FastEthernet0/25 => test cisco AP
+10.1.35.169
+ switchport access vlan 235
+
+
+interface FastEthernet0/40
+ switchport access vlan 207
+ switchport mode access
+ spanning-tree portfast
+ 
+ interface FastEthernet0/47
+ switchport access vlan 100
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/48
+ description WIFI-LABO2
+ switchport access vlan 235
+ switchport mode access
+ spanning-tree portfast
+ ip dhcp snooping trust
+!
+
+SW7: Tang 3 10.1.2.17
+
+GigabitEthernet0/2 : luan.tran : 10.1.41.155
+Remote desktop
+
+
+SW8: Tang 5 Phong LABO
+
+switchport mode access
+access-session host-mode single-host
+access-session closed  
+access-session port-control auto
+dot1x pae authenticator
+
+
+OLD Configuration :
+Interface gig 0/11
+dot1x pae authenticator
+authentication port-control auto
+
+New Configuration:
+Interface gig 0/11
+dot1x pae authenticator
+access-session host-mode single-host
+access-session port-control auto
+
+https://community.extremenetworks.com/t5/extremewireless-identifi/flapping-on-cisco-switch-when-connected-to-extreme-wireless/td-p/55341
+https://content.cisco.com/chapter.sjs?uri=/searchable/chapter/content/en/us/td/docs/routers/interface-module-lorawan/software/configuration/guide/b_lora_scg/vlan.html.xml
+https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6000-series-switches/10682-2.html
+
+https://vnpro.vn/tin-tuc/on-tap-phan-switching-cua-chung-chi-ccna-p5-4811.html
+
+https://vnpro.vn/thu-vien/chong-tan-cong-vlan-hopping-tren-switch-nhu-the-nao-2421.html
+
+
+Preventing using DTP (ngăn ngừa sử dụng DTP)
+
+Switch (config-if)# switchport trunk encapsulationg dot1q
+
+Switch (config-if)#swtichport mode trunk
+
+Switch (config-if)#swtichport nonegotiate
+
+https://lemp.io/how-to-prevent-vlan-flapping/
+How To Prevent VLAN Flapping
+b global vlans unique_mac enable

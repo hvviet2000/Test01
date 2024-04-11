@@ -1,0 +1,178 @@
+113.164.228.218
+113.164.228.222
+113.164.228.220
+(CIDR  113.164.228.217/29)
+
+118.70.128.119
+118.70.72.152
+
+Tòa nhà AC:
+118.70.16.140
+
+Luu ý: 
+
+
+CIDR  113.164.228.217/29)
+113.164.228.218 :vietis3a (PublicVNPT)
+118.70.128.119  :vietis3a (FPT-01)
+113.164.228.222 :vieis3a (VPN)
+118.70.16.140   :AC (FPT)
+118.70.72.152   :vietis3a (FPT-02) 
+  
+
+
+
+WAN IP	Description
+
+118.70.128.119	FPT Public IP
+
+
+####210.245.8.62	Backup Site
+
+
+%programfiles%\AVAST Software\Avast\ashUpd.exe" vps /autoreboot
+Quote:
+"%programfiles%\AVAST Software\Avast\ashUpd.exe" program /autoreboot
+
+VPN
+https://documentation.meraki.com/MX-Z/Client_VPN/Troubleshooting_Client_VPN#Common_Connection_Issues
+G7fNprJY
+
+rundll32.exe keymgr.dll,KRShowKeyMgr
+
+ÐT:024.800.126
+18001166
+
+WAN New IP : 002507447MEN
+IP:
+113.164.228.218
+113.164.228.219
+113.164.228.220
+113.164.228.221
+113.164.228.222
+113.164.228.217 GATEWAY
+113.164.228.216 SUBNET
+113.164.228.223 BROADCASE
+MASK:
+113.164.228.217/29
+255.255.255.248
+
+113.164.228.218 VNPT  Leasedline
+113.190.232.25	VNPT FTTH
+118.70.128.119	FPT FTTH
+
+
+
+
+
+118.70.128.119	ISP2 -> running
+113.164.228.218 Leasedline ISP1 -> running
+113.190.232.25	ISP1 -> for backup 
+118.70.16.140
+
+118.70.72.152
+118.70.137.218 --> bk-repo duong fpt
+
+
+
+
+2/ Router Parkway
+   vietis/Vietpark123
+
+3/ Account FPT internet : 481 hoang quoc viet/ggt/cmt
+192.168.200.1/vit@is@875
+
+use: HNFDL-151120-008
+h046008
+
+H046008
+h04600812345
+
+ip statics:118.70.178.93
+
+
+4/Route Buffalo
+Account/Pass: root/vit@is@757787
+
+Trung Tâm Kinh Doanh VNPT
+000183010MEN
+Fiber80 /180Mb
+
+Công ty C? ph?n Vi?n thông FPT
+HNH046008 
+h046008
+Hvviet6655
+
+
+HNH046008
+Super400 – 06 Tháng
+
+FPT - AC
+Super400 – 06 Tháng 
+member.fpt.vn. 
+: HNJ126177  pass: fpt123456
+
+118.70.16.140
+
+root
+HWVer:4F3.E;
+SWVer:V3R015C10S155;
+183010MEN
+485754432E7FE934
+
+Cisco
+
+VIETIS AC
+118.70.16.140
+
+113.164.228.218 VNPT  Leasedline
+118.70.128.119	FPT FTTH
+113.164.228.222 VPN
+113.164.228.220 VPN
+
+3A
+118.70.128.119	FPT FTTH
+118.70.72.152
+113.164.228.217/29
+FPT FTTH (3a)
+
+
+CIDR  113.164.228.217/29) (113.164.228.218->222)
+IP: 118.70.128.119  
+IP: 118.70.16.140   
+IP: 118.70.72.152   
+													IP				Default Gateway
+WAN1(FPT)	Connected	14-49-BC-13-9F-81	PPPoE	118.70.72.152	113.22.0.121
+WAN2(VNPT)	Connected	14-49-BC-13-9F-82	PPPoE	113.190.232.25	203.210.148.65
+
+
+CIDR  113.164.228.217/29)
+113.164.228.218 :vietis3a (PublicVNPT)
+
+118.70.128.119  :vietis3a (FPT-01)
+118.70.16.140   :AC (FPT)
+118.70.72.152   :vietis3a (FPT-02) 
+
+
+CIDR:  113.164.228.217/29 (include: 113.164.228.218,19,20,21,22)
+example: IP : 113.164.228.218
+
+
+IP : 118.70.128.119  :3a
+IP : 118.70.72.152   :3a
+IP : 118.70.16.140   :AC
+
+CIDR:  113.164.228.217/29
+IP : 118.70.128.119
+IP : 118.70.72.152 
+IP : 118.70.16.140 
+
+So hop dong Internet FPT
+HNH046008 3A
+HNAAB9995 3A
+HNJ126177 AC
+
+
+HNAAB9995/fpt123456
+HNH046008/fpt123456
+HNJ126177/fpt123456

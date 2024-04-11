@@ -1,0 +1,353 @@
+https://kntrainingiso.com/tieu-chuan/he-thong-quan-ly-bao-mat-thong-tin-isoiec-270012013.html
+
+ISMS
+1. Mở dự án ISMS trên hệ thống Vis-insight 
+2. Tracking từng tháng lần lượt các hạng mục (không đợi đến audit)
+Thành lập nhóm ISMS
+	1.2 Đánh giá hiện trạng quản lý ANTT
+		Khảo sát hiện trạng quản lý ANTT
+		Gửi báo cáo đánh giá hiện trạng ANTT so với ISO27001:2013
+	1.3 Đào tạo cho cán bộ ISMS (đội triển khai dự án)
+2. GD 2: Chính sách ISMS và Quản lý rủi ro
+	2.1 Phương thức quản lý rủi ro tài sản
+		Hướng dẫn xây dựng phương pháp QLRR
+		Xây dựng phương pháp
+		Xem xét, hoàn thiện phương pháp
+	2.2 Xác định tài sản
+		Hướng dẫn thực hiện liệt kê tài sản
+		Cán bộ đơn vị thực hiện liệt kê tài sản
+		Xem xét bảng tài sản đã liệt kê
+		Hoàn thiện Bảng tài sản
+	2.3 Đánh giá rủi ro tài sản
+		Hướng dẫn xác định và đánh giá rủi ro
+		Xác định rủi ro nhóm tài sản
+		Đánh giá mức độ rủi ro
+		Xem xét kết quả đánh giá rủi ro
+		Xây dựng Báo cáo đánh giá rủi ro
+2.4 Xử lý rủi ro
+	Hướng dẫn thực hiện xử lý rủi ro
+	Lựa chọn biện pháp kiểm soát
+	Lên kế hoạch áp dụng (RTP)
+	Xây dựng SOA
+	Xem xét, hướng dẫn hoàn thiện hồ sơ quản lý rủi ro
+3. GD 3: Xây dựng hệ thống tài liệu
+3.1. Chính sách ISMS
+	Hướng dẫn xây dựng chính sách
+	Xây dựng chính sách ISMS
+	Xem xét chính sách đã xây dựng
+3.2 Hướng dẫn xây dựng
+	Xác định tài liệu cần xây dựng (lần 1)
+	Xem xét tài liệu và hướng dẫn xây dựng (lần 2)
+	Xem xét tài liệu và hướng dẫn xây dựng (lần 3)
+3.3. Xây dựng các tài liệu
+3.4. Xem xét tổng quan hệ thống tài liệu VietIS
+4. GD 4: Triển khai áp dụng
+4.1. Đào tạo tổng quan cho nhân viên
+4.2. Triển khai áp dụng tài liệu
+Hướng dẫn triển khai
+Thực hiện triển khai
+Batch 1 (15 tài liệu)
+SX (2/4 tài liệu)
+Admin (3/6 tài liệu)
+HR (2/4 tài liệu)
+IT (4/18 tài liệu)
+QA (4/10)
+Batch 2 (15 tài liệu)
+SX (4/4 tài liệu)
+Admin (6/6 tài liệu)
+HR (4/4 tài liệu)
+IT (8/18 tài liệu)
+QA (8/10)
+Batch 3 (6 tài liệu)
+Xem xét, đánh giá kết quả triển khai lần 1 (SX, Admin, HR)
+IT (12/18 tài liệu)
+QA (10/10)
+Batch 4 (4 tài liệu)
+Xem xét, đánh giá kết quả triển khai lần 2 (SX, Admin, HR, QA)
+IT (16/18 tài liệu)
+Batch 5 (2 tài liệu)
+Xem xét, đánh giá kết quả triển khai lần 3 (SX, Admin, HR, QA, IT)
+IT (18/18 tài liệu)
+Xem xét, đánh giá kết quả triển khai tổng thể
+5. GD 5: Đánh giá nội bộ
+5.1 Đào tạo đánh giá nội bộ
+5.2 Đánh giá nội bộ
+Xây dựng kế hoạch, chương trình đánh giá
+Thực hiện đánh giá
+Báo cáo đánh giá
+5.3 Thực hiện khắc phục, phòng ngừa điểm không phù hợp
+Hướng dẫn xác định cách thức khắc phục
+Thực hiện khắc phục
+Xem xét kết quả khắc phục
+
+
+Xem lại thiết bị di động, khi mất có xóa data được không --> được
+
+Review tài liệu 2023
+1. QUY ĐỊNH QUẢN LÝ THẺ
+5.1.4.	Quy định xóa mã thẻ
+2. QUY ĐỊNH QLTS 
+5.7.	Cập nhật bảng tài sản
+3. 
+
+Quy Dinh_Quan ly vat ly va moi truong: check lai cửa thoát hiểm, không phải là 2
+
+
+1. trong KickOff dự án: xem lại phần Rủi ro về ANTT trong dự án (1)
+- Ai chịu trách nhiệm (PM/Member) | mục nào | ở đâu
+- Define ở đâu
+2. Môi trường khách hàng: phải follow theo khách hàng (tự ý thao tác trên server của khách hàng, tự ý thay đổi cấu hình mà không thông báo với khách hàng,...)
+Ví dụ:
+- Thao tác trên môi trường web - Database: - Source:- : môi trường test/pro
+
+3. Dịch 
+
+
+
+change pass:
+
+15-5-2023
+auto/vis@pmt@567
+
+pmtool/vis@pmt@456
+
+visinsight
+Visi@3579
+
+
+1. Insight (web)
+2. Redmine (configuration.yml)
+3. operator (.env)
+4. Repo (gitlab.rb)
+5. ITSM (web)
+
+
+v/v xin ban hành tài liệu S1/2023
+1. Tài liệu Đào tạo Day One v1.5: Mới cập nhật tháng 5 sau khi thay đổi cơ cấu phòng số 5 và phòng IDT
+2. Quy định Công tác phí nước ngoài ngắn hạn v1.1 (sửa đổi bổ sung)
+3. Định mức chi phí Chăm sóc khách hàng: ban hành mới v1.0
+
+4. Ngoài ra, phía Công Đoàn có cập nhật lại Quy chế Công Đoàn năm 2023
+5. Chính sách cho CTV kinh doanh (hay còn gọi là Mô hình hợp tác sale nội bộ v1.1).
+6. Chính sách phụ cấp đào tạo cho Giảng viên nội bộ v1.1
+   Lý do: Bổ sung Giới hạn phụ cấp 
+7. Tài liệu ANTT trong dự án: 
+Thêm quy định về thao tác trên môi trường KH.  
+8. Quy định quản lý tài sản v1.9
+Update tài liệu liên quan và phụ lục
+9. Hồ sơ rủi ro _ Ho so rui ro_v2.1.xlsx
+Update rủi ro RR-119: INF/Tài sản thông tin của khách hàng
+10. Quy định bảo mật thông tin v1.5 (Quy Dinh_Bao mat thong tin _v1.5)
+Update phụ lục, bổ sung chi tiết các khung hình phạt
+11. Template_Kick-Off Meeting_v1.2.pptx
+Update slide 16: Rủi ro về ANTT trong dự án
+
+
+============
+Nhận diện rủi ro về an toàn bảo mật thông tin trong quản lý dự án
+1. Rủi ro về ANTT trong quản lý dự án là gì ?
+2. Hậu quả
+3. Làm thế nào để nhận diện các rủi ro
+
+1. Rủi ro từ bên trong
+   + Chủ quan: Con người
+   + Khách quan
+2. Rủi ro từ bên ngoài
+
+4. Define rủi ro ở đâu, khi nào
+	+ Define trong CM-Plan
+	+ Phổ biến trong kickoff meeting
+5. Phòng ngừa như thế nào
+	+ Trong suốt quá trình phát triển dự án
+	+ Sau khi dự án kết thúc
+	
+Bước 1: Xác định rủi ro, cơ hội tiềm ẩn
+Bước 2: Xác định xác suất
+Bước 3: Xác định tác động
+
+
+==================
+DEV: clone database về (KH cho phép nhưng chưa cho test)
+DEV: Deploy trên môi trường Test nhưng CICD Git lại link đến cả môi trường product (cho dù chưa public) thì vẫn xảy ra 
+==> gửi mail cho hàng loạt khách hàng có status là : ABCD
+==> các mail lỗi format bị rolback và gửi lại lần nữa (có cả khách hàng đã gửi mà staus ABCD chưa được update trạng thái)
+- Khách hàng đã có spect điều tra việc status ABCD --> cần có bằng chứng
+
+- KH yêu cầu dừng toàn bộ dự án
+- QA 
+KH hỏi là bên mình quy trình có review code hay không
+Có giám sát việc review không --> để gây ra nhầm môi trường
+-> do nội bộ team không có quy định 
+==================
+
+
+PSX1
+1. TravelManager.2023 => PM Dương Bá Trường
+Travel Manager: Tài liệu để trên driver của khách hàng mà không được lưu về file server/rủi ro khi mất data mà không có backup
+
+
+2. Lifenet.RenewSite.P11 => PM Ngô Ngọc Bách
+
+3. FirstInc.SatoriCoin => PM Lê Thế Đạt
+FirtInCoin: sử dụng github
+
+
+
+PSX2
+Keyspider (Chí PM), sử dụng github
+
+Tranocate.DX (Nghĩa PM), sử dụng github
+
+Tominaga Pharmacy (Lâm PM)
+
+PSX3
+1. NRI.Yamaha5 ==> truonglm
+2. JBS.AiStaff.P4 ==>chau.daothinam
+3. NRI.ESG-POC ==> NguyenNT
+
+PSX6
+1. Lecre.Kuraemon => PM Phạm Kim Tuyến
+2. Systemi.BCR => PM Nguyễn Huy Hoàng
+3. MER.PS.P2 => PM Nguyễn Ngọc Tuấn
+
+
+Audit internal
+
+
+
+PHẠM VI HỆ THỐNG QUẢN LÝ ANTT
+
+BGĐ giao nhiệm vụ cho em nghiên cứu giải pháp quản lý hệ thống CNTT tự động toàn trình.
+Từ  giám sát, tự động detect các thông số của thiết bị đến tác động tự động.
+Mục tiêu là :
+1. Quản lý thông tin hạ tầng: quản lý và detect được thông số thiết bị hoặc máy ảo tự động , tự động thêm khi cài đặt thêm máy chủ mới ...
+2. Monitor máy chủ, thiết bị ( có thể tự động thêm host để monitor khi có máy chủ mới)
+3. Tác động tự động ví dụ như tạo máy ảo, thay đổi tài nguyên máy ảo, tự động tạo ticket lên Jira các cảnh báo để xử lý ...
+
+
+Các yêu cầu trên khá giống bài toán mà bên em đã làm. Xài quả zabbix em thấy khá ngon
+1,2. Monitor có thể sử dụng tính năng Autoregistration actions hoặc Discovery actions để tự động thêm host mới. Quản lý thông tin server thì nó có mục Host inventory. Tuy nhiên để tự động được hết thì bác cũng mất khá nhiều thời gian để cấu hình và template. Nói chung là zabbix đáp ứng được, hơi mất thời gian nghiên cứu
+3. Cái này thì có thể sử dụng saltstack hoặc ansible. Vụ tự động tạo ticket cũng sử dụng zabbix được luôn. Chẳng hạn bác tạo 1 action để khi có trigger full cpu thì nó run script tạo ticket đẩy lên jira, full ram thì run script gọi vào vcenter để tăng memory vm chẳng hạn…
+
+1. Quản lý thông tin hạ tầng : Endpoint Central Management
+2.Monitor máy chủ, thiết bị : Solarwind
+
+
+https://wazuh.com/
+
+
+Anh bổ sung giúp em vào quy định Bảo mật thông tin hiện tại nội dung sau:
+Nghiêm cấm hành vi mua, bán, chia sẻ thông tin cá nhân của người lao động
+
++ Vi phạm sử dụng thông tin cá nhân của NLĐ sai mục đích đã thỏa thuận
++ Vi phạm chia sẻ thông tin cá nhân của NLĐ tới bên thứ 3 khi chưa được sự đồng ý
++ Vi phạm mua/bán thông tin cá nhân của NLĐ
+
+mức phạt thì anh đề xuất giúp em ạ (thường cái này là vi phạm pháp luật luôn rồi)
+Trong trường và quy định các mức phạt với các hành vi sau:
+
+
+
+1. Trong file cấu hình hiện tại: đang chạy default qua đường FPT đúng không ? 
+ip nat inside source route-map INTERNET_NAT interface GigabitEthernet0/1.200 overload
+trong khi không có route-map này INTERNET_NAT
+==> do đó khi chết đường phải làm manual 
+
+Thiết kế cũ : org
+ip nat inside source route-map PRI_INTERNET_NAT pool PRI_Gi0/0 overload
+ip nat inside source route-map SEC_INTERNET_NAT pool SEC_VLAN_501 overload
+ip route 0.0.0.0 0.0.0.0 113.164.228.217 track 1
+ip route 0.0.0.0 0.0.0.0 192.168.200.1 5 track 2
+
+
+
+1. Về hạ tầng: có biết được routing là gì không? Trunk, BGP, Load blancing (HA) thì dùng phương thức gì
+- Thiết kế 1 data center gồm các thành phần nào
+- Distribute switch là gì
+
+2. Về ảo hóa:
+- Mô tả cấu trúc các thành phần để tạo lên 1 cloud 
+- vSwitch là gì
+- Thiết kế và vận hành hệ thống cloud/ AWS / on premise như thế nào
+
+
+3. Database
+- Cài đặt, tuning database, 
+- Xử lý trong trường hợp bị full disk
+- Xử lý trong trường hợp scale
+
+4. Application
+- Vận hành hệ thống log: ELK / K8S hoạt động như thế nào 
+- Các công cụ kiểm soát hệ thống: PRTG, hoạt động như thế nào 
+- Appche/Nginx cần bảo mật những gì
+- Database SQL/Oracle/MySQL được giám sát và hoạt động như nào
+
+5. Về hệ điều hành
+- Windows có lỗi thì làm gì để khắc phục
+- Linux có lồi thì làm gì để khắc phục
+- Các lệnh để tracking hệ thống linux
+
+6. Backup:
+- Backup các hệ thống ảo hóa, windows , data dùng công cụ gì, như thế nào
+
+
+https://knacert.com.vn/blogs/tin-tuc/nhung-dieu-can-biet-ve-ban-cap-nhat-isoiec-270012022
+https://qms.com.vn/mot-so-thay-doi-co-ban-giua-iso-iec-270012013-sang-iso-iec-270012022-moi/
+
+
+
+    Có 11 biện pháp kiềm soát mới trong Annex A:  
+
+    Sáng suốt khi bị đe dọa / Threat intelligence 
+
+    ANTT đề sử dụng dịch vụ đám mây/ Information security for the use of cloud services 
+
+    Công nghệ thông tin truyền thông phục vụ cho KD liên tục ICT readiness for BC 
+
+    Theo dõi an ninh vật lý / Physical security monitoring 
+
+    Quản lý cấu hình / Configuration management 
+
+    Hủy bỏ thông tin / Information deletion 
+
+    Đắp mặt nạ cho dữ liệu / Data masking 
+
+    Phòng chống thất thoát dữ liệu / Data leakage prevention 
+
+    Theo dõi hoạt động / Monitoring activities 
+
+    Lọc các web / Web filtering 
+
+    An ninh viết code / Secure coding 
+
+
+
+    Cập nhật quy trình xử lý rủi ro của bạn với các biện pháp kiểm soát mới 
+
+    Cập nhật Tuyên bố về khả năng áp dụng SOA của bạn 
+
+    Cần điều chỉnh các phần nhất định trong các chính sách và thủ tục hiện có của bạn. 
+
+====
+Cần update quy định BMTT trong dự án, training tai lieu dao tao
+- Ghi rõ thông tin nào không được lưu trên driver
+- Ai
+- THời gian
+- Địa điểm
+- Lý do
+
+
+
+A.11.2..9 Chính sách bàn sạch và màn hình sạch
+Kiểm soát
+
+Chính sách bàn làm việc sạch không có giấy và các phương tiện lưu trữ di động và chính sách màn hình sạch đối với các phương tiện xử lý thông tin phải được thực hiện
+
+
+- Chỉ giữ một những thứ sử dụng hàng ngày như một cây bút, một cuốn sổ, sạc điện thoại, 1 chai nước hoặc cốc nước trên bàn, còn lại, các vật dụng có thể cần hàng tuần hoặc hàng tháng, chẳng hạn như kéo hoặc giấy ghi chú trong ngăn kéo bàn của bạn; 
+- Cho các tệp hồ sơ, tài liệu không thường xuyên chạm vào vào trong tủ hồ sơ
+- Giữ số lượng đồ trang trí cá nhân ở mức tối thiểu. ảnh cá nhân, đồ lưu niệm du lịch và các đồ vật khác (3 món trở lại)
+- Những đồ vật như: ổ cắm, dây cáp, dây điện, tai nghe, dây sạc điện thoại, có thể dán ở mép dưới của bàn hoặc sử dụng một chiếc móc dán ở hông bàn và treo gọn chúng lên.
+- Không để đồ ăn vặt cũng như túi xách, giầy dép, hàng hóa ... trên bàn.
+- Hãy dành một phút vào cuối mỗi ngày làm việc để loại bỏ những thứ không cần thiết ở bàn làm việc, lau sạch bụi bẩn trên màn hình máy tính cũng và mặt bàn
+

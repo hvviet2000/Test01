@@ -1,0 +1,87 @@
+
+
+
+
+
+
+
+
+ls /var/log/shell.log
+  19[0]
+  System Config Options (Jumpers & Switches) #3072:
+    NVRAM_CLR: Clear user settable NVRAM areas and set defaults
+    PWRD_EN: Close to enable password
+  Language Info: #3328
+    Languages: en|US|iso8859-1
+    Current: en|US|iso8859-1
+  Physical Memory Array: #4096
+    Use: 0x03 (System memory)
+    Location: 0x03 (Motherboard)
+    Slots: 4
+    Max. Size: 64 GB
+    ECC: 0x05 (Single-bit)
+  Memory Device: #4352
+    Location: "A1"
+    Memory Array: #4096
+    Form Factor: 0x02 (Unknown)
+    Type: 0x02 (Unknown)
+    Data Width: 0 bits
+    Size: No Memory Installed
+  Memory Device: #4353
+    Location: "A2"
+    Memory Array: #4096
+    Form Factor: 0x02 (Unknown)
+    Type: 0x02 (Unknown)
+    Data Width: 0 bits
+    Size: No Memory Installed
+  Memory Device: #4354
+    Location: "A3"
+    Manufacturer: "00CE00000000"
+    Serial: "41B36DB4"
+    Asset Tag: "00154600"
+    Part Number: "M391A2K43BB1-CPB"
+    Memory Array: #4096
+    Form Factor: 0x09 (DIMM)
+    Type: 0x1a (Other)
+    Type Detail: 0x0080 (Synchronous)
+    Data Width: 64 bits (+8 ECC bits)
+    Size: 16 GB
+    Speed: 2133 MHz
+  Memory Device: #4355
+    Location: "A4"
+    Manufacturer: "00CE00000000"
+    Serial: "41B370A8"
+    Asset Tag: "00154600"
+    Part Number: "M391A2K43BB1-CPB"
+    Memory Array: #4096
+    Form Factor: 0x09 (DIMM)
+    Type: 0x1a (Other)
+    Type Detail: 0x0080 (Synchronous)
+    Data Width: 64 bits (+8 ECC bits)
+    Size: 16 GB
+    Speed: 2133 MHz
+  Memory Array Mapping: #4864
+    Memory Array: #4096
+    Partition Width: 2
+    Start Address: 0x00000000
+    End Address: 0x90100000
+  Memory Array Mapping: #4865
+    Memory Array: #4096
+    Partition Width: 2
+    Start Address: 0x0000000100000000
+    End Address: 0x000000086ff00000
+  Type 32 Record: #8192
+  
+   String 1: "DIMM.Socket.A1"
+    String 2: "DIMM.Socket.A2"
+    String 3: "DIMM.Socket.A3"
+    String 4: "DIMM.Socket.A4"
+	
+	
+cd /etc/vmware/ssl
+mv rui.crt orig.rui.crt
+mv rui.key orig.rui.key
+
+/sbin/generate-certificates
+
+reboot

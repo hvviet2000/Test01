@@ -1,0 +1,1324 @@
+https://4sysops.com/archives/fix-the-winrm-client-cannot-process-the-request/#rtoc-2
+
+sudo fuser -k 443/tcp 
+
+https://cuongquach.com/cai-dat-gitlab-lam-git-server-tren-centos-7.html
+
+firewall-cmd --permanent --zone=trusted --add-interface=docker0
+firewall-cmd --permanent --zone=trusted --add-port=4243/tcp
+
+sudo systemctl stop firewalld
+sudo systemctl disable firewalld
+sudo systemctl restart docker
+
+https://forums.docker.com/t/how-do-i-change-default-networking-options-in-linux/49405
+https://kipalog.com/posts/Thu-cai-dat-moi-truong-docker-cho-laravel
+https://blog.oddbit.com/post/2014-08-11-four-ways-to-connect-a-docker/
+
+yum install iptables-services
+iptables -nvL
+
+
+
+FROM LOCAL SSL
+https://www.techrepublic.com/article/how-to-enable-https-on-apache-centos/
+
+openssl req -new -newkey rsa:2048 -nodes -out matsuishouten.vietis.com.vn.scr -keyout matsuishouten.vietis.com.vn.key -subj "/C=VN/ST=084/L=024/O=VIETIS/OU=VIETIS JSC/CN=matsuishouten.vietis.com.vn"
+
+sudo openssl x509 -req -days 365 -in matsuishouten.vietis.com.vn.scr -signkey matsuishouten.vietis.com.vn.key -out matsuishouten.crt
+
+http://matsuishouten.vietis.com.vn:8013/
+
+https://linuxhostsupport.com/blog/how-to-install-lets-encrypt-on-centos-7-with-apache/
+https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-centos-7
+https://linuxhostsupport.com/blog/how-to-install-lets-encrypt-on-centos-7-with-apache/
+https://www.liquidweb.com/kb/how-to-setup-lets-encrypt-on-centos-7/
+https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-centos-7
+
+
+https://www.mopar4life.com/btrfs-centos-samba/
+https://www.howtoforge.com/a-beginners-guide-to-btrfs
+
+
+/usr/lib/FirewallD
+/etc/firewalld
+
+sudo gitlab-rake gitlab:backup:create
+
+sudo systemctl start firewalld
+
+sudo firewall-cmd --permanent --add-service=ssh
+
+sudo firewall-cmd --permanent --remove-service=ssh
+sudo firewall-cmd --permanent --add-port=4444/tcp
+
+sudo firewall-cmd --permanent --add-service=http
+
+sudo firewall-cmd --permanent --add-service=https
+sudo firewall-cmd --permanent --add-service=smtp
+
+sudo firewall-cmd --get-services
+sudo firewall-cmd --permanent --list-all
+sudo firewall-cmd --reload
+
+sudo systemctl enable firewalld
+
+firewall-cmd --zone=public --remove-port=10050/tcp
+
+sudo timedatectl set-timezone America/New_York
+sudo systemctl start ntpd
+sudo systemctl enable ntpd
+
+iptables-save | grep 80
+
+Port Forwarding
+
+sudo firewall-cmd --zone="public" --add-forward-port=port=80:proto=tcp:toport=12345
+sudo firewall-cmd --zone="public" --add-forward-port=port=80:proto=tcp:toport=8080:toaddr=123.456.78.9
+
+
+
+
+This tutorial covers both 32 and 64 bit versions of CentOS 6.
+
+Install IPTables
+
+Before we can start, IPTables must be installed. Install IPTables with the following command.
+
+yum install iptables -y
+Enable routing
+
+Packet forwarding must be enabled on your server for this method to work. Open the file /etc/sysctl.conf. Make sure the following line is enabled, and set to "1":
+
+net.ipv4.ip_forward = 1
+Save the file, then run:
+
+sysctl -p
+Configure IPTables
+
+Step One
+
+Perform the commands below accordingly to your needs. Change "2.2.2.2" to your new server's IP address and "venet0" to your Ethernet adapter. Also, change "80:90" to the desired port range that will be forwarded.
+
+iptables -A FORWARD -d 2.2.2.2 -i venet0 -p tcp -m tcp --dport 80:90 -j ACCEPT
+If you want to forward a single port, simply replace the port range above with a single port. To forward UDP instead, replace instances of "tcp" above with "udp".
+
+Step Two
+
+Add routes for your newly added rules. Rules refer to the directives inside of IPTables. In this example, "1.1.1.1" represents your old server's IP address and like before, "2.2.2.2" represents the destination/new server's IP. Again, update the port range and TCP/UDP strings as needed.
+
+iptables -t nat -A PREROUTING -d 1.1.1.1 -p tcp -m tcp --dport 80:90 -j DNAT --to-destination 2.2.2.2
+Step Three
+
+Finalize the NAT forwarding. Change "venet0" to your Ethernet adapter.
+
+iptables -t nat -A POSTROUTING -o venet0 -j MASQUERADE
+Step Four
+
+Save our newly added rules and soft-restart IPTables.
+
+service iptables save
+service iptables reload
+Conclusion
+
+
+==
+
+OPEN PORT
+
+The following configs works on Cent OS 6 or earlier
+
+As stated above first have to disable selinux.
+
+Step 1 nano /etc/sysconfig/selinux
+
+Make sure the file has this configurations
+
+SELINUX=disabled
+
+SELINUXTYPE=targeted
+Then restart the system
+
+Step 2
+
+iptables -A INPUT -m state --state NEW -p tcp --dport 8080 -j ACCEPT
+Step 3
+
+sudo service iptables save
+For Cent OS 7
+
+step 1
+
+firewall-cmd --zone=public --permanent --add-port=8080/tcp
+Step 2
+
+firewall-cmd --reload
+
+iptables -A INPUT -m state --state NEW -p tcp --dport 8080 -j ACCEPT
+/etc/init.d/iptables restart
+
+sudo gitlab-rake gitlab:ldap:check
+
+example:L
+
+[root@logserver ~]# cat /etc/sysconfig/iptables
+# Generated by iptables-save v1.4.7 on Thu May  5 10:29:36 2016
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+-A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+-A INPUT -p icmp -j ACCEPT
+-A INPUT -i lo -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 22 -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 2057 -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 2056 -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 5544 -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 3515 -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 9300:9400 -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 443 -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 80 -j ACCEPT
+-A INPUT -p udp -m state --state NEW -m udp --dport 5544 -j ACCEPT
+-A INPUT -j REJECT --reject-with icmp-host-prohibited
+-A FORWARD -j REJECT --reject-with icmp-host-prohibited
+COMMIT
+# Completed on Thu May  5 10:29:36 2016
+
+NGINX:
+
+  1  shutdown -h
+    2  history
+    3  passwd
+    4  exit
+    5  vi /etc/hostname
+    6  vi /etc/ssh/ssh_config
+    7  sudo firewall-cmd --permanent --zone=public --add-port=2222/tcp
+    8  sudo firewall-cmd --reload
+    9  sudo systemctl restart s
+   10  sudo firewall-cmd --list
+   11  sudo firewall-cmd --list-all
+   12  reboot
+   13  history
+   14  sudo firewall-cmd --list-all
+   15  vi /etc/ssh/ssh_config
+   16  systemctl restart sshd.service
+   17   netstat -tupln
+   18  firewall-cmd --permanent --add-port=2220/tcp
+   19  firewall-cmd --reload
+   20  netstat
+   21  semanage port -d -t ssh_port_t -p tcp 22
+   22  yum install policycoreutils-python?
+   23  yum install policycoreutils-python
+   24  semanage -l | grep ssh?
+   25  semanage port -d -t ssh_port_t -p tcp 22
+   26  semanage port -d
+   27  vi /etc/selinux/config
+   28  sudo firewall-cmd --list-all
+   29  history
+   30  systemctl restart sshd.service
+   31  service iptables status
+   32   iptables -L -n
+   33  reboot
+   34  semanage port -l | grep ssh
+   35  semanage port -d -t ssh_port_t -p tcp 22
+   36  semanage port -a -t ssh_port_t -p tcp 2222
+   37  sudo semanage port -d -t ssh_port_t -p tcp 22
+   38  semanage port -l
+   39  semanage port -l | grep ssh
+   40  vi /etc/ssh/sshd_config
+   41  vi /etc/ssh/ssh_config
+   42  systemctl restart sshd.service
+   43  sudo semanage port -d -t ssh_port_t -p tcp 22
+   44  exit
+   45  yum install denyhosts
+   46  pwd
+   47  yum install telnet
+   48  wget http://ftp.tu-chemnitz.de/pub/linux/dag/redhat/el7/en/x86_64/rpmforge/RPMS/denyhosts-2.6-5.el7.rf.noarch.rpm
+   49  yum install wget
+   50  history
+   51  wget http://ftp.tu-chemnitz.de/pub/linux/dag/redhat/el7/en/x86_64/rpmforge/RPMS/denyhosts-2.6-5.el7.rf.noarch.rpm
+   52  his
+   53  ls
+   54  rpm -hiv denyhosts-2.6-5.el7.rf.noarch.rpm
+   55  vi /etc/hosts.allow
+   56  vi /etc/denyhosts.conf
+   57  vi /etc/denyhosts/denyhosts.cfg
+   58  systemctl enable denyhosts
+   59  systemctl start denyhosts
+   60  systemctl status denyhosts
+   61  tail -f /var/log/secure
+   62  exit
+   63  sudo yum install nginx
+   64  sudo yum install epel-release
+   65  sudo yum install nginx
+   66  systemctl start nginx
+   67  systemctl enable nginx
+   68  systemctl status nginx
+   69  firewall-cmd --zone=public --permanent --add-service=http
+   70  firewall-cmd --zone=public --permanent --add-service=https
+   71  firewall-cmd --reload
+
+openssl req -new -newkey rsa:2048 -nodes -out local.vietis.com.vn.scr -keyout local.vietis.com.vn.key -subj "/C=VN/ST=084/L=024/O=VIETIS/OU=VIETIS JSC/CN=local.vietis.com.vn"
+
+sudo openssl x509 -req -days 365 -in local.vietis.com.vn.scr -signkey local.vietis.com.vn.key -out local.website.crt
+
+
+
+
+
+
+
+Lien quan den ssl
+
+https://thuthuatwp.com/cai-dat-lets-encrypt-centos-7-nginx/
+https://www.thuysys.com/bao-mat/cai-dat-chung-chi-ssl-lets-encrypt-tren-linux.html
+
+https://vicloud.vn/community/huong-dan-bao-mat-nginx-voi-lets-encrypt-tren-centos-7-427.html
+
+sudo yum install epel-release 
+sudo yum install certbot-nginx
+vi /etc/nginx/nginx.conf  
+--> server_name repo-bk.vietis.com.vn
+
+
+sudo certbot --nginx -d  repo-bk.vietis.com.vn -d repo-bk.vietis.com.vn
+
+
+certbot certonly --server https://repo-bk.vietis.com.vn --manual --preferred-challenges dns -d 'repo-bk.vietis.com.vn'  -d repo-bk.vietis.com.vn
+
+https://tuduydongian.com/2017/10/secure-gitlab-letsencrypt/
+
+Tang toc NGIX
+
+https://www.thuysys.com/server-vps/web-server/cau-hinh-toi-uu-nginx-tang-toc-va-bao-mat-website-dung-https.html
+
+
+
+#!/bin/bash
+ 
+################################################################
+##
+##   MySQL Database Backup Script 
+##   Written By: 
+##   URL: 
+##   Last Update: Jan 05, 2019
+##
+################################################################
+ 
+export PATH=/bin:/usr/bin:/usr/local/bin
+TODAY=`date +"%d%b%Y"`
+ 
+################################################################
+################## Update below values  ########################
+ 
+DB_BACKUP_PATH='/backup/dbbackup'
+MYSQL_HOST='27.71.224.26'
+MYSQL_PORT='3306'
+MYSQL_USER='root'
+MYSQL_PASSWORD='Vietis@2020!!!'
+DATABASE_NAME='tuyendung_vietis_com_vn_2019'
+BACKUP_RETAIN_DAYS=30   ## Number of days to keep local backup copy
+ 
+#################################################################
+ 
+mkdir -p ${DB_BACKUP_PATH}/${TODAY}
+echo "Backup started for database - ${DATABASE_NAME}"
+ 
+ 
+mysqldump -h ${MYSQL_HOST} \
+   -P ${MYSQL_PORT} \
+   -u ${MYSQL_USER} \
+   -p${MYSQL_PASSWORD} \
+   ${DATABASE_NAME} | gzip > ${DB_BACKUP_PATH}/${TODAY}/${DATABASE_NAME}-${TODAY}.sql.gz
+ 
+if [ $? -eq 0 ]; then
+  echo "Database backup successfully completed"
+else
+  echo "Error found during backup"
+  exit 1
+fi
+ 
+ 
+##### Remove backups older than {BACKUP_RETAIN_DAYS} days  #####
+ 
+DBDELDATE=`date +"%d%b%Y" --date="${BACKUP_RETAIN_DAYS} days ago"`
+ 
+if [ ! -z ${DB_BACKUP_PATH} ]; then
+      cd ${DB_BACKUP_PATH}
+      if [ ! -z ${DBDELDATE} ] && [ -d ${DBDELDATE} ]; then
+            rm -rf ${DBDELDATE}
+      fi
+fi
+ 
+### End of script ####
+
+
+
+RESTORE
+tar -xzOf your_db_dump.sql.tar.gz | mysql -u USERNAME -pPASSWORD your_database
+gunzip < customers_db_backup.sql.gz | mysql -u root -p SeCrEt customers_db
+
+
+
+https://support.google.com/webmasters/answer/3024318?hl=vi
+
+0 */12 * * *
+This cron will run the scheduler at every 12 hours.
+0 */12 * * *
+0 */6 * * *
+
+VPN ON MAC OS
+sudo route add -net 192.168.1.0/16 -interface ppp0
+sudo route add -net 192.168.100.0/24 -interface ppp0
+sudo route add -host 113.164.228.221 -interface ppp0
+
+sudo ufw allow from 12.34.56.78 to any port 5901
+sudo ufw allow from 198.51.100.0 to any port 22 proto tcp
+
+sudo ufw allow from 12.34.56.79
+sudo ufw allow 5901/tcp from 12.34.56.78
+sudo ufw default reject incoming
+sudo ufw enable
+
+
+https://kb.iu.edu/d/aozg
+
+
+sudo yum install firewalld
+sudo systemctl enable firewalld
+sudo firewall-cmd --state
+sudo firewall-cmd --list-all
+
+sudo firewall-cmd --permanent --add-service=http
+sudo firewall-cmd --permanent --add-service=https
+sudo firewall-cmd --reload
+
+export http_proxy=http://USERNAME:PASSWORD@SERVER:PORT/
+export http_proxy=http://DOMAIN\\USERNAME:PASSWORD@SERVER:PORT/
+When the username or password uses the @ symbol, add a backslash (\) before the @ – for example:
+export http_proxy=http://DOMAIN\\USERN\@ME:PASSWORD@SERVER:PORT
+export http_proxy=http://DOMAIN\\USERNAME:P\@SSWORD@SERVER:PORT
+unset http_proxy
+
+export http_proxy=http://192.168.100.12:8080
+
+https://hocvps.com/swap/
+https://vinasupport.com/swap-la-gi-them-swap-partition-trong-centos-rhel/
+Free up Memory by Clearing Memory and Swap Cache on Linux
+swapon -s
+free -m
+sync; echo 1 > /proc/sys/vm/drop_caches
+sync; echo 2 > /proc/sys/vm/drop_caches
+sync; echo 3 > /proc/sys/vm/drop_caches
+swapoff -a && swapon -a
+free -m
+
+To free pagecache:
+# echo 1 > /proc/sys/vm/drop_caches
+
+To free dentries and inodes:
+# echo 2 > /proc/sys/vm/drop_caches
+
+To free pagecache, dentries and inodes:
+# echo 3 > /proc/sys/vm/drop_caches
+
+
+https://www.linuxtechi.com/extend-swap-space-using-swap-file-in-linux/
+increment swap
+sudo dd if=/dev/zero of=/swapfile count=4096 bs=1MiB
+or
+dd if=/dev/zero of=/mnt/swapfile bs=1024 count=2097152
+#fallocate -l 2G /mnt/swapfile
+chmod 600 /mnt/swapfile
+mkswap /mnt/swapfile
+
+vi /etc/fstab
+/swap_file  swap  swap  defaults  0 0
+
+
+https://docs.gitlab.com/ee/user/gitlab_com/index.html#unicorn
+        gitlab_rails['env'] = {
+          'GITLAB_UNICORN_MEMORY_MIN' => '786432000',
+          'GITLAB_UNICORN_MEMORY_MAX' => '1572864000'
+        }
+
+
+-----------------------------------------------------------------------------------------------------------
+https://websiteforstudents.com/configure-remote-access-mysql-mariadb-databases/
+
+https://itnext.io/git-repository-transfer-keeping-all-history-670fe04cd5e4
+
+10.1.7.43
+root/vietis@12345678
+MySQL 5.7 on CentOS
+
+wget http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm
+yum localinstall mysql57-community-release-el7-7.noarch.rpm
+yum install mysql-community-server
+
+
+
+yum install mysql-community-server
+
+systemctl start mysqld.service
+grep "12345678Aa@" /var/log/mysqld.log
+
+mysql_secure_installation
+
+
+mysql_secure_installation
+12345678Aa@
+systemctl restart mysqld.service
+systemctl enable mysqld.service
+
+
+mysql -h localhost -u root -p
+mysql -u root -p
+
+SELECT user,host,password FROM mysql.user;
+CREATE USER 'shovon'@'%' IDENTIFIED BY 'your_password';
+GRANT ALL PRIVILEGES ON *.* TO 'shovon'@'%';
+
+mysql> flush privileges;
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY '';
+mysql> flush privileges;
+
+PHP 7.2
+
+yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+yum --enablerepo=remi-php72 install php
+php -v
+
+
+yum install httpd
+sudo systemctl enable httpd
+systemctl restart httpd
+sudo firewall-cmd --permanent --add-service=http
+sudo firewall-cmd --permanent --add-service=https
+sudo firewall-cmd --reload
+
+
+10.1.7.51:8080
+root/root@10.1.7.42
+https://linuxize.com/post/install-java-on-centos-7/#set-the-default-version
+sudo yum install java-1.8.0-openjdk-devel
+curl --silent --location http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo | sudo tee /etc/yum.repos.d/jenkins.repo
+sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
+sudo yum install jenkins
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
+
+sudo firewall-cmd --permanent --zone=public --add-port=8080/tcp
+sudo firewall-cmd --reload
+
+
+
+
+# firewall-cmd --zone=public --remove-port=12345/tcp --permanent
+# firewall-cmd --reload
+
+
+http://your_ip_or_domain:8080
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+wget --content-disposition https://packages.gitlab.com/gitlab/gitlab-ce/packages/el/7/gitlab-ce-12.10.3-ce.0.el7.x86_64.rpm/download.rpm
+
+ALTER TABLE `ex1`.`hisofchangeserver` ADD COLUMN `type` TEXT NULL DEFAULT NULL AFTER `end_date`;
+ALTER TABLE `ex1`.`hisofchangeoperator` ADD COLUMN `type` TEXT NULL DEFAULT NULL AFTER `action`;
+ALTER TABLE `ex1`.`operator` ADD COLUMN `type` TEXT NULL DEFAULT NULL AFTER `updated_at`;
+
+
+grant all privileges on *.* to 'root'@'% identified by 'vietis@123';
+
+There were 562 failed login attempts since the last successful login.
+Last login: Thu Jun 18 09:42:26 2020 from viethoang.vietis.vn
+[root@gitsrv-localdomain ~]# crontab -l
+0 23 * * * /bin/sh /var/opt/script/clean_folder.sh >/dev/null
+0 5 * * * /bin/sh /var/opt/script/backup_git.sh >/dev/null
+0 8 * * * /bin/sh /var/opt/script/copy_ftp.sh >/dev/null
+0 */6 * * * /bin/sh /var/opt/script/freemem.sh >/dev/null
+
+
+[root@gitsrv-localdomain ~]#
+systemctl stop crond.service
+systemctl restart crond.service
+systemctl start crond.service
+
+
+
+change port apache
+/etc/httpd/conf/httpd.conf
+Listen 8081
+
+Listen 80
+Listen yourIP: 8081
+
+semanage port -a -t http_port_t -p tcp 8090
+
+/etc/apache2/sites-enabled/000-default.conf 
+<VirtualHost *:80>
+
+Change that line to:
+
+<VirtualHost *:8081>
+sudo systemctl restart httpd
+
+
+semanage port -a -t http_port_t -p tcp 93
+
+https://anninhmang.edu.vn/cai-dat-cau-hinh-ssl-cho-apache-server/
+
+https://kipalog.com/posts/Huong-dan-cai-open-ssl-tren-centos
+https://adminvietnam.org/cau-hinh-https-tren-centos-voi-apache/763/
+
+
+apache https
+yum install mod_ssl
+mkdir /etc/ssl/private
+chmod 700 /etc/ssl/private
+
+openssl rsa -in server.key -out server.key
+
+
+vi /etc/httpd/conf.d/ssl.conf
+SSLProtocol All -SSLv2 -SSLv3
+SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5:!SEED:!IDEA
+SSLCipherSuite EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH
+SSLCertificateFile /etc/ssl/certs/apache-selfsigned.crt
+SSLCertificateKeyFile /etc/ssl/private/apache-selfsigned.key
+
+hostnamectl set-hostname redmine.vietis.vn
+
+
+
+https://hocvps.com/tao-ssl-certificate-tren-nginx-cho-centos-6/
+
+sudo mkdir /etc/nginx/ssl
+cd /etc/nginx/ssl
+
+#sudo openssl genrsa -des3 -out server.key 1024
+#sudo openssl req -new -key server.key -out server.csr
+
+openssl req -new -newkey rsa:2048 -nodes -out server.csr -keyout server.key -subj "/C=VN/ST=084/L=024/O=VIETIS/OU=VIETIS Software Corporation/CN=repo-bk.local"
+
+openssl req -new -newkey rsa:2048 -nodes -out server.csr -keyout server.key -subj "/C=VN/ST=084/L=024/O=VIETIS/OU=VIETIS Software Corporation/CN=chat.local"
+
+sudo openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+
+/etc/nginx/conf.d/ssl.conf
+server {
+    listen       443;
+    server_name example.com;
+
+    ssl on;
+    ssl_certificate /etc/nginx/ssl/server.crt;
+    ssl_certificate_key /etc/nginx/ssl/server.key; 
+}
+
+/etc/init.d/nginx restart
+
+
+openssl req -new -newkey rsa:2048 -nodes -out ca.csr -keyout ca.key -subj "/C=VN/ST=084/L=024/O=VIETIS/OU=VIETIS Software Corporation/CN=passtext"
+
+openssl req -new -key ca.key -out ca.csr
+openssl x509 -req -days 365 -in ca.csr -signkey ca.key -out ca.crt
+cp ca.crt /etc/pki/tls/certs
+cp ca.key /etc/pki/tls/private/ca.key
+cp ca.csr /etc/pki/tls/private/ca.csr
+
+yum install mod_ssl openss
+
+<VirtualHost *:443>
+        SSLEngine on
+        SSLCertificateFile /etc/pki/tls/certs/ca.crt
+        SSLCertificateKeyFile /etc/pki/tls/private/ca.key
+        <Directory /var/www/vhosts/yoursite.com/httpsdocs>
+        AllowOverride All
+        </Directory>
+        DocumentRoot /var/www/vhosts/yoursite.com/httpsdocs
+        ServerName yoursite.com
+</VirtualHost>
+
+
+======================================================
+/var/opt/gitlab/nginx/conf/nginx.conf
+  include /var/opt/gitlab/nginx/conf/gitlab-http.conf;
+  include /var/opt/gitlab/nginx/conf/nginx-status.conf;
+  include /etc/gitlab/custom_gitlab_server.conf;
+ 
+======================================================
+/var/opt/gitlab/nginx/conf
+server {
+  listen *:8009 ssl http2;
+
+
+  server_name repo.vietis.com.vn;
+  server_tokens off; ## Don't show the nginx version number, a security best practice
+
+  ## Increase this if you want to upload large attachments
+  ## Or if you want to accept large git objects over http
+  client_max_body_size 0;
+
+  ## Strong SSL Security
+  ## https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html & https://cipherli.st/
+  ssl_certificate /etc/gitlab/ssl/ssl-bundle.crt;
+  ssl_certificate_key /etc/gitlab/ssl/repo.vietis.com.vn.key;
+
+  # GitLab needs backwards compatible ciphers to retain compatibility with Java IDEs
+  ssl_ciphers 'ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA:ECDHE-RSA-AES128-SHA:AES256-GCM-SHA384:AES128-GCM-SHA256:AES256-SHA256:AES128-SHA256:AES256-SHA:AES128-SHA:!aNULL:!eNULL:!EXPORT:!DES:!MD5:!PSK:!RC4';
+  ssl_protocols  TLSv1.2 TLSv1.3;
+  ssl_prefer_server_ciphers on;
+  ssl_session_cache  builtin:1000  shared:SSL:10m;
+  ssl_session_timeout  5m;
+
+
+======================================================
+
+
+
+https://wikivps.net/xu-ly-loi-kernel-panic-not-syncing-vfs-unable-to-mount-root-fs-on-unknown-block-00/
+
+yum remove kernel-3.10.0-693.21.1.el7.x86_64
+package-cleanup --cleandupes
+package-cleanup --cleandupes --removenewestdupes
+yum update -y
+yum-complete-transaction --cleanup-only 
+yum update -y --skip-broken
+
+yum clean all
+yum list
+
+
+change port ssh
+/etc/ssh/sshd_config
+
+
+
+openssl req -new -newkey rsa:2048 -nodes -out chat-portal.csr -keyout chat-portal.key -subj "/C=VN/ST=084/L=024/O=VIETIS/OU=VIETIS JSC/CN=chat-portal.vietis.com.vn"
+
+https://www.server-world.info/en/note?os=CentOS_7&p=firewalld&f=2
+
+systemctl restart  mattermost
+systemctl restart nginx.service
+systemctl restart firewalld
+
+netstat -ntu|awk '{print $5}'|cut -d: -f1 -s|sort|uniq -c|sort -nk1 -r
+netstat -ntu|awk '{print $5}'|cut -d: -f1 -s |cut -f1,2 -d'.'|sed 's/$/.0.0/'|sort|uniq -c|sort -nk1 -r
+watch "netstat -an | grep :80 | awk '{print \$6}' | sort | uniq -c"
+
+
+
+
+# yum install policycoreutils
+# semanage port -a -t ssh_port_t -p tcp 2222
+# semanage port -m -t ssh_port_t -p tcp 2222
+# systemctl restart sshd
+
+https://support.huaweicloud.com/intl/en-us/ecs_faq/en-us_topic_0167429329.html
+https://blog.cloud365.vn/linux/kiem-tra-dung-luong-ram/
+https://quantrimang.com/cach-quan-ly-bo-nho-de-han-che-linux-su-dung-qua-nhieu-ram-159327
+
+https://tel4vn.edu.vn/phan-1-gioi-thieu-tong-quat-ve-portainer-cong-cu-quan-ly-docker-container/?fbclid=IwAR1XvBWQYY-WF4JK5ubmMFqe559dJPEFfASmtJ2hooKciCxba4vRiEmYq-Q
+
+====================
+https://gitlab.com/JonathonReinhart/gitlab-artifact-cleanup
+yum install python-gitlab
+yum install python-dateutil
+wget https://gitlab.com/JonathonReinhart/gitlab-artifact-cleanup/-/archive/master/gitlab-artifact-cleanup-master.tar.gz
+tar -xzvf fgitlab-artifact-cleanup-master.tar.gz
+
+
+
+https://www.thetopsites.net/article/54324136.shtml
+
+https://gitlab.com/gitlab-org/gitlab-runner/-/issues/2656
+
+
+https://docs.gitlab.com/ee/api/job_artifacts.html
+
+curl --request DELETE --header "PRIVATE-TOKEN: <your_access_token>" "https://gitlab.example.com/api/v4/projects/1/jobs/1/artifacts"
+
+https://192.168.100.66:8009/aucnet/c2b
+https://192.168.100.66:8009/aucnet/c2b/-/jobs
+
+
+http://gocit.vn/bai-viet/cai-snort-mysql-base/
+https://vietnetco.vn/fortigate-ips-giai-phap-chong-va-ngan-ngua-xam-nhap-boi/3285.html
+
+===============================================
+ssh retrict access from ip address
+
+# Authentication:
+LoginGraceTime 120
+PermitRootLogin no
+StrictModes yes
+
+## Permit local root login
+Match Address 192.168.100.230,127.0.0.1,192.168.100.0/24
+  PermitRootLogin yes
+Match All
+  PermitRootLogin no
+
+======================================
+systemctl restart sshd.service
+=====================================
+LoginGraceTime 2m
+StrictModes yes
+MaxAuthTries 6
+MaxSessions 10
+
+Match Address 113.164.228.217/29,113.164.228.218,113.190.232.25,118.70.128.119
+    PermitRootLogin yes
+Match All
+    PermitRootLogin no
+
+
+===================================================
+
+
+
+https://www.digitalocean.com/community/tutorials/how-to-protect-against-dos-and-ddos-with-mod_evasive-for-apache-on-centos-7
+
+https://www.tecmint.com/protect-apache-using-mod_security-and-mod_evasive-on-rhel-centos-fedora/
+
+
+
+
+command[check_users]=/usr/lib64/nagios/plugins/check_users -w 5 -c 10
+command[check_load]=/usr/lib64/nagios/plugins/check_load -w 15,10,5 -c 30,25,20
+command[check_root]=/usr/lib64/nagios/plugins/check_disk -w 20% -c 10% -p /dev/mapper/centos-root
+command[check_swap]=/usr/lib64/nagios/plugins/check_swap -w 20% -c 10%
+command[check_total_procs]=/usr/lib64/nagios/plugins/check_procs -w 150 -c 200
+
+check_disk -w 20% -c 10% -p /dev/sdb1
+
+
+
+dont_blame_nrpe=1
+
+define service {
+    use                                local-service         ; Name of service templat>
+    host_name                     ec2-x.x.x.x.ap-south-1.compute.amazonaws.com
+    service_description          Root Partition
+    check_command             check_nrpe!check_root
+}
+
+define command{
+        command_name check_nrpe
+        command_line /usr/local/nagios/libexec/check_nrpe -H $HOSTADDRESS$ -t 30 -c $ARG1$
+}
+
+
+
+
+===
+export http_proxy=http://192.168.100.11:8080
+export https_proxy=http://192.168.100.11:8080
+yum
+[main]
+………………
+proxy=http://<Proxy-Server-IP-Address>:<Proxy_Port>
+proxy_username=<Proxy-User-Name>
+proxy_password=<Proxy-Password> 
+
+https://fedingo.com/what-file-permissions-for-apache-file-folders/
+
+https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-pci-express-software
+https://computingforgeeks.com/install-linux-kernel-5-on-centos-7/
+https://computingforgeeks.com/how-to-install-latest-kernel-on-centos-linux/
+
+https://www.cyberciti.biz/faq/how-to-protect-ssh-with-fail2ban-on-centos-8/
+
+
+lsmod | grep 816
+rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+rpm -Uvh http://www.elrepo.org/elrepo-release-6-8.el6.elrepo.noarch.rpm
+yum update
+yum install kmod-r8168
+reboot
+
+[root@static89 ~]# dmesg |grep 8168
+
+lspci | egrep -i --color 'network|ethernet'
+ip link show
+lspci -nn | grep -i net
+lshw -class network
+sudo lshw -class network -short
+
+nmtui
+
+ls /etc/sysconfig/network-scripts/
+ifcfg-enp2s0
+DEVICE=enp3s0
+ONBOOT=yes
+IPADDR=192.168.1.10
+NETMASK=255.255.255.0
+GATEWAY=192.168.1.1
+
+ifdown enp0s3
+
+nmtui
+
+00:1f.6 Ethernet controller [0200]: Intel Corporation Ethernet Connection (10) I219-V [8086:0d4f] (rev 11)
+01:00.0 Ethernet controller [0200]: Realtek Semiconductor Co., Ltd. RTL8125 2.5GbE Controller [10ec:8125] (rev 04)
+02:00.0 Ethernet controller [0200]: Realtek Semiconductor Co., Ltd. Device [10ec:8161] (rev 15)
+
+
+
+1x Realtek® RTL8125BG 2.5Gbps LAN controller 
+
+rpm -ivh zlib-1.2.11-13.el8.x86_64.rpm zlib-devel-1.2.11-13.el8.x86_64.rpm elfutils-libelf-0.178-7.el8.x86_64.rpm elfutils-libelf-devel-0.178-7.el8.x86_64.rpm
+
+之后官方驱动包解压，到r8125-9.003.05
+chmod +x autorun.sh
+./autorun.sh
+————————————————
+版权声明：本文为CSDN博主「lynnfield1366」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/weixin_44917742/article/details/107064472
+
+https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-pci-express-software
+
+sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+sudo yum install kmod-r8125
+sudo reboot
+lsmod | grep r8125
+ifconfig -a
+
+tar -xf archive.tar.bz2
+tar xzf yourfilename.tar.gz
+./configure
+make
+make install
+
+host #> lsmod | grep hxge
+hxge 168784 0 
+host #> modprobe -r hxge 
+#> lsmod | grep hxge 
+
+
+
+
+52:54:00:c2:29:57 ---->10ec:8125
+6c:5a:b0:5a:71:81 ---->10ec:8161
+
+inet 10.1.41.76
+6c:5a:b0:5a:71:81
+
+
+1. Download driver tar file
+
+2. Change to the directory
+# cd /tmp/
+
+3. Untar/unzip the archive
+# tar zxf ixgbe-<x.x.x>.tar.gz
+
+4. Change to the driver src directory
+# cd ixgbe-<x.x.x>/src/
+
+5. Compile the driver module
+# make install
+
+6. Remove old driver module and load new one using the modprobe command
+# rmmod ixgbe; modprobe ixgbe
+
+7. Update initrd/initramfs to prevent the OS loading old versions
+# dracut --force
+
+
+
+https://centos.pkgs.org/7/elrepo-x86_64/kmod-r8125-9.003.05-1.el7_8.elrepo.x86_64.rpm.html
+
+    Download latest elrepo-release rpm from
+
+    http://mirror.rackspace.com/elrepo/elrepo/el7/x86_64/RPMS/
+
+    Install elrepo-release rpm:
+
+    # rpm -Uvh elrepo-release*rpm
+
+    Install kmod-r8125 rpm package:
+
+    # yum install kmod-r8125
+
+kmod-r8125-9.003.05-1.el7_8.elrepo.x86_64
+	
+
+Wired connection 1  f3ee885c-ab94-3704-9cdd-1bb309d2287d  ethernet  enp2s0
+
+
+
+
+=============================================
+
+https://grayguide.net/cach-cai-dat-nhan-linux-5-17-tren-centos-7
+https://computingforgeeks.com/install-linux-kernel-5-on-centos-7/
+
+sudo yum -y install https://www.elrepo.org/elrepo-release-7.el7.elrepo.noarch.rpm
+sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+
+sudo yum --disablerepo="*" --enablerepo="elrepo-kernel" list available | grep kernel-ml
+
+sudo yum --disablerepo="*" --enablerepo="elrepo-kernel" list available | grep kernel-lt
+
+sudo yum --enablerepo=elrepo-kernel install kernel-ml
+
+sudo yum --enablerepo=elrepo-kernel install kernel-ml-{devel,headers}
+
+sudo yum --enablerepo=elrepo-kernel install kernel-lt
+sudo yum --enablerepo=elrepo-kernel install kernel-lt-{devel,headers}
+sudo reboot
+
+uname -sr
+
+Edit the file /etc/default/grub and set GRUB_DEFAULT=0.
+/etc/default/grub
+
+GRUB_TIMEOUT=1
+GRUB_DEFAULT=0 
+GRUB_DISTRIBUTOR="$(sed 's, release .*$,,g' /etc/system-release)"
+GRUB_DEFAULT=saved
+GRUB_DISABLE_SUBMENU=true
+GRUB_TERMINAL_OUTPUT="console"
+GRUB_CMDLINE_LINUX="no_timer_check console=tty0 console=ttyS0,115200n8 net.ifnames=0 biosdevname=0 elevator=noop crashkernel=auto"
+GRUB_DISABLE_RECOVERY="true"
+
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+
+https://www.shellhacks.com/change-speed-duplex-ethernet-card-linux/
+
+ethtool enp1s0
+ 
+sudo ethtool -s enp1s0 speed 100 duplex full autoneg off
+sudo ethtool -s enp2s0 speed 100 duplex full autoneg on	
+sudo ethtool -s enp2s0 speed 100
+
+ lspci -v
+ 
+
+==========================================
+[gitlab_gitlab-ce]
+name=gitlab_gitlab-ce
+baseurl=https://packages.gitlab.com/gitlab/gitlab-ce/el/7/$basearch
+repo_gpgcheck=1
+gpgcheck=1
+enabled=1
+gpgkey=https://packages.gitlab.com/gitlab/gitlab-ce/gpgkey
+       https://packages.gitlab.com/gitlab/gitlab-ce/gpgkey/gitlab-gitlab-ce-3D645A26AB9FBD22.pub.gpg
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+
+[gitlab_gitlab-ce-source]
+name=gitlab_gitlab-ce-source
+baseurl=https://packages.gitlab.com/gitlab/gitlab-ce/el/7/SRPMS
+repo_gpgcheck=1
+gpgcheck=1
+enabled=1
+gpgkey=https://packages.gitlab.com/gitlab/gitlab-ce/gpgkey
+       https://packages.gitlab.com/gitlab/gitlab-ce/gpgkey/gitlab-gitlab-ce-3D645A26AB9FBD22.pub.gpg
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+
+
+===
+default test is the upload speed:
+iperf3 -c la.speedtest.clouvider.net -p 5209
+use the -R switch, it downloads from the server. note the 3rd line:
+iperf3 -c la.speedtest.clouvider.net -p 5209 -R
+
+===========================================================
+https://linuxhint.com/lvm-extend-root-partition-centos8/
+
+
+
+
+
+
+
+<VirtualHost *:443>
+    ServerAdmin webmaster@localhost
+
+    DocumentRoot /var/www/html
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+    SSLEngine on
+
+    SSLCertificateFile /etc/apache2/certs/apache.crt
+
+    SSLCertificateKeyFile /etc/apache2/certs/apache.key
+
+</VirtualHost>
+
+
+
+GRANT ALL PRIVILEGES ON glpi. * TO 'GLPISA'@'*' IDENTIFIED BY 'Password12345';
+GRANT ALL PRIVILEGES ON *.* TO 'GLPISA'@'*' IDENTIFIED BY 'Password12345';
+GRANT ALL PRIVILEGES ON *.* TO 'GLPISA'@'%' IDENTIFIED BY 'Password12345';
+FLUSH PRIVILEGES;
+
+
+https://www.linuxyogi.com/centos/how-to-install-xrdp-on-centos-7/
+
+https://www.layerstack.com/resources/tutorials/How-to-install-Graphical-User-Interface-GUI-for-Ubuntu-22-Cloud-Servers
+
+https://phoenixnap.com/kb/how-to-install-a-gui-on-ubuntu
+
+
+     host: 'dc01.vietis.vn'
+     port: 389
+     uid: 'sAMAccountName'
+     base: 'OU=Members User,OU=Members,DC=vietis,DC=vn'
+     bind_dn: 'CN=authen_ldap,CN=Users,DC=vietis,DC=vn'
+     password: 'vietis@123'
+     active_directory: true
+     allow_username_or_email_login: true
+     block_auto_created_users: false
+     
+     method: 'plain' # "tls" or "ssl" or "plain"
+
+
+ /etc/yum.repos.d/ will need to have its 'gpgkey' line adjusted to:
+gpgkey=https://repo.mysql.com/RPM-GPG-KEY-mysql-2022
+
+rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022
+
+Ubuntu:
+
+wget -q -O https://repo.mysql.com/RPM-GPG-KEY-mysql-2022 | apt-key add -
+
+
+https://linuxconfig.org/setup-ftp-server-on-linux
+FTP
+https://www.tencentcloud.com/document/product/213/10912
+edit your /etc/host.allow and /etc/hosts.deny files to control access. A prerequisite is to make sure tcp wrappers in enabled in your /etc/vsftpd.conf file :
+
+
+
+
+firewall-cmd --permanent --add-port=5666/tcp
+
+
+
+https://www.serverlab.ca/tutorials/linux/storage-file-systems-linux/mounting-smb-shares-centos-7/
+https://www.sbarjatiya.com/notes_wiki/index.php/CentOS_7.x_mount_samba_share
+
+mount.cifs \\\\192.168.100.34\\VIETIS_IDT /mnt -o user=ttreader,pass="Vietis@123",uid=5000,gid=6000 sec=ntlmssp
+
+sudo mount -t cifs //192.168.100.34/VIETIS_IDT /mnt -o vers=3.0,username=ttreader,sec=ntlmv2 
+
+sudo mount -t cifs \\\\192.168.100.34\\vietis_idt /mnt -o user=ttreader,sec=ntlmv2
+
+mount disk
+ssh root@10.1.7.55
+pass: vietis@12345678
+
+VCENTER6\ttreader lại giúp anh xem sao, "Vietis@123"
+
+useradd -u 5000 ttreader
+groupadd -g 6000 sharewindows
+usermod -G sharewindows -a ttreader
+
+mkdir /lib_core
+mount.cifs \\\\WS12FS01\\libraries\\core /lib_core -o user=_share_library_core,pass="secret",uid=5000,gid=6000
+
+mount -t cifs -o username=sambauser,password=pass //192.168.1.10/documents /mnt
+
+smbclient -N \\\\192.168.100.34\\vietis_idt
+
+mount.cifs \\\\192.168.100.34\\vietis_idt /mnt -o user=ttreader,pass="Vietis@123",uid=5000,gid=6000
+mount -v -t cifs  \\\\192.168.100.34\\VIETIS_IDT /mnt -o user=ttreader
+
+=======
+Tren windows share :\\192.168.100.34\VIETIS_IDT
+smbclient -L 192.168.100.34 -U  ttreader
+
+
+https://bitsanddragons.wordpress.com/2022/06/07/cifs-mount-error13-permission-denied-on-centos-7-x/
+---------------=============
+useradd -u 5000 ttreader
+groupadd -g 6000 sharewindows
+usermod -G sharewindows -a ttreader
+
+smbclient -L 192.168.100.34 -U  ttreader
+
+mount -t cifs "//192.168.100.34/VIETIS_IDT" /mnt -o "user=ttreader,password=Vietis@123,workgroup=192.168.100.34"
+mount -t -v cifs "//192.168.100.34/VIETIS_IDT" /mnt -o "user=ttreader,password=Vietis@123,workgroup=192.168.100.34"
+
+https://softtechs.org/2022/04/08/python-get-mac-address-to-allow-application-only-for-specific-users/
+
+Card mạng
+https://j3pd.wordpress.com/2011/09/01/updating-intel-nic-drivers-on-linux-centos/
+
+lspci
+
+00:1f.6 Ethernet controller: Intel Corporation Ethernet Connection (12) I219-V
+01:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection
+
+ethtool -i enp1s0
+
+driver: e1000e
+version: 3.2.6-k
+
+
+#cd e1000e-3.8.4/
+[root@chat-internal e1000e-3.8.4]# cd src/
+#make install
+
+
+  MODPOST 1 modules
+  CC      /root/e1000e-3.8.4/src/e1000e.mod.o
+  LD [M]  /root/e1000e-3.8.4/src/e1000e.ko
+make[1]: Leaving directory `/usr/src/kernels/3.10.0-1160.95.1.el7.x86_64'
+Copying manpages...
+Installing modules...
+*** The target kernel has CONFIG_MODULE_SIG_ALL enabled, but
+*** the signing key cannot be found. Module signing has been
+*** disabled for this build.
+make[1]: Entering directory `/usr/src/kernels/3.10.0-1160.95.1.el7.x86_64'
+  INSTALL /root/e1000e-3.8.4/src/e1000e.ko
+  DEPMOD  3.10.0-1160.95.1.el7.x86_64
+make[1]: Leaving directory `/usr/src/kernels/3.10.0-1160.95.1.el7.x86_64'
+Running depmod...
+
+=================================
+lshw -class network
+  *-network UNCLAIMED
+       description: Ethernet controller
+       product: Ethernet Connection (12) I219-V
+       vendor: Intel Corporation
+       physical id: 1f.6
+       bus info: pci@0000:00:1f.6
+       version: 00
+       width: 32 bits
+       clock: 33MHz
+       capabilities: pm msi cap_list
+       configuration: latency=0
+       resources: memory:b1100000-b111ffff
+
+lspci
+00:1f.6 Ethernet controller: Intel Corporation Ethernet Connection (12) I219-V
+01:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection
+
+============================
+
+/sbin/lspci -nn | grep -i net
+00:1f.6 Ethernet controller [0200]: Intel Corporation Ethernet Connection (12) I219-V [8086:0d55]
+01:00.0 Ethernet controller [0200]: Intel Corporation 82574L Gigabit Network Connection [8086:10d3]
+
+https://blog.vinahost.vn/xu-ly-loi-network-card-tren-centos/
+
+
+yum install kmod-e1000e
+
+https://azdigi.com/blog/en/linux-server-en/upgrade-kernel-5-on-centos-7/
+
+
+https://www.opentechguides.com/how-to/article/centos/169/systemd-custom-service.html
+https://www.thegeekdiary.com/centos-rhel-7-how-to-make-custom-script-to-run-automatically-during-boot/
+
+===================================================
+Creating a new service (systemd unit)
+# vi /etc/systemd/system/MyService.service
+[Unit]
+ Description=Service description
+
+[Service]	
+ ExecStart=path_to_executable
+
+[Install]
+ WantedBy=default.target
+ 
+#chmod 664 /etc/systemd/system/MyService.service
+systemctl daemon-reload
+
+
+
+
+=========
+# vi /var/tmp/test_script.sh
+#!/bin/bash
+echo "This is a sample script to test auto run during boot" > /var/tmp/script.out
+echo "The time the script run was -->  `date`" >> /var/tmp/script.out
+
+
+# ls -lrt /usr/local/sbin/myscript.sh
+
+
+# chmod +x /var/tmp/test_script.sh
+
+systemctl start MyService.service
+
+
+=
+# vi /etc/systemd/system/sample.service
+[Unit]
+Description=Description for sample script goes here
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/var/tmp/test_script.sh
+TimeoutStartSec=0
+
+[Install]
+WantedBy=default.target
+
+
+==
+systemctl daemon-reload
+systemctl enable sample.service
+systemctl start sample.service
+
+systemctl reboot
+
+
+chmod +x /scripts/viscenter.sh
+vi /etc/systemd/system/khoidong.service
+[Unit]
+Description=login center
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/scripts/viscenter.sh
+TimeoutStartSec=0
+
+[Install]
+WantedBy=default.target
+
+
+cd /var/www/api-logincenter/
+uwsgi --http :8000 --module config.wsgi --processes 1 --enable-threads --daemonize log.ini
+
+https://tiensu.github.io/blog/37_deploy_ai_model_with_uwsgi_online_inference/
+http://blog.vnsysadmin.com/2021/09/python-flask-ket-hop-voi-uwsgi-nginx-cerbot.html
+https://wiki.nhanhoa.com/kb/huong-dan-cai-dat-ssl-lets-encrypt-voi-certbot-tren-nginx/
+https://azdigi.com/blog/linux-server/webserver/cai-dat-ssl-lets-encrypt-voi-certbot-tren-apache/
+https://zhost.vn/docs/cai-dat-chung-chi-ssl-lets-encrypt-cho-web-server-apache-centos-7/
+
+
+yum -y install epel-release
+yum -y install certbot python2-certbot-apache mod_ssl
+
+Bạn phải đảm bảo domain đã được trỏ về IP máy chủ ( Nếu cài đặt SSL cho cả www.domain.com thì sub www cũng phải trỏ về máy chủ nhé)
+
+certbot --apache -d operator.vietis.vn -d www.operator.vietis.vn
+
+(((chọn 2)))
+
+certbot renew --dry-run
+
+crontab -e
+00 6 * * * /usr/bin/certbot renew --quiet
+
+
+http://www.vnsec.net/2020/09/ky-thuat-phan-tich-event-log-tren.html#comment-form
+
+https://tel4vn.edu.vn/blog/gioi-thieu-tong-quan-ve-gitlab-runner/
+https://viblo.asia/p/tich-hop-cicd-voi-gitlab-ORNZqB0el0n

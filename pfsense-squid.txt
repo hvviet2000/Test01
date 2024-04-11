@@ -1,0 +1,49 @@
+https://mdungblog.wordpress.com/2018/07/27/cau-hinh-squid-proxy-cho-pfsense/
+https://matrixpost.net/set-up-pfsense-as-a-forward-proxy-with-squid-and-configure-access-for-linux-and-windows-clients/
+
+https://techexpert.tips/pfsense/pfsense-remote-access-ssh/
+https://anninhmang.edu.vn/pfsense-remote-access-su-dung-ssh/
+
+https://mdungblog.wordpress.com/2018/07/23/huong-dan-cai-dat-pfsense-tren-vmware-part-i/
+
+https://www.thegioifirewall.com/pfsense-huong-dan-cai-dat-firewall-pfsense-len-vmware/
+
+https://itpro.outsidesys.com/2015/02/19/home-lab-with-pfsense-workstation/
+
+http://gftth.com/cai-dat-va-cau-hinh-cua-bo-dinh-tuyen-tuong-lua-pfsense-2-4-4/
+
+https://www.provya.com/blog/pfsense-making-automatic-backups-with-a-script/
+
+FreeBSD 12.3
+10.1.37.2:8689
+root/vietis#123
+
+vietis@it@2022
+vietis@it@2022
+
+/cf/conf/config.xml
+
+5 8 * * 0 /bin/sh /scripts/clean_folder.sh >/dev/null
+0 2 * * * /bin/sh /scripts/backup_config.sh >/dev/null
+0 3 * * * /bin/sh /scripts/copy_ftp.sh >/dev/null
+
+
+backup file: /cf/conf/config.xml
+backup to local: /scripts/backups
+backup to NAT: \\192.168.100.100\homes\ftp_user2\pfsense
+schedule: everyday at 2PM
+
+
+ls -lt filename
+
+Interface 
+Routing
+Firewall
+
+https://github.com/unofficial-unifi/unifi-pfsense
+
+
+https://ictcenter.xyz/tich-hop-adguard-home-chan-quang-cao-tren-pfsense/
+
+http://noha.vn/su-dung-adguard-home-chan-quang-cao-ngan-ma-doc-cho-ca-nha/
+https://www.phamquangloc.vn/2018/03/pfsense-router-firewall-huong-dan-cauhinh-Pfsense-buoc-dau-tien-sau-khi-cai-dat.html

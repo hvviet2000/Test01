@@ -1,0 +1,151 @@
+IT Support handbook
+1. Ghost 
+2. Authenticate cho người mới
+3. Check services hàng ngày / check Windows update client (server) 
+4. Wifi management/Admin Management/USB/
+- Uname/pass
+5. Proxy
+6. Cài đặt/gỡ bỏ phần mềm
+7. Troubleshooting 
+- user mất mạng
+- user không login vào máy
+- user không cài được phần mềm
+- ...
+
+https://www.phamquangloc.vn/2018/03/
+
+https://cuongquach.com/cai-dat-webmin-tren-centos-quan-ly-vps.html
+https://doxfer.webmin.com/Webmin/Squid_Proxy_Server
+
+
+acl all src 0.0.0.0/0
+http_access allow all
+
+
+https://wiki.alpinelinux.org/wiki/Setting_up_Transparent_Squid_Proxy
+
+http://hoangmaionline.com/news/h%C6%B0%E1%BB%9Bng-d%E1%BA%ABn-ghost-trong-m%E1%BA%A1ng-lan.8530/
+
+https://nguyenthithuhuyen.wordpress.com/2011/07/22/h%C6%B0%E1%BB%9Bng-d%E1%BA%ABn-cai-d%E1%BA%B7t-ghost-cast-server-v%E1%BB%9Bi-norton-ghost-2003/
+
+
+
+cd C:\Users\youruserName
+npm config set proxy http://uname:Password1@my.company.com:8080
+npm config set https-proxy http://uname:Password1@my.company.com:8080
+npm config set  registry=http://registry.npmjs.org
+npm config set  strict-ssl=false
+
+
+registry=http://registry.npmjs.org
+proxy=http://uname:pass@192.168.100.11:8888
+https-proxy= http://uname:pass@192.168.100.11:8080
+http-proxy= http://uname:pass@192.168.100.11:8080 
+strict-ssl=false
+
+Setting https_proxy in Windows
+Open the Start menu. Right-click Computer and select Properties.
+
+Properties
+In the left pane of the System window, click Advanced system settings.
+
+Adv settings
+In the System Properties window, select the Advanced tab, then click Environment Variables.
+
+Env var
+In the Environment Variables window, under User variables, click New.
+
+New
+In the Variable name field, input https_proxy. In the Variable value field, input your proxy server information.
+
+Proxy
+Click OK.
+
+
+Ref:
+
+http://jonathanblog2000.blogspot.ch/2013/11/set-and-reset-proxy-for-git-and-npm.html
+
+https://docs.cloudfoundry.org/cf-cli/http-proxy.html#windows
+
+set http_proxy=http://<login_internet>:<password_internet>@aproxy:aport
+set https_proxy=http://<login_internet>:<password_internet>@aproxy:aport
+set no_proxy=.company
+
+
+hklm\system\currentcontrolset\services\dot3svc
+C:\WINDOWS\System32\svchost.exe -k dot3svc  
+net start Dot3svc
+
+service timestamps log datetime localtime show-timezone year 
+
+1. check lại cấu hình từng switch
+2. update lại các port
+3. check spaning tree cho từng port cấp cho user
+4. Note  port cho DHCP
+5. check cấu hình SNMP (uname/pass)
+6. check cấu hình zabbix 
+7. check cấu hình config pfsense
+- DHCP
+- DNS
+- Squid_Proxy_Server
+- Unifi plugin
+- Adguard 
+- Rule/acl
+- Forward port
+- Open service/url
+
+
+
+Lỗi đầu là do update hệ thống lên có phần thay đổi dhcp ở con pfsense
+
+sau đó thì lỗi loop mạng do tạo thêm wifi k để chế độ roaming, dẫn đến client access wifi có ssid trùng
+
+
+NGUYỄN ĐỨC DUY
+Nguyễn Quang Cường
+TRƯƠNG TẤN PHÚ
+Nguyễn Văn Thái
+
+
+==============
+Anh gửi đánh giá của ứng viên IT:
+1. TRƯƠNG TẤN PHÚ (7/10) 1998
+- Kiến thức cơ bản: Về hệ thống mạng/phần mềm (đã có kn làm cho Cty IT NTQ)
+- Trình độ chuyên môn: đã qua support , vận hành hệ thống 
+Đánh giá: khá phù hợp với vị trí yêu cầu tuyển dụng, cần học chuyên sâu hơn
+- UV mong muốn: 15 triệu
+- offer: 13.5 -> 14 triệu
+
+==
+2.Nguyễn Văn Thái (6/10) 1997
+- Kiến thức cơ bản: Nắm được các khái niệm về hệ thống mạng/phần mềm (đã có kn làm cho Cty IT CMC)
+- Trình độ chuyên môn: đã qua support , vận hành hệ thống  (kiến thức linux ít)
+Đánh giá: phù hợp với vị trí yêu cầu tuyển dụng cần đào tạo thêm
+- UV mong muốn: 15 triệu
+- offer: 12.5 -> 13 triệu
+
+===
+3.Nguyễn Quang Cường (5/10) MSKy
+- Kiến thức cơ bản: Nắm được các khái niệm về hệ thống mạng/phần mềm/
+- Trình độ chuyên môn: đã qua support , vận hành hệ thống (kiến thức linux ít)
+Đánh giá: hơi yếu với vị trí yêu cầu tuyển dụng cần đào tạo thêm
+- UV mong muốn: 14.5 triệu
+- offer: 9 -> 10 triệu
+
+====
+4.NGUYỄN ĐỨC DUY (5/10)
+- Kiến thức cơ bản: Về hệ thống mạng/phần mềm (đã có kn làm cho Cty Grooo)
+- Trình độ chuyên môn: đã qua support , vận hành hệ thống 
+Đánh giá: hơi yếu với vị trí yêu cầu tuyển dụng, cần học chuyên sâu hơn
+- offer: 9 -> 10 triệu
+====
+5. Tổng Quang Tuyền (6/10) (1996) 
+- Kiến thức cơ bản: Nắm được các khái niệm về hệ thống mạng/phần mềm (đã có kn làm cho Cty IT FPT HBLAB)
+- Trình độ chuyên môn: đã qua support , vận hành hệ thống  (kiến thức linux ít), 
+mong muốn làm DEVOOP nên cam kết làm việc IT không chắc
+Đánh giá: phù hợp với vị trí yêu cầu tuyển dụng cần đào tạo thêm
+- UV mong muốn: 12 triệu
+- offer: 11 -> 11.5 triệu
+
+

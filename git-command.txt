@@ -1,0 +1,24 @@
+git command
+git clone
+
+git remote -v
+(kiểm tra link git)
+
+git checkout branch (chuyển sang branch)
+git checkout -b branch (tạo mới và chuyển branch)
+
+git add . 
+(đăng ký commit file)
+
+git push origin branch
+(đẩy code lên branch)
+git push origin task_17
+
+git commit -m "hoan thanh task 1" lần 1 
+
+git commit --amend
+(mỗi pull request chỉ nên có 1 commit) --amend để add thêm commit khi đã thay đổi
+git push origin task_17 -f
+(từ lần 2 trở đi nên thêm -force update) cho commit
+
+git push origin master

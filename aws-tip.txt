@@ -1,0 +1,345 @@
+Vis@7531
+Enable CloudTrail logging across all AWS
+Turn on CloudTrail log file validation
+Enable CloudTrail multi-region logging
+Require multifactor authentication (MFA) to delete CloudTrail buckets
+Turn on MFA for the “root” account
+Minimize or completely avoid using the “root’ account
+Ensure S3 buckets don’t have public write permissions
+Ensure S3 buckets containing sensitive data don’t have public read permissions
+Encrypt Elastic Block Store (EBS) database
+Disallow unrestricted ingress access on uncommon ports
+
+https://www.osam.io/post/a-beginner-guide-to-aws-cost-management
+https://www.youtube.com/watch?v=gl0zpKLbRe0&ab_channel=AWSEvents
+
+
+https://aws-de-media.s3.amazonaws.com/images/Produktblaetter/AWS-Security-Check-List_eng.pdf
+https://totalcloudio.medium.com/security-best-practices-checklist-a23274c726cd
+
+https://bizflycloud.vn/tin-tuc/multi-factor-authentication-mfa-la-gi-tam-quan-trong-cua-mfa-trong-luu-tru-dam-may-20180919104532067.htm
+
+
+https://totalcloudio.medium.com/security-best-practices-checklist-a23274c726cd
+
+
+Quan trọng là từ giờ mình phải
+(1) thay đổi quy trình quản lý tài khoản do KH cung cấp: Thêm template quản lý tài khoản để có thể quy trách nhiệm cá nhân
+(2) ko sử dụng tài khoản admin cho phát triển
+(3) dùng xong trả lại hoặc báo KH hủy tài khoản
+(4) VIETIS phải có quyền đổi pass/key để đảm bảo có thể chịu trách nhiệm cá nhân, ko dùng chung với KH hoặc dùng chung thì phải có cơ chế logging nơi sử dụng. Tuyệt đối không để 1 tài khoản có hơn 1 người phụ trách.
+
+
+https://kipalog.com/posts/Cach-tinh-chi-phi-dich-vu-cua-AWS
+
+
+https://www.youtube.com/watch?v=97q30JjEq9Y
+https://www.youtube.com/watch?v=mpaGMrzLJsA
+
+https://kipalog.com/posts/Cach-cai-dat-Cloudwatch-cua-AWS
+https://aws.amazon.com/vi/getting-started/hands-on/control-your-costs-free-tier-budgets/
+https://cafedev.vn/tu-hoc-aws-cloudwatch-la-gi-va-cach-su-dung-no-trong-amazon-web-services/
+https://kungfutech.edu.vn/bai-viet/aws/cloudwatch
+CloudWatch là gì
+
+AWS CloudWatch là một dịch vụ giúp giám sát, tổng hợp, phân tích dữ liệu, nguồn tài nguyên chạy trên AWS. Dịch vụ này giúp cung cấp thông tin thực tiễn một cách realtime, cho phép giám sát các vùng nhớ của ứng dụng, cơ sở hạ tầng và dịch vụ ví dụ như Ram, Disk,... và sử dụng cảnh báo, tự động hành động; hỗ trợ việc tối ưu hóa hiệu suất ứng dụng, quản lý sử dụng tài nguyên và hiểu rõ tình trạng hoạt động của toàn hệ thống.
+
+https://docs.aws.amazon.com/systems-manager/latest/userguide/walkthrough-powershell.html
+
+Install-Module awspowershell
+Get-Module awspowershell | Import-Module
+Set-AWSCredential -AccessKey 'AKIAJY5DMYIFM34FEQTMUA' -SecretKey 'F5HWPv8hdEI+RdfeW5re0oCVkGnyWhGmsdOZwnPs6Ir'
+
+Get-Command *EC2* | Measure-Object | Select-Object -Property Count
+Get-EC2Instance -InstanceId 'i-0fb1bc69ba6d4d747' | Select-Object -ExpandProperty instances | Select-Object *
+
+Get-S3Bucket
+Get-S3Object -BucketName dans-test-bucket-name
+=============
+Set-AWSCredentials -AccessKey MYACCESSKEYFORAWS123 -SecretKey AWS1234567890abcdefghijklmnopqrstuvwxyz -StoreAs myprofile
+Get-AWSCredentials -ListStoredCredentials
+
+Billing
+About this task
+This procedure involves two tasks:
+
+    Fill in the AWS Billing Schedule form with information that you copy from the AWS portal. This action enables the instance to download AWS billing data.
+    Specify the schedule for downloading AWS billing information.
+
+Procedure
+
+    In the Cloud Admin Portal, navigate to Analyze > Billing.
+    On the Billing Schedules tab, click New, enter a unique and meaningful Name, and then fill in the form.
+	
+
+
+====
+
+$ export AWS_ACCESS_KEY_ID=ASIAIOSFODNN7EXAMPLE
+$ export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+$ export AWS_SESSION_TOKEN=AQoDYXdzEJr...<remainder of session token>
+$ aws ec2 describe-instances --region us-west-1
+
+
+C:\> SET AWS_ACCESS_KEY_ID=ASIAIOSFODNN7EXAMPLE
+C:\> SET AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+C:\> SET AWS_SESSION_TOKEN=AQoDYXdzEJr...<remainder of token> 
+C:\> aws ec2 describe-instances --region us-west-1
+
+sudo su -
+Linux ip-172-31-86-99.ec2.internal 5.10.130-118.517.amzn2.x86_64
+
+netstat -a | less
+netstat -l
+netstat -tnlup
+
+
+yum install https://repo.zabbix.com/zabbix/5.4/rhel/7/x86_64/zabbix-release-5.4-1.el7.noarch.rpm
+
+yum install zabbix-agent2
+ip: 18.212.14.157
+
+portqry -n www.tachytelic.net -p tcp -e 443
+
+PortQry.exe -n 18.212.14.157 -p udp -e 162
+
+https://omprasadsurapu.wordpress.com/2019/12/24/how-install-zabbix-agent-on-amazon-linux-ami/
+
+
+
+https://aws.amazon.com/blogs/aws/s3-storage-lens/
+
+https://viblo.asia/p/vai-dau-muc-ve-toi-uu-chi-phi-tren-aws-aWj53jx8l6m
+https://viblo.asia/p/cach-tinh-chi-phi-dich-vu-aws-maGK70BBZj2
+
+https://viblo.asia/p/aws-aws-compute-services-ec2-XL6lA0qBZek
+
+AWS Cost Explorer
+để phân tích và theo dõi chi phí và mức sử dụng AWS. Công cụ này cung cấp các báo cáo về chi phí và mức sử dụng tổng quát (các tài khoản AWS và các dịch vụ AWS) hoặc ở cấp tài nguyên ( EC2 instance ID)
+
+Sử dụng S3 Analytics để phân tích các dạng truy cập dữ liệu trên object data trong ít nhất 30 ngày. 
+Sử dụng S3 Analytics để phân tích các dạng truy cập dữ liệu trên object data trong ít nhất 30 ngày. 
+3.114.34.42 [Public IP]
+
+
+https://priocept.com/2009/08/21/calculating-http-server-load/
+https://servebolt.com/articles/calculate-how-many-simultaneous-website-visitors/
+
+mua lab
+https://www.whizlabs.com/
+
+
+
+
+
+ NRI.FundConsole
+ AmazonElasticFileSystemFullAccess
+ 
+ 
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action":[
+                "eks: *"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+
+
+
+AmazonAthenaFullAccess
+IAMUserChangePassword
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowViewAccountInfo",
+            "Effect": "Allow",
+            "Action": "iam:ListVirtualMFADevices",
+            "Resource": "*"
+        },
+        {
+            "Sid": "AllowManageOwnVirtualMFADevice",
+            "Effect": "Allow",
+            "Action": [
+                "iam:CreateVirtualMFADevice"
+            ],
+            "Resource": "arn:aws:iam::*:mfa/*"
+        },
+        {
+            "Sid": "AllowManageOwnUserMFA",
+            "Effect": "Allow",
+            "Action": [
+                "iam:DeactivateMFADevice",
+                "iam:EnableMFADevice",
+                "iam:GetUser",
+                "iam:ListMFADevices",
+                "iam:ResyncMFADevice"
+            ],
+            "Resource": "arn:aws:iam::*:user/${aws:username}"
+        },
+        {
+            "Sid": "DenyAllExceptListedIfNoMFA",
+            "Effect": "Deny",
+            "NotAction": [
+                "iam:CreateVirtualMFADevice",
+                "iam:EnableMFADevice",
+                "iam:GetUser",
+                "iam:ListMFADevices",
+                "iam:ListVirtualMFADevices",
+                "iam:ResyncMFADevice",
+                "sts:GetSessionToken"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "BoolIfExists": {"aws:MultiFactorAuthPresent": "false"}
+            }
+        }
+    ]
+}
+
+
+
+============================
+limit of 2,048.
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "fms:*",
+                "waf:*",
+                "waf-regional:*",
+                "elasticloadbalancing:SetWebACL",
+                "firehose:ListDeliveryStreams",
+                "organizations:DescribeAccount",
+                "organizations:DescribeOrganization",
+                "organizations:ListRoots",
+                "organizations:ListChildren",
+                "organizations:ListAccounts",
+                "organizations:ListAccountsForParent",
+                "organizations:ListOrganizationalUnitsForParent",
+                "shield:GetSubscriptionState",
+                "route53resolver:ListFirewallRuleGroups",
+                "route53resolver:GetFirewallRuleGroup",
+                "wafv2:*",
+                "network-firewall:DescribeRuleGroup",
+                "network-firewall:DescribeRuleGroupMetadata",
+                "network-firewall:ListRuleGroups",
+                "ec2:DescribeAvailabilityZones",
+                "ec2:DescribeRegions"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutBucketPolicy",
+                "s3:GetBucketPolicy"
+            ],
+            "Resource": [
+                "arn:aws:s3:::aws-waf-logs-*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iam:CreateServiceLinkedRole",
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "iam:AWSServiceName": [
+                        "fms.amazonaws.com"
+                    ]
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "organizations:EnableAWSServiceAccess",
+                "organizations:ListDelegatedAdministrators",
+                "organizations:RegisterDelegatedAdministrator",
+                "organizations:DeregisterDelegatedAdministrator"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "organizations:ServicePrincipal": [
+                        "fms.amazonaws.com"
+                    ]
+                }
+            }
+        }
+    ]
+}
+
+
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "cloudformation:*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:*"
+            ],
+            "Resource": [
+                "*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:GetRole",
+                "iam:CreateRole",
+                "iam:DeleteRole",
+                "iam:PutRolePolicy",
+                "iam:DeleteRolePolicy",
+                "iam:DetachRolePolicy"
+            ],
+            "Resource": [
+                "*"
+            ]
+        }
+    ]
+}
+
+
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "ListObjectsInBucket",
+            "Effect": "Allow",
+            "Action": ["s3:ListBucket"],
+            "Resource": ["arn:aws:s3:::bucket-name"]
+        },
+        {
+            "Sid": "AllObjectActions",
+            "Effect": "Allow",
+            "Action": "s3:*Object",
+            "Resource": ["arn:aws:s3:::bucket-name/*"]
+        }
+    ]
+}
+
+
+Vis@7531
+LIM.PMS
+psx5.digital.signature
+
+NRI.Econy

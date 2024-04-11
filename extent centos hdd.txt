@@ -1,0 +1,93 @@
+/dev/mapper/cl-root
+
+https://programmer.ink/think/how-to-expand-root-partition-centos7-as-an-example.html
+
+
+ls /sys/class/scsi_host
+echo "- - -" > /sys/class/scsi_host/host0/scan
+echo "- - -" > /sys/class/scsi_host/host1/scan
+echo "- - -" > /sys/class/scsi_host/host2/scan
+
+
+ls /sys/class/scsi_device/
+
+# echo 1 > /sys/class/scsi_device/0\:0\:0\:0/device/rescan
+# echo 1 > /sys/class/scsi_device/1\:0\:0\:0/device/rescan
+# echo 1 > /sys/class/scsi_device/2\:0\:0\:0/device/rescan
+
+fdisk -l
+
+fdisk /dev/sda
+'n'  --> p --> next --> next
+
+'t' 
+'Linux LVM'  '83'
+'w' 
+
+
+partprobe
+# pvcreate /dev/sda3
+vgextend centos /dev/sda3
+# lvextend -L +40G /dev/mapper/centos-root
+lvextend -L +75G /dev/mapper/centos-root
+xfs_growfs /dev/mapper/centos-root
+
+
+lvextend -L +35G /dev/mapper/almalinux-root
+xfs_growfs /dev/mapper/almalinux-root
+ 
+
+  443  echo "- - -" > /sys/class/scsi_host/host0/scan
+  444  echo "- - -" > /sys/class/scsi_host/host1/scan
+  445  echo "- - -" > /sys/class/scsi_host/host2/scan
+  446  ls /sys/class/scsi_device/
+  447  echo 1 > /sys/class/scsi_device/1\:0\:0\:0/device/rescan
+  448  echo 1 > /sys/class/scsi_device/2\:0\:0\:0/device/rescan
+  449  fdisk -l
+  450  fdisk /dev/sda
+  451  partprobe
+  452  ls /dev/
+  453  pvcreate /dev/sda4
+  454  vgdisplay
+  455  vgextend centos /dev/sda4
+  456  lvextend -L +50G /dev/centos/root
+  458  history
+  459  xfs_growfs /dev/mapper/centos-root
+  457  df -h
+  
+  
+  
+  
+• unmount home
+
+> umount /dev/mapper/centos-home
+
+• remove the home logical volume
+
+> lvremove /dev/mapper/centos-home
+
+• recreate a new 400GB logical volume for /home, format and mount it
+
+> lvcreate -L 400GB -n home centos
+> mkfs.xfs /dev/centos/home
+> mount /dev/mapper/centos-home
+
+• extend your /root volume with ALL of the remaining space and resize (-r) the file system while doing so
+
+> lvextend -r -l +100%FREE /dev/mapper/centos-root
+
+• restore your backup
+
+> tar -xzvf /root/home.tgz -C /home
+
+
+
+ubuntu
+sudo su
+echo 1>/sys/class/block/sda/device/rescan
+sudo cfdisk
+
+https://linux.how2shout.com/how-to-install-gparted-on-ubuntu-20-04-22-04-lts-linux/
+
+yum install gparted
+yum install epel-release

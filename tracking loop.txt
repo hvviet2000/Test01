@@ -1,0 +1,86 @@
+https://www.dnsstuff.com/network-troubleshooting-steps
+
+Xác định Cổng: Xác định cổng mạng cụ thể nào đang gặp vấn đề về lưu lượng cao hoặc "tiêu tốn nhiều gói tin". Bạn có thể sử dụng các công cụ giám sát mạng như Wireshark, tcpdump hoặc SNMP (Giao thức Quản lý Mạng Đơn giản) để thu thập thông tin này.
+
+Kiểm tra Lỗi: Sử dụng các công cụ giám sát mạng để kiểm tra xem có bất kỳ lỗi hoặc bất thường nào trên cổng không. Tỷ lệ lỗi cao có thể chỉ ra các vấn đề với kết nối vật lý, các vấn đề cấu hình mạng hoặc các vấn đề phần cứng.
+
+Xem lại Cấu hình: Xác nhận cấu hình của cổng mạng, bao gồm các cài đặt tốc độ và duplex, cấu hình VLAN và bất kỳ danh sách kiểm soát truy cập (ACL) hoặc quy tắc tường lửa nào có thể ảnh hưởng đến lưu lượng.
+
+Tìm Kiếm "Bandwidth Hogs": Xác định bất kỳ thiết bị hoặc ứng dụng nào có thể tiêu tốn băng thông quá mức trên cổng. Điều này có thể bao gồm các ứng dụng tiêu tốn nhiều băng thông, các thiết bị cài đặt không chính xác hoặc các thiết bị bị nhiễm malware.
+
+Giám Sát Lưu Lượng: Sử dụng các công cụ giám sát mạng để phân tích các mẫu lưu lượng trên cổng. Tìm kiếm bất kỳ đỉnh lưu lượng không bình thường nào hoặc các mẫu có thể chỉ ra một vấn đề.
+
+Kiểm tra Phần Cứng Mạng: Kiểm tra phần cứng mạng vật lý, bao gồm switch, router và cáp, để xem có bất kỳ dấu hiệu hỏng hoặc lỗi hoạt động nào không. Thay thế bất kỳ phần cứng hỏng hóc khi cần.
+
+Cập Nhật Firmware và Driver: Đảm bảo rằng firmware và driver cho các thiết bị mạng của bạn đều được cập nhật. Các nhà sản xuất thường phát hành cập nhật để giải quyết các vấn đề về hiệu suất và bảo mật.
+
+Xem xét Phân đoạn Mạng: Nếu cổng được kết nối với một đoạn mạng có lưu lượng cao, xem xét triển khai phân đoạn mạng để cô lập và quản lý lưu lượng.
+
+Thiết lập Chất Lượng Dịch vụ (QoS): Cấu hình các thiết lập Chất lượng Dịch vụ trên các thiết bị mạng của bạn để ưu tiên lưu lượng quan trọng và đảm bảo rằng băng thông được phân bổ một cách hiệu quả.
+
+Bạn có hỏi kiểm tra port nào loop, vậy bạn dùng lệnh này show lên cho mọi người xem trước cái đã.
+Switch#sh spanning-tree
+VLAN0001
+Spanning tree enabled protocol ieee
+Root ID Priority 32769
+Address 000C.85C6.7500
+Cost 19
+Port 2(FastEthernet0/2)
+Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+
+Bridge ID Priority 32769 (priority 32768 sys-id-ext 1)
+Address 00E0.A343.78D9
+Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+Aging Time 20
+
+Interface Role Sts Cost Prio.Nbr Type
+---------------- ---- --- --------- -------- --------------------------------
+Fa0/1 Desg FWD 19 128.1 P2p
+Fa0/2 Root FWD 19 128.2 P2p
+
+Nếu thấy mọi port trên tất cả các switch đều là FWD hết thì có khả năng switch bị loop.
+
+Ít nhất có một hoặc vài switch có trạng thái port như bên dưới là được.
+
+Switch#sh spanning-tree
+VLAN0001
+Spanning tree enabled protocol ieee
+Root ID Priority 32769
+Address 000C.85C6.7500
+Cost 19
+Port 2(FastEthernet0/2)
+Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+
+Bridge ID Priority 32769 (priority 32768 sys-id-ext 1)
+Address 00E0.A3D8.AEEB
+Hello Time 2 sec Max Age 20 sec Forward Delay 15 sec
+Aging Time 20
+
+Interface Role Sts Cost Prio.Nbr Type
+---------------- ---- --- --------- -------- --------------------------------
+Fa0/1 Altn BLK 19 128.1 P2p
+Fa0/2 Root FWD 19 128.2 P2p
+
+
+Bên trên đây là mình ví dụ đối với vlan 1. Đối với các vlan khác thì làm tương tự
+Switch#sh spanning-tree vlan 2
+
+
+
+Chào các bạn,
+
+Muốn biết mạng bị loop hay không thì cách trực quan nhất là xuống phòng thiết bị, ta sẽ quan sát thấy tất cả các port đấu nối giữa các switch đề chớp đèn xanh một cách bất thường,
+
+Còn dấu hiệu để nhận biết loop đã xảy ra hay không bằng giao diện cấu hình là quan sát thông điệp syslog trên thiết bị,
+
+Dấu hiệu là dựa vào bảng MAC không ổn định, tức là địa chỉ MAC A báo hiệu ban đầu học được trên f0/1 rồi lại báo MAC A học được trên f0/2 rồi ngược lại, quá trình cứ lặp đi lặp lại,
+
+Để quan sát thông điệp syslog bằng kết nối console, ta có thể thực hiện câu lệnh
+
+Switch(config)# logging on
+Switch(config)# logging console debug
+
+Để quan sát thông điệp syslog thông qua terminal telnet, ta có thể thực hiện câu lệnh
+
+Switch(config)# logging on
+Switch(config)# logging monitor debug

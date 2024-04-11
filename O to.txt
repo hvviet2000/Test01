@@ -1,0 +1,460 @@
+BIDV là 6,5%/năm trong 6 tháng đầu và 7%/năm trong 12 tháng, thời gian vay tối thiểu 36 tháng. 
+Với khách hàng vay mua nhà trong thời gian tối thiểu 60 tháng, lãi suất dao động từ 7,5-8,5%/năm, tùy kỳ hạn;
+
+
+
+gợi ý vài ý tưởng kinh doanh độc đáo,
+Dưới đây là một số ý tưởng kinh doanh độc đáo dành cho chuyên viên quản trị hệ thống và bảo mật:
+
+1. **Dịch vụ Kiểm tra Bảo mật Hệ thống Độc Lập**: Cung cấp dịch vụ kiểm tra bảo mật hệ thống cho các doanh nghiệp nhỏ và vừa. Điều này bao gồm kiểm tra và đánh giá rủi ro bảo mật, khắc phục lỗ hổng bảo mật, và cung cấp khuyến nghị để cải thiện hệ thống bảo mật.
+
+2. **Đào tạo và Huấn luyện Bảo mật Hệ thống**: Tổ chức các khóa đào tạo và huấn luyện cho doanh nghiệp về bảo mật hệ thống, từ các khóa học cơ bản đến nâng cao. Đây có thể là dịch vụ trực tuyến hoặc offline.
+
+3. **Tư vấn và Triển khai Giải pháp Bảo mật Cloud**: Hỗ trợ các doanh nghiệp chuyển đổi và triển khai giải pháp bảo mật cho môi trường đám mây, bao gồm cả quản lý và giám sát liên tục.
+
+4. **Giải pháp Bảo mật IoT**: Phát triển giải pháp bảo mật cho các thiết bị Internet of Things (IoT), bao gồm cả thiết bị gia đình thông minh, thiết bị y tế, và công nghiệp. Điều này bao gồm phân tích rủi ro và triển khai các biện pháp bảo mật phù hợp.
+
+5. **Dịch vụ Giám sát An ninh Mạng**: Cung cấp dịch vụ giám sát và phản ứng cho các mạng máy tính của doanh nghiệp để phát hiện và ngăn chặn các tấn công mạng.
+
+6. **Phát triển Phần mềm Bảo mật Tùy chỉnh**: Xây dựng phần mềm bảo mật tùy chỉnh dựa trên nhu cầu cụ thể của các doanh nghiệp, bao gồm cả phần mềm mã độc và giải pháp bảo mật chống lại các loại tấn công.
+
+7. **Dịch vụ Tư vấn về Tuân thủ GDPR và CCPA**: Hỗ trợ các doanh nghiệp tuân thủ các quy định về bảo mật dữ liệu như GDPR (Nghị định Bảo vệ Dữ liệu Chung của Liên minh châu Âu) và CCPA (California Consumer Privacy Act).
+
+8. **Dịch vụ Phục hồi Thảm họa và Kiểm tra An ninh**: Cung cấp dịch vụ phục hồi sau sự cố an ninh mạng và kiểm tra lại hệ thống để đảm bảo rằng lỗ hổng đã được khắc phục và an ninh đã được củng cố.
+
+9. **Tư vấn và Triển khai Blockchain cho Doanh nghiệp**: Hỗ trợ doanh nghiệp triển khai công nghệ blockchain để bảo vệ và quản lý dữ liệu một cách an toàn và minh bạch.
+
+10. **Dịch vụ Phân tích Tình báo An ninh**: Cung cấp phân tích tình báo an ninh để định danh và đánh giá rủi ro bảo mật cho doanh nghiệp.
+
+Những ý tưởng này có thể được tùy chỉnh dựa trên kỹ năng và sở thích của bạn, cũng như nhu cầu thị trường cụ thể.
+
+Các đơn vị liên thông được gần 6.000 giấy khám sức khỏe lái xe lên Cổng giám định bảo hiểm y tế.
+
+Các cơ sở gồm: Bệnh viện Đa khoa Hà Đông; Bệnh viện Bắc Thăng Long; Bệnh viện Đức Giang; Bệnh viện huyện Ba Vì; Bệnh viện Đa khoa An Việt; Bệnh viện Hòe Nhai; Bệnh viện Đa khoa quốc tế Bắc Hà; Bệnh viện huyện Gia Lâm; Bệnh viện huyện Hoài Đức; Bệnh viện Đa khoa Medlatec; Bệnh viện Đa khoa tư nhân Thăng Long; Phòng khám Đa khoa quốc tế Thanh Chân; Bệnh viện Đa khoa tư nhân Tràng An; Bệnh viện Đa khoa Sơn Tây; Bệnh viện Đa khoa Đống Đa.
+
+Bên cạnh đó, còn có các phòng khám gồm: Phòng khám Đa khoa Việt Hàn; Phòng khám Đa khoa YKAO; Phòng khám Đa khoa Quốc tế An Đạt; Phòng khám Đa khoa quốc tế Việt Nga; Phòng khám Đa khoa Tây Hồ; Phòng khám Đa khoa 5 sao; Phòng khám Đa khoa Yên Hòa; Phòng khám Đa khoa SBB.
+
+
+show mac address-table int fa 0/2
+
+207    4ccc.6a2e.64fc    DYNAMIC     Fa0/2
+207    4ccc.6a2e.64fc    DYNAMIC     Fa0/2
+
+show ip arp | include 309c.2381.6365
+
+
+show mac address-table interface fastEthernet0/4
+
+sh ip dhcp snooping binding 
+
+0817725793
+
+https://youtu.be/fQa7ZZHnUa8
+
+Nệm Xe Hơi Loại 1 Rẻ Nhất Việt Nam!
+Chỉ #499k 1 Bộ Hàng Cao Cấp Loại 1!
+Ở Đâu Rẻ Hơn Shop Tặng Miễn Phí Cho Khách.
+Nhận Hàng Kiểm Tra - Lắp Thử - OK Mới Thanh Toán Tiền!
+Địa Chỉ: 685 đường Trường Chinh, Long Thành, Đồng Nai.
+SĐT: 0866.595.779
+
+
+Em lắp thảm kata,dán phim 3m. Cam hành trình. Lót cốp nhựa. Ốp chống xước bậc và bữa tới lắp thêm bộ giải mã cảm biến áp suất lốp.
+Em thấy thế là đủ dùng
+
+. Tặng kèm:
+- Khay hành lý
+- Camera hành trình
+- Ốp tay cửa
+- Dán phim
+- Lót sàn
+- Khăn lau
+- Sáp thơm
+- Che nắng
+- Tappi sàn
+- Túi thể thao
+- Dù 
+- Hoa tươi, 10l nhiên liệu, công bảo dưỡng
+2. Tặng kèm:
+- Phủ bóng nano
+- Phủ gầm chống chuột 
+- Camera hành trình
+- Dán phim
+- Thảm sàn
+- Gối cổ + hộp đựng chìa khoá
+- Máy tạo ẩm không khí
+- Khăn
+- Che nắng
+- Hoa tươi, 10l nhiên liệu, công bảo dưỡng
+
+
+
+- Diện tích lô đất 192m2, mặt tiền 8m, lô đất 2 mặt đường trước và sau, gần hồ.
+- Sổ đỏ 100% đất ở.
+- Gần đường 21, gần khu công nghệ cao, đại học Quốc Gia, gần Asian.
+- Giá bán liên hệ: 0902643555. 
+
+thay nước làm mát
+sllc
+\crv ?G 
+1048 + 27 = 1075
+
+https://y2kgroup.wordpress.com/2012/11/01/thiet-ke-mang-tu-ly-thiet-den-thuc-tien-p3/
+
+Setting cửa tự đóng
+https://www.youtube.com/watch?v=gfc5H5SQjHM&ab_channel=MinhTh%C6%B0Channel
+Setting --> Vehicle -> Door/Windows -> Walk alway lock : ON
+
+
+Setting đèn
+https://www.youtube.com/watch?v=vyUl4Kh4LMw&ab_channel=%C3%94T%C3%B4Ch%C3%ADnhH%C3%A3ng%C4%90%E1%BB%93ngNai
+Setting --> Vehicle -> Lighting Setup --> 
+Interior Light -> Auto (15-30-45s)
+
+
+https://www.youtube.com/watch?v=QA4xXrF5oeI&ab_channel=NguyenMKT
+Setting --> Vehicle -> Driver Assit setting
+
+
+https://www.youtube.com/watch?v=ArqBHJEPUzk&ab_channel=HondaT%C3%A2yNinh
+Chỉnh đèn
+
+
+https://www.youtube.com/watch?v=Z5tXHDubzvA&ab_channel=KhanhHonda%C3%94t%C3%B4HCM0996.773366
+trời mưa
+
+https://www.youtube.com/watch?v=Ts4HqR552aw&ab_channel=Tu%E1%BA%A5nHonda%C3%94t%C3%B4Ti%E1%BB%81nGiang
+điều hòa
+
+https://www.youtube.com/watch?v=SW015ukLXjA&ab_channel=%C3%94T%C3%B4Ch%C3%ADnhH%C3%A3ng%C4%90%E1%BB%93ngNai
+
+
+https://www.youtube.com/watch?v=895QlAy1V_c&ab_channel=DuyTruy%E1%BB%81nB%C4%90S
+--> tự bám đường
+
+
+– Khoang chắn hành lý xe Honda CRV
+– Khay nhựa lót cốp xe Honda CRV
+
+Tạm ứng: ví dụ 100 triệu thì vay chịu lãi 8%
+- gửi 100 triệu --> ngân hàng trả lãi cho mình
+- cần 50 triệu  --> rút ra thì chịu lãi
+
+===
+Đầu tư linh hoạt : chỉ rút ra được 20% giá trị tkhoản hợp đồng
+
+
+
+Bán đất đầu tư sinh lời tiềm năng
+Địa chỉ: Thôn Muồng Voi, Vân Hoà, Ba Vì, Hà Nội
+DT gần 871M2 - Đất ở 175m
+- Pháp lý: Sổ Hông mới 2021
+
+- Đất bằng phẳng đẹp, chất đất tốt
+- Đường bê tông to , 2 ôto tránh nhau thoải mái
+- Khu vực dân cư sinh sống rất thân thiện
+- Khu vực trung tâm phát triển Du Lịch Sinh thái của TP HN
+- Ngay gần các khu du lịch nổi tiếng như Khoang Xanh, Thiên Sơn Suối Ngà, Long Việt, Vườn quốc gia Ba Vì và hàng chục các khu du lịch nhỏ khác
+
++ Giá 4,5 triệu/m2 (có thương lượng)
++ AC quan tâm LH em: 0913346458
+
+
+Kinh nghiệm đi HN-HP
+1. Chuẩn bị
+- Máy bơm lốp
+- Gối tựa đầu cao su non
+- Rất nhiều đồ ăn vặt.
+- Cảm biến áp suất lốp
+- Đồ ăn - nước uống: nên chuẩn bị nhiều hoa quả. 
+
+2. Cung đường
+
+Cứ QL1 mà chạy là an toàn nhất,
+
+1. Bác chia làm 3 ngày đi, mỗi ngày lái tầm 600km đổ lại
+2. Mang theo các đồ dùng cá nhân, thuốc men cần thiết
+3. Đường QL1A bị mưa lũ ngập khúc miền Trung (Quảng trị-> Huế) nên đi cẩn thận
+4. Từ Khánh Hòa=> Đồng Nai: đi đúng biển báo, lane đường, nhiều trạm bắn tốc độ
+5. Ăn trưa cứ quán nhiều xe tải mà vào
+
+Từ Sài Gòn, mình muốn đi cung đường biển để ngắm cảnh.
+Ngày 1: SG - Mũi Né - Phan Rí - Ca Na - An Hải - Núi Chùa - Cam Ranh - Tuy Hoà.
+Ngày 2: Tuy Hoà - Sông Cầu - Quy Nhơn - Quảng Ngãi - Đà Nẵng - Huế - Đồng Hới.
+Ngày 3: Đồng Hới - Hà Tĩnh - Vinh - Thanh Hoá - Hà Nội. Hơn 530km
+
+
+Ngày 1: Hà Nội - Thanh Hoá - Vinh (nghỉ trưa) - Huế. Hơn 660km.
+Ngày 2: Huế - Đèo Hải Vân - Hội An - Quy Nhơn. Khoảng 500km
+Ngày 3: Quy Nhơn - SG. Ngày 3 thì mình chỉ đi theo QL1A về đến SG
+
+
+Ngày 1: xuất phát từ SG trước 5h sáng, chạy ra Dầu Giây (Hưng Phát) hoặcLong Khánh ăn sáng hết TT Long Khánh có hàng phở bên tay trái, sát đèn tín hiệu giao thông. Chạy tiếp buổi trưa tới Ngọc Sương tại Cam Thịnh Đông (Sau trạm soát vé đầu tỉnh Khánh Hòa) ăn trưa. Chạy tiếp theo quốc lộ 1D nghỉ tại Thành phố Quy Nhơn, ăn tại quán Cơm Quê Hương trên đường Lê Hồng Phong (khoảng 650-670km)
+
+Ngày 2: Chạy tiếp tới Đà Nẵng (phải vòng vào thành phố) hoặc Lăng Cô (đầu bắc Hầm đường bộ Hải Vân) nghỉ ăn trưa tại quán Sao Biển hoặc Mai Nga. Chạy tiếp nghỉ tại Đông Hà hoặc Đồng Hới. Nên ăn tối tại Đông Hà (ngay cạnh đường 1) quán Tân Châu hoặc Hiệp Lợi. Đầu TP Đồng Hới sát QL1A cạnh Quảng Bình quan có nhiều khách sạn tư nhân, có chỗ để xe rộng rãi. Khoảng 550-600 km nếu tới Đồng Hới.
+
+Ngày 3: từ Đông Hà hoặc Đồng Hới chạy tới Vinh nghỉ ăn trưa (Minh Hồng) ngay cạnh QL1A) đối diện Khách sạn Hữu Nghị (trên đường rẽ vào Ga Vinh), ăn xong chạy tiếp đi Hà Nội.
+
+
+Chặng 1: Sài gòn - Nha Trang (Vì nhà Ngoại ở Nha Trang) 5g xuất phát - 2g chiều tới.
+Chặng 2: Nha Trang - Đà nẵng - 8g xuất phát - 6g chiều tới
+Chặng 3: Đà Nẵng - TP Thanh Hóa - 6g xuất phát - 7g chiều tới.
+
+
+Cung đường đi SG - HN
+Cung SG-HN thì mình toàn dậy từ 4h sáng, 4h rưỡi hoặc 5h bắt đầu lái xe đi. Nghỉ ăn trưa tầm 30ph, lái đến 6h tối thì đến khách sạn.
+
+
++) Ngày 1: Hà Nội -> Đồng Hới
+Quãng đường: 500km, thời gian lái xe dự kiến gần 10 tiếng + ăn trưa, nghỉ ngơi 1 tiếng = gần 11 tiếng
+Xuất phát: 4h15 sáng cho mát, với cả đi vào giờ Dần thì vẫn tốt hơn giờ Mão. ăn nhẹ trên xe.
+
+    7h00 đến Thanh Hoá, dừng lại ăn sáng 20p.
+    7h20 tiếp tục xuất phát. Khoảng 12h đến Hà Tĩnh. Dừng lại ăn trưa 40p.
+    Dự kiến ăn trưa tại nhà hàng cơm bình dân đối diện Khách sạn Thái Lan và khách sạn Đại Bàng, đường Hà Huy Tập, TP Hà Tĩnh. Quán này sạch sẽ, ngon và rất rẻ.
+    12h40 xuất phát, 14h đến địa phận Quảng Bình (Đi hầm Đèo Ngang).
+    14h15 qua Vũng Chùa Đảo Yến thắp hương viếng Đại tướng Võ Nguyên Giáp.
+    15h xuất phát về Đồng Hới. Giữa đường dừng lại ăn hải sản ở quán Hương Thủy ở chân đèo phía nam của đèo Lý Hòa. Quán này em ăn mấy lần rồi, hải sản tươi mà rẻ. 4 người ăn chưa hết 400k.
+    17h tới TP Đồng Hới lấy phòng, nghỉ ngơi, tắm biển, ăn tối hải sản.
+    Khách sạn dự kiến: Luxe hotel - 400k/phòng. 
+
+https://e.com.vn/tin-tuc/tu-ha-noi-di-quang-binh-bao-nhieu-km-xe-ha-noi-di-quang-binh.html
+Hà nội, Đồng hới
+ĐỒng hới, bình định
+Bình định - HCM
+
+ Cao tốc LT - DG -> QL51-> Mỹ Xuân - Ngãi Giao - Xuyên Mộc -> Lagi -> QL1 -> Quy Nhơn.
+ Bà Rịa, đi đường ven biển đảm bảo xe vắng, chạy cảnh rất đẹp, đi được tới Nha Trang là đi Ql 1A đi tiếp
+ 
+ 
+Hà Nội, Cao Bằng ,Hồ Ba Bể
+Day1:
+1. Hà nội -> Cao bằng : 6h di chuyển
+2. Cao bằng -> Hồ Ba Bể : 3h di chuyển
+
+Hà nội -> Lạng sơn: 2h30 phút + Ăn nghỉ 30 phút = 3h
+	5h xuất phát -> 7h30 ăn sáng, 8h đi tiếp 
+Lạng sơn -> Cao bằng: 3h 
+	8hAM -> 11hAM
+Nghỉ ngơi: 12h nhận phòng ăn trưa
+https://kenhhomestay.com/quan-an-ngon-cao-bang/
+
+Chiều: 2h xuất phát 
+Option1: Cao bằng --> Động Ngườm Ngao (cùng cung đường) --> thác bản gốc: 2h xe chạy + 30 phút thăm quan 
+Đi về = 5H (trỏ về cao bằng là 6h chiều) 
+
+Nghỉ ở cao bằng, hôm sau đi hồ ba bể
+
+Day 2:
+
+2. Cao bằng -> Hồ Ba Bể : 4h di chuyển 
+Cao bằng -> Hồ ba bể --> Hà Nội
+	5h xuất phát: 10h đến bắc cạn
+	Thăm quan hồ 2h
+	Ăn trưa: 12h
+	Nghỉ đến 1h:
+	https://www.yong.vn/dac-san-ho-ba-be-an-gi-o-ho-ba-be
+
+Hồ ba bể --> Hà nội (5h+1)
+	Hồ ba bể --> thái nguyên () nghỉ ăn nhẹ
+	Thái nguyên -> Hà nội
+
+
+
+
+
+Michelin W31432 Auto Expert Tyre Shine 520ml
+
+70mai a500s 1.850k
+Kc01 pro cảnh báo giao thông 3750k
+m1 Speed trước sau 5.5tr
+vietmap
+
+
+Tour : dự kiến 9h20 ngày 14/7 tàu đáp ga Huế.
+
+Mình tự đi ngày 13/7
+Hà nội - Quảng bình - Huế 
+Hà nội, quảng bình: 8h 30 phút
+
+Sáng 13: 4h -> đến 7h30-8h nghỉ ăn sáng  --> 
+
+thanh hóa: Chả Tôm Thảo Mười (14 Nhà Thờ), 14 Nhà Thờ, P. Trường Thi, Thành phố Thanh Hóa, Thanh Hoá, Vietnam
+https://goo.gl/maps/2xLQWgM4MGYnk75y6
+
+Lươn nghệ an: hòa xoăn
+https://goo.gl/maps/NqQkqEhf1iUYfotKA
+
+Lươn quỳnh xuân
+https://goo.gl/maps/MoNcdZES8SSiDLq66
+
+Lươn bát đá
+https://goo.gl/maps/F4xbjPLLNCqhBFWy6
+
+
+Quán phở Minh Hằng
+https://goo.gl/maps/cs7XGPCRaegN8Ke4A
+
+nhà hàng đồng khởi
+https://goo.gl/maps/e3T5mxLcHvv7HvPcA
+
+
+hoặc
+Trạm Dừng Nghỉ Thanh Bình
+https://goo.gl/maps/SU9FewXDZRAyAppe9
+
+
+8h-12h 
+Ăn trưa: 
+
+Nhà hàng đèo con
+https://goo.gl/maps/VyatNbspg4E95pFK9
+0333144305
+
+
+Nhà hàng bến em
+https://goo.gl/maps/EM6Ux1edzLKeGFD68
+0979314758
+
+Nhà hàng RA KHƠI
+https://goo.gl/maps/v4dWcuEAD3WE43gc7
+
+
+Nhà hàng Hạnh Hoa
+https://goo.gl/maps/mtBCe5RZkpaakkxFA
+
+khách sạn ban mai
+https://goo.gl/maps/VQ3DpFttjJJDKZs18
+02323810755
+
+Check in khách sạn: 2h
+Nghỉ ngơi: chiều tắm biển
+Sáng 7h30h đi vào huế:  Huế: 3h30 di chuyển
+
+8h30->11h đến Huế: ăn trưa cùng tour (tại nhà hàng Không Gian Xưa tại Huế)
+
+https://goo.gl/maps/wtjYvcd51nCZCcUH8
+
+Thanh Tâm Resort
+https://goo.gl/maps/w1rZHPCy2XNNNg187
+
+Phòng A tập thể 4 giường
+
+
+Nhà Hàng Cơm Niêu 186 Lê Duẩn
+186 Lê Duẩn, Trần Phú, Hà Tĩnh, Vietnam
+https://goo.gl/maps/YaFMZtiL9AxE2UAb6
+0913253335
+
+https://goo.gl/maps/Y46JnHbAiziAxzY96
+
+Góc Phố Cơm Hến
+154 Lê Duẩn, Trần Phú, Hà Tĩnh, Vietnam
+https://goo.gl/maps/SpVv4esninXgqyhx7
+
+
+huyện Bát Xát, tỉnh Lào Cai, thác Rồng
+
+ 5h sáng xuất phát từ Cầu Giấy - đường trên cao qua Bắc TL vào cao tốc HN -LC, ăn sang tại trạm dùng nghỉ rồi thẳng tiến đến IC8 thì ra nút Phú Ninh đi Tuyên Quang. Đến Tuyên Quang dùng nghỉ uống nước 15p xong tiếp tục hành trình đến Hà Giang checkin tại Km0 lúc 10h30p. Tham quan thành phố đến 12h ăn trưa (Nhà hàng Bếp Việt).
+- 14h chạy Qản Bạ, chụp choẹt Núi đôi cô Tiên, Thăm H mong Village, quay ra chạy lên Yên Minh nghỉ tại HomeStay Hà Anh (ĐT 036 236 1985), rất sạch sẽ, cơm canh ngon và giá cả hợp lý
+2. Sáng 16/7:
+- 8h trả phòng ra ăn sáng và đi Đồng Văn. Trên đường sẽ thăm quan Nhà Vương, nhà Pao, Dốc Thẩm Mã, em còn cho bọn nhỏ vào của khẩu Phố Bảng chơi
+- 12h lên đến Đồng Văn, nhận phòng và đi ăn trưa tại Phố cổ, về ks nghỉ trưa
+- 14h30: chạy lên Cột cờ Lũng Cú đến 17h thì về Ks tắm rửa nghỉ ngơi
+- 19h: Ăn tối, giao lưu đến 21h thì ra dạo Phố Cổ, cafe...
+- 22h30: Thưởng thức món Cháo Ấu Tẩu (Nên ăn vì ngon và ăn thì hôm sau sẽ hết cảm giác mệt mỏi)
+3. Sáng 17/7:
+- 8h trả phòng, dạo chợ của đồng bào 1 vòng
+- 9h: Tạm biệt Đồng Văn tiếp tục hành trình sang Mèo Vạc.
+- 9h45: chụp ảnh tại đèo Mã Pí Lèng
+- 10h30 checkin Panorama
+- 11h đã có mặt tại bến thuyền Hẻm Tu sản, Sông Nho Quế. (Đi xe ôm từ bãi đỗ xe xuống gần bến thuyền là 1 trải nghệm rất Yomost)
+- 14h: Tạm biệt Hẻm Tu sản, thẳng tiến Mèo Vạc, ăn nghỉ dọc đường vì em mang theo đồ ăn vặt nhiều hihi
+Em chạy QL 34 qua Bảo Lâm về Bắc Mê rồi về Tp Hà Giang (trên đường cũng có vài điểm sạt lở nhưng vẫn đi được)
+- 20h45 em về đến nhà. Kết thúc chuyến hành trình 996km.
+
+
+Sáng xuất phát từ HN lúc 5h, 
+7h30 đến TP yên bái ăn sáng; 
+8h-12h chạy tới MCC ăn trưa nhận phòng
+14h30 đi thăm đồi móng ngựa, rừng trúc Mồ Dề
+16h về homestay
+19h ăn tối, sau bữa tối đi dạo bản Thái
+
+Sáng hôm sau:
+7h ăn sáng, trả phòng
+8h -8h30 đi chợ mua quà, rau, táo mèo
+9h đi sống khủng long
+12h về Tú Lệ ăn trưa 
+Đi chợ Tú Lệ mua cốm, gạo nếp, chơi Bản Lìm Thái
+15h xuôi về HN
+
+Ngày 1: Điểm xuất phát _ Tp Hà Giang ( ăn trưa dọc đường ) đến nghỉ ngơi  và check in Km0 trước 15h00
+Xuất phát đi quản bạ, check các điểm. : dốc bắc sum, cổng trời, núi cô tiên . Ăn và nghỉ tối tại Quản Bạ
+Ngày 2 : xuất phát sớm, ăn sáng phở Tráng Kìm nổi tiếng. Di chuyển đi Yên Minh qua gốc cấy cổ thụ cô đơn. Ngắm cảnh dọc đường, có thể dừng chụp View tại dốc cán tỷ. Ăn trưa tại phố cáo, chiều ghé nhà Pao ( di chuyển hợp lý có thể ăn trưa tại nhà Vương. ) 
+Dọc hai bên đường có rất nhiều Hoa Tam Giác Mạch để chụp
+Vào thăm và nghe lịch sử về Vua Mèo, tiếp tục đi cột cờ lũng cú, quay lại tt Phố Cổ nhận phòng và ăn tối .
+Dạo quanh phố cổ và ăn món Thắng Dền nóng hổi, trải nghiệm tắm lá thuốc người Dao bản địa. ( Về phố cổ sớm có thể check View đồn cao săn hoàng hôn và ngắm toàn cảnh Tt Đồng Văn) 
+Ngày 3: ăn sáng bánh cuốn Chờ, sôi ngũ sắc, đi chợ phiên ( nếu vào chủ nhật ) 
+Chinh phục đèo Mã Pì Lèng, check view cf panorama và xuống thuyền Sông Nho Quế, Hẻm Tu Sản... Ăn trưa tại bờ sông.
+Chiều có 2 lựa chọn ( 1 là trải nghiệm Vách Đá Trắng và nghỉ tại Đồng Văn_ 2 là di chuyển thẳng về Yên Minh nghỉ tối.
+Ngày 4 : ngày về và kết thúc chuyến đi.
+Lịch trình này thư thả thời gian nếu setup và di chuyển hợp lý sẽ tránh được các điểm đông người. Đỡ tgian xếp hàng mua vé đi thuyền , vì tgian này Hg sẽ rất đông. 
+Lưu Ý : Hg đang vào mùa lạnh, nên cbi áo khoác, nhưng đừng áo dày quá.
+Hg sẽ rất đông vào dịp cuối tuần, nên book phòng sớm nhất có thể để chọn được vị trí thuận lợi
+Đây chỉ là lịch cơ bản , cũng có thể giảm bớt tgian xuống 3 ngày nếu k sắp xếp được, 
+Nhưng thuận tiện nhất thì nên có setup tgian di chuyển cụ thể , hợp lý để tránh tắc đường, đông người và tgian dừng nghỉ thoải mái. 
+Bác nào qtam thêm chi tiết, thì ib e tư vấn 
+0393518186(zalo)
+
+
+thung lũng Nà Ka
+Nghỉ 7 ngày: từ 08/02  -> hết 14/02/2024
+
+12-13 tháng 2
+
+Avatar homestay Mộc Châu
+Mộc Châu Eco-garden 
+Phoenix Mộc Châu Bungalow
+
+Wooden House Homestay 
+
+Mận Home – Nhà trên đồi
+Mộc Châu Cottage Homestay- hết phòng
+
+
+11h đến mộc châu , ăn trưa, check phòng
+181 xuân bắc
+70 xuân gù
+đồi chè trái tim 68
+Thung lũng mận 
+Vườn hồng
+
+Gần Lăng Cô có bãi biển Bình An đẹp, nhìn ra cảng Chân Mây đẹp lắm bạn nhé
+
+========
+Hà nội - Mộc châu
+Đèo đá trắng
+thung lũng Nà Ka
+Thác dải yếm
+Cầu kính
+
+==
+ auto spa 112 trần phú hà đông
+ Thưởng Huyền  395 Đ. Nguyễn Hoàng Tôn, Xuân Đỉnh, Bắc Từ Liêm, Hà Nội
+ Số điện thoại: 0918 393 393
+ 
+ ==
+ Lạng Sơn, ghé thưởng thức ăn sáng món đặc sản Phở Vịt quay Hải Xồm trên phố Bà Triệu, 
+ 
+ bỏ 800k Khâu quả vô lăng xong cầm chắc tay hẳn các cụ ạ
+162 đường hồng đô cạnh svd mỹ đình 
+0981909262
+
+
+Mỹ Lâm - Tuyên Quang
+https://dulichtoday.vn/blog/suoi-nuoc-nong-tuyen-quang.html
+https://diadiemvietnam.vn/suoi-nuoc-nong-ban-mong/
+
+
+MÚT GÓC TIÊU ÂM BASSTRAP

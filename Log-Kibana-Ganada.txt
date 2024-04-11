@@ -1,0 +1,813 @@
+
+http://attt.dinte.gov.vn/Pages/mo-hinh-trien-khai-he-thong-thu-thap-log-co-ban.aspx
+
+https://www.digitalocean.com/community/tutorials/how-to-troubleshoot-common-elk-stack-issues
+
+https://github.com/TrongTan124/ghi-chep-ELK-OPS/blob/master/cai-dat-ELK.md
+
+https://200lab.io/blog/elastic-search-la-gi/
+
+https://123host.vn/tailieu/kb/vps/huong-dan-cau-hinh-logstash-xu-ly-log-tu-filebeat.html#Grok_8211_Unstructured_log_data_into_structured_and_queryable
+
+https://xuanthulab.net/tim-hieu-va-cai-dat-elk-elasticsearch-logstash-kibana.html
+https://tel4vn.edu.vn/blog/tim-hieu-ve-elk-stack/
+https://topdev.vn/blog/huong-dan-cai-dat-elasticsearch-logstash-va-kibana-elk-stack-tren-centos-7-de-quan-ly-log/
+
+https://itforvn.com/prometheus-tu-a-den-z-phan-01-cai-dat-prometheus-va-grafana-tren-centos-7/
+
+https://viblo.asia/p/monitor-cach-giam-sat-he-thong-don-gian-voi-prometheus-va-grafana-BQyJKjW54Me
+
+https://itforvn.com/prometheus-tu-a-den-z-phan-04-giam-sat-thiet-bi-mang-cisco-qua-snmp-voi-prometheus/
+https://blog.cloud365.vn/logging/ELK-part1-tong-quan-ve-elk-stack/
+https://cloudfly.vn/techblog/cach-cai-dat-elaticsearch-logstash-va-kibana-elastic-stack-tren-ubuntu-2004
+
+
+https://phoenixnap.com/kb/how-to-install-elk-stack-on-ubuntu
+https://tunghuynh.net/programer/2399/giam-sat-log-toi-uu-voi-elk-elasticsearch-logstash-kibana/
+
+    Elasticsearch - máy chủ lưu trữ và tìm kiếm dữ liệu
+    Logstash - thành phần xử lý dữ liệu, sau đó nó gửi dữ liệu nhận được cho Elasticsearch để lưu trữ
+    Kibana - ứng dụng nền web để tìm kiếm và xem trực quan các logs
+    Beats - gửi dữ liệu thu thập từ log của máy đến Logstash
+
+https://cuongquach.com/elk-tim-hieu-dich-vu-logstash-trong-he-thong-elk-stack-logging.html
+
+https://cuongquach.com/split-brain-trong-elasticsearch-cluster.html
+
+https://viblo.asia/p/quan-ly-log-ung-dung-voi-elk-stack-elasticsearch-logstash-va-kibana-Qbq5QJzmKD8
+https://galaxyz.net/cach-cai-dat-elasticsearch-logstash-va-kibana-elk-stack-tren-centos-7.1411.anews
+https://tel4vn.edu.vn/blog/cai-dat-elk-stack-tren-centos-7/
+
+https://www.youtube.com/watch?v=8O7lGYV3VDU&list=PLwJr0JSP7i8AgjUjKnecVUN2i3txuS-1J&index=6&ab_channel=XuanThuLab
+
+
+/etc/yum.repos.d/elasticsearch.repo
+
+[elasticsearch-7.x]
+name=Elasticsearch repository for 7.x packages
+baseurl=https://artifacts.elastic.co/packages/7.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+autorefresh=1
+type=rpm-md
+
+
+
+yum update -y
+yum install java-1.8.0-openjdk-devel -y
+# kiểm tra bằng lệnh
+java -version
+
+systemctl enable elasticsearch.service
+systemctl start elasticsearch.service
+
+
+# Mở firewall cổng 9200 cho Es nếu cần
+firewall-cmd --permanent --add-port=9200/tcp
+firewall-cmd --permanent --add-port=9300/tcp
+firewall-cmd --reload
+
+
+sudo nano /etc/elasticsearch/elasticsearch.yml
+network.host: localhost
+#network.host: 192.168.0.1
+
+#http.port: 9200
+http.port: 9200
+
+discovery.type: single-node
+
+sudo nano /etc/elasticsearch/jvm.options
+-Xms512m
+-Xmx512m
+
+cluster.initial_master_nodes: node-1
+
+Find the lines starting with -Xms and -Xmx. In the example below, the maximum (-Xmx) and minimum (-Xms) size is set to 512MB.
+https://discuss.elastic.co/t/network-host-0-0-0-0-is-not-working-in-elasticsearch-7-3-0/195697/4
+https://docs.bitnami.com/virtual-machine/apps/elk/administration/connect-remotely/
+https://www.scmgalaxy.com/tutorials/elasticsearch-error-error-1-bootstrap-checks-failed-you-must-address-the-points-described-in-the-following-1-lines-before-starting-elasticsearch/
+
+systemctl restart elasticsearch.service
+
+============
+
+yum install kibana -y
+systemctl enable kibana
+
+echo 'server.host: 0.0.0.0' >> /etc/kibana/kibana.yml
+
+systemctl start kibana
+
+sudo firewall-cmd --permanent --add-port=5601/tcp
+
+firewall-cmd --permanent --add-port=5601/tcp
+firewall-cmd --reload
+
+sudo nano /etc/kibana/kibana.yml
+server.port: 5601
+server.host: "localhost"
+elasticsearch.hosts: ["http://localhost:9200"]
+
+
+
+systemctl restart kibana
+===========
+
+
+yum install logstash -y
+
+/etc/logstash/conf.d/02-beats-input.conf
+input {
+  beats {
+    host => "0.0.0.0"
+    port => 5044
+  }
+}
+
+/etc/logstash/conf.d/30-elasticsearch-output.conf
+output {
+  elasticsearch {
+    hosts => ["localhost:9200"]
+    manage_template => false
+    index => "%{[@metadata][beat]}-%{[@metadata][version]}-%{+YYYY.MM.dd}"
+  }
+ }
+sudo -u logstash /usr/share/logstash/bin/logstash --path.settings /etc/logstash -t
+
+firewall-cmd --permanent --add-port=5044/tcp
+firewall-cmd --reload
+systemctl enable logstash
+systemctl start logstash
+  
+====
+yum install filebeat -y
+/etc/filebeat/filebeat.yml
+#output.elasticsearch:
+  # Array of hosts to connect to.
+  # hosts: ["localhost:9200"]
+  
+output.logstash:
+  # The Logstash hosts
+  hosts: ["localhost:5044"]
+ 
+paths:
+    - /var/log/*.log
+    #- c:\programdata\elasticsearch\logs\*
+
+filebeat.inputs:	
+  paths:
+    - /var/log/*.log
+    - /etc/httpd/logs/access_log
+
+
+systemctl enable filebeat
+systemctl start filebeat
+-===
+
+filebeat -e -d "publish"
+filebeat -e -d "*"
+filebeat -e -c myfilebeatconfig.yml
+
+
+yum install metricbeat
+
+metricbeat modules list
+filebeat modules list
+filebeat modules enable system
+filebeat modules enable apache
+filebeat modules enable mysql
+filebeat modules enable nginx
+
+systemctl enable filebeat
+systemctl restart filebeat
+
+====================================
+https://www.digitalocean.com/community/tutorials/how-to-gather-infrastructure-metrics-with-metricbeat-on-centos-7
+metricbeat modules list
+
+metricbeat modules enable appache
+systemctl restart metricbeat.service
+
+
+sudo metricbeat setup -e -E output.elasticsearch.hosts=['localhost:9200'] -E setup.kibana.host=localhost:5601
+
+curl -XGET 'http://localhost:9200/metricbeat-*/_search?pretty'
+
+monitoring.enabled: true
+setup.dashboards.enabled: true
+
+
+=========
+https://linuxhint.com/setup-filebeat-on-windows-elasticsearch/
+curl -XGET 'http://localhost:9200'
+
+https://www.youtube.com/watch?v=BGZCEC6Mqkg&ab_channel=BigTechTalk
+https://www.elastic.co/guide/en/beats/filebeat/7.17/filebeat-installation-configuration.html
+https://gist.github.com/ZeroDeth/7dd93fd05e689b0fd5a8dda6ac942be9
+==
+https://www.elastic.co/guide/en/beats/winlogbeat/current/winlogbeat-installation-configuration.html
+
+https://sematext.com/blog/top-10-elasticsearch-metrics-to-watch/
+
+
+https://www.elastic.co/guide/en/beats/winlogbeat/7.17/enable-winlogbeat-debugging.html
+
+
+winlogbeat -e
+
+
+
+winlogbeat -e -c mywinlogbeatconfig.yml
+
+netstat  -auntp | grep <port>
+
+
+- Mục tiêu
++ Tạo một hệ thống lưu trữ và phân tích log
++ Phân tích tập trung và báo cáo về các sự kiện an toàn mạng của tổ chức. 
++ Kết quả phân tích này có thể được dùng để phát hiện ra các cuộc tấn công mà không thể phát hiện được theo phương pháp thông thường
+
+- Đối tượng
++ Các máy chủ quan trọng : DC/File Server/ Tool Server
++ Hệ thống core (route/switch)  : xem xét
++ Pfsense
+
+- Công cụ
++ Hiện đang dùng Nagios Log: công cụ này thì chỉ tập trung vào getlog, còn khá yếu về phân tích report
++ Đang xem xét: ELK
++ Có thể xem xét công cụ khác (open source)
+
+
+pfsense nên quan tâm đến việc theo dõi các log sau:
+
+    Firewall Logs:
+        Traffic Logs: Bạn cần theo dõi lưu lượng mạng để phát hiện và ngăn chặn các hoạt động không mong muốn hoặc độc hại.
+        Blocked Logs: Các thông báo về các gói dữ liệu bị chặn bởi tường lửa, giúp bạn xác định các mối đe dọa và các cố gắng tấn công.
+
+    VPN Logs:
+        Nếu bạn đang sử dụng các kết nối VPN, theo dõi log của chúng để đảm bảo rằng kết nối được thiết lập và hoạt động đúng cách.
+
+    DHCP Logs:
+        Đảm bảo rằng quản lý địa chỉ IP thông qua DHCP đang hoạt động một cách chính xác.
+
+    System Logs:
+        Logs hệ thống sẽ cung cấp thông tin về tình trạng tổng thể của hệ thống, lỗi, và các sự kiện hệ thống quan trọng khác.
+
+    Proxy Logs (nếu sử dụng):
+        Nếu bạn cài đặt một proxy server, theo dõi logs của nó để kiểm soát và phân tích lưu lượng web.
+
+    Intrusion Detection/Prevention System (IDS/IPS) Logs:
+        Nếu bạn kích hoạt một hệ thống phát hiện/không cho phép xâm nhập, theo dõi logs của nó để xem có bất kỳ hoạt động nào đáng chú ý.
+
+    Package-specific Logs:
+        Nếu bạn đã cài đặt các gói mở rộng, như Squid (proxy caching server) hoặc Snort (IDS/IPS), theo dõi logs của chúng để nhận thông tin chi tiết hơn về các sự kiện liên quan đến chúng.
+
+Lưu ý rằng quyết định theo dõi log nào phụ thuộc vào môi trường cụ thể của bạn và yêu cầu bảo mật của hệ thống.
+
+    Logon/Logoff Events:
+        Event ID 4624: Successful account logon.
+        Event ID 4625: Failed account logon.
+
+    Account Management:
+        Event ID 4720: A user account was created.
+        Event ID 4722: A user account was enabled.
+        Event ID 4723: An attempt was made to change an account's password.
+        Event ID 4724: An attempt was made to reset an account's password.
+        Event ID 4726: A user account was deleted.
+
+    Security Group Management:
+        Event ID 4732: A security-enabled global group was created.
+        Event ID 4735: A security-enabled global group was changed.
+        Event ID 4738: A user account was changed.
+
+    File and Object Access:
+        Event ID 4663: An attempt was made to access an object.
+        Event ID 4656: A handle to an object was requested.
+
+    Policy Change:
+        Event ID 4719: System audit policy was changed.
+        Event ID 4902: The Per-user Audit Policy table was created.
+
+    Firewall Events:
+        Event ID 5152: The Windows Filtering Platform blocked a packet.
+        Event ID 5156: The Windows Filtering Platform allowed a connection.
+
+    Windows Update:
+        Event ID 20: Windows Update Agent successfully updated.
+        Event ID 19: Windows Update Agent failed to update.
+
+    System Events:
+        Event ID 6005: The Event log service was started.
+        Event ID 6006: The Event log service was stopped.
+
+    Account Lockout:
+        Event ID 4740: A user account was locked out.
+
+    Security System Extension:
+        Event ID 4614: A notification package has been loaded by the Security Account Manager.
+
+@@@@@@@@@@@@@@@@@@@@@@@
+		
+    File and Object Access Events:
+        Event ID 4663: An attempt was made to access an object. This event provides information about file and folder access attempts, including the type of access (read, write, delete), the user, and the result of the attempt.
+
+    File and Folder Creation and Deletion:
+        Event ID 4660: An object was deleted.
+        Event ID 4661: A handle to an object was requested.
+        Event ID 4662: An operation was performed on an object.
+        Event ID 4663: An attempt was made to access an object (provides details about file and folder access attempts).
+
+    File and Folder Permission Changes:
+        Event ID 4670: Permissions on an object were changed.
+        Event ID 4672: Special privileges assigned to new logon.
+
+    Registry Events (if monitoring registry access):
+        Event ID 4657: A registry value was modified.
+        Event ID 4662: An operation was performed on an object (includes changes to registry keys).
+
+    Security Group Membership Changes:
+        Event ID 4732: A security-enabled global group was created.
+        Event ID 4735: A security-enabled global group was changed.
+        Event ID 4737: A security-enabled global group was deleted.		
+
+With Logstash you can do this:
+
+input {
+  beats {
+    port => 5040
+#   ssl => false
+#   ssl_certificate => "/etc/pki/tls/certs/logstash-forwarder.crt"
+#   ssl_key => "/etc/pki/tls/private/logstash-forwarder.key"
+  }
+}
+
+filter {
+  if [type] == "wineventlog" and [event_id] == 4624 or [event_id] == 4634 {
+    drop { } 
+  }
+}
+
+
+filter {
+  if [type] == "wineventlog" and [event_id] != 8003 {
+    drop { } 
+  }
+}
+
+
+
+output {
+  elasticsearch {
+    hosts => ["localhost:9200"]
+    sniffing => true
+    manage_template => false
+    index => "%{[@metadata][beat]}-%{+YYYY.MM.dd}"
+    document_type => "%{[@metadata][type]}"
+  }
+}
+
+=============
+Sequence 
+Ktra status
+GET _cat/health?v
+#curl -XGET http://10.1.7.74:9200/_cat/health?v
+
+Ktra index
+GET _cat/indices?v
+GET _cat/indices?pretty
+#curl -XGET http://10.1.7.74:9200/_cat/indices?pretty
+
+Create index
+PUT /product?pretty
+PUT /student?pretty
+
+===============
+Delete index
+DELETE /product?pretty
+
+===============Document==========
+Create Document
+PUT /student/_doc/1
+{
+   "name": "std1",
+   "age": 20
+}
+
+
+
+PUT /student/_doc/2
+{
+  "name": "std2",
+  "age": 50
+}
+
+
+#
+curl -XPUT "http://10.1.7.74:9200/student/_doc/3" -H 'Content-Type: application/json' -d'
+{
+  "name": "abc"
+}'
+==============
+GET document
+GET /student/_doc/1?pretty
+curl -XGET "http://10.1.7.74:9200/student/_doc/3"
+
+=============
+Update document
+PUT /student/_doc/3
+{
+  "name": "nguoi so 3",
+  "age": 150
+}
+
+====
+DELETE document
+DELETE /student/_doc/3
+
+== Update hang loat document
+POST /_bulk
+{"index": {"_index":"student", "_id": 4}}
+{"name": "nguyen van bon", "age":20}
+{"index": {"_index":"student", "_id": 5}}
+{"name": "nguyen Nam", "age":90}
+
+==> json file mydata.json (cuoi file la 1 line trang)
+{"index": {"_index":"student", "_id": 4}}
+{"name": "nguyen van bon", "age":20}
+{"index": {"_index":"student", "_id": 5}}
+{"name": "nguyen Nam", "age":90}
+
+===> nap file json (cuoi file la 1 line trang)
+curl -s -H 'Content-Type: application/json' -XPOST http://10.1.7.74:9200/_bulk --data-binary "@mydata.json";
+
+
+======= TRuy van tren elasticsearch=====
+GET /student/_search
+{
+  "query": {"match_all": {}}
+}
+
+#
+curl -XGET http://10.1.7.74:9200/_search -H 'Content-Type: application/json' -d'
+{
+  "query": {"match_all": {}}
+}'
+
+
+--> Sort
+GET /student/_search?pretty
+{
+  "query": {"match_all": {}},
+  "sort": [
+    {
+      "_id": {
+        "order": "desc"
+      }
+    }
+  ]
+}
+
+--> get only some field
+GET /student/_search?pretty
+{
+  "query": {"match_all": {}},
+  "_source": ["_id","name"], 
+  "sort": [
+    {
+      "_id": {
+        "order": "desc"
+      }
+    }
+  ]
+}
+
+--> find some value
+GET /student/_search?pretty
+{
+  "query": {"match": {
+    "age": 20
+  }}
+  
+}
+
+==
+GET /student/_search?pretty
+{
+  "query": {"match": {
+    "name": "nguyen van bon"
+  }}
+  
+}
+---> toan tu logic (must and or not)
+and - must
+
+GET /student/_search?pretty
+{
+  "query": {
+    "bool": {
+      "must": [
+        {"match": {
+          "name": "nguyen"
+        }},
+        {"match": {
+          "name": "bon"
+        }}
+      ]
+    }
+  }
+}
+
+
+--> or should
+
+GET /student/_search?pretty
+{
+  "query": {
+    "bool": {
+      "should": [
+        {"match": {
+          "name": "nguyen"
+        }},
+        {"match": {
+          "name": "bon"
+        }}
+      ]
+    }
+  }
+}
+
+--> must_not : ! phu dinh
+GET /student/_search?pretty
+{
+  "query": {
+    "bool": {
+      "must_not": [
+        {"match": {
+          "name": "nguyen"
+        }}
+      ]
+    }
+  }
+}
+
+
+=====================
+Log cisco device
+https://ctnguyenvn.me/2023/02/22/collect-log-from-cisco-ios-to-ELK/
+
+# cấu hình syslog server -->
+
+Router1# configure terminal
+Router1(config)# logging userinfo
+Router1(config)# logging host 10.1.7.74 transport udp port 5044
+Router1(config)# logging trap notifications
+Router1(config)# logging origin-id hostname
+
+# cấu hình logging logon -->
+
+Router1(config)# login on-failure log
+Router1(config)# login on-success log
+Router1(config)# login block-for 60 attempts 3 within 60
+
+# cấu hình logging command history -->
+
+Router1(config)# archive
+Router1(config-archive)# log config
+Router1(config-archive-log-cfg)# logging enable
+Router1(config-archive-log-cfg)# hidekeys
+Router1(config-archive-log-cfg)# notify syslog
+Router1(config-archive-log-cfg)# end
+Router1# write
+
+
+=============
+Backup/Snapsort  and restore
+
+https://kb.pavietnam.vn/elasticsearch-snapshot-and-restore.html
+
+check
+$ curl -XGET 'localhost:9200/_snapshot/_all?pretty=true'
+
+Create
+$ mkdir /usr/share/elasticsearch/data_backup
+
+change owner
+$ chown -R elasticsearch:elasticsearch /usr/share/elasticsearch/data_backup
+
+change config file
+/etc/elasticsearch/elasticsearch.yml
+	path.repo: ["/usr/share/elasticsearch/data_backup"]
+
+$ sudo service elasticsearch restart
+
+------------Mapping và khởi tạo snapshot với repositories trên:
+
+$ curl -XPUT -H "Content-type: application/json" -d '{   
+"type": "fs",
+   "settings": {
+       "compress" : true,
+       "location": "/usr/share/elasticsearch/data_backup"
+}
+}' 'http://localhost:9200/_snapshot/test_backup'
+
+
+
+
+PUT _snapshot/backup_29-11?verify=false
+{
+  "type": "fs",
+  "settings": {
+    "compress" : true,
+    "location": "/usr/share/elasticsearch/data_backup",
+    "indices": "student,winlogbeat-2023.11.24,filebeat-2023.11.23"
+  }
+}
+
+
+test kq
+POST _snapshot/test_backup
+
+---Sử dụng snapshot trên lưu trữ toàn bộ cluster và các indices:
+
+$ curl -XPUT 'localhost:9200/_snapshot/test_backup/snapshot_1?wait_for_completion=true'
+
+------------Sử dụng snapshot trên lưu trữ toàn bộ cluster và các indices:
+
+$ curl -XPUT 'localhost:9200/_snapshot/test_backup/snapshot_1?wait_for_completion=true'
+
+====2. Restore data===
+đóng toàn bộ các index đang mở:
+
+$ curl -XPOST 'localhost:9200/_all/_close'
+
+snapshot phục hồi dữ liệu nhanh chóng:
+
+$ curl -XPOST 'localhost:9200/_snapshot/test_backup/snapshot_1/_restore'
+
+Mở lại toàn bộ index cũ:
+
+curl -XPOST 'localhost:9200/_all/_open'
+
+
+
+===Xóa snapshot
+
+POST _snapshot/test_backup/_cleanup
+
+======================================3. Cấu hình snapshot tự động
+======================================3. Cấu hình snapshot tự động
+
+/root/snap_es.sh
+
+#!/bin/bash
+set `date`
+now=$(date +”%d-%m-%Y”)
+snapshotName=snap-$now
+
+echo "=========== ELK Incremental backup register ==========" >> /tmp/file.txt;
+
+curl -XPUT -H "content-type:application/json" 'http://127.0.0.1:9200/_snapshot/es_backup' -d 
+
+'{
+  "type":"fs",
+    "settings":{
+	  "location": "/usr/share/elasticsearch/data_backup",
+	  "compress":true
+	  }
+}' >> /tmp/file.txt;
+
+echo "======= ELK Incremental snap =======" >> /tmp/file.txt;
+
+curl -XPUT http://127.0.0.1:9200/_snapshot/es_backup/$snapshotName?wait_for_completion=true >> /tmp/file.txt;
+
+echo "======== ELK snapshort list ========" >> /tmp/file.txt;
+
+curl -XGET http://127.0.0.1:9200/_snapshot/es_backup/_all?pretty >> /tmp/file.txt;
+
+#mailx -s “ELK Incremental Backup Completed” xxxxxx@pavietnam.vn < /tmp/file.txt;
+
+
+rm -rvf /tmp/file.txt;
+
+ 
+Thay IP 127.0.0.1 bằng IP nếu ES listen theo IP
+
+Thực hiện chạy file sh /root/snap_es.sh
+
+Chạy file bash backup snapshot xong dùng cmd dưới để check danh sách snapshot backup
+
+curl -XGET http://127.0.0.1:9200/_snapshot/es_backup/_all?pretty
+
+https://syslife.info/series/xoa-indices-tu-dong-voi-elasticsearch-curator.html
+https://docs.cloudbees.com/docs/cloudbees-ci-kb/latest/operations-center/how-to-manage-snapshots-of-your-elasticsearch-indices
+
+4656 : delete folder
+4663 : delete folder
+4659 : file delete
+5145 : A Network Share Object Was Checked (read)/delete
+
+4660- delete file (the only one that's obvious)
+
+winlog.event_id 5145
+5156
+
+https://gist.github.com/TrimIdeas/b40ccae0fe9b9d6f1a27
+
+========================
+https://viblo.asia/p/elasticsearch-index-rollover-PAoJeZwpL1j
+https://aithietke.com/elasticsearch-index-rollover/
+
+http://blog.ehrnhoefer.com/2019-05-04-elasticsearch-index-lifecycle-management/
+
+
+======================================4.ElasticSearch Index Rollover
+
+https://kifarunix.com/configure-log-retention-period-in-elk-stack/
+
+
+PUT _ilm/policy/test
+{
+  "policy": {
+    "phases": {
+      "hot": {
+        "min_age": "0ms",
+        "actions": {
+          "rollover": {
+            "max_size": "500mb",
+            "max_age": "1m"
+          },
+          "set_priority": {
+            "priority": 100
+          }
+        }
+      },
+      "delete": {
+        "min_age": "1m",
+        "actions": {
+          "delete": {
+            "delete_searchable_snapshot": true
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+update vào file winlogbeat.yml
+        Event ID 4660: An object was deleted.
+        Event ID 4661: A handle to an object was requested.
+        Event ID 4662: An operation was performed on an object.
+        Event ID 4663: An attempt was made to access an object (provides details about file and folder access attempts).
+5145 : A Network Share Object Was Checked (read)/delete
+4656 : A handle to an object was requested. C:\Program Files\Common Files\McAfee\AVSolution\mcshield.exe
+4663 : An attempt was made to access an object. C:\Program Files\Common Files\McAfee\AVSolution\mcshield.exe
+4659 : file delete (A handle to an object was requested with intent to delete.)
+
+Winlogbeat.event_logs:
+
+  - name: Security
+    event_id: 4659, 
+    processors:
+      - script:
+          lang: javascript
+          id: security
+          file: ${path.home}/module/security/config/winlogbeat-security.js
+
+==============
+backup and restore
+https://pandorafms.com/manual/!current/en/documentation/07_technical_annexes/16_elastic_search_backup
+
+https://syntaxfix.com/question/7339/how-to-move-elasticsearch-data-from-one-server-to-another
+
+https://kifarunix.com/restore-elasticsearch-snapshot-to-another-cluster/
+
+https://www.youtube.com/watch?v=hc6V-1aR33E&ab_channel=OfficialElasticCommunity
+
+https://viblo.asia/p/elasticsearch-index-rollover-PAoJeZwpL1j
+
+
+===
+Find: 
+winlog.event_data.SubjectUserName.keyword : "TuanNN" and winlog.event_data.RelativeTargetName : "Roland\Roland.ODC\*"
+
+https://www.elastic.co/guide/en/beats/filebeat/7.17/filebeat-module-iis.html
+https://techblogs.42gears.com/monitoring-iis-based-web-application-with-elg-stack-elastic-logstash-grafana/
+
+
+elasticsearch 
+https://www.youtube.com/watch?v=JOZ41DtKcNw&list=PLwJr0JSP7i8AgjUjKnecVUN2i3txuS-1J&index=3&ab_channel=XuanThuLab
+
+https://www.youtube.com/watch?v=CXB5lDFSiGc&ab_channel=TEDUChannel
+
+https://www.youtube.com/watch?v=H9bhSSX6cBY&list=PLwJr0JSP7i8AgjUjKnecVUN2i3txuS-1J&index=7&ab_channel=XuanThuLab
+
+
+https://zulip.readthedocs.io/en/latest/production/export-and-import.html
+

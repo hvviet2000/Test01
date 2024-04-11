@@ -1,0 +1,1109 @@
+sudo yum install -y curl policycoreutils-python openssh-server
+sudo systemctl enable sshd
+sudo systemctl start sshd
+
+sudo firewall-cmd --permanent --add-service=http
+sudo systemctl reload firewalld
+
+sudo yum install postfix
+sudo systemctl enable postfix
+sudo systemctl start postfix
+curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh | sudo bash
+
+sudo EXTERNAL_URL="http://10.1.7.18" yum install -y gitlab-ee
+
+vi /etc/gitlab/
+
+gitlab-ctl reconfigure
+
+
+yum -y install firewalld
+
+systemctl start firewalld
+systemctl enable firewalld
+
+firewall-cmd --permanent --add-service ssh
+firewall-cmd --permanent --add-service http
+firewall-cmd --permanent --add-service https
+firewall-cmd --reload
+firewall-cmd --list-all
+
+
+https://www.howtoforge.com/tutorial/how-to-install-and-configure-gitlab-ce-on-centos-7/
+
+https://computingforgeeks.com/install-gitlab-ce-on-centos-fedora/
+
+https://computingforgeeks.com/how-to-install-and-configure-gitlab-on-centos-rhel/
+
+https://tuduydongian.com/2017/10/secure-gitlab-letsencrypt/
+https://www.nginx.com/resources/wiki/start/topics/examples/server_blocks/
+
+
+[gitlab_gitlab-ce]
+name=gitlab_gitlab-ce
+baseurl=https://packages.gitlab.com/gitlab/gitlab-ce/el/7/$basearch
+repo_gpgcheck=1
+gpgcheck=1
+enabled=1
+gpgkey=https://packages.gitlab.com/gitlab/gitlab-ce/gpgkey
+       https://packages.gitlab.com/gitlab/gitlab-ce/gpgkey/gitlab-gitlab-ce-3D645A26AB9FBD22.pub.gpg
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+
+[gitlab_gitlab-ce-source]
+name=gitlab_gitlab-ce-source
+baseurl=https://packages.gitlab.com/gitlab/gitlab-ce/el/7/SRPMS
+repo_gpgcheck=1
+gpgcheck=1
+enabled=1
+gpgkey=https://packages.gitlab.com/gitlab/gitlab-ce/gpgkey
+       https://packages.gitlab.com/gitlab/gitlab-ce/gpgkey/gitlab-gitlab-ce-3D645A26AB9FBD22.pub.gpg
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+
+
+
+    4  view nginx-status.conf 
+    5  view gitlab-http.conf 
+    6  view gitlab-mattermost-http.conf 
+    7  cd 
+    8  cd /var/opt/gitlab/nginx/conf/
+    9  ls
+   10  vi nginx.conf 
+   11  find -*.conf -print
+   12  ls
+   13  find -n *.conf
+   14  find '*.conf'
+   15  find *.conf
+   16  ls -al
+   17  ls -alh
+   18  view nginx.conf 
+   19  view  /var/opt/gitlab/nginx/conf/gitlab-http.conf
+   20  view nginx.conf 
+   21  view include /var/opt/gitlab/nginx/conf/gitlab-mattermost-http.conf;
+   22  cat include /var/opt/gitlab/nginx/conf/gitlab-mattermost-http.conf
+   23  cat /var/opt/gitlab/nginx/conf/nginx-status.conf
+   24  cat /etc/gitlab/custom_gitlab_server.conf
+   25  cat /var/opt/gitlab/nginx/conf/gitlab-http.conf
+   26  vi /var/opt/gitlab/nginx/conf/gitlab-http.conf
+   27  ls
+   28  cp gitlab-http.conf gitlab-http.conf.bak.20170420
+   29  ls
+   30  vi gitlab-http.conf
+   31  cat gitlab-http.conf
+   32  service nginx restart
+   33  ls
+   34  vi gitlab-http.conf
+   35  service nginx restart
+   36  vi gitlab-http.conf
+   37  service nginx restart
+   38  vi gitlab-http.conf
+   39  cd /lib/systemd/system/nginx.service
+   40  cd /lib/systemd/system
+   41   
+   42  cd /var/opt/
+   43   
+   44  cd gitlab/
+   45   
+   46  cd nginx/
+   47   
+   48  cd conf/
+   49   
+   50  cd /opt/
+   51   
+   52  cd gitlab/
+   53   
+   54  cd service/
+   55   
+   56  nginx restart
+   57  cd ..
+   58   
+   59  service nginx restart
+   60   
+   61  service/nginx restart
+   62    -la
+   63  cd service/
+   64   
+   65    -a
+   66    -la
+   67  cd /opt/gitlab/sv/nginx
+   68   
+   69  cd supervise/
+   70   
+   71 
+   72   
+   73  service nginx restart
+   74  find nginx.service
+   75  cd /
+   76  find nginx.service
+   77  find 'nginx.service'
+   78  find gitlab-http.conf
+   79  grep nginx.service
+   80  systemctl status httpd i
+   81  systemctl status nginx i
+   82   of -i :80 i 
+   83   of -i :80
+   84  service http restart
+   85  service httpd restart
+   86  cd /bin/systemctl
+   87   
+   88  cd bin/
+   89   
+   90  cd /etc/
+   91   
+   92  cd gitlab
+   93   
+   94 
+   95  history 
+   96  service nginx restart
+   97  sudo service nginx restart
+   98  sudo systemctl restart nginx.service
+   99  gitlab-ctl restart nginx
+  100   
+  101  cd gitlab-ctl
+  102 
+  103  cd /opt/
+  104   
+  105  cd gitlab/
+  106   
+  107  cd bin/
+  108   
+  109  exit
+  110  vi /var/opt/gitlab/nginx/conf/gitlab-http.conf
+  111  gitlab-ctl restart nginx
+  112  vi /var/opt/gitlab/nginx/conf/gitlab-http.conf
+  113  gitlab-ctl restart nginx
+  114  cd /opt/
+  115   
+  116  cd gitlab/
+  117   
+  118  grep https
+  119  grep -rl "http" /opt/gitlab
+  120  grep -rl "http://" /opt/gitlab
+  121  grep -rl "https://" /opt/gitlab
+  122  grep -r "https://" /opt/gitlab
+  123  grep -r "href="https://" /opt/gitlab
+  124  grep -r "href='https://" /opt/gitlab
+  125  cd /opt/gitlab/
+  
+  195   
+  196  cd gitlab-rai /
+  197   
+  198  grep -r "href='https"
+  199  grep -r 'href'
+  200  grep -r 'gravatar'
+  201  grep -r 'https'
+  202  grep -r 'https|http'
+  203  grep -r 'https||http'
+  204  grep -r 'https'
+  205  grep -r 'http'
+  206  grep -r 'https'
+  207  grep -r 'http'
+  208  cd /var/opt/gitlab/nginx/conf
+  209   
+  210  vi gitlab-http.conf
+  211  gitlab-ctl restart nginx
+  212  vi gitlab-http.conf
+  213  gitlab-ctl restart nginx
+  214  vi gitlab-http.conf
+  215  gitlab-ctl restart nginx
+  216  vi gitlab-http.conf
+  217  gitlab-ctl restart nginx
+  218  exit
+  219  vi  /etc/gitlab/custom_gitlab_server.conf
+  220  history 
+  221  git clone https://git.heroku.com/my-gitlab-chabot.git
+  222  cat /etc/gitlab/custom_gitlab_server.conf
+  223  vi /etc/gitlab/custom_gitlab_server.conf
+  224  sudo gitlab-ctl restart
+  225  exit
+  226  abrt-cli list --since 1492329358
+  227  vi /etc/hosts.allow 
+  228  vi /etc/hosts.deny
+  229  service sshd restart
+  230  /bin/systemctl restart  sshd.service
+  231  vi /etc/hosts.deny
+  232  /bin/systemctl restart  sshd.service
+  233  vi /etc/hosts.allow 
+  234  vi /var/lib/denyhosts/users-valid 
+  235  vi /var/lib/denyhosts/?
+  236    /var/lib/denyhosts/
+  237    /var/lib/denyhosts/hosts-valid 
+  238  vi /var/lib/denyhosts/hosts-valid 
+  239  /bin/systemctl restart  sshd.service
+  240  vi /etc/gitlab/custom_gitlab_server.conf 
+  241  sudo gitlab-ctl restart
+  242  vi /etc/hosts.allow 
+  243  vi /etc/hosts.deny
+  244  /bin/systemctl restart  sshd.service
+  245  vi /etc/hosts.deny
+  246  /bin/systemctl restart  sshd.service
+  247  df -h
+  248    /tmp/
+  249  vi /etc/hosts.deny
+  250  /bin/systemctl restart  sshd.service
+  251  cat /var/log/messages
+  252  df -h
+  253  exit
+  254    /sys/class/scsi_host/
+  255  echo "- - -" > /sys/class/scsi_host/host0/scan
+  256  echo "- - -" > /sys/class/scsi_host/host1/scan
+  257  echo "- - -" > /sys/class/scsi_host/host2/scan
+  258    /sys/class/scsi_device/
+  259  echo 1 > /sys/class/scsi_device/0\:0\:0\:0/device/rescan
+  260  echo 1 > /sys/class/scsi_device/2\:0\:0\:0/device/rescan
+  261  fdisk -l
+  262  exit
+  263  vi /etc/gitlab/custom_gitlab_server.conf
+  264  sudo gitlab-ctl restart
+  265  echo "- - -" > /sys/class/scsi_host/host0/scan
+  266  echo "- - -" > /sys/class/scsi_host/host1/scan
+  267  echo "- - -" > /sys/class/scsi_host/host2/scan
+  268    /sys/class/scsi_device/
+  269  echo 1 > /sys/class/scsi_device/1\:0\:0\:0/device/rescan
+  270  echo 1 > /sys/class/scsi_device/2\:0\:0\:0/device/rescan
+  271  echo 1 > /sys/class/scsi_device/2\:0\:1\:0/device/rescan
+  272  fdisk -l
+  273  exit
+  274  df -h
+  275  vi /etc/hosts.deny
+  276  /bin/systemctl restart  sshd.service
+  277  df -h
+  278  exit
+  279  vi /etc/hosts.deny
+  280  systemctl restart denyhosts
+  281  pwd
+  282  systemctl status gitlab
+  283  clear
+  284  yum update gitlab-ce
+  285  yum update gitlab-ce
+  286  exit
+  287  crontab -l
+  288  exit
+  289  man yum
+  290  yum update gitlab-ce --downloadonly
+  291  echo tét
+  292  crontab -e
+  293  yum update gitlab-ce
+  294  exit
+  295  yum update gitlab-ce --download-only
+  296  history
+  297  yum update gitlab-ce --downloadonly
+  298  exit
+  299  yum update gitlab-ce
+  300  exit
+  301  history 
+  302  vi  /etc/gitlab/custom_gitlab_server.conf
+  303  history 
+  304  cat /etc/gitlab/custom_gitlab_server.conf
+  305  vi /etc/gitlab/custom_gitlab_server.conf
+  306  history 
+  307  sudo gitlab-ctl restart
+  308  exit
+  309  vi /etc/gitlab/custom_gitlab_server.conf
+  310  sudo gitlab-ctl restart
+  311  exit
+  312  yum update gitlab-ce --downloadonly
+  313  exit
+  314  history 
+  315  vi /etc/gitlab/custom_gitlab_server.conf
+  316  sudo gitlab-ctl restart
+  317  exit
+  318  systemctl status firewalld
+  319  systemctl restart firewalld
+  320  systemctl status firewalld
+  321  systemctl restart firewalld
+  322  systemctl status firewalld
+  323  exit
+  324  history 
+  325  vi /etc/gitlab/custom_gitlab_server.conf
+  326  reboot
+  327  history 
+  328  vi /etc/hosts.deny
+  329  /bin/systemctl restart  sshd.service
+  330  fdisk -l
+  331  pvs
+  332  df -h
+  333  vi /etc/hosts.deny
+  334  ifconfig 
+  335  df -h
+  336  history 
+  337    /sys/class/scsi_host/
+  338  echo "- - -" > /sys/class/scsi_host/host0/scan
+  339  echo "- - -" > /sys/class/scsi_host/host1/scan
+  340  echo "- - -" > /sys/class/scsi_host/host2/scan
+  341    /sys/class/scsi_device
+  342  echo 1 > /sys/class/scsi_device/1\:0\:0\:0/device/rescan
+  343  echo 1 > /sys/class/scsi_device/2\:0\:0\:0/device/rescan
+  344  echo 1 > /sys/class/scsi_device/2\:0\:1\:0/device/rescan
+  345  fdisk -l
+  346  fdisk -h
+  347  fdisk -l
+  348  df -h
+  349  history 
+  350  sudo gitlab-ctl restart
+  351  pvdisplay
+  352  exit
+  353  df
+  354  exit
+  355  shutdown -h now
+  356  swapon
+  357  top
+  358  exit
+  359  history 
+  360  swapon -s
+  361  free -m
+  362  exit
+  363  df -h
+  364    /var/opt/gitlab/backups/
+  365    -l /var/opt/gitlab/backups/
+  366   
+  367  cd  /var/opt/gitlab
+  368  dir
+  369 
+  370   
+  371  cd script/
+  372   
+  373  ./clean_folder.sh 
+  374  exit
+  375  yum update gitlab-ce --downloadonly
+  376  exit
+  377  yum install epel-release
+  378  yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+  379  cd /tmp/
+  380  wget dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+  381  rpm -hiv ?
+  382  rpm -ivh ?
+  383  rpm ?
+  384  yum install nrpe nagios-plugins-users nagios-plugins-load nagios-plugins-swap nagios-plugins-disk nagios-plugins-procs
+  385  vi /etc/nrpe.d/op5_commands.cfg
+  386  vi /etc/nagios/nrpe.cfg
+  387  systemctl restart nrpe
+  388  systemctl enable nrpe
+  389  history 
+  390  sudo firewall-cmd --zone=public --permanent --add-port=5666/tcp
+  391  sudo firewall-cmd --reload
+  392  firewall-cmd --list-all
+  393  exit
+  394  fdisk -l
+  395  fdisk /dev/sda
+  396  partprobe
+  397  pvcreate /dev/sda3
+  398  pvdisplay
+  399  vgextend centos /dev/sda3
+  400  lvextend -L +75G /dev/mapper/centos-root
+  401  xfs_growfs /dev/mapper/centos-root
+  402  df -h
+  403  reboot
+  404  history 
+  405  vi /etc/hosts.deny
+  406  systemctl restart denyhosts
+  407  vi /etc/hosts.deny
+  408  systemctl restart denyhosts
+  409  vi /etc/hosts.deny
+  410  systemctl restart denyhosts
+  411  vi /etc/hosts.deny
+  412  df -h
+  413  mount -a
+  414  vi /etc/fstab 
+  415  cd /
+  416   
+  417  modir /archive
+  418  mkdir /archive
+  419  vi /etc/fstab 
+  420  his
+  421  history 
+  422  vi /etc/hosts.deny
+  423  systemctl restart denyhosts
+  424  systemctl stop denyhosts
+  425  history 
+  426  vi /etc/hosts.deny
+  427  systemctl restart sshd
+  428  systemctl restart denyhosts
+  429  vi /etc/hosts.deny
+  430  systemctl restart sshd
+  431  systemctl restart denyhosts
+  432  mount -l
+  433  cd /var/opt/gitlab/
+  434   
+  435 
+  436   
+  437  cd script/
+  438   
+  439  crontab -l
+  440  ./backup_git.sh 
+  441  vi /etc/hosts.deny
+  442  systemctl restart denyhosts
+  443  vi /etc/hosts.deny
+  444  systemctl stop denyhosts
+  445  vi /etc/hosts.deny
+  446   
+  447 
+  448   
+  449  cd gitlab/
+  450   
+  451    backups/
+  452  ll backups/
+  453  cd..
+  454 
+  455   
+  456 
+  457   
+  458  cd opt/
+  459   
+  460  cd gitlab/
+  461   
+  462 
+  463   
+  464 
+  465   
+  466  pwd
+  467  cd var/opt/
+  468   
+  469  cd script/
+  470   
+  471  ./copy_ftp.sh 
+  472  systemctl restart denyhosts
+  473  systemctl stop denyhosts
+  474  vi /etc/hosts.deny
+  475  systemctl stop denyhosts
+  476  ./clean_folder.sh 
+  477   
+  478  ./backup_git.sh 
+  479  history 
+  480  gitlab-ctl stop
+  481  ./backup_git.sh 
+  482  gitlab-ctl start
+  483  ./backup_git.sh 
+  484  ./clean_folder.sh 
+  485  systemctl start denyhosts
+  486  exit
+  487  history 
+  488  df -h
+  489  vi /etc/hosts.deny
+  490  systemctl stop denyhosts
+  491  vi /etc/hosts.deny
+  492  systemctl start denyhosts
+  493  systemctl restart denyhosts
+  494  systemctl stop denyhosts
+  495  vi /etc/hosts.deny
+  496  systemctl restart denyhosts
+  497  vi /etc/hosts.deny
+  498  systemctl restart sshd 
+  499  vi /etc/hosts.deny
+  500  systemctl restart sshd
+  501  systemctl restart denyhosts
+  502  systemctl stop denyhosts
+  503  vi /etc/hosts.deny
+  504  systemctl restart denyhosts
+  505  systemctl restart sshd
+  506  exit
+  507  systemctl stop denyhosts
+  508  vi /etc/hosts.deny
+  509  systemctl restart denyhosts
+  510  vi /etc/hosts.deny
+  511  systemctl stop denyhosts
+  512  systemctl stop sshd
+  513  vi /etc/hosts.deny
+  514  systemctl restart denyhosts
+  515  systemctl restart sshd
+  516  vi /etc/hosts.deny
+  517  systemctl restart denyhosts
+  518  vi /etc/hosts.deny
+  519  systemctl stop sshd
+  520  systemctl stop de
+  521  systemctl stop denyhosts
+  522  vi /etc/hosts.deny
+  523  systemctl restart denyhosts
+  524  vi /etc/hosts.deny
+  525  systemctl stop denyhosts
+  526  vi /etc/hosts.deny
+  527  systemctl restart denyhosts
+  528  df -h
+  529    /var/opt/gitlab/
+  530    /var/opt/gitlab/backups/
+  531    /var/opt/gitlab/git-data/repositories/achive_backups/
+  532  exit
+  533  yum update gitlab-ce --downloadonly
+  534  yum update gitlab-ce
+  535  exit
+  536  yum update gitlab-ce --downloadonly
+  537  yum update gitlab-ce
+  538  exit
+  539  vi /etc/gitlab/custom_gitlab_server.conf
+  540  sudo gitlab-ctl restart
+  541  vi /etc/gitlab/custom_gitlab_server.conf
+  542  sudo gitlab-ctl restart
+  543  vi /etc/gitlab/custom_gitlab_server.conf
+  544  sudo gitlab-ctl restart
+  545  vi /etc/gitlab/custom_gitlab_server.conf
+  546  sudo gitlab-ctl restart
+  547  vi /etc/gitlab/custom_gitlab_server.conf
+  548  sudo gitlab-ctl restart
+  549  vi /etc/gitlab/custom_gitlab_server.conf
+  550  sudo gitlab-ctl restart
+  551  exit
+  552   
+  553  history 
+  554  cat /etc/gitlab/custom_gitlab_server.conf
+  555  ping 192.168.5.5
+  556  ping 192.168.5.1
+  557  exit
+  558  vi /etc/gitlab/custom_gitlab_server.conf
+  559  sudo gitlab-ctl restart
+  560  exit
+  561  yum update gitlab-ce --downloadonly
+  562  exit
+  563  yum update gitlab-ce
+  564  exit
+  565  yum update gitlab-ce --downloadonly
+  566  yum update gitlab-ce
+  567  exit
+  568  history 
+  569  cat /etc/gitlab/custom_gitlab_server.conf
+  570  history 
+  571  cat /etc/hosts.deny
+  572  cat /etc/hosts.deny | grep 192.168
+  573  exit
+  574  yum update gitlab-ce
+  575  yum update gitlab-ce --downloadonly
+  576  exit
+  577  yum update gitlab-ce
+  578  exit
+  579  history 
+  580  vi /etc/gitlab/custom_gitlab_server.conf
+  581  history 
+  582  cat /etc/hosts.deny | grep 192.168.7
+  583  vi/etc/hosts.deny 
+  584  vi /etc/hosts.deny 
+  585  history 
+  586  vi /etc/hosts.deny
+  587  vi /var/lib/denyhosts/hosts
+  588  vi /var/lib/denyhosts/hosts-restricted
+  589  vi /var/lib/denyhosts/hosts-root
+  590  vi /var/lib/denyhosts/hosts-valid
+  591  vi /var/lib/denyhosts/users-hosts
+  592  services denyhosts stop
+  593  sysctl stop denyhost
+  594  history 
+  595  systemctl stop denyhosts
+  596  vi /var/lib/denyhosts/users-hosts
+  597  systemctl start denyhosts
+  598  exit
+  599  yum update gitlab-ce --downloadonly
+  600  yum update gitlab-ce
+  601  exit
+  602  df -h
+  603  exit
+  604  yum update gitlab-ce --downloadonly
+  605  yum update gitlab-ce
+  606   
+  607  yum update gitlab-ce
+  608  gitlab-ctl status
+  609  gitlab-ctl restart mattermost
+  610  gitlab-ctl status
+  611  exit
+  612  yum update gitlab-ce
+  613  ping 8.8.8.8
+  614  systemctl status gitlab-ce
+  615  systemctl status gitlab
+  616  sudo yum update gitlab-ce
+  617  exit
+  618  sudo yum update gitlab-ce
+  619  exit
+  620  sudo yum update gitlab-ce
+  621  sudo yum update gitlab-ce --downloadonly
+  622  yum update
+  623  ping centos.org
+  624  ping packages.gitlab.com
+  625  tracert
+  626  trace
+  627  traceroute
+  628  traceroute packages.gitlab.com
+  629  exit
+  630  traceroute packages.gitlab.com
+  631  yum update gitlab-ce --downloadonly
+  632  exit
+  633  sudo yum update gitlab-ce
+  634  gitlab-ctl restart
+  635  exit
+  636  yum update gitlab-ce --downloadonly
+  637  exit
+  638  yum update gitlab-ce
+  639  exit
+  640  gitlabctl status
+  641  systemctl status gitlab
+  642  systemctl status gitlab-ce
+  643  gitlab-ctl restart nginx
+  644  exit
+  645  yum update gitlab-ce --downloadonly
+  646  yum update gitlab-ce
+  647  exit
+  648  history 
+  649  df -h
+  650  ifconfig 
+  651  nmcli dev show | grep DNS
+  652  cat /etc/resolv.conf 
+  653  vi /etc/resolv.conf 
+  654  ping 10.1.6.9
+  655  vi /etc/resolv.conf 
+  656  nmcli dev show | grep DNS
+  657  sudo systemctl restart network.service
+  658  nmcli dev show | grep DNS
+  659  vi /etc/resolv.conf 
+  660  sudo systemctl restart network.service
+  661  vi /etc/resolv.conf 
+  662  exit
+  663  cat /etc/sysconfig/network-scripts/ifcfg-eno16777984 
+  664  vi /etc/sysconfig/network-scripts/ifcfg-eno16777984 
+  665  resolvconf -d ifcfg-eno16777984
+  666  resolvconf -d ?
+  667  resolvconf
+  668  sudo systemctl restart network.service
+  669  nmcli dev show | grep DNS
+  670  cat /etc/resolv.conf 
+  671  nslookup
+  672  exit
+  673  gitlab-ctl restart nginx
+  674  exit
+  675  his
+  676  history 
+  677  vi /etc/gitlab/custom_gitlab_server.conf
+  678  sudo gitlab-ctl restart
+  679  vi /etc/gitlab/custom_gitlab_server.conf
+  680  sudo gitlab-ctl restart
+  681  sudo gitlab-ctl restart
+  682  ping 10.1.38.1
+  683  cat /etc/gitlab/custom_gitlab_server.conf
+  684  exit
+  685  cd /
+  686    ~/.ssh/
+  687    ~/.ssh/known_hosts 
+  688  cd /etc/gitlab/ssl/
+  689  openssl req -nodes -newkey rsa:2048 -keyout repo.vietis.com.vn.key -out repo.vietis.com.vn.csr
+  690   
+  691  openssl req -nodes -newkey rsa:2048 repo.vietis.com.vn.key -out repo.vietis.com.vn.csr
+  692  openssl req -nodes -newkey rsa:2048 -out repo.vietis.com.vn.csr
+  693  whereis gitlab
+  694  cd /
+  695  find / -name *.pem
+  696  find / -name *.key
+  697  cd /root/repo_vietis_com_vn
+  698  openssl req -nodes -newkey rsa:2048 repo.vietis.com.vn.key -out 20171107repo.vietis.com.vn.csr
+  699  openssl req -nodes -newkey rsa:2048 rsa:2048 repo.vietis.com.vn.key -out 20171107repo.vietis.com.vn.csr
+  700  openssl req -new -key repo.vietis.com.vn.key -out 20171107repo.vietis.com.vn.csr
+  701  openssl req -nodes -new -key repo.vietis.com.vn.key -out 20171107repo.vietis.com.vn.csr
+  702   
+  703  cat repo.vietis.com.vn.key 
+  704  openssl req  -new -key repo.vietis.com.vn.key -out 20171107repo.vietis.com.vn.csr
+  705   
+  706  mkdir newcert
+  707   
+  708  cd newcert/
+  709  openssl req -nodes -new -key repo.vietis.com.vn.key -out 20171107repo.vietis.com.vn.csr
+  710  openssl x509 -x509toreq -in repo_vietis_com_vn.crt -signkey repo.vietis.com.vn.key -out repo.vietis.com.vn.csr
+  711  exit
+  712   
+  713  mkdir sslcsr2017
+  714  cd sslcsr2017/
+  715  openssl req -nodes -newkey rsa:2048 -keyout repo.vietis.com.vn.key -out repo.vietis.com.vn.csr
+  716  exit
+  717  cd /
+  718  history >command1.txt
+  719  exit
+  720  cd /
+  721  cd root/
+  722   
+  723  cd sslcsr2017/
+  724   
+  725  cd repo.vietis.com.vn/
+  726   
+  727  ll
+  728  cat repo.vietis.com.vn.crt repo.vietis.com.vn.ca-bundle > ssl-bundle.crt
+  729  history 
+  730  gitlab-ctl restart nginx
+  731  sudo gitlab-ctl restart
+  732  telnet localhost 8009
+  733  sudo gitlab-ctl restart
+  734  iptables -L
+  735  cd /
+  736  history 
+  737  quit
+  738  exit
+  739  gitlab-ctl status
+  740  exit
+  741   
+  742  cd sslcsr2017/
+  743   
+  744  cd repo.vietis.com.vn/
+  745   
+  746  openssl x509 -text -noout -in repo.vietis.com.vn.crt
+  747   
+  748  exit
+  749  cat /etc/gitlab/gitlab.rb
+  750  vi /etc/gitlab/gitlab.rb
+  751  cat /etc/gitlab/gitlab.rb
+  752  cat /etc/gitlab/gitlab.rb | grep pmtool
+  753  cat /etc/gitlab/gitlab.rb | grep vis@
+  754  vi /etc/gitlab/gitlab.rb
+  755  history 
+  756  gitlab-ctl reconfigure
+  757  exit
+  758  systemctl status gitlab-ce
+  759  systemctl status gitlab
+  760  gitlab-ctl status
+  761  gitlab-ctl start nginx
+  762  gitlab-ctl status
+  763  gitlab-ctl start nginx
+  764  gitlab-ctl status
+  765  gitlab-ctl restart 
+  766  gitlab-ctl status
+  767  gitlab-ctl start nginx
+  768  gitlab-ctl status
+  769  gitlab-ctl status ngĩn
+  770  gitlab-ctl status nginx
+  771  gitlab-ctl
+  772  gitlab-ctl reconfigure
+  773  gitlab-ctl status
+  774  yum update gitlab-ce --downloadonly
+  775  cat  /etc/sysconfig/network-scripts/ifcfg-eno16777984 
+  776  vi  /etc/sysconfig/network-scripts/ifcfg-eno16777984 
+  777  gitlab-ctl restart
+  778  cat  /etc/sysconfig/network-scripts/ifcfg-eno16777984 
+  779  exit
+  780  reboot 
+  781  df -h
+  782  systemctl stop denyhosts
+  783  vi /etc/hosts.deny
+  784  vi /var/lib/denyhosts/hosts-restricted 
+  785  vi /var/lib/denyhosts/hosts-root 
+  786  vi /var/lib/denyhosts/hosts-valid 
+  787  vi /var/lib/denyhosts/users-hosts 
+  788  systemctl start denyhosts
+  789  vi /var/lib/denyhosts/users-hosts 
+  790  systemctl stop denyhosts
+  791  vi /etc/hosts.deny
+  792  vi /var/lib/denyhosts/hosts-root 
+  793  vi /var/lib/denyhosts/hosts-valid
+  794  vi /var/lib/denyhosts/users-hosts
+  795  systemctl start denyhosts
+  796  history 
+  797  vi /etc/gitlab/custom_gitlab_server.conf
+  798  gitlab-ctl start nginx
+  799  gitlab-ctl restart nginx
+  800  ping 10.1.7.11
+  801  exit
+  802  history 
+  803  cat /etc/gitlab/custom_gitlab_server.conf
+  804  cat /etc/gitlab/custom_gitlab_server.conf | grep 210.227.234.114
+  805  cat /etc/gitlab/custom_gitlab_server.conf | grep 54.64.137.251
+  806  history 
+  807  cat /etc/hosts.deny | grep 210.227.234.114
+  808  cat /etc/hosts.deny
+  809  history 
+  810  cat /var/lib/denyhosts/users-hosts
+  811  cat /etc/gitlab/custom_gitlab_server.conf
+  812  exit
+  813  history 
+  814  vi /etc/gitlab/custom_gitlab_server.conf
+  815  gitlab-ctl restart nginx
+  816  cat /etc/gitlab/custom_gitlab_server.conf
+  817  exit
+  818  history 
+  819  cat /etc/hosts.deny | grep 10.1.38.10
+  820  cat /etc/hosts.deny | grep 10.1.38.11
+  821  cat /etc/hosts.deny | grep 10.1.38
+  822   vi /etc/hosts.deny
+  823  systemctl stop denyhosts
+  824   vi /etc/hosts.deny
+  825  vi /var/lib/denyhosts/hosts-restricted
+  826  vi /var/lib/denyhosts/users-hosts
+  827  systemctl start denyhosts
+  828  cat /etc/hosts.deny
+  829  systemctl stop denyhosts
+  830   vi /etc/hosts.deny
+  831  systemctl start denyhosts
+  832  cat /etc/hosts.deny
+  833  systemctl stop denyhosts
+  834   vi /etc/hosts.deny
+  835  vi /var/lib/denyhosts/users-hosts
+  836  vi /var/lib/denyhosts/hosts-restricted
+  837  history 
+  838  systemctl stop sshd
+  839  systemctl start sshd
+  840  systemctl start denyhosts
+  841  cat /etc/hosts.deny
+  842  systemctl stop sshd
+  843   vi /etc/hosts.deny
+  844  systemctl start sshd
+  845  systemctl start denyhosts
+  846  cat  /etc/hosts.deny
+  847  history 
+  848  cat /etc/hosts.allow 
+  849  systemctl stop sshd
+  850  systemctl stop denyhosts
+  851   vi /etc/hosts.deny
+  852  systemctl stop denyhosts
+  853   vi /etc/hosts.deny
+  854  history 
+  855  systemctl stop denyhosts
+  856  vi /var/lib/denyhosts/host
+  857  cat /var/lib/denyhosts/hosts-root 
+  858  vi /var/lib/denyhosts/hosts-root 
+  859  vi /var/lib/denyhosts/hosts-restricted
+  860  vi /var/lib/denyhosts/hosts-root
+  861  vi /var/lib/denyhosts/hosts-valid
+  862  vi /var/lib/denyhosts/users-hosts
+  863  services denyhosts start
+  864  systemctl start denyhosts
+  865  cat /etc/hosts.deny
+  866  exit
+  867   
+  868  denyhost
+  869  denyhosts
+  870  systemctl status denyhosts
+  871  systemctl restart denyhosts
+  872  yum update gitlab-ce --downloadonly
+  873  gitlab-ctl restart nginx
+  874  exit
+  875  history 
+  876  cat /etc/hosts.deny
+  877  cat /etc/hosts.deny | grep 192.168.102.39
+  878  exit
+  879  yum update gitlab-ce
+  880  exit
+  881  passwd 
+  882  exit
+  883  history 
+  884  vi /etc/gitlab/custom_gitlab_server.conf
+  885  exit
+  886  df -h
+  887  cat /etc/default/grub 
+  888  shutdown -h now
+  889  history 
+  890  systemctl stop denyhosts
+  891  vi /var/lib/denyhosts/host
+  892  vi /var/lib/denyhosts/hosts
+  893  vi /var/lib/denyhosts/hosts-root 
+  894  vi /var/lib/denyhosts/hosts-restricted
+  895  vi /var/lib/denyhosts/hosts-root
+  896  vi /var/lib/denyhosts/hosts-valid
+  897  vi /var/lib/denyhosts/users-hosts
+  898  vi /etc/hosts.deny
+  899  systemctl start denyhosts
+  900  vi /etc/hosts.deny
+  901  systemctl status denyhosts
+  902  cat /etc/gitlab/custom_gitlab_server.conf
+  903  systemctl status denyhosts
+  904  cat /etc/hosts.deny
+  905  cat /etc/hosts.deny | grep 192.168.100.230
+  906  cat /etc/denyhosts.conf 
+  907  history 
+  908  cat /var/lib/denyhosts/host
+  909  cat /var/lib/denyhosts/hosts
+  910  cat /var/lib/denyhosts/hosts | grep 10.1.38
+  911  cat /etc/hosts.deny | grep 10.1.38
+  912  cat /etc/hosts.deny
+  913  cat /etc/hosts.deny | grep 113.164.228
+  914  cat /etc/hosts.deny | grep 113.164
+  915  sudo service ssh restart
+  916  sysctl  restart sshd
+  917  sysctl  restart ssh
+  918  iptable -L
+  919  sudo iptables -L
+  920  ps aux | grep sshd
+  921  net stat -tupan
+  922  netstat -tupan
+  923  netstat -tupan | grep 2222
+  924  netstat -tupan | grep 0.0.0.0
+  925  netstat -tupan | grep 0.0.0.0:2222
+  926  netstat -tupan | grep 0.0.0.0
+  927  sysctl sshd restart
+  928  history 
+  929  sysctl start sshd
+  930  sysctl sshd status
+  931  sysctl enable sshd.service
+  932  his
+  933  systemctl start sshd
+  934  systemctl status sshd
+  935  uname -ra
+  936  exit
+  937  git --version
+  938  exit
+  939  history 
+  940  exit
+  941  history 
+  942  cat /etc/hosts.deny 
+  943  cat /etc/hosts.deny | grep 10.1.38
+  944  history 
+  945  systemctl status denyhosts
+  946  systemctl stop denyhosts
+  947  vi /etc/hosts.deny
+  948  history 
+  949  systemctl start denyhosts
+  950  systemctl status denyhosts
+  951  cat /etc/hosts.deny | grep 10.1.38
+  952  exit
+  953  cat /etc/hosts.deny | grep 10.1.38
+  954  cat /etc/hosts.deny |
+  955  cat /etc/hosts.deny | grep 10.1.38
+  956  cat /etc/hosts.deny | grep 10.1.38.13
+  957  exit
+  958  history 
+  959  vi /etc/gitlab/custom_gitlab_server.conf
+  960  cat /etc/hosts.deny
+  961  cat /etc/hosts.deny | grep 192.168.5
+  962  cat /etc/hosts.deny | grep 192.168
+  963  cat /etc/hosts.deny | grep 192.168.*
+  964  cat /etc/hosts.deny | grep 10.1.*
+  965  exit
+  966  vi /etc/gitlab/custom_gitlab_server.conf
+  967  history 
+  968  gitlab-ctl restart nginx
+  969  exit
+  970  vi /etc/gitlab/custom_gitlab_server.conf
+  971  gitlab-ctl restart nginx
+  972  exit
+  973  history 
+  974  gitlab-ctl reconfigure
+  975  history | grep git
+  976  gitlab-ctl status
+  977  exit
+  978  history 
+  979  gitlab-ctl restart nginx
+  980  exit
+  981  vi /etc/gitlab/custom_mattermost_server.conf 
+  982  exit
+  983  history 
+  984  vi /etc/gitlab/custom_mattermost_server.conf 
+  985  gitlab-ctl restart nginx
+  986  vi /etc/gitlab/custom_mattermost_server.conf 
+  987  gitlab-ctl restart nginx
+  988  gitlab-ctl reconfigure
+  989  history 
+  990  gitlab-ctl status
+  991  cat /etc/hosts.deny | grep 118.70.128.119
+  992  cat /etc/hosts.deny
+  993  cat /etc/hosts.deny | grep 118
+  994  vi /etc/gitlab/custom_mattermost_server.conf 
+  995  gitlab-ctl restart nginx
+  996  exit
+  997  history 
+  998  gitlab-ctl restart nginx
+  999  exit
+ 1000  history 
+ 1001  cd /
+ 1002   
+ 1003  history >REPO_COMMAND.txt
+
+
+https://computingforgeeks.com/how-to-install-and-configure-gitlab-on-centos-rhel/
+https://www.howtoforge.com/tutorial/how-to-install-and-configure-gitlab-ce-on-centos-8/
+
+Last login: Wed Jun 22 17:38:24 2022 from viethoang.vietis.vn
+[root@gitsrv-localdomain ~]# crontab -l
+0 23 * * * /bin/sh /var/opt/script/clean_folder.sh >/dev/null
+0 5 * * * /bin/sh /var/opt/script/backup_git.sh >/dev/null
+0 8 * * * /bin/sh /var/opt/script/copy_ftp.sh >/dev/null
+0 */6 * * * /bin/sh /var/opt/script/freemem.sh >/dev/null
+
+
+
+nginx.conf
+  include /var/opt/gitlab/nginx/conf/gitlab-http.conf;
+#  include /var/opt/gitlab/nginx/conf/gitlab-mattermost-http.conf;
+  include /var/opt/gitlab/nginx/conf/nginx-status.conf;
+  include /etc/gitlab/custom_gitlab_server.conf;
+
+
+
+0 23 * * * /bin/sh /var/opt/script/clean_folder.sh >/dev/null
+0 5 * * * /bin/sh /var/opt/script/backup_git.sh >/dev/null
+0 8 * * * /bin/sh /var/opt/script/copy_ftp.sh >/dev/null
+0 */6 * * * /bin/sh /var/opt/script/freemem.sh >/dev/null
+
+
+1656195373_2022_06_26_12.10.3_gitlab_backup
+
+yum install -y gcc glibc glibc-common make gettext automake autoconf wget openssl-devel net-snmp net-snmp-utils epel-release
+
+yum --enablerepo=powertools,epel install perl-Net-SNMP
+
+dnf install nrpe
+
+systemctl start nrpe.service
+systemctl enable nrpe.service
+systemctl status nrpe.service
+
+
+systemctl enable --now nrpe
+# firewall-cmd --add-port=5666/tcp --permanent
+# firewall-cmd --reload
+
+
+yum update gitlab-ce --downloadonly
+yum update gitlab-ce
+yum clean packages
+
+
+git config http.postBuffer 104857600
+
+https://www.hungred.com/how-to/gitlab-error-fatal-remote-hung-unexpectedly/
+
+Firstly you will need to run the below code on your client side (your computer!)
+git config http.postBuffer 104857600
+
+
+And the second steps you will need to do is to increase the timeout on gitlab! On the server, open the file unicore.rb
+vim /home/git/gitlab/config/unicorn.rb
+
+38 # NOTICE: git push over http depends on this value.
+39 # If you want be able to push huge amount of data to git repository over http
+40 # you will have to increase this value too.
+41 #
+42 # Example of output if you try to push 1GB repo to GitLab over http.
+43 #   -> git push http://gitlab.... master
+44 #
+45 #   error: RPC failed; result=18, HTTP code = 200
+46 #   fatal: The remote end hung up unexpectedly
+47 #   fatal: The remote end hung up unexpectedly
+48 #
+49 # For more information see http://stackoverflow.com/a/21682112/752049
+50 #
+51 timeout 30
+==============================================================================
+38 # NOTICE: git push over http depends on this value.
+39 # If you want be able to push huge amount of data to git repository over http
+40 # you will have to increase this value too.
+41 #
+42 # Example of output if you try to push 1GB repo to GitLab over http.
+43 #   -> git push http://gitlab.... master
+44 #
+45 #   error: RPC failed; result=18, HTTP code = 200
+46 #   fatal: The remote end hung up unexpectedly
+47 #   fatal: The remote end hung up unexpectedly
+48 #
+49 # For more information see http://stackoverflow.com/a/21682112/752049
+50 #
+51 timeout 3600
+
+sửa chỗ line 51 : timeout 30 --> 3600
+
+root@monitor [/etc/httpd/conf]# service gitlab restart
+
+go to your nginx configuration and adjust your client_max_body_size
+	
+http {
+    # ...
+    client_max_body_size 16M;
+    # ...
+	
+https://docs.gitlab.com/omnibus/settings/nginx.html
+
+sudo dnf clean all
+sudo rm -f /var/cache/dnf/*gitlab*
+curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash
+yum update gitlab-ce --downloadonly
+

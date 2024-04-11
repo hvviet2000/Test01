@@ -1,0 +1,629 @@
+Steps to reproduce
+
+    Run desktop app for a few minutes with desktop notifications on
+    Interact with desktop app while other activity is happening that would cause a notification, like private DMs
+
+Expected behavior
+1.
+
+Observed behavior
+
+    A single thread on the machine is pinned to 100%
+    CPU stays pinned until notification is done
+    Interacting with the UI is EXTREMELY slow while notification is shown
+    CPU winds down over a second or two until the notification finishes
+
+I upgraded my libnotify libs due to the original libnotify shipped by Debian causing segmentation faults. I grabbed the current libnotify debs from Ubuntu 22.04. Here are their verisons:
+
+libnotify-bin/stable,now 0.7.9-3 amd64 [installed]
+libnotify-dev/stable 0.7.9-3 amd64
+libnotify-doc/stable 0.7.9-3 all
+libnotify4/stable,now 0.7.9-3 amd64 [installed,automatic]
+https://github.com/mattermost/desktop/issues/2185
+
+rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022
+
+ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10
+sar -u 2
+
+TYPE=Ethernet
+BOOTPROTO=none
+DEFROUTE=yes
+IPV4_FAILURE_FATAL=no
+IPV6INIT=no
+IPV6_AUTOCONF=yes
+IPV6_DEFROUTE=yes
+IPV6_PEERDNS=yes
+IPV6_PEERROUTES=yes
+IPV6_FAILURE_FATAL=no
+NAME=eno16777984
+UUID=7f369eb2-e0c7-4a38-9d39-2052c58c3d56
+DEVICE=eno16777984
+ONBOOT=yes
+DNS1=10.1.6.10
+DOMAIN=10.1.6.9
+IPADDR=192.168.100.70
+PREFIX=24
+ZONE=public
+
+
+
+default via 192.168.100.1 dev eno16777984
+192.168.100.0/24 via 192.168.100.1
+192.168.5.0/24 via 192.168.100.1
+172.16.80.0/24 via 192.168.100.1
+10.1.3.0/24 via 192.168.100.1
+10.1.6.0/24 via 192.168.100.1
+10.1.32.0/23 via 192.168.100.1
+10.1.34.0/24 via 192.168.100.1
+10.1.35.0/24 via 192.168.100.1
+10.1.38.0/24 via 192.168.100.1
+10.1.36.0/24 via 192.168.100.1
+10.1.37.0/24 via 192.168.100.1
+10.1.39.0/24 via 192.168.100.1
+10.1.40.0/24 via 192.168.100.1
+10.1.41.0/24 via 192.168.100.1
+10.1.42.0/24 via 192.168.100.1
+10.1.43.0/24 via 192.168.100.1
+10.1.7.0/24 via 192.168.100.1
+192.168.8.0/24 via 192.168.100.1
+192.168.11.0/24 via 192.168.100.1
+
+
+HWADDR=00:50:56:96:0D:94
+TYPE=Ethernet
+BOOTPROTO=none
+DNS1=8.8.8.8
+DEFROUTE=yes
+IPV4_FAILURE_FATAL=no
+IPV6INIT=yes
+IPV6_AUTOCONF=yes
+IPV6_DEFROUTE=yes
+IPV6_FAILURE_FATAL=no
+NAME="Wired connection 2"
+UUID=6ef7bd4a-8e52-489b-aee5-2452157162d0
+ONBOOT=yes
+#IPADDR=113.164.228.221
+IPADDR=192.168.200.5
+PREFIX=24
+#PREFIX=29
+
+GATEWAY=192.168.200.1
+#GATEWAY=113.164.228.217
+
+IPV6_PEERDNS=yes
+IPV6_PEERROUTES=yes
+
+
+
+========
+ Mattermost server to which your system will be migrated.
+
+    Back up your SOURCE Mattermost server.
+            See Backup Guide.
+
+    Upgrade your SOURCE Mattermost server to the latest major build version.
+            See Mattermost Upgrade Guide.
+
+    Install the latest major build of Mattermost server as your DESTINATION.
+            See Installing Mattermost for install guides. Make sure your new instance is properly configured and tested. The database type (MySQL or PostgreSQL) and version of SOURCE and DESTINATION deployments need to match.
+            Stop the DESTINATION server using sudo stop mattermost, then backup the database and config.json file.
+
+    Migrate database from SOURCE to DESTINATION.
+            Backup the database from the SOURCE Mattermost server and restore it in place of the database to which the DESTINATION server is connected.
+
+    Migrate config.json from SOURCE to DESTINATION.
+            Copy of config.json file from SOURCE deployment to DESTINATION.
+
+    If you use local storage (FileSettings.DriverName is set to local), migrate ./data from SOURCE to DESTINATION.
+            Copy the ./data directory from SOURCE deployment to DESTINATION.
+            If you use a directory other than ./data, copy that directory instead.
+
+    Start the DESTINATION deployment.
+            Run sudo start mattermost.
+            Open the System Console, make a minor change, and save it to upgrade your config.json schema to the latest version using default values for any new settings added.
+
+    Test that the system is working by going to the URL of an existing team.
+            You may need to refresh your Mattermost browser page in order to get the latest updates from the upgrade.
+
+
+========================
+
+
+https://computingforgeeks.com/install-mattermost-on-centos-linux-with-nginx/
+
+https://www.howtoforge.com/tutorial/install-mattermost-with-postgresql-and-nginx-on-centos7/
+
+https://docs.mattermost.com/install/install-rhel-7.html
+
+https://docs.mattermost.com/install/requirements.html
+
+1,000 - 2,000 users - 2 vCPUs/cores, 4 GB RAM
+
+Example: A 30-person team with medium usage (5-25 MB/user/month) with a safety factor of 2x would require between 3.5 GB (30 users * 5 MB * 12 months * 2x safety factor) and 17.6 GB (30 users * 25 MB * 12 months * 2x safety factor) of free space in the next year.
+
+Mattermost Version: 5.22.3
+Database Schema Version: 5.22.0
+Database: postgres
+
+    curl -O https://download.postgresql.org/pub/repos/yum/9.4/redhat/rhel-7-x86_64/pgdg-centos94-9.4-3.noarch.rpm
+
+
+    sudo /usr/pgsql-9.4/bin/postgresql94-setup initdb
+	
+	GRANT ALL PRIVILEGES ON DATABASE mattermost to mmuser;
+	
+	
+	postgres=# CREATE DATABASE mattermost;
+CREATE DATABASE
+
+postgres=# GRANT ALL PRIVILEGES ON DATABASE mattermost to mmuser
+postgres-# \q
+-bash-4.2$ exit
+logout
+[root@chat-portal ~]# vi /var/lib/pgsql/9.4/data/postgresql.conf
+[root@chat-portal ~]#
+[root@chat-portal ~]#     sudo systemctl restart postgresql-9.4
+[root@chat-portal ~]# vi /var/lib/pgsql/9.4/data/pg_hba.conf
+[root@chat-portal ~]#
+[root@chat-portal ~]#     sudo systemctl reload postgresql-9.4
+[root@chat-portal ~]#
+
+postgres=# CREATE USER mmuser WITH PASSWORD 'Vietis@123';
+CREATE ROLE
+postgres=# GRANT ALL PRIVILEGES ON DATABASE mattermost to mmuser;
+GRANT
+postgres=# \q
+-bash-4.2$ exit
+logout
+[root@chat-portal ~]#     psql --dbname=mattermost --username=mmuser --password
+Password for user mmuser:
+psql (9.4.26)
+Type "help" for help.
+
+
+
+netstat -ntu|awk '{print $5}'|cut -d: -f1 -s|sort|uniq -c|sort -nk1 -r
+
+=============================================================================================================================
+
+cd /opt/mattermost/
+sudo -u mattermost bin/mattermost version
+
+
+
+Version: 5.22.0
+Build Number: 5.22.3
+Build Date: Mon May 11 17:39:18 UTC 2020
+Build Hash: f277632d36eaa356a4ffc7cce012319cecc94ed2
+Build Enterprise Ready: true
+DB Version: 5.22.0
+
+
+"DataSource": "postgres://mmuser:Vietis@123@127.0.0.1:5432/mattermost?sslmode=disable\u0026connect_timeout=10",
+
+root@both_servers # mkdir -p /opt/mattermost/sql
+root@both_servers # chown mattermost:mattermost /opt/mattermost/sql
+root@both_servers # chmod -R a+rw /opt/mattermost/sql
+PostgreSQL
+admin@hotserver:~ export PGPASSWORD="really_secure_password"
+admin@hotserver:~ pg_dump -U mmuser -h localhost --format=c --compress=5 --file=/backup/chatdb.sqlc mattermost
+
+admin@coldserver:~ export PGPASSWORD="really_secure_password"
+admin@coldserver:~ pg_restore -U mmuser -h localhost -C -d mattermost /opt/mattermost/sql/db.sqlc
+
+pg_dump -dbname=postgressql://mmuser:Vietis@123@127.0.0.1:5432/mattermost
+
+PGPASSWORD="Vietis@123" pg_dump -i -h 127.0.0.1 -p 5432 -U mmuser -F c -b -v -f chatdb.dump mattermost
+
+
+
+
+On the old host
+
+    Backup database
+    sudo -u mattermost /opt/gitlab/embedded/bin/pg_dump -U gitlab_mattermost -h /var/opt/gitlab/postgresql -p 5432 mattermost_production > /home/gitlab/mattermost/mattermost_production_backup.sql
+
+    Backup files
+    sudo cp -R /var/opt/gitlab/mattermost/* /home/gitlab/mattermost/data
+
+    Package files
+    tar -zcf /home/gitlab//mattermost.tar.gz /home/gitlab/mattermost/
+
+On the new host
+
+    Stop gitlab: sudo gitlab-ctl stop
+
+    Start postgresql: sudo gitlab-ctl start postgresql
+
+    Drop the existing mattermost database
+
+    sudo -u mattermost /opt/gitlab/embedded/bin/dropdb -U gitlab_mattermost -h /var/opt/gitlab/postgresql -p 5432 mattermost_production
+
+    Create a new mattermost database
+    sudo -u gitlab-psql /opt/gitlab/embedded/bin/createdb -U gitlab-psql -h /var/opt/gitlab/postgresql -p 5432 mattermost_production
+
+    Restore database
+    sudo -u mattermost /opt/gitlab/embedded/bin/psql -U gitlab_mattermost -h /var/opt/gitlab/postgresql -p 5432 mattermost_production < /home/gitlab/mattermost_backup/mattermost_production_backup.sql
+
+    Restore files
+
+    after restoring files, make sure they are owned by the mattermost user.
+    sudo chown -R mattermost /var/opt/gitlab/mattermost/
+
+
+https://mattermost.com/blog/mattermost-recipe-cold-backup-server/
+
+
+admin@hotserver:~ export PGPASSWORD="really_secure_password"
+admin@hotserver:~ pg_dump -U mmuser -h localhost --format=c --compress=5 --file=/opt/mattermost/sql/db.sqlc mattermost
+admin@hotserver:~$ rsync -rltvzO --progress --stats /opt/mattermost/{data,config,plugins,logs,sql} coldserver:/opt/mattermost/
+
+Test the backup by restoring the database on the cold server
+admin@coldserver:~ export PGPASSWORD="really_secure_password"
+admin@coldserver:~ pg_restore -U mmuser -h localhost -C -d mattermost /opt/mattermost/sql/db.sqlc
+
+
+
+
+create new service 
+
+/etc/systemd/system/mattermost.service
+Unit]
+Description=Mattermost
+After=syslog.target network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/mattermost
+User=mattermost
+ExecStart=/opt/mattermost/bin/platform
+PIDFile=/var/spool/mattermost/pid/master.pid
+
+[Install]
+WantedBy=multi-user.target
+
+=============================
+systemctl daemon-reload
+systemctl start mattermost.service
+
+
+==================================
+
+Before Upgrade:
+[Unit]
+Description=Mattermost
+After=syslog.target network.target postgresql-9.4.service
+
+[Service]
+Type=notify
+WorkingDirectory=/opt/mattermost
+User=mattermost
+ExecStart=/opt/mattermost/bin/platform
+PIDFile=/var/spool/mattermost/pid/master.pid
+TimeoutStartSec=3600
+LimitNOFILE=49152
+
+[Install]
+WantedBy=multi-user.target
+======================================
+After Upgrade:
+
+[Unit]
+Description=Mattermost
+After=syslog.target network.target postgresql-9.4.service
+
+[Service]
+Type=notify
+WorkingDirectory=/opt/mattermost
+User=mattermost
+ExecStart=/opt/mattermost/bin/mattermost
+PIDFile=/var/spool/mattermost/pid/master.pid
+TimeoutStartSec=3600
+LimitNOFILE=49152
+
+[Install]
+WantedBy=multi-user.target
+
+
+
+
+==== Backup
+
+#!/bin/bash
+DIR="/backup/"
+LOGFILE="/script/logbackup.log"
+TODAY=$(date +"%d-%m-%Y")
+# init
+echo "$TODAY : starting backup script" >>$LOGFILE 2>&1 
+cd $DIR
+export PGPASSWORD="Vietis@123"
+
+PGPASSWORD="Vietis@123" pg_dump -i -h 127.0.0.1 -p 5432 -U mmuser -F c -b -v -f chatdata.$TODAY mattermost >>$LOGFILE 2>&1
+
+echo "$TODAY : End backup scrip" >>$LOGFILE 2>&1
+
+
+==== restore
+pg_restore -d mattermost < 
+
+[root@chat-portal mattermost]# su - postgres
+psql
+psql -l   
+DROP DATABASE [ IF EXISTS ] name
+\q
+
+pg_restore --dbname=dvdrental --create --verbose chatdata.02-08-2020
+
+
+restore structure only
+
+CREATE DATABASE dvdrental_tpl;
+pg_restore --dbname=dvdrental_tpl --section=pre-data  chatdata.02-08-2020
+
+
+
+
+-bash-4.2$ cd /opt/mattermost/
+-bash-4.2$ pg_restore -d mattermost <chatdata.02-08-2020
+
+
+
+pg_restore --dbname=mattermost --create --verbose c:\pgbackup\dvdrental.tar
+
+
+
+
+[root@chat ~]# ifconfig
+eno16777984: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.100.70  netmask 255.255.255.0  broadcast 192.168.100.255
+        inet6 fe80::250:56ff:fe96:67aa  prefixlen 64  scopeid 0x20<link>
+        ether 00:50:56:96:67:aa  txqueuelen 1000  (Ethernet)
+        RX packets 231823  bytes 39401478 (37.5 MiB)
+        RX errors 4  dropped 14  overruns 0  frame 0
+        TX packets 147927  bytes 132755876 (126.6 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+eno33557248: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 113.164.228.221  netmask 255.255.255.248  broadcast 113.164.228.223
+        inet6 fe80::250:56ff:fe96:d94  prefixlen 64  scopeid 0x20<link>
+        ether 00:50:56:96:0d:94  txqueuelen 1000  (Ethernet)
+        RX packets 86900  bytes 27992279 (26.6 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 85383  bytes 51886432 (49.4 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+How to Migrate Configuration to the Database
+https://docs.mattermost.com/administration/config-in-database.html#
+
+https://docs.mattermost.com/upgrade/upgrading-mattermost-server.html
+
+
+
+psql --version
+https://blog.andreev.it/?p=4381
+
+sudo systemctl stop fail2ban
+
+
+https://forum.gitlab.com/t/moving-gitlab-mattermost-between-instances/16998
+
+
+ 5.25.0 to the latest Extended Support Release (5.37.6), and then upgrade to 6.0.1. See this section in the docs 5 for more details, and please also review the Important Upgrade Notes 6 for all intermediate release versions in between to ensure you’re aware of the possible migrations that could affect your upgrade.
+ 
+https://computingforgeeks.com/install-mattermost-on-centos-linux-with-nginx/?expand_article=1
+https://docs.mattermost.com/install/install-rhel-7-mattermost.html
+https://www.rosehosting.com/blog/how-to-install-mattermost-on-ubuntu-22-04/
+
+https://kb.pavietnam.vn/centos-8-eol-va-top-7-new-os-thay-the.html
+
+
+
+
+
+========2023===============
+========2023===============
+
+https://computingforgeeks.com/how-to-install-postgresql-14-centos-rhel-7/
+https://docs.mattermost.com/install/install-rhel-7.html
+
+sudo yum update
+sudo subscription-manager register --auto-attach
+sudo yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+sudo yum repolist -y
+sudo yum install -y postgresql14-server postgresql14
+rpm -qi postgresql14-server postgresql14
+
+sudo /usr/pgsql-14/bin/postgresql-14-setup initdb
+sudo systemctl enable --now postgresql-14
+systemctl status postgresql-14
+
+--
+sudo su - postgres
+psql
+alter user postgres with password 'Vietis@123';
+CREATE DATABASE mattermost;
+CREATE USER mmuser WITH PASSWORD 'Vietis@123';
+GRANT ALL PRIVILEGES ON DATABASE mattermost to mmuser;
+\q
+exit
+
+----
+vi /var/lib/pgsql/14/data/postgresql.conf
+listen_addresses = '*'
+----
+systemctl restart postgresql-14
+
+---
+vi /var/lib/pgsql/14/data/pg_hba.conf
+local   all             all                                     trust
+
+====
+
+psql --dbname=mattermost --username=mmuser --password
+
+========2023===============
+wget https://releases.mattermost.com/7.10.3/mattermost-7.10.3-linux-amd64.tar.gz
+tar -xvzf *.gz
+sudo mv mattermost /opt
+sudo mkdir /opt/mattermost/data
+
+sudo useradd --system --user-group mattermost
+sudo chown -R mattermost:mattermost /opt/mattermost
+sudo chmod -R g+w /opt/mattermost
+
+[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[
+vi /opt/mattermost/config/config.json
+    "ServiceSettings": {
+        "SiteURL": "https://chat.vietis.com.vn",	
+    "SqlSettings": {
+        "DriverName": "postgres",
+        "DataSource": "postgres://mmuser:Vietis@123@127.0.0.1:5432/mattermost?sslmode=disable\u0026connect_timeout=10",
+]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+
+cd /opt/mattermost
+sudo -u mattermost ./bin/mattermost
+
+
+===
+sudo firewall-cmd --permanent --add-port=8065/tcp
+sudo firewall-cmd --permanent --add-service=http
+sudo firewall-cmd --permanent --add-service=https
+sudo firewall-cmd --permanent --add-service=smtp
+===
+
+sudo vi /etc/systemd/system/mattermost.service
+=====[[[[[
+[Unit]
+Description=Mattermost
+After=syslog.target network.target postgresql-14.service
+
+[Service]
+Type=notify
+WorkingDirectory=/opt/mattermost
+User=mattermost
+ExecStart=/opt/mattermost/bin/mattermost
+PIDFile=/var/spool/mattermost/pid/master.pid
+TimeoutStartSec=3600
+LimitNOFILE=49152
+
+[Install]
+WantedBy=multi-user.target
+=====]]]]]
+
+sudo chmod 644 /etc/systemd/system/mattermost.service
+sudo systemctl daemon-reload
+sudo systemctl enable mattermost
+sudo systemctl start mattermost
+
+
+=======================NGINX-Mastemosts
+
+
+yum install nginx -y 
+sudo systemctl start nginx
+sudo systemctl enable nginx
+
+vi /etc/nginx/conf.d/mattermost.conf
+	http {
+	upstream backend {
+		server 127.0.0.1:8065;
+	}
+	server {
+		#listen 80 default_server;
+		listen [::]:80 default_server;
+		#
+		server_name _;
+		
+		server_tokens off;
+		
+		return 301 https://$host$request_uri;
+	}
+	server {
+		listen       443 ssl http2;
+		server_tokens off;
+		#ssl on;
+		ssl_certificate /opt/cert/ssl-bundled.crt;
+		ssl_certificate_key /opt/key/chat.vietis.com.vn.key;
+		ssl_session_timeout 5m;
+
+
+=======================Mastemosts===HTTPS
+sudo setcap cap_net_bind_service=+ep /opt/mattermost/bin/mattermost
+
+
+
+openssl req -new -newkey rsa:2048 -nodes -out ca.csr -keyout ca.key -subj "/C=VN/ST=084/L=024/O=VIETIS/OU=VIETIS Software Corporation/CN=10.1.7.74"
+
+
+openssl x509 -req -days 365 -in ca.csr -signkey ca.key -out ca.crt
+cp ca.crt /etc/ssl/certs/certs
+cp ca.key /etc/ssl/certs/ca.key
+cp ca.csr /etc/ssl/certs/ca.csr
+
+yum install mod_ssl openss
+
+<VirtualHost *:443>
+        SSLEngine on
+        SSLCertificateFile /etc/ssl/certs/ca.crt
+        SSLCertificateKeyFile /etc/ssl/certs/ca.key
+		
+vi /opt/mattermost/config/config.json		
+    "ServiceSettings": {
+        "SiteURL": "https://chat.vietis.com.vn",
+
+        "ConnectionSecurity": "TLS",
+        "TLSCertFile": "/etc/ssl/certs/ca.crt",
+        "TLSKeyFile": "/etc/ssl/certs/ca.key",
+        "TLSMinVer": "1.2",
+		
+sudo systemctl restart mattermost
+
+============================= Configuration NGINX-Mastemosts
+upstream backend {
+   server 10.10.10.2:8065;
+   keepalive 32;
+}
+
+proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=mattermost_cache:10m max_size=3g inactive=120m use_temp_path=off;
+
+
+
+
+
+
+sudo systemctl stop postgresql   # Or any other appropriate command based on your system setup
+tar cvfz /path/to/backup/pgdata_backup.tar.gz /path/to/pgsql9/data
+pg_upgrade \
+  -b /path/to/pgsql9/bin/ \
+  -B /path/to/pgsql14/bin/ \
+  -d /path/to/pgsql9/data/ \
+  -D /path/to/pgsql14/data/ \
+  -O "-c config_file=/path/to/pgsql9/data/postgresql.conf" \
+  -o "-c config_file=/path/to/pgsql14/data/postgresql.conf"
+sudo systemctl start postgresql   # Or any other appropriate command based on your system setup
+
+
+
+
+https://azdigi.com/blog/en/linux-server-en/tools-en/cpulimit-controlling-and-limiting-cpu-usage-of-a-process/
+https://zinghomnay.com/threads/2-cach-han-che-su-dung-cpu-tien-hanh-tren-linux.368/
+https://vsudo.net/blog/gioi-han-process-linux.html
+https://linh-ng.dev/post/understanding-priority-on-linux-processes.html
+
+enabled = true
+filter = nginx-http-auth
+action = iptables-multiport[name=nginx, port="http,https"]
+logpath = /var/log/nginx/*error*.log
+          /var/www/vhosts/system/*/logs/proxy_error_log
+bantime = 600
+maxretry = 6
+
+[nginx-badbots]
+
+enabled = true
+action = iptables-multiport[name=BadBots, port="http,https"]
+filter = nginx-badbots
+logpath = /var/log/nginx/access.log
+          /var/www/vhosts/system/*/logs/proxy_access*log
+maxretry = 2
