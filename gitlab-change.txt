@@ -1,0 +1,33 @@
+File: app\policies\project_policy.rb  
+Line 260: enable :admin_project_member => Dòng này sẽ chuyển lên Line 146 (đoạn này là rule config cho owner_access)
+
+
+/opt/gitlab/embedded/service/gitlab-rails/app
+
+
+11.9.6 (14bac95)
+
+rpm -Uvh gitlab-ce-XXX.rpm
+
+Updating using a manually downloaded package
+https://docs.gitlab.com/omnibus/update/
+
+community repo
+https://packages.gitlab.com/gitlab/gitlab-ce
+
+wget --content-disposition https://packages.gitlab.com/gitlab/gitlab-ce/packages/ol/7/gitlab-ce-11.11.7-ce.0.el7.x86_64.rpm/download.rpm
+wget --content-disposition https://packages.gitlab.com/gitlab/gitlab-ce/packages/el/7/gitlab-ce-11.11.7-ce.0.el7.x86_64.rpm/download.rpm
+rpm -Uvh gitlab-ce-11.11.7-ce.0.el7.x86_64.rpm
+
+MD5 	506f97063fecfca1ac3282cd12a06206
+SHA1 	5a46d25276f598028b7571772734c69ccbc82506
+SHA256 	5dc17913b6b59ac9426b9f49653b0c0a0edcc95cd54cebc572c6dee7f9bb6880
+SHA512 	d651c8a0d971bd9671f0e664a200dee9ab73c8aac256c72d94864582f8f27eefbcfd14b613d5076a8aebb71bfdc8c48263baf3dc0f49c3062b2749d764dbdc34 
+
+md5sum   myfiles.md5
+md5sum -c myfiles.md5
+
+506f97063fecfca1ac3282cd12a06206  gitlab-ce-11.11.7-ce.0.el7.x86_64.rpm
+
+
+https://about.gitlab.com/upcoming-releases/

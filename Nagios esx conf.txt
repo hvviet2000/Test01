@@ -1,0 +1,151 @@
+###############################################################################
+# WINDOWS.CFG - SAMPLE CONFIG FILE FOR MONITORING A WINDOWS MACHINE
+#
+#
+# NOTES: This config file assumes that you are using the sample configuration
+#	 files that get installed with the Nagios quickstart guide.
+#
+###############################################################################
+
+
+
+
+###############################################################################
+###############################################################################
+#
+# HOST DEFINITIONS
+#
+###############################################################################
+###############################################################################
+
+# Define a host for the Windows machine we'll be monitoring
+# Change the host_name, alias, and address to fit your situation
+
+
+define host{
+	use		linux-server	; Inherit default values from a template
+	host_name	esx01		; The name we're giving to this host
+	alias		VPS01		; A longer name associated with the host
+	address	192.168.100.30		; IP address of the host
+	}
+
+
+define host{
+	use		linux-server	; Inherit default values from a template
+	host_name	esx02		; The name we're giving to this host
+	alias		VPS02		; A longer name associated with the host
+	address	192.168.100.31		; IP address of the host
+	}
+
+
+
+define host{
+	use		linux-server	; Inherit default values from a template
+	host_name	esx03		; The name we're giving to this host
+	alias		VPS03		; A longer name associated with the host
+	address	192.168.100.32		; IP address of the host
+	}
+
+
+define host{
+	use		linux-server	; Inherit default values from a template
+	host_name	esx04		; The name we're giving to this host
+	alias		VPS04		; A longer name associated with the host
+	address	192.168.100.35		; IP address of the host
+	}
+
+
+
+
+###############################################################################
+###############################################################################
+#
+# HOST GROUP DEFINITIONS
+#
+###############################################################################
+###############################################################################
+
+
+# Define a hostgroup for Windows machines
+# All hosts that use the windows-server template will automatically be a member of this group
+
+define hostgroup{
+	hostgroup_name	VPS	; The name of the hostgroup
+	alias		VPS	; Long name of the group
+	}
+
+
+
+
+###############################################################################
+###############################################################################
+#
+# SERVICE DEFINITIONS
+#
+###############################################################################
+###############################################################################
+
+#Service Definitions
+define service{
+ 	use 			local-service
+	host_name 		esx01
+ 	service_description 	PING
+ 	check_command 		check_ping!200.0,20%!500.0,60%
+}
+
+
+define service{
+ 	use 			local-service
+	host_name 		esx02
+ 	service_description 	PING
+ 	check_command 		check_ping!100.0,20%!500.0,60%
+}
+
+
+define service{
+ 	use 			local-service
+	host_name 		esx03
+ 	service_description 	PING
+ 	check_command 		check_ping!100.0,20%!500.0,60%
+}
+
+define service{
+ 	use 			local-service
+	host_name 		esx04
+ 	service_description 	PING
+ 	check_command 		check_ping!100.0,20%!500.0,60%
+}
+
+
+
+
+
+define service{
+ 	use 			generic-service
+	host_name 		esx01
+ 	service_description 	ESXi Hardware Check
+ 	check_command 		check_esxi_hardware!root!vietis@0913346458!dell!-i "System Board 1 LCD Cable Pres 0: Connected"
+}
+
+define service{
+ 	use 			generic-service
+	host_name 		esx02
+ 	service_description 	ESXi Hardware Check
+ 	check_command 		check_esxi_hardware!root!vietis@0913346458!auto!-i "System Board 1 LCD Cable Pres 0: Connected"
+}
+
+
+define service{
+ 	use 			generic-service
+	host_name 		esx03
+ 	service_description 	ESXi Hardware Check
+ 	check_command 		check_esxi_hardware!root!vietis@0913346458!auto
+}
+
+
+define service{
+ 	use 			generic-service
+	host_name 		esx04
+ 	service_description 	ESXi Hardware Check
+ 	check_command 		check_esxi_hardware!root!vietis@0913346458!auto
+}

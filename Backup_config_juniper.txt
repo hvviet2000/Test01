@@ -1,0 +1,272 @@
+## Last changed: 2018-03-23 17:49:53 GMT
+version 15.1X49-D90.7;
+system {
+    host-name VIETIS;
+    time-zone GMT;
+    root-authentication {
+        encrypted-password "$5$knW.A8g7$mxPb2b2uHH0R7km9XkWeFPMJJC4c.GtsHfWl9nPjwB1"; ## SECRET-DATA
+    }
+    name-server {
+        8.8.8.8;
+        208.67.222.222;
+        8.8.4.4;
+    }
+    name-resolution {
+        no-resolve-on-input;
+    }
+    login {
+        user admin {
+            uid 2000;
+            class super-user;
+            authentication {
+                encrypted-password "$5$gT78dMjb$cHxc9KBrw1KnKuyZB9v7LR5PufPjjnhJ7elq39nDg5D"; ## SECRET-DATA
+            }
+        }
+    }
+    services {
+        ssh;
+        telnet;
+        dhcp-local-server {
+            group DHCP-GROUP {
+                interface ge-0/0/2.0;
+            }
+        }
+        web-management {
+            http {
+                interface ge-0/0/2.0;
+            }
+            https {
+                system-generated-certificate;
+                interface ge-0/0/2.0;
+            }
+            session {
+                idle-timeout 60;
+            }
+        }
+    }
+    syslog {
+        archive size 100k files 3;
+        user * {
+            any emergency;
+        }
+        file messages {
+            any notice;
+            authorization info;
+        }
+        file interactive-commands {
+            interactive-commands any;
+        }
+    }
+    max-configurations-on-flash 5;
+    max-configuration-rollbacks 5;
+    license {
+        autoupdate {
+            url https://ae1.juniper.net/junos/key_retrieval;
+        }
+    }
+    ntp {
+        server us.ntp.pool.org;
+    }
+}
+security {
+    screen {
+        ids-option untrust-screen {
+            icmp {
+                ping-death;
+            }
+            ip {
+                source-route-option;
+                tear-drop;
+            }
+            tcp {
+                syn-flood {
+                    alarm-threshold 1024;
+                    attack-threshold 200;
+                    source-threshold 1024;
+                    destination-threshold 2048;
+                    timeout 20;
+                }
+                land;
+            }
+        }
+    }
+    nat {
+        source {
+            rule-set nsw_srcnat {
+                from zone [ DMZ Internal ];
+                to zone Internet;
+                rule nsw-src-interface {
+                    match {
+                        source-address 0.0.0.0/0;
+                        destination-address 0.0.0.0/0;
+                    }
+                    then {
+                        source-nat {
+                            interface;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    policies {
+        from-zone Internet to-zone DMZ {
+            policy All_Internet_DMZ {
+                match {
+                    source-address any;
+                    destination-address any;
+                    application any;
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+        from-zone Internal to-zone Internet {
+            policy All_Internal_Internet {
+                match {
+                    source-address any;
+                    destination-address any;
+                    application any;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy Internal_TO_INTERNET {
+                match {
+                    source-address any;
+                    destination-address any;
+                    application [ junos-dns-tcp junos-dns-udp junos-http junos-https junos-ping ];
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+        from-zone Internal to-zone DMZ {
+            policy All_Internal_DMZ {
+                match {
+                    source-address any;
+                    destination-address any;
+                    application any;
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+        from-zone Internet to-zone Internet {
+            policy TO_INTERNET {
+                match {
+                    source-address any;
+                    destination-address any;
+                    application [ junos-dns-tcp junos-dns-udp junos-ping junos-http junos-https ];
+                    source-identity any;
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+    }
+    zones {
+        security-zone Internal {
+            interfaces {
+                ge-0/0/2.0 {
+                    host-inbound-traffic {
+                        system-services {
+                            ping;
+                            dhcp;
+                            http;
+                            https;
+                            ssh;
+                            telnet;
+                        }
+                    }
+                }
+            }
+        }
+        security-zone DMZ {
+            interfaces {
+                ge-0/0/1.0 {
+                    host-inbound-traffic {
+                        system-services {
+                            ping;
+                        }
+                    }
+                }
+            }
+        }
+        security-zone Internet {
+            interfaces {
+                ge-0/0/0.0 {
+                    host-inbound-traffic {
+                        system-services {
+                            ping;
+                            dhcp;
+                            http;
+                            https;
+                            ssh;
+                            telnet;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+interfaces {
+    ge-0/0/0 {
+        unit 0 {
+            family inet {
+                address 113.164.228.220/29;
+            }
+        }
+    }
+    ge-0/0/1 {
+        unit 0 {
+            family inet {
+                address 192.168.100.1/24;
+            }
+        }
+    }
+    ge-0/0/2 {
+        unit 0 {
+            family inet {
+                address 10.1.32.1/23;
+            }
+        }
+    }
+}
+routing-options {
+    static {
+        route 0.0.0.0/0 next-hop 113.164.228.217;
+    }
+}
+protocols {
+    l2-learning {
+        global-mode switching;
+    }
+}
+access {
+    address-assignment {
+        pool DHCP-GROUP {
+            family inet {
+                network 10.1.32.0/24;
+                range DHCP_RANGE {
+                    low 10.1.32.10;
+                    high 10.1.32.254;
+                }
+                dhcp-attributes {
+                    name-server {
+                        8.8.8.8;
+                    }
+                    router {
+                        10.1.32.1;
+                    }
+                }
+            }
+        }
+    }
+}

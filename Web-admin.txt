@@ -1,0 +1,24 @@
+install Web-Admin
+https://wiki.alpinelinux.org/wiki/Setting_up_Transparent_Squid_Proxy
+
+sudo vi /etc/yum.repos.d/webmin.repo
+[Webmin]
+name=Webmin Distribution Neutral
+#baseurl=http://download.webmin.com/download/yum
+mirrorlist=http://download.webmin.com/download/yum/mirrorlist
+enabled=1
+
+
+
+
+    wget http://www.webmin.com/jcameron-key.asc
+    sudo rpm --import jcameron-key.asc
+
+	
+	sudo yum install webmin
+	
+	# iptables -I INPUT -p tcp -m tcp --dport 10000 -j ACCEPT
+	 https://your_domain:10000
+	 
+	 
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-webmin-on-centos-7

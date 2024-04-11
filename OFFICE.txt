@@ -1,0 +1,245 @@
+
+@echo off
+title Windows 10 ALL version activator&cls&echo ************************************&echo Supported products:&echo – Windows 10 Home&echo – Windows 10 Professional&echo – Windows 10 Enterprise, Enterprise LTSB&echo – Windows 10 Education&echo.&echo.&echo ************************************ &echo Windows 10 activation…
+cscript //nologo c:\windows\system32\slmgr.vbs /ipk TX9XD-98N7V-6WMQ6-BX7FG-H8Q99 >nul
+cscript //nologo c:\windows\system32\slmgr.vbs /ipk 3KHY7-WNT83-DGQKR-F7HPR-844BM >nul
+cscript //nologo c:\windows\system32\slmgr.vbs /ipk 7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH >nul
+cscript //nologo c:\windows\system32\slmgr.vbs /ipk PVMJN-6DFY6-9CCP6-7BKTT-D3WVR >nul
+cscript //nologo c:\windows\system32\slmgr.vbs /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX >nul
+cscript //nologo c:\windows\system32\slmgr.vbs /ipk MH37W-N47XK-V7XM9-C7227-GCQG9 >nul
+cscript //nologo c:\windows\system32\slmgr.vbs /ipk NW6C2-QMPVW-D7KKK-3GKT6-VCFB2 >nul
+cscript //nologo c:\windows\system32\slmgr.vbs /ipk NW6C2-QMPVW-D7KKK-3GKT6-VCFB2 >nul
+cscript //nologo c:\windows\system32\slmgr.vbs /ipk 2WH4N-8QGBV-H22JP-CT43Q-MDWWJ >nul
+cscript //nologo c:\windows\system32\slmgr.vbs /ipk NPPR9-FWDCX-D2C8J-H872K-2YT43 >nul
+cscript //nologo c:\windows\system32\slmgr.vbs /ipk DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4 >nul
+cscript //nologo c:\windows\system32\slmgr.vbs /ipk WNMTR-4C88C-JK8YV-HQ7T2-76DF9 >nul
+cscript //nologo c:\windows\system32\slmgr.vbs /ipk 2F77B-TNFGY-69QQF-B8YKP-D69TJ >nul
+echo ************************************ &echo.&echo.&set i=1
+:server
+if %i%==1 set KMS_Sev=kms.chinancce.com
+if %i%==2 set KMS_Sev=NextLevel.uk.to
+if %i%==3 set KMS_Sev=GuangPeng.uk.to
+if %i%==4 set KMS_Sev=AlwaysSmile.uk.to
+if %i%==5 set KMS_Sev=kms.chinancce.com
+if %i%==6 set KMS_Sev=kms.shuax.com
+if %i%==7 exit
+cscript //nologo c:\windows\system32\slmgr.vbs /skms %KMS_Sev% >nul
+cscript //nologo c:\windows\system32\slmgr.vbs /ato | find /i “successfully” && (echo.& ************************************ & echo. & choice /n /c YN /m “Do you want to restart your PC now [Y,N]?” & if errorlevel 2 exit) || (echo The connection to the server failed! Trying to connect to another one… & echo Please wait… & echo. & echo. & set /a i+=1 & goto server)
+shutdown.exe /r /t 00
+
+- Office 2010:
+
+if exist "%ProgramFiles%\Microsoft Office\Office14\ospp.vbs" cd /d "%ProgramFiles%\Microsoft Office\Office14"
+if exist "%ProgramFiles(x86)%\Microsoft Office\Office14\ospp.vbs" cd /d "%ProgramFiles(x86)%\Microsoft Office\Office14"
+cscript //Nologo OSPP.VBS /inpkey:BYNMG-WD86P-TJBC4-PPV66-8TYWC
+cscript //Nologo ospp.vbs /sethst:kms.lotro.cc&cscript //nologo ospp.vbs /act&timeout 5&start winword&exit
+@
+
+- Office 2013:
+
+if exist "%ProgramFiles%\Microsoft Office\Office15\ospp.vbs" cd /d "%ProgramFiles%\Microsoft Office\Office15"
+if exist "%ProgramFiles(x86)%\Microsoft Office\Office15\ospp.vbs" cd /d "%ProgramFiles(x86)%\Microsoft Office\Office15"
+cscript OSPP.VBS /inpkey:YC7DK-G2NP3-2QQC3-J6H88-GVGXT
+cscript OSPP.VBS /inpkey:FN8TT-7WMH6-2D4X9-M337T-2342K
+cscript OSPP.VBS /inpkey:KBKQT-2NMXY-JJWGP-M62JB-92CD4
+cscript OSPP.VBS /inpkey:C2FG9-N6J68-H8BTJ-BW3QX-RM3B3
+cscript ospp.vbs /sethst:kms.lotro.cc
+cscript ospp.vbs /act
+
+Hoặc
+
+if exist "%ProgramFiles%\Microsoft Office\Office15\ospp.vbs" cd /d "%ProgramFiles%\Microsoft Office\Office15"
+if exist "%ProgramFiles(x86)%\Microsoft Office\Office16\ospp.vbs" cd /d "%ProgramFiles(x86)%\Microsoft Office\Office15"
+cscript //nologo OSPP.VBS /inpkey:YC7DK-G2NP3-2QQC3-J6H88-GVGXT
+cscript //nologo ospp.vbs /sethst:kms.lotro.cc&cscript //nologo ospp.vbs /act&timeout 5&start winword&exit
+@
+
+- Office 2016:
+
+set ver=16
+if exist "%ProgramFiles%\Microsoft Office\Office%ver%\ospp.vbs" cd /d "%ProgramFiles%\Microsoft Office\Office%ver%"
+if exist "%ProgramFiles(x86)%\Microsoft Office\Office%ver%\ospp.vbs" cd /d "%ProgramFiles(x86)%\Microsoft Office\Office%ver%"
+for /f "tokens=8" %b in ('cscript //nologo OSPP.VBS /dstatus ^| findstr /b /c:"Last 5"') do (cscript //nologo ospp.vbs /unpkey:%b)
+for /f %i in ('dir /b ..\root\Licenses%ver%\ProPlusVL_KMS*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses%ver%\%i"
+cscript ospp.vbs /inpkey:VYBBJ-TRJPB-QFQRF-QFT4D-H3GVB
+cscript ospp.vbs /sethst:kms.lotro.cc
+cscript ospp.vbs /act
+Start winword
+@
+
+
+Office 2016 Professional Plus
+
+    23N8Q-PQM86-PMHQF-WMT7T-683MB
+    J8M2Q-JNDGB-9B469-CTT26-TJGDY
+    MC22N-XXW22-K6W7Q-7VPW8-Q69YB
+    XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99
+
+Office 2016 Standard
+
+    BYNMG-WD86P-TJBC4-PPV66-8TYWC
+    JNRGM-WHDWX-FJJG3-K47QV-DRTFM
+    VYBBJ-TRJPB-QFQRF-QFT4D-H3GVB
+
+	MS Office 2016 Key Visio Premium
+
+    PQCFB-YGXGC-TXB66-DH3VW-GCGYQ
+
+MS Office 2016 Keys Project Professional
+
+    YG9NW-3K39V-2T3HJ-93F3Q-G83KT
+
+Microsoft Office 2016 Product Key
+
+    GNH9Y-D2J4T-FJHGG-QRVH7-QPFDW
+    DR92N-9HTF2-97XKM-XW2WJ-XW3J6
+    J7MQP-HNJ4Y-WJ7YM-PFYGF-BY6C6
+    R69KK-NTPKF-7M3Q4-QYBHW-6MT9B
+    YG9NW-3K39V-2T3HJ-93F3Q-G83KT
+    869NQ-FJ69K-466HW-QYCP2-DDBV6
+    JNRGM-WHDWX-FJJG3-K47QV-DRTFM
+    PD3PC-RHNGV-FXJ29-8JK7D-RJRJK
+    7WHWN-4T7MP-G96JF-G33KR-W8GF4
+
+	
+Microsoft Office 2016 Product Keys	List Two
+FCMXC-RDWMP-RFGVD-8TGPD-VQQ2X	P8TFP-JGFMM-XPV3X-3FQM2-8K4RP
+PGD67-JN23K-JGVWW-KTHP4-GXR9G	2MHJR-V4MR2-V4Z2Y-72MQ7-KC6XK
+B9GN2-DXXQC-9DHKT-GGWCR-4X6XK	H746C-BM4VK-TZBB8-MVZH8-FXR32
+6PMNJ-Q33T3-VJQFJ-23D3H-6XVTX	NKGG6-WBPCC-HXWMY-6DQGJ-CPQVG
+MT7YN-TMV9C-7DDX9-64W77-B7R4D	9C2PK-NWTVB-JMPW8-BFT28-7FTBF
+DJKSE-DFJS93-DFJKD94JD-DJKD94JD	PD3PC-RHNGV-FXJ29-8JK7D-RJRJK
+DJD94-DFKD9-FJD94JD894-FJKD94JD	GNH9Y-D2J4T-FJHGG-QRVH7-QPFDW
+NKGG6-WBPCC-HXWMY-6DQGJ-CPQVG
+	9C2PK-NWTVB-JMPW8-BFT28-7FTBF
+	
+Hoặc:
+
+cscript slmgr.vbs /skms kms.digiboy.ir
+cscript slmgr.vbs /ipk XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99
+cscript slmgr.vbs /ato d450596f-894d-49e0-966a-fd39ed4c4c64
+timeout 2&start winword&exit
+
+- Office 2019:
+
+1) ProPlus
+
+if exist "%ProgramFiles%\Microsoft Office\Office16\ospp.vbs" cd /d "%ProgramFiles%\Microsoft Office\Office16" if exist "%ProgramFiles(x86)%\Microsoft Office\Office16\ospp.vbs" cd /d "%ProgramFiles(x86)%\Microsoft Office\Office16" set "cmd=cscript //nologo ospp.vbs" %cmd% /inpkey:NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP >nul 2>&1 %cmd% /dstatus | findstr "Office19ProPlus2019VL" if not %errorlevel% == 0 (for /f %x in ('dir /b ..\root\Licenses16\ProPlus2019VL*.xrm-ms') do %cmd% /inslic:"..\root\Licenses16\%x") %cmd% /inpkey:NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP %cmd% /sethst:kms.lotro.cc & %cmd% /act cls & %cmd% /dstatus echo.
+
+2) Project Pro
+
+if exist "%ProgramFiles%\Microsoft Office\Office16\ospp.vbs" cd /d "%ProgramFiles%\Microsoft Office\Office16" if exist "%ProgramFiles(x86)%\Microsoft Office\Office16\ospp.vbs" cd /d "%ProgramFiles(x86)%\Microsoft Office\Office16" set "cmd=cscript //nologo ospp.vbs" %cmd% /inpkey:B4NPR-3FKK7-T2MBV-FRQ4W-PKD2B >nul 2>&1 %cmd% /dstatus | findstr "Office19ProjectPro2019VL" if not %errorlevel% == 0 (for /f %x in ('dir /b ..\root\Licenses16\ProjectPro2019VL*.xrm-ms') do %cmd% /inslic:"..\root\Licenses16\%x") %cmd% /inpkey:B4NPR-3FKK7-T2MBV-FRQ4W-PKD2B %cmd% /sethst:kms.lotro.cc & %cmd% /act cls & %cmd% /dstatus echo.
+
+3) Visio Pro
+
+if exist "%ProgramFiles%\Microsoft Office\Office16\ospp.vbs" cd /d "%ProgramFiles%\Microsoft Office\Office16" if exist "%ProgramFiles(x86)%\Microsoft Office\Office16\ospp.vbs" cd /d "%ProgramFiles(x86)%\Microsoft Office\Office16" set "cmd=cscript //nologo ospp.vbs" %cmd% /inpkey:9BGNQ-K37YR-RQHF2-38RQ3-7VCBB >nul 2>&1 %cmd% /dstatus | findstr "Office19VisioPro2019VL" if not %errorlevel% == 0 (for /f %x in ('dir /b ..\root\Licenses16\VisioPro2019VL*.xrm-ms') do %cmd% /inslic:"..\root\Licenses16\%x") %cmd% /inpkey:9BGNQ-K37YR-RQHF2-38RQ3-7VCBB %cmd% /sethst:kms.lotro.cc & %cmd% /act cls & %cmd% /dstatus echo.
+
+
+
+C:\Program Files\Microsoft Office>cd Office16
+
+C:\Program Files\Microsoft Office\Office16>for /f "tokens=8" %b in ('cscript //nologo OSPP.VBS /dstatus ^| findstr /b /c:"Last 5"') do (cscript //nologo ospp.vbs /unpkey:%b)
+
+C:\Program Files\Microsoft Office\Office16>(cscript //nologo ospp.vbs /unpkey:8TYWC )
+---Processing--------------------------
+---------------------------------------
+Uninstalling product key for: Office 16, Office16StandardVL_MAK edition
+<Product key uninstall successful>
+---------------------------------------
+---Exiting-----------------------------
+
+C:\Program Files\Microsoft Office\Office16>(cscript //nologo ospp.vbs /unpkey:2342K )
+---Processing--------------------------
+---------------------------------------
+Uninstalling product key for: Office 15, OfficeProjectProVL_KMS_Client edition
+<Product key uninstall successful>
+---------------------------------------
+---Exiting-----------------------------
+
+C:\Program Files\Microsoft Office\Office16>(cscript //nologo ospp.vbs /unpkey:842DW )
+---Processing--------------------------
+---------------------------------------
+Uninstalling product key for: Office 15, OfficeSPDFreeR_PrepidBypass edition
+<Product key uninstall successful>
+---------------------------------------
+---Exiting-----------------------------
+
+C:\Program Files\Microsoft Office\Office16>(cscript //nologo ospp.vbs /unpkey:RM3B3 )
+---Processing--------------------------
+---------------------------------------
+Uninstalling product key for: Office 15, OfficeVisioProVL_KMS_Client edition
+<Product key uninstall successful>
+---------------------------------------
+---Exiting-----------------------------
+
+C:\Program Files\Microsoft Office\Office16>for /f %i in ('dir /b ..\root\Licenses%ver%\ProPlusVL_KMS*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses%ver%\%i"
+The system cannot find the path specified.
+
+C:\Program Files\Microsoft Office\Office16>cscript ospp.vbs /inpkey:XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99
+Microsoft (R) Windows Script Host Version 5.812
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+---Processing--------------------------
+---------------------------------------
+ERROR CODE: 0xC004F069
+ERROR DESCRIPTION: The Software Licensing Service reported that the product SKU is not found.
+---------------------------------------
+---Exiting-----------------------------
+
+C:\Program Files\Microsoft Office\Office16>cscript ospp.vbs /inpkey:VYBBJ-TRJPB-QFQRF-QFT4D-H3GVB
+Microsoft (R) Windows Script Host Version 5.812
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+---Processing--------------------------
+---------------------------------------
+ERROR CODE: 0xC004F050
+ERROR DESCRIPTION: The Software Licensing Service reported that the product key is invalid.
+---------------------------------------
+---Exiting-----------------------------
+
+C:\Program Files\Microsoft Office\Office16>cscript ospp.vbs /sethst:kms.lotro.cc
+Microsoft (R) Windows Script Host Version 5.812
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+---Processing--------------------------
+---------------------------------------
+Successfully applied setting.
+---------------------------------------
+---Exiting-----------------------------
+
+C:\Program Files\Microsoft Office\Office16>cscript ospp.vbs /inpkey:JNRGM-WHDWX-FJJG3-K47QV-DRTFM
+Microsoft (R) Windows Script Host Version 5.812
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+---Processing--------------------------
+---------------------------------------
+<Product key installation successful>
+---------------------------------------
+---Exiting-----------------------------
+
+C:\Program Files\Microsoft Office\Office16>cscript ospp.vbs /sethst:kms.lotro.cc
+Microsoft (R) Windows Script Host Version 5.812
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+---Processing--------------------------
+---------------------------------------
+Successfully applied setting.
+---------------------------------------
+---Exiting-----------------------------
+
+C:\Program Files\Microsoft Office\Office16>cscript ospp.vbs /act
+Microsoft (R) Windows Script Host Version 5.812
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+---Processing--------------------------
+---------------------------------------
+Installed product key detected - attempting to activate the following product:
+SKU ID: dedfa23d-6ed1-45a6-85dc-63cae0546de6
+LICENSE NAME: Office 16, Office16StandardVL_KMS_Client edition
+LICENSE DESCRIPTION: Office 16, VOLUME_KMSCLIENT channel
+Last 5 characters of installed product key: DRTFM
+<Product activation successful>
+---------------------------------------
+---------------------------------------
+---Exiting-----------------------------
+

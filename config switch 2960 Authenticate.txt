@@ -1,0 +1,136 @@
+https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/69980-errdisable-recovery.html
+
+test cable-diagnostics tdr interface xx/yy
+and then
+
+show cable-diagnostics tdr
+
+aaa new-model
+aaa authentication dot1x default group radius
+aaa authorization network default group radius 
+aaa accounting dot1x default start-stop group radius
+aaa session-id common
+dot1x system-auth-control
+radius-server host 10.1.3.10 auth-port 1812 acct-port 1813 key vietis.vn
+
+no ip default-gateway 192.168.100.1
+ip default-gateway 10.1.2.1
+
+#################optional 
+
+radius server ACS01
+ address ipv4 10.1.3.10 auth-port 1812 acct-port 1813
+ key vietis.vn
+ 
+ 
+ 
+ 
+radius server server01
+ address ipv4 10.0.4.1 auth-port 1645 acct-port 1646
+ key 7 <scrambled key>
+################
+
+Port
+
+interface FastEthernet 
+ switchport mode access
+ authentication port-control auto
+ dot1x pae authenticator
+ spanning-tree portfast
+ no ip dhcp snooping trust
+ 
+
+
+interface FastEthernet 
+no switchport access vlan 307
+no switchport access vlan 80
+no switchport access vlan 108
+no switchport access vlan 102
+ authentication port-control auto
+ dot1x pae authenticator
+ no ip dhcp snooping trust
+ 
+ 
+ 
+ @@############ 2950
+ 
+
+aaa new-model
+aaa authentication dot1x default
+
+dot1x port-control auto
+
+Switch# configure terminal
+ Switch(config)# aaa new-model
+ Switch(config)# aaa authentication dot1x default group radius
+ Switch(config)# interface fastethernet0/1
+ Switch(config-if)# dot1x port-control auto
+ Switch(config-if)# end
+ 
+ radius-server host 10.1.3.10 auth-port 1812 acct-port 1813 key vietis.vn
+
+ 
+ @@@@@@@@==MAC Security
+ Port
+ 
+	switchport port-security
+	switchport port-security maximum max-addr
+	switchport port-security mac-address mac-addr
+	switchport port-security maximum 10
+	
+
+	
+Interface fastEthernet0/10
+Switchport access vlan 102
+
+Switchport access vlan 239
+Switchport mode access
+Switchport port-security
+switchport port-security mac-address a860.b626.4b71
+Switchport port-security violation restrict
+Spanning-tree portfast
+
+a860.b626.4b71
+ 
+a860.b62e.7b8f 
+
+a860.b603.0d23
+
+SW 05
+int fastEthernet 0/12
+switchport port-security maximum 10
+switchport port-security mac-address a860.b626.233a
+switchport port-security mac-address a860.b62e.7b8f 
+switchport port-security mac-address a860.b61d.abc7
+switchport port-security mac-address a860.b603.0f99
+switchport port-security mac-address a860.b626.225a
+switchport port-security mac-address a860.b626.2136
+switchport port-security mac-address a860.b603.1ae6
+Switchport port-security
+
+ 
+ show mac address-table interface fastEthernet0/4
+ 
+
+
+https://aws.amazon.com
+U/P: vietis.giang.nguyen / vis@13579
+
+
+hostname VIETIS-VPS
+enable secret class
+line console 0
+password console
+
+
+isr4200-universalk9_ias.16.05.01b.SPA.bin
+
+description ESX01 - 192.168.100.30
+ switchport trunk native vlan 100
+ switchport mode trunk
+
+ 
+  switchport access vlan 80
+ switchport mode access
+ spanning-tree portfast
+ ip dhcp snooping trust

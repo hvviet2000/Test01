@@ -1,0 +1,261 @@
+interface GigabitEthernet0/0/0
+ description VietIS_TO_FW
+ ip address 10.1.32.2 255.255.255.0
+ ip nat outside
+ ip access-group NETBIOS in
+ negotiation auto
+ ip virtual-reassembly
+!
+
+
+interface GigabitEthernet0/0/0
+ description VietIS_CORE_01_To_ISP_LEASEDLINE
+ ip address 113.164.228.220 255.255.255.248
+ ip nat outside
+ ip access-group NETBIOS in
+ negotiation auto
+ ip virtual-reassembly
+
+ 
+ip route 0.0.0.0 0.0.0.0 10.1.32.1
+
+
+no track 1 ip sla 1 reachability
+!
+no track 2 ip sla 2 reachability
+
+no ip nat pool PRI_Gi0/0/0/0 113.164.228.220 113.164.228.220 netmask 255.255.255.248
+no ip nat inside source static tcp 10.1.7.11 8822 interface GigabitEthernet0/0/0 8822
+no ip nat inside source static tcp 10.1.7.14 8877 interface GigabitEthernet0/0/0 8877
+no ip nat inside source static tcp 10.1.7.14 8811 interface GigabitEthernet0/0/0 8811
+no ip nat inside source static tcp 10.1.7.13 8088 interface GigabitEthernet0/0/0 8088
+no ip nat inside source static tcp 10.1.7.13 2124 interface GigabitEthernet0/0/0 2124
+no ip nat inside source static tcp 192.168.100.53 488 interface GigabitEthernet0/0/0 488
+no ip nat inside source static tcp 10.1.7.12 3306 interface GigabitEthernet0/0/0 3306
+no ip nat inside source static tcp 192.168.100.3 8020 interface GigabitEthernet0/0/0 8020
+no ip nat inside source static udp 192.168.100.3 443 interface GigabitEthernet0/0/0 443
+no ip nat inside source static udp 192.168.100.3 8888 interface GigabitEthernet0/0/0 8888
+no ip nat inside source static tcp 192.168.100.3 8888 interface GigabitEthernet0/0/0 8888
+no ip nat inside source static udp 192.168.100.3 8989 interface GigabitEthernet0/0/0 8989
+no ip nat inside source static tcp 192.168.100.3 8989 interface GigabitEthernet0/0/0 8989
+no ip nat inside source static udp 192.168.100.57 8025 interface GigabitEthernet0/0/0 8025
+no ip nat inside source static tcp 192.168.100.57 8025 interface GigabitEthernet0/0/0 8025
+no ip nat inside source static tcp 192.168.100.55 8082 interface GigabitEthernet0/0/0 8082
+no ip nat inside source static udp 192.168.100.57 2222 interface GigabitEthernet0/0/0 2222
+no ip nat inside source static tcp 192.168.100.57 2222 interface GigabitEthernet0/0/0 2222
+no ip nat inside source static udp 192.168.100.57 8009 interface GigabitEthernet0/0/0 8009
+no ip nat inside source static tcp 192.168.100.57 8009 interface GigabitEthernet0/0/0 8009
+no ip nat inside source route-map PRI_INTERNET_NAT pool PRI_Gi0/0/0/0 overload
+no ip nat inside source route-map SEC_INTERNET_NAT pool SEC_VLAN_501 overload
+
+interface GigabitEthernet0/0/0.244
+ description Database
+ encapsulation dot1Q 244
+ ip address 10.1.44.1 255.255.255.0
+ ip nat inside
+ standby 1 ip 10.1.44.2
+ standby 1 priority 110
+ standby 1 preempt
+ ip virtual-reassembly
+!
+interface GigabitEthernet0/0/0.245
+ description Database
+ encapsulation dot1Q 245
+ ip address 10.1.45.1 255.255.255.0
+ ip nat inside
+ standby 1 ip 10.1.45.2
+ standby 1 priority 110
+ standby 1 preempt
+ ip virtual-reassembly
+!
+
+
+interface GigabitEthernet0/0/1
+ ip address 172.16.0.1 255.255.255.0
+ negotiation auto
+ ip virtual-reassembly
+ 
+ 
+ ip access-list extended VietIS_PBR
+ deny   ip 10.1.0.0 0.0.255.255 10.1.0.0 0.0.255.255
+ deny   ip 192.168.0.0 0.0.255.255 192.168.0.0 0.0.255.255
+ permit ip 192.168.104.0 0.0.1.255 any
+ 
+ ========================================================
+ ###1
+ 
+interface GigabitEthernet0/1.241
+ description DIRECT INTERNET QUA FPT LINE
+ encapsulation dot1Q 241
+ ip address 10.1.41.1 255.255.255.0
+ ip helper-address 10.1.6.10
+ ip helper-address 10.1.6.9
+ ip nat inside
+ ip virtual-reassembly in
+ standby 1 ip 10.1.41.2
+ standby 1 priority 110
+ standby 1 preempt
+ ip policy route-map PBR
+end
+
+###2 
+
+ip access-list extended VietIS_PBR
+ deny   ip 10.1.0.0 0.0.255.255 10.1.0.0 0.0.255.255
+ deny   ip 192.168.0.0 0.0.255.255 192.168.0.0 0.0.255.255
+ permit ip 10.1.41.0 0.0.0.255 any
+ 
+2 dòng deny nó bảo là
+đến mạng nội bộ thì không bị đẩy ra ngoài internet
+dòng permit nó bảo là gặp dải mạng đó thì đẩy ra ngoài internet
+ 
+ ###3
+route-map PBR permit 10
+ match ip address VietIS_PBR
+ set ip next-hop 192.168.200.1
+
+ 
+
+
+ 
+ip access-list extended SEC_INTERNET_DIRECT_ACL
+
+ permit ip 10.1.41.0 0.0.0.255 any
+ permit icmp any any echo-reply
+ permit icmp any any echo
+ permit tcp any any eq domain
+ permit udp any any eq domain
+ permit tcp any any eq pop3
+ permit tcp any any eq 143
+ permit tcp any any eq smtp
+ permit tcp any any eq 995
+ permit tcp any any eq 993
+ permit tcp any any eq 587
+ permit tcp any any eq 465
+ permit tcp any any eq 22
+ permit tcp any any eq 3389
+ permit tcp any any eq 3306
+ deny   ip any any 
+ 
+ 
+ip nat inside source static tcp 10.1.7.14 9191 interface GigabitEthernet0/0 9191
+ip nat inside source static tcp 10.1.7.14 9292 interface GigabitEthernet0/0 9292
+ 
+ 
+ route-map gold permit 10
+ match ip address 101
+ set ip next-hop verify-availability 192.168.200.1 5 track 2
+ 
+ verify-availability
+ 
+ =============================================================
+
+ ###1
+Ciscozine(config)#interface fa0/0
+Ciscozine(config-if)#ip policy route-map gold
+
+####2
+Ciscozine(config)#ip access-list extended 101
+Ciscozine(config-ext-nacl)#permit ip 10.0.0.0 0.0.0.255 any
+
+
+###3
+Ciscozine(config)#route-map gold
+Ciscozine(config-route-map)#match ip address 101
+Ciscozine(config-route-map)#set ip next-hop 172.16.255.2
+
+
+example of PBR with IP SLA
+BR1(config)# route-map PBR-2-HQ
+BR1(config-route-map)# match ip address PBR-WWW-TRAFFIC
+BR1(config-route-map)# set ip next-hop 10.10.20.1
+BR1(config-route-map)# exit
+BR1(config)# interface ethernet 0/2
+BR1(config-if)# ip policy route-map PBR-2-HQ
+BR1(config-if)# exit
+BR1(config)# ip sla 1
+BR1(config-ip-sla)# icmp-echo 10.10.30.2 source-interface Ethernet 0/1
+BR1(config-ip-sla-echo)# frequency 10
+BR1(config-ip-sla-echo)# exit
+BR1(config)# ip sla schedule 1 start-time now life forever
+BR1(config)# track 1 ip sla 1
+BR1(config-track)# delay down 5 up 1
+BR1(config-track)# exit
+BR1(config)# ip access-list extended PBR-FROM-B
+BR1(config-ext-nacl)# Remark Match all traffic from the Notebook host
+BR1(config-ext-nacl)# permit ip host 192.168.110.10 any
+BR1(config-ext-nacl)# exit
+BR1(config)# route-map PBR-2-HQ permit 20
+BR1(config-route-map)# match ip address PBR-FROM-B
+BR1(config-route-map)# set ip next-hop verify-availability 10.10.30.2 1 track 1
+BR1(config-route-map)# end
+
+
+
+
+VietIS_CORE_01#show route-map
+route-map PRI_INTERNET_NAT, permit, sequence 10
+  Match clauses:
+    ip address (access-lists): PRI_INTERNET_DIRECT_ACL
+    interface GigabitEthernet0/0
+  Set clauses:
+  Policy routing matches: 0 packets, 0 bytes
+route-map SEC_INTERNET_NAT, permit, sequence 10
+  Match clauses:
+    ip address (access-lists): SEC_INTERNET_DIRECT_ACL
+  Set clauses:
+  Policy routing matches: 0 packets, 0 bytes
+route-map PBR, permit, sequence 10
+  Match clauses:
+    ip address (access-lists): VietIS_PBR
+  Set clauses:
+    ip next-hop 192.168.200.1
+  Policy routing matches: 6056 packets, 733759 bytes
+VietIS_CORE_01#
+
+interface GigabitEthernet0/1.241
+ description DIRECT INTERNET QUA FPT LINE
+ encapsulation dot1Q 241
+ ip address 10.1.41.1 255.255.255.0
+ ip helper-address 10.1.6.10
+ ip helper-address 10.1.6.9
+ ip nat inside
+ ip virtual-reassembly in
+ standby 1 ip 10.1.41.2
+ standby 1 priority 110
+ standby 1 preempt
+ ip policy route-map PBR
+!
+
+interface GigabitEthernet0/1.104
+ description VietIS_Wifi
+ encapsulation dot1Q 104
+ ip address 192.168.104.2 255.255.254.0
+ ip helper-address 10.1.6.10
+ ip helper-address 10.1.6.9
+ ip nat inside
+ ip virtual-reassembly in
+ standby 1 ip 192.168.104.1
+ standby 1 priority 110
+ standby 1 preempt
+ ip policy route-map PBR
+
+ route-map SEC_INTERNET_NAT permit 10
+ match ip address SEC_INTERNET_DIRECT_ACL
+ match interface GigabitEthernet0/1.501
+ match interface GigabitEthernet0/1.501
+ 
+ 
+ 
+ update:
+ 
+
+ 
+ 
+ ip access-list extended VietIS_PBR
+ deny ip 10.1.41.0 0.0.0.255 192.168.0.0 0.0.255.255
+ deny   ip 10.1.0.0 0.0.255.255 10.1.0.0 0.0.255.255
+ permit ip 10.1.41.0 0.0.0.255 any
+ 
+ 
+ 

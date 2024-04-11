@@ -1,0 +1,121 @@
+-Dorg.eclipse.ecf.provider.filetransfer.excludeContributors=org.eclipse.ecf.provider.filetransfer.httpclient
+-Dhttp.proxyPort=8080
+-Dhttp.proxyHost=XXX
+-Dhttp.proxyUser=XXX
+-Dhttp.proxyPassword=XXX
+-Dhttp.nonProxyHosts=localhost|127.0.0.1
+eclipse.ini
+
+
+Manual + disable SOCKS didn't work for me (still tried to use SOCKS and my company proxy refused it),
+Native + changed eclipse.ini worked for m
+-Dorg.eclipse.ecf.provider.filetransfer.excludeContributors=org.eclipse.ecf.provider.filetransfer.httpclient
+-Dhttp.proxyHost=myproxy
+-Dhttp.proxyPort=8080
+-Dhttp.proxyUser=mydomain\myusername
+-Dhttp.proxyPassword=mypassword
+-Dhttp.nonProxyHosts=localhost|127.0.0.1
+These settings require IDE restart (sometimes with -clean -refresh command line options).
+
+
+-Djava.net.useSystemProxies=true
+
+
+In Eclipse, Window > Preferences > General > Network Connections,
+set Active Provider to Native
+add to eclipse.ini :
+
+-Djava.net.useSystemProxies=true
+-Dhttp.proxyPort=8080
+-Dhttp.proxyHost=myproxy
+-Dhttp.proxyUser=mydomain\myusername
+-Dhttp.proxyPassword=mypassword
+-Dhttp.nonProxyHosts=localhost|127.0.0.1|192.168.*|10.*
+-Dorg.eclipse.ecf.provider.filetransfer.excludeContributors=org.eclipse.ecf.provider.filetransfer.httpclient4
+
+
+
+npm config set registry "http://registry.npmjs.org/"
+
+Found the solution:
+
+Go to *C:\Users\Your User\AppData\Roaming*
+And delete the npm folder
+
+After deleting the npm folder
+do the following command:npm cache clear
+and then execute this command:npm i -g npm@latest
+
+npm get proxy 
+npm set proxy https://porxy.ip:port
+npm config set strict-ssl false
+
+node cli.js install npm -gf
+
+======https://superuser.com/questions/347476/how-to-install-npm-behind-authentication-proxy-on-windows
+
+set http_proxy worked really well for me but I had to enter it in every time I opened the command prompt. So I had to combine multiple answers and now mine is permanent.
+
+My sequence went as follows:
+
+    Go to C:\Users\YourUserName
+    Create a file named .npmrc
+    Inside that file type the following (if you are on an AD domain):
+
+proxy = http://domain\\username:password@ip:port
+
+    Or use this is you are NOT on an AD domain:
+
+proxy = http://username:password@ip:port
+
+    Save the File
+    Open a command prompt and try to use npm
+
+Others have had extra success with the following extra command:
+
+strict-ssl = false
+
+*You should be able to use an IP address or the URL to the proxy in place of "IP" above.
+
+Your proxy string may need to be tweaked a bit, but this made it so that I didn't have to add this every single time.
+
+Cheers
+
+npm set proxy http://user:pass@ip:port
+
+npm set https-proxy http://user:pass@ip:port
+ 
+ 
+use %5C instead of \ (as suggested elsewhere) and (2) use the IP address instead of the local machine name for the proxy server.
+
+proxy=http://domain%5Cusername:password@proxy_ip:port
+
+
+registry=http://registry.npmjs.org
+proxy=http://127.0.0.1:8888
+https-proxy=http://127.0.0.1:8888
+http-proxy=http://127.0.0.1:8888
+strict-ssl=false
+
+proxy = http://unam:pwd@host:port
+https-proxy = http://unam:pwd@host:port
+registry = http://registry.npmjs.org
+
+
+Open a Command Prompt Window (`start` -> `run` -> type `cmd`)
+ 
+    1. C:\> cd C:\Users\youruserName
+    2. C:\Users\youruserName> npm config set proxy http://proxy.server.net:80
+    3. C:\Users\youruserName> npm config set https-proxy http://proxy.server.net:80
+        or http://domainusername:password@proxy.server.net:80
+    4. Open C:\Users\youruserName.npmrc to verify config items.
+ 
+Voila! Install an npm package...
+ 
+    C:\Users\youruserName> npm install bower -g
+	
+
+npm config set proxy http://LanguidSquid:Password1@my.company.com:8080
+npm config set https-proxy http://LanguidSquid:Password1@my.company.com:8080
+
+

@@ -1,0 +1,130 @@
+interface GigabitEthernet0/1.501
+ description VietIS_CORE_01_To_ISP_WAN_FPT
+ encapsulation dot1Q 501
+ ip address 192.168.200.254 255.255.255.0
+ ip nat outside
+ ip virtual-reassembly in
+!
+ip forward-protocol nd
+!
+no ip http server
+ip http access-class 23
+no ip http secure-server
+ip http timeout-policy idle 60 life 86400 requests 10000
+!
+ip dns server
+ip nat pool PRI_Gi0/0 113.164.228.218 113.164.228.218 netmask 255.255.255.248
+ip nat pool SEC_VLAN_501 192.168.200.254 192.168.200.254 netmask 255.255.255.0
+ip nat inside source static tcp 192.168.100.79 3389 interface GigabitEthernet0/0 3389
+ip nat inside source static tcp 192.168.100.57 8009 interface GigabitEthernet0/0 8009
+ip nat inside source static udp 192.168.100.57 8009 interface GigabitEthernet0/0 8009
+ip nat inside source static tcp 192.168.100.57 2222 interface GigabitEthernet0/0 2222
+ip nat inside source static udp 192.168.100.57 2222 interface GigabitEthernet0/0 2222
+ip nat inside source static tcp 192.168.100.55 8082 interface GigabitEthernet0/0 8082
+ip nat inside source static tcp 192.168.100.57 8025 interface GigabitEthernet0/0 8025
+ip nat inside source static udp 192.168.100.57 8025 interface GigabitEthernet0/0 8025
+ip nat inside source static tcp 192.168.100.3 443 interface GigabitEthernet0/0 443
+ip nat inside source static tcp 192.168.100.3 8989 interface GigabitEthernet0/0 8989
+ip nat inside source static udp 192.168.100.3 8989 interface GigabitEthernet0/0 8989
+ip nat inside source static tcp 192.168.100.3 8888 interface GigabitEthernet0/0 8888
+ip nat inside source static udp 192.168.100.3 8888 interface GigabitEthernet0/0 8888
+ip nat inside source static udp 192.168.100.3 443 interface GigabitEthernet0/0 443
+ip nat inside source static tcp 192.168.100.3 8020 interface GigabitEthernet0/0 8020
+ip nat inside source static tcp 192.168.100.65 6677 interface GigabitEthernet0/0 6677
+ip nat inside source static tcp 192.168.100.67 8081 interface GigabitEthernet0/0 8081
+ip nat inside source static tcp 192.168.100.76 5289 interface GigabitEthernet0/0 5289
+ip nat inside source static udp 192.168.100.76 5289 interface GigabitEthernet0/0 5289
+ip nat inside source static tcp 192.168.100.79 1133 interface GigabitEthernet0/0 1133
+ip nat inside source static tcp 192.168.100.72 9981 interface GigabitEthernet0/0 9981
+ip nat inside source static tcp 10.1.7.12 3306 interface GigabitEthernet0/0 3306
+ip nat inside source static tcp 10.1.7.11 8080 interface GigabitEthernet0/0 8080
+ip nat inside source static tcp 192.168.108.164 8006 interface GigabitEthernet0/0 8006
+ip nat inside source static tcp 192.168.100.53 488 interface GigabitEthernet0/0 488
+ip nat inside source route-map PRI_INTERNET_NAT pool PRI_Gi0/0 overload
+ip nat inside source route-map SEC_INTERNET_NAT pool SEC_VLAN_501 overload
+ip route 0.0.0.0 0.0.0.0 113.164.228.217 track 1
+ip route 0.0.0.0 0.0.0.0 192.168.200.1 5 track 2
+ip route 157.240.15.35 255.255.255.255 192.168.200.1 name www.facebook.com_route_to_FTTH track 2
+!
+ip access-list extended INTERNET_DIRECT_ACL_VNPT_OLD
+ permit ip any any
+ 
+ 
+ ip access-list extended PRI_INTERNET_DIRECT_ACL
+ permit ip 192.168.100.0 0.0.0.255 any
+ permit ip 10.1.6.0 0.0.0.255 any
+ permit ip 10.1.7.0 0.0.0.255 any
+ permit ip 192.168.108.0 0.0.0.255 any
+ permit ip 192.168.120.0 0.0.0.255 any
+ permit ip 10.1.35.0 0.0.0.255 any
+ permit icmp any any echo-reply
+ permit icmp any any echo
+ permit tcp any any eq domain
+ permit udp any any eq domain
+ permit tcp any any eq pop3
+ permit tcp any any eq 143
+ permit tcp any any eq smtp
+  deny   ip any any
+ 
+ 
+ ip access-list extended SEC_INTERNET_DIRECT_ACL
+ permit ip 192.168.100.0 0.0.0.255 any
+ permit ip 10.1.6.0 0.0.0.255 any
+ permit ip 192.168.108.0 0.0.0.255 any
+ permit ip 192.168.120.0 0.0.0.255 any
+ permit icmp any any echo-reply
+ permit icmp any any echo
+ permit tcp any any eq domain
+ permit udp any any eq domain
+ permit tcp any any eq pop3
+ permit tcp any any eq 143
+ permit tcp any any eq smtp
+  deny   ip any any
+  
+  
+  
+  ip sla 1
+ icmp-echo 113.164.228.217 source-ip 113.164.228.218
+ frequency 30
+ip sla schedule 1 life forever start-time now
+ip sla 2
+ icmp-echo 8.8.8.8 source-ip 192.168.200.254
+ frequency 30
+ip sla schedule 2 life forever start-time now
+logging host 192.168.100.41 transport udp port 5544
+!
+route-map PRI_INTERNET_NAT permit 10
+ match ip address PRI_INTERNET_DIRECT_ACL
+ match interface GigabitEthernet0/0
+!
+route-map SEC_INTERNET_NAT permit 10
+ match ip address SEC_INTERNET_DIRECT_ACL
+ match interface GigabitEthernet0/1.501
+!
+!
+snmp-server group GROUP1 v3 priv read ALL-ACCESS 
+snmp-server view ALL-ACCESS iso included
+snmp-server view INT-ACCESS ifEntry included
+access-list 23 permit 192.168.100.0 0.0.0.255
+access-list 100 permit ip 192.168.6.0 0.0.0.255 172.31.255.0 0.0.0.255
+access-list 100 deny   ip any any
+!
+
+
+
+========
+
+ip nat inside source static tcp 192.168.108.164 8006 interface GigabitEthernet0/0 8006
+ip nat inside source static tcp 192.168.100.53 488 interface GigabitEthernet0/0 488
+ip nat inside source static tcp 192.168.100.3 443 interface GigabitEthernet0/1.501 443
+ip nat inside source static tcp 192.168.100.3 8989 interface GigabitEthernet0/1.501 8989
+ip nat inside source static udp 192.168.100.3 8989 interface GigabitEthernet0/1.501 8989
+ip nat inside source static tcp 192.168.100.3 8888 interface GigabitEthernet0/1.501 8888
+ip nat inside source static udp 192.168.100.3 8888 interface GigabitEthernet0/1.501 8888
+ip nat inside source static udp 192.168.100.3 443 interface GigabitEthernet0/1.501 443
+ip nat inside source static tcp 192.168.100.3 8020 interface GigabitEthernet0/1.501 8020
+ip nat inside source route-map PRI_INTERNET_NAT pool PRI_Gi0/0 overload
+ip nat inside source route-map SEC_INTERNET_NAT pool SEC_VLAN_501 overload
+ip route 0.0.0.0 0.0.0.0 113.164.228.217 track 1
+ip route 0.0.0.0 0.0.0.0 192.168.200.1 5 track 2
+ip route 157.240.15.35 255.255.255.255 192.168.200.1 name www.facebook.com_route_to_FTTH track 2

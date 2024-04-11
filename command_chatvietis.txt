@@ -1,0 +1,838 @@
+    1  ifconfig 
+    2  exit
+    3  shutdown -h now
+    4  service network restart
+    5  ifconfig 
+    6  ping 192.168.100.1
+    7  vgdisplay
+    8  lvdisplay
+    9  lvextend -L+40G /dev/centos/root 
+   10  lvextend -L+100% /dev/centos/root 
+   11  lvextend -L+100%FREE /dev/centos/root 
+   12  lvextend -L +100%FREE /dev/centos/root 
+   13  lvextend -L +10G /dev/centos/root 
+   14  lvextend -l+10G /dev/centos/root 
+   15  reboot
+   16  lvdisplay
+   17  vgdisplay
+   18  shutdown -h now
+   19  vgdisplay
+   20  df -h
+   21  fdisk -l
+   22  ls /sys/class/scsi_host/
+   23  echo "- - -" > /sys/class/scsi_host/host0/scan
+   24  echo "- - -" > /sys/class/scsi_host/host1/scan
+   25  echo "- - -" > /sys/class/scsi_host/host2/scan
+   26  fdisk -l
+   27  pvdisplay
+   28  vgdisplay
+   29  vgs
+   30  df -h
+   31  pvs
+   32  vgs
+   33  lvs
+   34  pvcreate /dev/sda2 
+   35  vgdisplay
+   36  ls /sys/class/scsi_device/
+   37  echo 1 > /sys/class/scsi_device/0\:0\:0\:0/device/rescan
+   38  echo 1 > /sys/class/scsi_device/2\:0\:0\:0/device/rescan
+   39  fdisk -l
+   40  fdisk /dev/sda
+   41  partprobe
+   42  pvdisplay
+   43  lvdisplay
+   44  reboot
+   45  sudo yum install system-storage-manager
+   46  ssm list
+   47  pvcreate /dev/sda3
+   48  pvdisplay
+   49  vgextend centos /dev/sda3
+   50  lvextend -L +70G /dev/mapper/centos-root
+   51  xfs_growfs /dev/mapper/centos-root
+   52  df -h
+   53  reboot
+   54  df -h
+   55  passwd 
+   56  exit
+   57  sudo yum update
+   58  shutdownexit
+   59  exit
+   60  sudo yum upgrade
+   61  wget http://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
+   62  sudo yum localinstall mysql57-community-release-el7-9.noarch.rpm
+   63  sudo yum install mysql-community-server
+   64  sudo systemctl start mysqld.service
+   65  sudo grep 'temporary password' /var/log/mysqld.log
+   66  mysql -u root -p
+   67  sudo chkconfig mysqld on
+   68  mysql -u root -pVietis@123
+   69  ls
+   70  clear
+   71  wget https://releases.mattermost.com/3.6.2/mattermost-3.6.2-linux-amd64.tar.gz
+   72  tar -xvzf *.gz
+   73  ls
+   74  cd mattermost/
+   75  ls
+   76  cd ..
+   77  sudo mv mattermost /opt
+   78  mount
+   79  df
+   80  clear
+   81  df
+   82  df -aTh
+   83  cear
+   84  clear
+   85  df -aTh
+   86  ifconfig
+   87  service network restart
+   88  shutdown -r now
+   89  ping 113.164.228.217
+   90  ping 113.164.228.218
+   91  ping 113.164.228.221
+   92  ping 113.164.228.222
+   93  ping 113.164.228.220
+   94  ping 113.164.228.218
+   95  ping 113.164.228.217
+   96  ifconfig 
+   97  ip route add 192.168.100.0/24 via 192.168.100.1 dev eno16777984
+   98  ip route add 192.168.102.0/23 via 192.168.100.1 dev eno16777984
+   99  ip route add 192.168.108.0/24 via 192.168.100.1 dev eno16777984
+  100  history 
+  101  route print\
+  102  ls /etc/sysconfig/network-scripts/
+  103  vi /etc/sysconfig/network-scripts/route-eno16777984
+  104  service network restart
+  105  vi /etc/sysconfig/network-scripts/route-eno16777984
+  106  ip route show
+  107  ifconfig 
+  108  service network stop
+  109  service network start
+  110  rm /etc/sysconfig/network-scripts/route-eno16777984
+  111  service network start
+  112  route -n
+  113  ip route add 192.168.108.0/24 via 192.168.100.1 dev eno16777984
+  114  route -n
+  115  ip route add 192.168.100.0/24 via 192.168.100.1 dev eno16777984
+  116  route -n
+  117  history 
+  118  ip route add 192.168.102.0/23 via 192.168.100.1 dev eno16777984
+  119  route -n
+  120  vi /etc/sysconfig/network-scripts/route-eno16777984
+  121  service network restart
+  122  vi /etc/sysconfig/network-scripts/route-eno16777984
+  123  service network restart
+  124  reboot
+  125  ip route show
+  126  df -h
+  127  sudo mkdir /opt/mattermost/data
+  128  sudo useradd --system --user-group mattermost
+  129  sudo chown -R mattermost:mattermost /opt/mattermost
+  130  sudo chmod -R g+w /opt/mattermost
+  131  hostname
+  132  cd /opt/mattermost/bin
+  133  sudo -u mattermost ./platform
+  134  mysql -u root -p
+  135  mysql -u mmuser
+  136  mysql -u mmuser -p
+  137  sudo -u mattermost ./platform
+  138  mysql -u mmuser -p
+  139  mysql -u root -p
+  140  sudo -u mattermost ./platform
+  141  mysql -u root -p
+  142  sudo -u mattermost ./platform
+  143  sudo touch /etc/systemd/system/mattermost.service
+  144  vi /etc/systemd/system/mattermost.service
+  145  sudo chmod 664 /etc/systemd/system/mattermost.service
+  146  sudo systemctl daemon-reload
+  147  sudo chkconfig mattermost on
+  148  sudo systemctl enable mattermost
+  149  sudo systemctl start mattermost
+  150  curl http://localhost:8065
+  151  systemctl status firewalld
+  152  systemctl stop firewalld
+  153  sudo systemctl restart mattermost
+  154  curl http://localhost:443
+  155  sudo systemctl start mattermost
+  156  systemctl status mattermost
+  157  systemctl restart  mattermost
+  158  systemctl status mattermost
+  159  ls
+  160  pwd
+  161  sudo setcap cap_net_bind_service=+ep ./bin/platform;
+  162  cd ..
+  163  sudo setcap cap_net_bind_service=+ep ./bin/platform
+  164  sudo restart mattermost
+  165  systemctl  restart mattermost
+  166  systemctl status mattermost
+  167  systemctl  restart mattermost
+  168  systemctl status mattermost
+  169  systemctl  restart mattermost
+  170  systemctl status mattermost
+  171  systemctl  restart mattermost
+  172  systemctl status mattermost
+  173  systemctl  restart mattermost
+  174  systemctl status mattermost
+  175  cd ..clear
+  176  clear
+  177  sudo touch /etc/yum.repos.d/nginx.repo
+  178  vi /etc/yum.repos.d/nginx.repo
+  179  sudo yum install nginx.x86_64
+  180  sudo systemctl start nginx
+  181  sudo systemctl enable nginx
+  182  curl http://localhostcurl http://localhost
+  183  curl http://localhost
+  184  clear
+  185  sudo touch /etc/nginx/sites-available/mattermost
+  186  sudo ln -s /etc/nginx/sites-available/mattermost /etc/nginx/sites-enabled/mattermost
+  187  sudo systemctl restart nginx
+  188  sudo systemctl restart mattermost
+  189  systemctl status mattermost
+  190  sudo systemctl restart mattermost
+  191  systemctl status mattermost
+  192  sudo systemctl restart mattermost
+  193  systemctl status mattermost
+  194  cd ~
+  195  openssl req -new -newkey rsa:2048 -nodes -keyout chat.vietis.com.vn.key -out chat.vietis.com.vn.csr
+  196  ls
+  197  ifconfig
+  198  systemctl start firewalld
+  199  exit
+  200  ping 8.8.8.8
+  201  exit
+  202  clear
+  203  ifconfig
+  204  systemctl status nginx
+  205  systemctl restart nginx
+  206  systemctl stop firewalld
+  207  systemctl restart mattermost
+  208  systemctl stop nginx
+  209  mysql -v
+  210  mysql
+  211  mysql -u root -pVietis@123
+  212  ls
+  213  wget https://download.postgresql.org/pub/repos/yum/9.4/redhat/rhel-7-x86_64/pgdg-redhat94-9.4-3.noarch.rpm
+  214  sudo yum localinstall pgdg-redhat94-9.4-3.noarch.rpm
+  215  sudo yum install postgresql94-server postgresql94-contribsudo service postgresql initdb
+  216  systemctl stop mysql
+  217  yum remove mysql-community-server
+  218  sudo service postgresql initdb
+  219  systemctl status postgresql
+  220  postgresql
+  221  clear
+  222  sudo service postgresql initdbsudo service postgresql initdb
+  223  sudo service postgresql initdb
+  224  sudo systemctl postgresql initdb
+  225  sudo systemctl initdb  postgresql
+  226  postgresql-setup initdb
+  227  yum -y install postgresql-server postgresql-contrib
+  228  postgresql-setup initdb
+  229  systemctl start postgresql
+  230  systemctl enable postgresql
+  231  systemctl status postgresql
+  232  sudo -i -u postgres
+  233  vi /var/lib/pgsql/data/pg_hba.conf
+  234  systemctl restart postgresql
+  235  psql --host=127.0.0.1 --dbname=mattermost --username=mmuser --password
+  236  systemctl restart mattermost
+  237  chcon -Rt httpd_sys_content_t /opt/mattermost/
+  238  setsebool -P httpd_can_network_connect 1
+  239  nginx
+  240  nginx -t
+  241  systemctl start nginx
+  242  systemctl restart mattermost
+  243  systemctl status  mattermost
+  244  systemctl status firewalld
+  245  systemctl status  mattermost
+  246  systemctl start nginx
+  247  systemctl status nginx
+  248  systemctl restart nginx
+  249  systemctl status nginx
+  250  systemctl stop nginx
+  251  systemctl start nginx
+  252  shutdown -r now
+  253  vi /etc/sysconfig/network-scripts/route-eno16777984 
+  254  service network restart
+  255  exit
+  256  systemctl status nginx
+  257  clear
+  258  systemctl status  mattermost
+  259  systemctl stop firewalld
+  260  systemctl restart  mattermost
+  261  systemctl status  mattermost
+  262  systemctl restart  mattermost
+  263  systemctl status  mattermost
+  264  firewall-cmd --zone=public --add-port=80/tcp --permanent
+  265  systemctl strat firewalld
+  266  systemctl start firewalld
+  267  firewall-cmd --zone=public --add-port=80/tcp --permanent
+  268  firewall-cmd --zone=public --add-port=443/tcp --permanent
+  269  systemctl stop firewalld
+  270  systemctl restart mattermost
+  271  systemctl stop mattermost
+  272  systemctl start mattermost
+  273  systemctl status  mattermost
+  274  systemctl start mattermost
+  275  systemctl status  mattermost
+  276  cd /opt/mattermost/bin
+  277  sudo -u mattermost ./platform.
+  278  sudo -u mattermost ./platform
+  279  sudo -u mattermost ./platformsudo -u mattermost ./platform
+  280  sudo -u mattermost ./platform
+  281  ls
+  282  cd ~
+  283  ls
+  284  tar -xvzf *.gz
+  285  sudo mv mattermost /opt
+  286  sudo mkdir /opt/mattermost/data
+  287  sudo chown -R mattermost:mattermost /opt/mattermost
+  288  sudo chmod -R g+w /opt/mattermost
+  289  cd /opt/mattermost/bin
+  290  sudo -u mattermost ./platform
+  291  sudo -u mattermost ./platformsudo systemctl start mattermost
+  292  sudo systemctl start mattermost
+  293  systemctl status mattermost
+  294  sudo systemctl restart mattermost
+  295  systemctl status mattermost
+  296  sudo systemctl restart mattermost
+  297  systemctl status mattermost
+  298  sudo setcap cap_net_bind_service=+ep ./bin/platform
+  299  cd /opt/mattermost
+  300  sudo setcap cap_net_bind_service=+ep ./bin/platform
+  301  sudo systemctl restart mattermost
+  302  systemctl status mattermost
+  303  systemctl status firewalld
+  304  clear
+  305  cd ~
+  306  tar -xvzf *.gz
+  307  sudo systemctl restart mattermost
+  308  systemctl status mattermost
+  309  sudo systemctl restart mattermost
+  310  systemctl status mattermost
+  311  sudo systemctl restart mattermost
+  312  systemctl stop nginx
+  313  sudo systemctl restart mattermost
+  314  systemctl status mattermos
+  315  systemctl disable nginx
+  316  mysql -u root -p
+  317  mysql
+  318  mysql -u root -pvietis@123
+  319  postgresql
+  320  psql U root
+  321  psql -U root
+  322  psql
+  323  sudo -i -u postgres
+  324  systemctl status nginx
+  325  systemctl staart nginx
+  326  systemctl start nginx
+  327  systemctl status nginx
+  328  systemctl start nginx
+  329  systemctl status nginx
+  330  systemctl start nginx
+  331  systemctl status nginx
+  332  systemctl start nginx
+  333  systemctl status nginx
+  334  clear
+  335  systemctl status nginx
+  336  systemctl start nginx
+  337  systemctl status nginx
+  338  systemctl start nginx
+  339  systemctl status nginx
+  340  systemctl start nginx
+  341  systemctl status nginx
+  342  sudo systemctl restart nginx
+  343  systemctl status nginx
+  344  sudo systemctl restart nginx
+  345  systemctl status nginx
+  346  sudo systemctl restart nginx
+  347  systemctl status nginx
+  348  sudo systemctl restart nginx
+  349  systemctl status nginx
+  350  sudo systemctl restart nginx
+  351  systemctl status nginx
+  352  sudo systemctl restart nginx
+  353  systemctl status nginx
+  354  sudo systemctl restart nginx
+  355  systemctl status nginx
+  356  sudo systemctl restart nginx
+  357  systemctl status nginx
+  358  sudo systemctl restart nginx
+  359  systemctl status nginx
+  360  sudo systemctl restart nginx
+  361  systemctl status nginx
+  362  sudo systemctl restart nginx
+  363  systemctl status nginx
+  364  sudo systemctl restart nginx
+  365  systemctl status nginx
+  366  sudo systemctl restart nginx
+  367  systemctl status nginx
+  368  sudo systemctl restart nginx
+  369  systemctl status nginx
+  370  sudo systemctl restart nginx
+  371  systemctl status nginx
+  372  sudo systemctl restart nginx
+  373  systemctl status nginx
+  374  sudo systemctl restart nginx
+  375  systemctl status nginx
+  376  sudo systemctl restart nginx
+  377  systemctl status nginx
+  378  sudo systemctl restart nginx
+  379  systemctl status nginx
+  380  sudo systemctl restart nginx
+  381  systemctl status nginx
+  382  sudo systemctl restart nginx
+  383  systemctl status nginx
+  384  sudo systemctl restart nginx
+  385  systemctl status nginx
+  386  sudo systemctl restart nginx
+  387  systemctl status nginx
+  388  sudo systemctl restart nginx
+  389  sudo systemctl stop nginx
+  390  yum install denyhosts
+  391  yum --enablerepo=epel install denyhosts
+  392  wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-9.noarch.rpm
+  393  rpm -ivh epel-release-7-9.noarch.rpm
+  394  yum --enablerepo=epel install denyhosts
+  395  vi /etc/hosts.allow
+  396  man 5 hosts_options
+  397  vi /etc/denyhosts.conf
+  398   chkconfig denyhosts on
+  399  service denyhosts start
+  400  exit
+  401  systemctl status firewalld
+  402  systemctl start firewalld
+  403  systemctl status firewalld
+  404  tail -f /var/log/secure
+  405  hostname
+  406  hostname chat-srv.localdomain
+  407  exit
+  408  tail -f /var/log/secure
+  409  clear
+  410  tail -f /var/log/secure
+  411  exit
+  412  ls
+  413  cd /opt/mattermost
+  414  ls
+  415  cd ..
+  416  ls
+  417  cd cert/
+  418  ls
+  419   cat chat_vietis_com_vn.crt COMODORSADomainValidationSecureServerCA.crt  COMODORSAAddTrustCA.crt AddTrustExternalCARoot.crt > ssl-bundle.crt
+  420  ls
+  421   cat chat_vietis_com_vn.crt COMODORSADomainValidationSecureServerCA.crt  COMODORSAAddTrustCA.crt > ssl-bundled.crt
+  422  ll
+  423  exit
+  424  systemctl restart mattermost
+  425  exit
+  426  systemctl restart mattermost
+  427  exit
+  428  history 
+  429  cat /etc/hosts.allow
+  430  cat /etc/denyhosts.conf
+  431  history 
+  432  uname -n
+  433  hostname
+  434  hostnamectl ?
+  435  hostnamectl chat.vietis.vn
+  436  hostnamectl status
+  437  hostnamectl set-hostname chat.vietis.com.vn
+  438  systemctl restart systemd-hostnamed
+  439  hostnamectl status
+  440  history >commandchat.txt
+  441  ls
+  442  pwd
+  443  cat /opt/mattermost/config/config.json
+  444  cat /opt/mattermost/config/config.json | grep AllowCorsFrom
+  445  it
+  446  exit
+  447  find / -name htaccess
+  448  whereis nginx
+  449  sysctl services --list
+  450  chkconfig --list
+  451  whereis nginx
+  452  cat /etc/nginx/conf.d/default.conf 
+  453  exit
+  454  lsb_release 
+  455  uname -r
+  456  cat /etc/*-release
+  457  cd /etc/
+  458  ll
+  459  cd nginx/
+  460  ll
+  461  clear
+  462  cd /usr/local/nginx
+  463  cd conf.d/
+  464  ll
+  465  vi default.conf 
+  466  clear
+  467  which nginx
+  468  cd /usr/sbin/nginx
+  469  cd /usr/sbin/nginx/
+  470  cd /usr/local/sbin/nginx
+  471  find . -name "nginx.conf"
+  472  cd ~
+  473  find . -name "nginx.conf"
+  474  cd /etc/nginx/
+  475  ll
+  476  vi nginx.conf
+  477  exit
+  478  systemctl status nginx
+  479  ping 192.168.100.70
+  480  cls
+  481  clear
+  482  systemctl restart mattermost
+  483  systemctl start nginx
+  484  systemctl status nginx
+  485  systemctl restart nginx
+  486  systemctl status nginx
+  487  systemctl restart mattermost
+  488  systemctl restart nginx
+  489  nginx --help
+  490  nginx -v
+  491  nginx -?
+  492  nginx -V
+  493  nginx -t
+  494  nginx -s reload
+  495  history 
+  496  nginx -s reload
+  497  nginx -t
+  498  systemctl restart nginx
+  499  nginx -t
+  500  systemctl restart nginx
+  501  ls
+  502  openssl dhparam -out dhparams.pem 2048
+  503  ls
+  504  pwd
+  505  nginx -s reload
+  506  systemctl restart nginx
+  507  cd /etc/ssl/certs
+  508  openssl dhparam -out dhparam.pem 4096cd /etc/ssl/certs
+  509  openssl dhparam -out dhparam.pem 4096
+  510  ls
+  511  pwd
+  512  nginx -t
+  513  systemctl restart nginx
+  514  systemctl status nginx
+  515  nginx -s reload
+  516  systemctl start nginx
+  517  systemctl status nginx
+  518  nginx -s reload
+  519  systemctl status nginx
+  520  systemctl restart nginx
+  521  systemctl status nginx
+  522  nginx -s reload
+  523  nginx -V
+  524  nginx -s reload
+  525  systemctl restart denyhosts
+  526  systemctl status denyhosts
+  527  exit
+  528  history 
+  529   systemctl status nginx
+  530  systemctl restart nginx
+  531  nginx -s reload
+  532  exit
+  533  openssl version -a
+  534  exit
+  535  nginx -s reload
+  536  nginx -t
+  537  nginx -s reload
+  538  curl -I https://chat.vietis.com.vn
+  539  curl https://chat.vietis.com.vn
+  540  curl -I https://chat.vietis.com.vn
+  541  nginx -s reload
+  542  exit
+  543   openssl version -a
+  544  history 
+  545   openssl version -a
+  546  cat /etc/nginx/nginx.conf
+  547  exit
+  548  date
+  549  vi /etc/ntp.conf 
+  550  service ntpd restart
+  551  systemctl restart  ntpd.service
+  552  ntpd -q
+  553   systemctl start ntpd 
+  554   systemctl enable ntpd 
+  555  ntpq -p
+  556  timedatectl
+  557  exit
+  558  cd /home/
+  559  ls
+  560  cd ..
+  561  ls
+  562  cd /sys/
+  563  cd lib
+  564  cd lib64
+  565  ls
+  566  cd..
+  567  ls
+  568  cd ..
+  569  ls
+  570  cd lib
+  571  ls
+  572  cd ..
+  573  ls
+  574  cd lib64/
+  575  ls
+  576  cd ..
+  577  ls
+  578  cd boot/
+  579  ls
+  580  cd ..
+  581  cd etc
+  582  ls
+  583  cd nginx/
+  584  ls
+  585  cd conf.d/
+  586  ls
+  587  view default.conf 
+  588  cd ~
+  589  cd /etc/\
+  590  cd /etc/
+  591  ls
+  592  platform -version
+  593  grep 'mattermost'
+  594  grep 'config.json'
+  595  cd /opt/mattermost
+  596  cd /bin/
+  597  platform version
+  598  sudo su - mmost
+  599  cd ..
+  600  ls
+  601  cd /opt
+  602  ls
+  603  cd mattermost
+  604   bin/platform -version
+  605  cd /etc/
+  606  ls
+  607  find / -name httpd.conf 2>/dev/null
+  608  find / -name httpd.cof
+  609  find / -name httpd.conf
+  610  hostname
+  611  cd ..
+  612  ls
+  613  grep httpd.conf
+  614  cd opt/
+  615  ls
+  616  cd rh
+  617  ls
+  618  cd ..
+  619  cd cert/
+  620  ls
+  621  cd mattermost
+  622  cd ..
+  623  ls
+  624  cd etc/
+  625  ls
+  626  cd ..
+  627  ls
+  628  cd usr/
+  629  ls
+  630  sudo dmidecode | grep -A3 '^System Information'
+  631  uname -a
+  632  lsb_release -a
+  633  lsb_release
+  634  cat /etc/lsb-release
+  635  cd /etc/
+  636  ls
+  637  grep release
+  638  grep 'release'
+  639  cat /etc/*-release
+  640  ps -ef | grep apache
+  641  cd ..
+  642  ls
+  643  cd root/
+  644  ls
+  645  ps -ef | grep apache
+  646  httpd -V
+  647  httpd -v
+  648  httpd --v
+  649  httpd -version
+  650  http -version
+  651  cd..
+  652  ls
+  653  cd ..
+  654  ls
+  655  cd usr/
+  656  ls
+  657  cd sbin/
+  658  ls
+  659  ps -ef | grep apache
+  660  cd ~
+  661  cd apache
+  662  ls
+  663  cd ..
+  664  ls
+  665  grep httpd.conf
+  666  exit
+  667  cd ~
+  668  cd /opt/mattermost
+  669  ls -a
+  670  bin/platform -version
+  671  cd /etc/nginx/
+  672  ls
+  673  cp nginx.conf nginx.conf.bak.20170420
+  674  ls
+  675  vi nginx.conf
+  676  service mattermost restart
+  677  service nginx restart
+  678  view nginx.conf
+  679  exit
+  680  history 
+  681  vi /etc/nginx/access_rules.conf 
+  682  service nginx restart
+  683  it
+  684  exit
+  685  history 
+  686  systemctl restart  mattermost
+  687  vi /etc/nginx/access_rules.conf 
+  688  systemctl restart nginx
+  689  exit
+  690  history 
+  691  cd ..
+  692  vi /etc/nginx/access_rules.conf 
+  693  history 
+  694  vi /etc/denyhosts.conf
+  695  vi /etc/hosts.deny
+  696  /usr/local/nginx/sbin/nginx -t
+  697  whereis nginx
+  698  /usr/sbin/nginx -t
+  699  /usr/local/nginx/sbin/nginx -s reload
+  700  /usr/sbin/nginx reload
+  701  /usr/sbin/nginx -s reload
+  702  vi /etc/nginx/nginx.conf
+  703  /usr/sbin/nginx -s reload
+  704  /usr/sbin/nginx -t
+  705  history 
+  706  systemctl restart nginx
+  707  ping chat.vietis.com.vn
+  708  exit
+  709  ls
+  710  cd /opt/mattermost
+  711  ls
+  712  cd bin/
+  713  cd bin
+  714  bin platform -version
+  715   platform -version
+  716  cd co
+  717  ls -a
+  718  ls
+  719  platform -version
+  720  cd ..
+  721  ls
+  722  platform -version
+  723  bin/platform -version
+  724  pwd
+  725  bin/platform -version
+  726  platform 
+  727  ls
+  728  cd /opt/mattermost
+  729  cd bin
+  730  ls
+  731  platform -version
+  732  .\platform -version
+  733  cd ..
+  734  sudo stop mattermost
+  735  systemctl stop mattermost
+  736  cd ..
+  737  ls
+  738  tar -xvzf mattermost-3.8.2-linux-amd64.tar.gz 
+  739  systemctl start mattermost
+  740  systemctl status mattermost
+  741  ls
+  742  chown mattermost mattermost
+  743  ls
+  744  systemctl restart  mattermost
+  745  systemctl status mattermost
+  746  systemctl restart  mattermost -R
+  747  chown mattermost mattermost -r
+  748  chown --help
+  749  chown mattermost mattermost -R
+  750  systemctl restart  mattermost -R
+  751  systemctl restart  mattermost
+  752  systemctl status mattermost
+  753  systemctl restart nginx
+  754  ls
+  755  chown mattermost mattermost-data -R
+  756  exit
+  757  history 
+  758  vi /etc/nginx/access_rules.conf
+  759  ping 192.168.5.1
+  760  history 
+  761  ip route add 192.168.5.0/24 via 192.168.100.1 dev eno16777984
+  762  ping 192.168.5.1
+  763  exit
+  764  history 
+  765  vi /etc/nginx/access_rules.conf
+  766  systemctl restart  mattermost
+  767  systemctl status mattermost
+  768  it
+  769  exit
+  770  platform
+  771  systemctl status mattermost
+  772  cd /opt/mattermost
+  773  tar -xzf mattermost-4.1.0-linux-amd64.tar.gz
+  774  ls
+  775  cd ..
+  776  ls
+  777  tar -xzf mattermost-4.1.0-linux-amd64.tar.gz
+  778  systemctl stop mattermost
+  779  ls
+  780  cd mattermost
+  781  ls
+  782  sudo setcap cap_net_bind_service=+ep ./bin/platform
+  783  sudo systemctl start mattermost
+  784  systemctl status mattermost
+  785  exit
+  786  systemctl status mattermost
+  787  systemctl restart  mattermost
+  788  systemctl status mattermost
+  789  systemctl restart  mattermost
+  790  systemctl status mattermost
+  791  exit
+  792  history 
+  793  service network restart
+  794  systemctl restart  mattermost
+  795  systemctl status mattermost
+  796  exit
+  797  history 
+  798  vi /etc/nginx/access_rules.conf
+  799  systemctl restart  mattermost
+  800  systemctl status mattermost
+  801  cat /etc/resolv.conf 
+  802  vi /etc/nginx/access_rules.conf
+  803  systemctl status mattermost
+  804  systemctl restart  mattermost
+  805  systemctl status mattermost
+  806  systemctl restart  mattermost
+  807  systemctl status mattermost
+  808  ping 10.1.38.1
+  809  ping 10.1.38.131
+  810  history 
+  811  vi /etc/nginx/access_rules.conf
+  812  history 
+  813  systemctl restart  mattermost
+  814  systemctl restart nginx
+  815  exit
+  816  history 
+  817  vi/etc/nginx/access_rules.conf
+  818  vi /etc/nginx/access_rules.conf
+  819  systemctl restart nginx
+  820  exit
+  821  history 
+  822  ip route add 10.1.3.0/24 via 192.168.100.1 dev eno16777984
+  823  ip route add 10.1.2.0/24 via 192.168.100.1 dev eno16777984
+  824  ip route add 10.1.5.0/24 via 192.168.100.1 dev eno16777984
+  825  ip route add 10.1.6.0/24 via 192.168.100.1 dev eno16777984
+  826  ip route add 10.1.7.0/24 via 192.168.100.1 dev eno16777984
+  827  ip route add 10.1.8.0/24 via 192.168.100.1 dev eno16777984
+  828  ip route add 10.1.32.0/23 via 192.168.100.1 dev eno16777984
+  829  ip route add 10.1.34.0/24 via 192.168.100.1 dev eno16777984
+  830  ip route add 10.1.35.0/24 via 192.168.100.1 dev eno16777984
+  831  ip route add 10.1.36.0/24 via 192.168.100.1 dev eno16777984
+  832  ip route add 10.1.37.0/24 via 192.168.100.1 dev eno16777984
+  833  ip route add 10.1.38.0/24 via 192.168.100.1 dev eno16777984
+  834  ip route add 10.1.39.0/24 via 192.168.100.1 dev eno16777984
+  835  ip route add 10.1.40.0/24 via 192.168.100.1 dev eno16777984
+  836  ip route add 10.1.41.0/24 via 192.168.100.1 dev eno16777984
+  837  cd /
+  838  history  >command_chatvietis.txt

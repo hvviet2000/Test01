@@ -1,0 +1,252 @@
+ast changed: 2000-01-05 06:59:39 UTC
+version 12.1R4.7;
+system {
+    host-name SRX-Firewall;
+    time-zone UTC;
+    root-authentication {
+        encrypted-password "$1$MRUa7ulz$gIqsgh9kfrsB6wD/liaeO1";
+    }
+    name-server {
+        8.8.8.8;
+        192.168.0.201;
+    }
+    login {
+        user XXXXX {
+            uid 2008;
+            class super-user;
+            authentication {
+                encrypted-password "$1$Za7dRH2g$.9snzHxFpdMGQ.4M.rJJv1";
+            }
+        }
+    }
+    services {
+        ssh;
+        telnet;
+        web-management {
+            http;
+        }
+        dhcp {
+            domain-name domain.local;
+            name-server {
+                192.168.0.201;
+                192.168.0.202;
+            }
+            router {
+                192.168.10.230;
+            }
+            pool 192.168.10.0/24 {
+                address-range low 192.168.10.100 high 192.168.10.200;
+                name-server {
+                    192.168.0.201;
+                    192.168.0.202;
+                }
+                router {
+                    192.168.10.1;
+                }
+            }
+        }
+    }
+    ntp {
+        server 91.212.90.20;
+    }
+}
+interfaces {
+    interface-range interfaces-trust {
+        member fe-0/0/2;
+        member fe-0/0/3;
+        member fe-0/0/4;
+        member fe-0/0/5;
+        member fe-0/0/1;
+        member fe-0/0/7;
+        unit 0 {
+            family ethernet-switching {
+                port-mode access;
+                vlan {
+                    members vlan-10;
+                }
+            }
+        }
+    }
+    ge-0/0/0 {
+        unit 0 {
+            family inet {
+                address 87.244.109.212/28;
+            }
+        }
+    }
+    ge-0/0/1 {
+        unit 0 {
+            family ethernet-switching {
+                port-mode access;
+                vlan {
+                    members vlan-trust;
+                }
+            }
+        }
+    }
+    fe-0/0/4 {
+        unit 0 {
+            family ethernet-switching {
+                port-mode access;
+                vlan {
+                    members vlan-10;
+                }
+            }
+        }
+    }
+    vlan {
+        unit 0 {
+            family inet {
+                address 192.168.0.231/24;
+            }
+        }
+        unit 4;
+        unit 6;
+        unit 10 {
+            family inet {
+                address 192.168.10.230/24;
+            }
+        }
+    }
+}
+routing-options {
+    static {
+        route 0.0.0.0/0 next-hop 192.168.1.230;
+        route 192.168.1.0/24 next-hop 192.168.1.230;
+        route 10.99.5.0/24 next-hop 192.168.1.230;
+        route 10.99.21.0/24 next-hop 192.168.1.230;
+        route 10.99.4.0/24 next-hop 192.168.1.230;
+        route 192.168.2.0/24 next-hop 192.168.1.230;
+    }
+}
+security {
+    nat {
+        source {
+            rule-set interface-nat {
+                from zone trust;
+                to zone untrust;
+                rule rule1 {
+                    match {
+                        source-address 0.0.0.0/0;
+                        destination-address 0.0.0.0/0;
+                    }
+                    then {
+                        source-nat {
+                            interface;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    policies {
+        from-zone trust to-zone trust {
+            policy trust_trust {
+                match {
+                    source-address [ Site A-lan Site B-lan ];
+                    destination-address [ Site A-lan Site B-lan ];
+                    application any;
+                }
+                then {
+                    permit;
+                    log {
+                        session-close;
+                    }
+                }
+            }
+        }
+        from-zone trust to-zone untrust {
+            policy trust-untrust {
+                match {
+                    source-address Site A-lan;
+                    destination-address any;
+                    application any;
+                }
+                then {
+                    permit;
+                    log {
+                        session-close;
+                    }
+                }
+            }
+        }
+    }
+    zones {
+        security-zone untrust {
+            host-inbound-traffic {
+                system-services {
+                    telnet;
+                    ssh;
+                    http;
+                    ping;
+                }
+            }
+            interfaces {
+                ge-0/0/0.0;
+            }
+        }
+        security-zone trust {
+            address-book {
+                address Site A-lan 192.168.10.0/24;
+                address Site B-lan 192.168.0.0/24;
+            }
+            host-inbound-traffic {
+                system-services {
+                    all;
+                }
+                protocols {
+                    all;
+                }
+            }
+            interfaces {
+                vlan.0;
+                vlan.10;
+                ge-0/0/1.0;
+                fe-0/0/4.0;
+            }
+        }
+        security-zone Wireless-Link {
+            description "Wireless Link between A and B";
+            host-inbound-traffic {
+                system-services {
+                    all;
+                }
+                protocols {
+                    all;
+                }
+            }
+        }
+    }
+}
+routing-instances {
+    Company-wan {
+        instance-type virtual-router;
+        interface ge-0/0/0.0;
+        routing-options {
+            static {
+                route 0.0.0.0/0 next-hop 87.244.109.212;
+            }
+        }
+    }
+}
+vlans {
+    vlan-10 {
+        vlan-id 10;
+        l3-interface vlan.10;
+    }
+    vlan-4 {
+        vlan-id 4;
+        l3-interface vlan.4;
+    }
+    vlan-6 {
+        vlan-id 6;
+        l3-interface vlan.6;
+    }
+    vlan-trust {
+        vlan-id 3;
+        interface {
+            ge-0/0/1.0;
+        }
+        l3-interface vlan.0;
+    }
+}

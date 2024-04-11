@@ -1,0 +1,11 @@
+  109  exit
+  110  vi /etc/ssh/sshd_config
+  111  systemctl restart sshd.service
+  112  service sshd restart
+  113  vi /etc/ssh/sshd_config
+  114  sudo semanage port -a -t ssh_port_t -p tcp 2222
+  115  sudo firewall-cmd --permanent --zone=public --add-port=2222/tcp
+  116  sudo firewall-cmd --reload
+  117  sudo systemctl restart sshd.service
+  118  ss -tnlp | grep ssh
+  119  exit

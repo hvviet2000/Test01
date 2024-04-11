@@ -1,0 +1,25 @@
+(KH : Parkway )
+
+Router Name : Yamaha RTX1200
+
+pre-shared key     viet-is
+IPaddress          110.5.45.10
+Authentication algorithm   HMAC-SHA-1
+Cryptographic algorithm   AES-CBC (AES128-CBC)
+
+Local IP  172.31.255.0/24
+
+( VietIS)
+
+Router Name: Draytek - Vigor2925n
+113.190.232.25
+
+http://www.yamaha.com/products/en/network/settings/ipv4_ipsec_vpn/
+
+http://docs.aws.amazon.com/AmazonVPC/latest/NetworkAdminGuide/Yamaha.html
+
+http://jp.yamaha.com/products/network/solution/two_point_rtx1200/
+
+http://jp.yamaha.com/products/network/solution/two_point_rtx1200/
+
+Win 2016:slmgr.vbs /ipk X92KH-T2N66-7JVHY-CJD6C-CKDD2

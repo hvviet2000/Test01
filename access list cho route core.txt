@@ -1,0 +1,75 @@
+https://websistent.com/configure-inter-vlan-routing-on-cisco-router/
+
+
+Download Advanced Office Password Recovery Professional 5.50.477
+Password = yuwono-share.blogspot.com
+
+P9O0X6V65BEEM6NU9R8GDRB2Y49B7K3387T
+08MZKCA46991RL9OI6XH28467KVILR53PRP
+08MZKCA46991RL9OI6XH28467KVILR53PRP
+
+
+
+ip access-list extended NETBIOS
+  deny tcp any any eq 135
+  deny udp any any eq 135
+  deny tcp any any range 137 139
+  deny udp any any range 137 139
+  deny tcp any any eq 445
+  deny udp any any eq 445
+  deny tcp any any eq 4786
+  deny udp any any eq 4786
+  permit ip any any
+
+
+interface GigabitEthernet0/0
+ description VietIS_CORE_01_To_ISP_WAN_VNPT_NEW
+ ip address 113.164.228.218 255.255.255.248
+ ip access-group NETBIOS in
+ ip nat outside
+ ip virtual-reassembly in
+ duplex auto
+ speed auto
+!
+
+ip access-list extended NETBIOS
+  deny tcp any any eq 135
+  deny udp any any eq 135
+  deny tcp any any range 137 139
+  deny udp any any range 137 139
+  deny tcp any any eq 445
+  deny udp any any eq 445
+  deny tcp any any eq 4786
+  deny udp any any eq 4786
+  deny tcp any any eq 7
+  deny udp any any eq 7
+  deny tcp any any eq 9
+  deny udp any any eq 9
+  deny tcp any any eq 13
+  deny udp any any eq 13
+  deny tcp any any eq 19
+  deny udp any any eq 19
+  deny tcp any any eq 23
+  deny udp any any eq 23
+  deny tcp any any eq 79
+  deny udp any any eq 79
+  deny tcp any any eq 111
+  deny udp any any eq 111
+  deny tcp any any eq 161
+  deny udp any any eq 161
+  deny tcp any any eq 162
+  deny udp any any eq 162
+  deny tcp any any eq 443
+  deny udp any any eq 443
+  deny tcp any any eq 67
+  deny udp any any eq 67
+  permit ip any any
+
+
+162/udp  open|filtered snmptrap
+443/udp  open|filtered https
+161/udp  open
+67/udp   open|filtered dhcps
+
+
+

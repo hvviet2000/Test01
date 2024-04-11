@@ -1,0 +1,56 @@
+1. Thanh phan danh gia:
+- 2 nguoi: 
++ Khai: 
++ Lam
+=> Dung.tran care khach
+
+2. Lich lam viec: Dung.tran gui lai trong hom nay
+
+3. Ho so:
+
++ Ho so SX:
+\\192.168.100.6\qms\ISMS\VIETIS\Ho so
+\\192.168.100.6\isms
+
+4. Update: 
+- Update tai lieu vua ban hanh
++  co 2 cho update: QMS=> ISMS
++ Intranet
+
+
+Note: Truong hop tren ISMS thay TL khong dung:xem tren thu muc nay
+
+\\192.168.100.6\qms\ISMS\VIETIS\Ho so\14.Quan ly thay doi\UpdateTailieu
+
+5. Audit team:
+- IT: Hoan : quan ly thiet bi / USB /admin/Ma hoa / TB di dong / Antivirus
+  Mang TS ra ngoai
+  Mang di bao hanh
+  Nhan/tra thiet bi
+- Admin: Trang/Tam : Ql the + Tai san + Khach
+- HR: Chi Care
+- SX: Dung / Giang
+- Ke toan: Phuong (TS/Luong/HD)
+
+6. Truyen thong
+- Toan Cty:
++ Luu tai lieu: 2 vi tri tren QMS va Intranet
++ Cac PM 
++ Clear desk / clear screen / chia khoa tu 
++ Cua thoat hiem ( 2 cua thoat hiem o truoc va sau van phong)
+
+7. Kiem tra lai so luong thiet bi/quyen truy cap ngay trong hom nay
++ IT di cung Admin kiem tra so luong
++ IT ra soat quyen truy cap WIFI/USB/Admin
++ Kiem tra so quan ly cua Admin/ky nhan
+
+
+8. Cac gi ma chua co thi bao theo KH la thang 12 lam
+
+9. Kiem tra Hung/Dien/Duc 
+(khong ref cac du an T3)
+
+10. Update diem yeu ky thuat : 
+Email -> Giang
+Close -> Viet
+

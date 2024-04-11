@@ -1,0 +1,178 @@
+https://cdn.juniper.net/software/junos/15.1X49-D90.7/junos-srxsme-15.1X49-D90.7-domestic.tgz?SM_USER=viet.hoang@vietis.com.vn&__gda__=1521795467_90e7002ab66379436e1033f370ba54b2
+
+
+
+request system zeroize
+
+load factory-default
+set system root-authentication plain-text-password
+commit and-quit
+
+1. Diagram
+
+Internet <--- Zone outside -->  113.164.228.220 || Juniper ||  10.1.1.1  <--- Zone Inside --> ||LAN|| PC 10.1.1.192
+
+
+1. 
+set system root-authentication plain-text-password
+set system host-name VIT
+set system login message "WELCOME TO VIT"
+set system time-zone GMT+7
+set system name-server 8.8.8.8
+set system name-server 4.2.2.2
+
+set system login user admin uid 2000
+set system login user admin class super-user
+set system login user admin authentication plain-text-password
+
+
+set system services ssh
+set system services telnet
+
+2. WEB MANAGEMENT permit interface ge-0/0/1.0 
+
+set system services web-management http interface ge-0/0/1.0
+set system services web-management https system-generated-certificate
+set system services web-management https interface ge-0/0/1.0
+set system services web-management session idle-timeout 60
+
+set system services web-management management-url https://x.x.x.x/admin
+set system services web-management management-url https://192.168.1.1/addmin
+delete system services web-management http interface ge-0/0/1.0
+delete system services web-management https interface ge-0/0/1.0
+delete system services web-management https system-generated-certificate
+delete system services web-management session idle-timeout 60
+
+4. Set IP interface
+delete interfaces ge-0/0/0
+delete interfaces ge-0/0/1
+delete interfaces ge-0/0/2
+
+set interfaces ge-0/0/0 unit 0 family inet address 113.164.228.220/29
+
+set interfaces ge-0/0/1 unit 0 family inet address 10.1.1.1/24
+set interfaces ge-0/0/2 unit 0 family inet address 10.2.2.1/24
+
+commit
+
+
+3. DHCP cho Client Inside (đang lỗi)
+#set system services dhcp pool 10.1.1.0/24 address-range low 10.1.1.192 high 10.1.1.250
+#set system services dhcp pool 10.1.1.0/24 name-server 8.8.8.8
+#set system services dhcp pool 10.1.1.0/24 name-server 4.2.2.2
+#set system services dhcp pool 10.1.1.0/24 router 10.1.1.1
+
+
+
+#set interfaces ge-0/0/2 unit 0 family inet address 192.168.2.1/24
+
+delete system services dhcp
+set system services dhcp-local-server group g1 interface ge-0/0/2.0
+set access address-assignment pool p1 family inet network 10.2.2.1/24
+set access address-assignment pool p1 family inet range r1 low 10.2.2.2
+set access address-assignment pool p1 family inet range r1 high 10.2.2.254
+set access address-assignment pool p1 family inet dhcp-attributes maximum-lease-time 2419200
+set access address-assignment pool p1 family inet dhcp-attributes name-server 10.2.2.2
+
+MustBeGeek@SRX210> show system services dhcp binding
+MustBeGeek@SRX210> show system services dhcp client
+MustBeGeek@SRX210> show system services dhcp conflict
+MustBeGeek@SRX210> show system services dhcp pool
+MustBeGeek@SRX210> show system services dhcp statistics
+
+
+
+5. default route
+
+set routing-options static route 0.0.0.0/0 next-hop 113.164.228.217
+set routing-options static route  172.16.1.0/24 next-hop 10.1.32.2
+
+6. Static NAT (test sau)
+
+Static NAT cho phép bên ngoài truy cập http vào Web server đặt trong zone DMZ
+
+set security nat destination pool WEBSERVER address 10.2.2.200/32 port 80
+
+set security nat destination rule-set Web_NAT from zone Outside
+set security nat destination rule-set Web_NAT rule Rule_Web_NAT match source-address 0.0.0.0/0
+set security nat destination rule-set Web_NAT rule Rule_Web_NAT match destination-address 100.100.100.100/32
+set security nat destination rule-set Web_NAT rule Rule_Web_NAT match destination-port 80
+set security nat destination rule-set Web_NAT rule Rule_Web_NAT then destination-nat pool WEBSERVER
+
+ 
+7. Zone
+
+#Interface ge-0/0/1.0  Zone Inside
+#permit traffice ping, dhcp, http, https,ssh,telnet
+
+set security zones security-zone Inside interfaces ge-0/0/1.0 host-inbound-traffic system-services ping
+set security zones security-zone Inside interfaces ge-0/0/1.0 host-inbound-traffic system-services dhcp
+set security zones security-zone Inside interfaces ge-0/0/1.0 host-inbound-traffic system-services http
+set security zones security-zone Inside interfaces ge-0/0/1.0 host-inbound-traffic system-services https
+set security zones security-zone Inside interfaces ge-0/0/1.0 host-inbound-traffic system-services ssh
+set security zones security-zone Inside interfaces ge-0/0/1.0 host-inbound-traffic system-services telnet
+
+# Interface ge-0/0/2.0  Zone DMZ
+
+set security zones security-zone DMZ interfaces ge-0/0/2.0 host-inbound-traffic system-services ping
+set security zones security-zone DMZ interfaces ge-0/0/2.0 host-inbound-traffic system-services http
+set security zones security-zone DMZ interfaces ge-0/0/2.0 host-inbound-traffic system-services https
+set security zones security-zone DMZ interfaces ge-0/0/2.0 host-inbound-traffic system-services ssh
+set security zones security-zone DMZ interfaces ge-0/0/2.0 host-inbound-traffic system-services telnet
+
+# Interface ge-0/0/0.0 Zone Outside
+
+delete security zones security-zone untrust interfaces ge-0/0/0.0
+set security zones security-zone Outside interfaces ge-0/0/0.0
+
+8. Policy
+#Inside to Outside 
+Tạo policy cho phép truy cập từ Inside ra Outside
+
+set security policies from-zone Inside to-zone Outside policy Inside_Outside match source-address any
+set security policies from-zone Inside to-zone Outside policy Inside_Outside match destination-address any
+set security policies from-zone Inside to-zone Outside policy Inside_Outside match application any
+set security policies from-zone Inside to-zone Outside policy Inside_Outside then permit
+
+Inside to WEB
+
+set security policies from-zone Inside to-zone DMZ policy Web_Inside_DMZ match source-address any
+set security policies from-zone Inside to-zone DMZ policy Web_Inside_DMZ match destination-address any
+set security policies from-zone Inside to-zone DMZ policy Web_Inside_DMZ match application junos-http
+set security policies from-zone Inside to-zone DMZ policy Web_Inside_DMZ match application junos-https
+set security policies from-zone Inside to-zone DMZ policy Web_Inside_DMZ then permit
+
+Outside to WEB
+
+set security policies from-zone Outside to-zone DMZ policy Web_Outside_DMZ match source-address any
+set security policies from-zone Outside to-zone DMZ policy Web_Outside_DMZ match destination-address any
+set security policies from-zone Outside to-zone DMZ policy Web_Outside_DMZ match application junos-http
+set security policies from-zone Outside to-zone DMZ policy Web_Outside_DMZ match application junos-https
+set security policies from-zone Outside to-zone DMZ policy Web_Outside_DMZ then permit
+
+
+
+
+ show system processes extensive
+ show chassis routing-engine 
+
+
+root@hub-vSRX1# show | save configuration.txt
+root@hub-vSRX1# load override configuration.txt
+root@hub-vSRX1# commit
+
+
+user@host# load override terminal 
+[Type ^D at a new line to end input] 
+
+
+user@host# commit check 
+user@host# commit 
+
+
+
+FW: 172.16.1.1 <---> 172.16.1.2 | Gi0/0/0  <---> Gi 0/0/1 | 10.1.1.1 <----> PC : 10.1.1.2
+PC đã ra đc internet
+từ fw: route 10.1.0.0/16 next-hop 172.16.1.2
+
+

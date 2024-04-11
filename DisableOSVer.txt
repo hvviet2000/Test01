@@ -1,0 +1,11 @@
+firewall block port 135 137 139
+
+135 msrpc
+139 netbios-ssn
+KALI
+
+192.168.100.44
+root
+toor
+
+

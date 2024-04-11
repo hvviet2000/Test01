@@ -1,0 +1,53 @@
+1 - Web Operator viết theo kiểu chia Admin và User ra 2 phần riêng biệt, giữa chúng chỉ chung nhau model, database còn lại từ View, Controller đến Middleware đều được tách độc lập nhau hoàn toàn!
+2 - Controller của User được nhận biết bằng "Tên Controller + User + "Controller" ", còn ở Admin thì bỏ đi chữ "User".
+3 - Ajaxcontroller được dùng chung cho cả Admin và User.
+4 - Các function được viết trong traitFunction.
+5 - Các nghiệp vụ về giao diện được đặt trong public admin_asset
+
+
+Xử lý nghiệp vụ Controller
+
++ Temp/TempUser + Controller : Xử lý các nghiệp vụ liên quan đến bảng Template Operator tương ứng dành cho Admin/User.
++ TempServerManagerment/TempServerManagerment + Controller : Xử lý các nghiệp vụ liên quan đến Template ServerManagerment.
++ ServerManagerment/ServerManagermentUser + Controller : Xử lý các nghiệp vụ liên quan đến  ServerManagerment.
++ Operator/OperatorUser + Controller: Xử lý các nghiệp vụ liên quan đến  Operator.
++ AuthenController : Xử lý nghiệp vụ cho login, logout... trong giao thức LDAP.
++ AdminstratorController : Xử lý nghiệp vụ cho thêm, xóa quyền Admin.
+
+
+Xử lý nghiệp vụ Middeware
++ Adminlogin: Thắt quyền khi đăng nhập.
++ Administrators: Thắt quyền Admin.
++ UserDefault: Thắt quyền user. 
+
+Xử lý nghiệp vụ về Mail.
+
++ app\Mail\Sendmail
++ Có thể gọi ở bất cứ file nào trong folder app(Khai báo thư viện phía trên);
++ Class SendMail hiện tại đang được quy định là truyền vào 4 biến. Biến ở giữa nhất định là link dẫn tới view Mail muốn gửi đi, 2 biến tiếp theo tùy theo cách sử dụng, biến cuối cùng là dạng form( Operator hoặc ServerManagerment).
+
+Database: 
+
++ Adminstrator: lưu giữ các tài khoản là admin.
++ HisofChangeOperator: Lưu lịch sử chỉnh sửa Operator, sẽ bị xóa nếu ngày tạo quá 1 tháng.
++ HisofChangeServer: Lưu lịch sử chỉnh sửa ServerManagerment, sẽ bị xóa nếu ngày tạo quá 1 tháng.
++ TemplateOperator/TemplateServerManagerment: Lưu các Template
++ Operator/ServerManagerment: là bảng chính thức.
+ 
+Lưu ý: Các bảng chỉ một số được tạo bằng migration của laravel còn lại được tạo thẳng trên mysql
+
+
+Xử lý nghiệp vụ của command đặt trong crontab.
+
++ app\Console\Commands\checkEnd_date 
++ Hoạt động ở cả Operator và ServerManagerment
++ Các bước hoạt động:
+b1: Xóa các bản lưu giữ lịch sử thay đổi quá 1 tháng.
+/* Old
+b2: Đổi Status cho những bản ghi có end_date ,>6, 7> thành Warning
+b3: Đổi Status cho những bản ghi đã quá thời gian thành Close.
+b4: Tìm những bản ghi có thời gian <7, status=="warning" để gửi mail.
+*/
+// New
+b2: Đổi Status cho những bản ghi đã quá thời gian thành Close.
+b3: Tìm những bản ghi có thời gian today < end_date < today+8 và có status != 'Close' để gửi mail.

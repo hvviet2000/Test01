@@ -1,0 +1,2682 @@
+login as: root
+WELCOME TO VIT
+Using keyboard-interactive authentication.
+Password:
+Last login: Mon Oct  8 02:45:24 2018
+--- JUNOS 15.1X49-D90.7 built 2017-04-29 06:16:43 UTC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+root@VIT%
+root@VIT%
+root@VIT% cli
+
+
+
+root@VIT>
+
+root@VIT>
+
+root@VIT>
+
+root@VIT>
+
+root@VIT>
+
+root@VIT> edit
+Entering configuration mode
+
+[edit]
+root@VIT#
+
+[edit]
+root@VIT#
+
+[edit]
+root@VIT#
+
+[edit]
+root@VIT#
+
+[edit]
+root@VIT# show
+## Last changed: 2018-10-15 08:46:15 GMT+7
+version 15.1X49-D90.7;
+system {
+    host-name VIT;
+    time-zone GMT+7;
+    root-authentication {
+        encrypted-password "$5$r2UqlV2H$.jNtwgQak9g3jkKE6eELKDx2Ji5n7XGOF9GDGdmGtH8"; ## SECRET-DATA
+    }
+    name-server {
+        8.8.8.8;
+        8.8.8.4;
+    }
+    login {
+        message "WELCOME TO VIT";
+        user admin {
+            full-name admin;
+            uid 200;
+            class super-user;
+            authentication {
+                encrypted-password "$5$JqC0Sx7c$Z3gwxqSECDmpuohWtpFiRkGN85mdYyQtCkQS6bzk1SC"; ## SECRET-DATA
+            }
+        }
+    }
+    services {
+        ssh {
+            root-login allow;
+        }
+        telnet;
+        xnm-clear-text;
+        web-management {
+            http {
+                interface [ ge-0/0/2.0 ge-0/0/3.0 ];
+            }
+            https {
+                system-generated-certificate;
+                interface [ ge-0/0/2.0 ge-0/0/3.0 ];
+            }
+            session {
+                idle-timeout 60;
+            }
+        }
+    }
+}
+security {
+    ike {
+        policy ike_pol_vpn-pgm {
+            mode main;
+            proposal-set basic;
+            pre-shared-key ascii-text "$9$89Fxb2goGDHqaJm5zFAt8Lx7bYoJDi.5ZG9t"; ## SECRET-DATA
+        }
+        gateway gw_vpn-pgm {
+            ike-policy ike_pol_vpn-pgm;
+            address 39.110.237.12;
+            external-interface ge-0/0/0.0;
+        }
+    }
+    ipsec {
+        proposal test_pgm {
+            protocol esp;
+            authentication-algorithm hmac-md5-96;
+            encryption-algorithm aes-128-cbc;
+        }
+        policy ipsec_pol_vpn-pgm {
+            perfect-forward-secrecy {
+                keys group2;
+            }
+            proposals test_pgm;
+        }
+        vpn vpn-pgm {
+            bind-interface st0.1;
+            ike {
+                gateway gw_vpn-pgm;
+                ipsec-policy ipsec_pol_vpn-pgm;
+            }
+            establish-tunnels immediately;
+        }
+    }
+    nat {
+        source {
+            rule-set NAT_Outside {
+                from zone Inside;
+                to zone Outside;
+                rule src-interface {
+                    match {
+                        source-address 0.0.0.0/0;
+                        destination-address 0.0.0.0/0;
+                    }
+                    then {
+                        source-nat {
+                            interface;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    policies {
+        from-zone Inside to-zone Outside {
+            policy Inside_Outside {
+                match {
+                    source-address any;
+                    destination-address any;
+                    application any;
+                    source-identity any;
+                }
+                then {
+                    permit;
+                    log {
+                        session-close;
+                    }
+                }
+            }
+            policy policy_out_vpn-pgm {
+                match {
+                    source-address addr_192_168_13_0_24;
+                    destination-address addr_192_168_150_0_24;
+                    application any;
+                    source-identity any;
+                }
+                then {
+                    permit;
+                    log {
+                        session-close;
+                    }
+                }
+            }
+        }
+        from-zone Outside to-zone Inside {
+            policy policy_in_vpn-pgm {
+                match {
+                    source-address addr_192_168_150_0_24;
+                    destination-address addr_192_168_13_0_24;
+                    application any;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy Out_to_in {
+                match {
+                    source-address any;
+                    destination-address any;
+                    application any;
+                    source-identity any;
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+        from-zone Inside to-zone Inside {
+            policy Inside_2 {
+                match {
+                    source-address any;
+                    destination-address any;
+                    application any;
+                    source-identity any;
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+    }
+    zones {
+        security-zone Inside {
+            address-book {
+                address addr_10_1_1_0_24 10.1.1.0/24;
+                address addr_192_168_13_0_24 192.168.13.0/24;
+                address add_10_1_40_0_24 10.1.40.0/24;
+            }
+            host-inbound-traffic {
+                system-services {
+                    all;
+                }
+                protocols {
+                    all;
+                }
+            }
+            interfaces {
+                ge-0/0/2.0 {
+                    host-inbound-traffic {
+                        system-services {
+                            any-service;
+                        }
+                        protocols {
+                            all;
+                        }
+                    }
+                }
+                ge-0/0/3.0 {
+                    host-inbound-traffic {
+                        system-services {
+                            all;
+                        }
+                        protocols {
+                            all;
+                        }
+                    }
+                }
+            }
+        }
+        security-zone Outside {
+            address-book {
+                address addr_192_168_150_0_24 192.168.150.0/24;
+            }
+            host-inbound-traffic {
+                system-services {
+                    ike;
+                }
+                protocols {
+                    all;
+                }
+            }
+            interfaces {
+                ge-0/0/0.0;
+                st0.1;
+            }
+        }
+    }
+}
+interfaces {
+    ge-0/0/0 {
+        unit 0 {
+            family inet {
+                address 113.164.228.220/29;
+            }
+        }
+    }
+    ge-0/0/1 {
+        unit 0 {
+            family ethernet-switching {
+                interface-mode trunk;
+                vlan {
+                    members vlan100;
+                }
+            }
+        }
+    }
+    ge-0/0/2 {
+        unit 0 {
+            family inet {
+                address 192.168.13.1/24;
+            }
+        }
+    }
+    ge-0/0/3 {
+        unit 0 {
+            family inet {
+                address 10.1.40.254/24;
+            }
+        }
+    }
+    irb {
+        unit 1 {
+            family inet {
+                address 10.1.41.254/24;
+            }
+        }
+        unit 100 {
+            family inet {
+                address 192.168.100.254/24;
+            }
+        }
+    }
+    st0 {
+        unit 0 {
+            family inet;
+        }
+        unit 1 {
+            family inet;
+        }
+    }
+}
+routing-options {
+    static {
+        route 0.0.0.0/0 next-hop 113.164.228.217;
+        route 192.168.150.0/24 next-hop st0.1;
+    }
+}
+protocols {
+    l2-learning {
+        global-mode switching;
+    }
+}
+vlans {
+    vlan100 {
+        vlan-id 100;
+        l3-interface irb.100;
+    }
+    vlan240 {
+        description vlan240;
+        vlan-id 240;
+    }
+    vlan241 {
+        vlan-id 241;
+        l3-interface irb.1;
+    }
+}
+
+[edit]
+root@VIT# show interfaces ge-0/0/1
+unit 0 {
+    family ethernet-switching {
+        interface-mode trunk;
+        vlan {
+            members vlan100;
+        }
+    }
+}
+
+[edit]
+root@VIT# show security zones | match ge-0/0/1 | display set
+
+[edit]
+root@VIT# show security zones
+security-zone Inside {
+    address-book {
+        address addr_10_1_1_0_24 10.1.1.0/24;
+        address addr_192_168_13_0_24 192.168.13.0/24;
+        address add_10_1_40_0_24 10.1.40.0/24;
+    }
+    host-inbound-traffic {
+        system-services {
+            all;
+        }
+        protocols {
+            all;
+        }
+    }
+    interfaces {
+        ge-0/0/2.0 {
+            host-inbound-traffic {
+                system-services {
+                    any-service;
+                }
+                protocols {
+                    all;
+                }
+            }
+        }
+        ge-0/0/3.0 {
+            host-inbound-traffic {
+                system-services {
+                    all;
+                }
+                protocols {
+                    all;
+                }
+            }
+        }
+    }
+}
+security-zone Outside {
+    address-book {
+        address addr_192_168_150_0_24 192.168.150.0/24;
+    }
+    host-inbound-traffic {
+        system-services {
+            ike;
+        }
+        protocols {
+            all;
+        }
+    }
+    interfaces {
+        ge-0/0/0.0;
+        st0.1;
+    }
+}
+
+[edit]
+root@VIT# set security zones security-zone Inside interfaces ge-0/0/1.0 host-inbound-traffic system-services all
+
+[edit]
+root@VIT# set security zones security-zone Inside interfaces ge-0/0/1.0 host-inbound-traffic protocols all
+
+[edit]
+root@VIT# show security zones security-zone Inside
+address-book {
+    address addr_10_1_1_0_24 10.1.1.0/24;
+    address addr_192_168_13_0_24 192.168.13.0/24;
+    address add_10_1_40_0_24 10.1.40.0/24;
+}
+host-inbound-traffic {
+    system-services {
+        all;
+    }
+    protocols {
+        all;
+    }
+}
+interfaces {
+    ge-0/0/2.0 {
+        host-inbound-traffic {
+            system-services {
+                any-service;
+            }
+            protocols {
+                all;
+            }
+        }
+    }
+    ge-0/0/3.0 {
+        host-inbound-traffic {
+            system-services {
+                all;
+            }
+            protocols {
+                all;
+            }
+        }
+    }
+    ge-0/0/1.0 {
+        ##
+        ## Warning: Referenced interface must not be ethernet-switching interface of switching mode
+        ##
+        host-inbound-traffic {
+            system-services {
+                all;
+            }
+            protocols {
+                all;
+            }
+        }
+    }
+}
+
+[edit]
+root@VIT# show interfaces ge-0/0/1
+unit 0 {
+    ##
+    ## Warning: In switching mode, ethernet-switching interface must not be in security zone.
+    ##
+    family ethernet-switching {
+        interface-mode trunk;
+        vlan {
+            members vlan100;
+        }
+    }
+}
+
+[edit]
+root@VIT# delete interfaces ge-0/0/1
+
+[edit]
+root@VIT# show interfaces i
+                           ^
+'i' is ambiguous.
+Possible completions:
+  <interface-name>     Interface name
+> interface-range      Interface ranges configuration
+> interface-set        Logical interface set configuration
+  irb                  Interface name
+[edit]
+root@VIT# show interfaces irb
+unit 1 {
+    family inet {
+        address 10.1.41.254/24;
+    }
+}
+unit 100 {
+    family inet {
+        address 192.168.100.254/24;
+    }
+}
+
+[edit]
+root@VIT# delete interfaces irb unit 100
+
+[edit]
+root@VIT# set interfaces ge-0/0/1 vlan-tagging
+
+[edit]
+root@VIT# set interfaces ge-0/0/1.100 family inet address 192.168.100.254/24
+
+[edit]
+root@VIT# show interfaces ge-0/0/1
+vlan-tagging;
+unit 100 {
+    family inet {
+        address 192.168.100.254/24;
+    }
+}
+
+[edit]
+root@VIT# set interfaces ge-0/0/1.100 family vl
+                                             ^
+syntax error.
+root@VIT# set interfaces ge-0/0/1.100 vlan-id 100
+
+[edit]
+root@VIT# show interfaces ge-0/0/1
+vlan-tagging;
+unit 100 {
+    vlan-id 100;
+    family inet {
+        address 192.168.100.254/24;
+    }
+}
+
+[edit]
+root@VIT# show | compare rollback 0
+[edit security zones security-zone Inside interfaces]
+      ge-0/0/3.0 { ... }
++     ge-0/0/1.0 {
++         host-inbound-traffic {
++             system-services {
++                 all;
++             }
++             protocols {
++                 all;
++             }
++         }
++     }
+[edit interfaces ge-0/0/1]
++   vlan-tagging;
+[edit interfaces ge-0/0/1]
+-    unit 0 {
+-        family ethernet-switching {
+-            interface-mode trunk;
+-            vlan {
+-                members vlan100;
+-            }
+-        }
+-    }
++    unit 100 {
++        vlan-id 100;
++        family inet {
++            address 192.168.100.254/24;
++        }
++    }
+[edit interfaces irb]
+-    unit 100 {
+-        family inet {
+-            address 192.168.100.254/24;
+-        }
+-    }
+
+[edit]
+root@VIT# show | compare rollback 1
+[edit security zones security-zone Inside interfaces]
+      ge-0/0/3.0 { ... }
++     ge-0/0/1.0 {
++         host-inbound-traffic {
++             system-services {
++                 all;
++             }
++             protocols {
++                 all;
++             }
++         }
++     }
+[edit interfaces ge-0/0/1]
++   vlan-tagging;
+[edit interfaces ge-0/0/1]
+-    unit 0 {
+-        family ethernet-switching {
+-            interface-mode trunk;
+-            vlan {
+-                members [ vlan241 vlan240 vlan100 ];
+-            }
+-        }
+-    }
++    unit 100 {
++        vlan-id 100;
++        family inet {
++            address 192.168.100.254/24;
++        }
++    }
+[edit interfaces irb]
+-    unit 100 {
+-        family inet {
+-            address 192.168.100.254/24;
+-        }
+-    }
+
+[edit]
+root@VIT# commit check
+warning: L2 global mode is switching mode, please add an interface in ethernet-switching mode, or change the L2 global mode!
+[edit security zones security-zone Inside]
+  'interfaces ge-0/0/1.0'
+    Interface ge-0/0/1.0 must be configured under interfaces
+error: configuration check-out failed
+
+[edit]
+root@VIT# show security zones security-zone Inside
+address-book {
+    address addr_10_1_1_0_24 10.1.1.0/24;
+    address addr_192_168_13_0_24 192.168.13.0/24;
+    address add_10_1_40_0_24 10.1.40.0/24;
+}
+host-inbound-traffic {
+    system-services {
+        all;
+    }
+    protocols {
+        all;
+    }
+}
+interfaces {
+    ge-0/0/2.0 {
+        host-inbound-traffic {
+            system-services {
+                any-service;
+            }
+            protocols {
+                all;
+            }
+        }
+    }
+    ge-0/0/3.0 {
+        host-inbound-traffic {
+            system-services {
+                all;
+            }
+            protocols {
+                all;
+            }
+        }
+    }
+    ge-0/0/1.0 {
+        host-inbound-traffic {
+            system-services {
+                all;
+            }
+            protocols {
+                all;
+            }
+        }
+    }
+}
+
+[edit]
+root@VIT# edit security zones security-zone Inside
+
+[edit security zones security-zone Inside]
+root@VIT# show
+address-book {
+    address addr_10_1_1_0_24 10.1.1.0/24;
+    address addr_192_168_13_0_24 192.168.13.0/24;
+    address add_10_1_40_0_24 10.1.40.0/24;
+}
+host-inbound-traffic {
+    system-services {
+        all;
+    }
+    protocols {
+        all;
+    }
+}
+interfaces {
+    ge-0/0/2.0 {
+        host-inbound-traffic {
+            system-services {
+                any-service;
+            }
+            protocols {
+                all;
+            }
+        }
+    }
+    ge-0/0/3.0 {
+        host-inbound-traffic {
+            system-services {
+                all;
+            }
+            protocols {
+                all;
+            }
+        }
+    }
+    ge-0/0/1.0 {
+        host-inbound-traffic {
+            system-services {
+                all;
+            }
+            protocols {
+                all;
+            }
+        }
+    }
+}
+
+[edit security zones security-zone Inside]
+root@VIT# replace pattern 1.0 with 1.100
+
+[edit security zones security-zone Inside]
+root@VIT# show
+address-book {
+    address addr_10_1_1.100_24 10.1.1.100/24;
+    address addr_192_168_13_0_24 192.168.13.0/24;
+    address add_10_1_40_0_24 10.1.40.0/24;
+}
+host-inbound-traffic {
+    system-services {
+        all;
+    }
+    protocols {
+        all;
+    }
+}
+interfaces {
+    ge-0/0/2.0 {
+        host-inbound-traffic {
+            system-services {
+                any-service;
+            }
+            protocols {
+                all;
+            }
+        }
+    }
+    ge-0/0/3.0 {
+        host-inbound-traffic {
+            system-services {
+                all;
+            }
+            protocols {
+                all;
+            }
+        }
+    }
+    ge-0/0/1.100 {
+        host-inbound-traffic {
+            system-services {
+                all;
+            }
+            protocols {
+                all;
+            }
+        }
+    }
+}
+
+[edit security zones security-zone Inside]
+root@VIT# top
+
+[edit]
+root@VIT# commit check
+warning: L2 global mode is switching mode, please add an interface in ethernet-switching mode, or change the L2 global mode!
+[edit security zones security-zone Inside address-book]
+  'address addr_10_1_1.100_24'
+    Invalid address entry
+error: configuration check-out failed
+
+[edit]
+root@VIT# show security zones security-zone Inside ad
+                                                     ^
+'ad' is ambiguous.
+Possible completions:
+> address-book         Address book entries
+> advance-policy-based-routing-profile  Enable Advance Policy Based Routing on this zone
+[edit]
+root@VIT# show security zones security-zone Inside address-book
+address addr_10_1_1.100_24 10.1.1.100/24;
+address addr_192_168_13_0_24 192.168.13.0/24;
+address add_10_1_40_0_24 10.1.40.0/24;
+
+[edit]
+root@VIT# edit security zones security-zone Inside address-book
+
+[edit security zones security-zone Inside address-book]
+root@VIT# delete address addr_10_1_1.100_24
+
+[edit security zones security-zone Inside address-book]
+root@VIT# show
+address addr_192_168_13_0_24 192.168.13.0/24;
+address add_10_1_40_0_24 10.1.40.0/24;
+
+[edit security zones security-zone Inside address-book]
+root@VIT# commit check
+warning: L2 global mode is switching mode, please add an interface in ethernet-switching mode, or change the L2 global mode!
+configuration check succeeds
+
+[edit security zones security-zone Inside address-book]
+root@VIT# top
+
+[edit]
+root@VIT# commit
+warning: L2 global mode is switching mode, please add an interface in ethernet-switching mode, or change the L2 global mode!
+commit complete
+
+[edit]
+root@VIT# show
+## Last changed: 2018-10-18 09:43:21 GMT+7
+version 15.1X49-D90.7;
+system {
+    host-name VIT;
+    time-zone GMT+7;
+    root-authentication {
+        encrypted-password "$5$r2UqlV2H$.jNtwgQak9g3jkKE6eELKDx2Ji5n7XGOF9GDGdmGtH8"; ## SECRET-DATA
+    }
+    name-server {
+        8.8.8.8;
+        8.8.8.4;
+    }
+    login {
+        message "WELCOME TO VIT";
+        user admin {
+            full-name admin;
+            uid 200;
+            class super-user;
+            authentication {
+                encrypted-password "$5$JqC0Sx7c$Z3gwxqSECDmpuohWtpFiRkGN85mdYyQtCkQS6bzk1SC"; ## SECRET-DATA
+            }
+        }
+    }
+    services {
+        ssh {
+            root-login allow;
+        }
+        telnet;
+        xnm-clear-text;
+        web-management {
+            http {
+                interface [ ge-0/0/2.0 ge-0/0/3.0 ];
+            }
+            https {
+                system-generated-certificate;
+                interface [ ge-0/0/2.0 ge-0/0/3.0 ];
+            }
+            session {
+                idle-timeout 60;
+            }
+        }
+    }
+}
+security {
+    ike {
+        policy ike_pol_vpn-pgm {
+            mode main;
+            proposal-set basic;
+            pre-shared-key ascii-text "$9$89Fxb2goGDHqaJm5zFAt8Lx7bYoJDi.5ZG9t"; ## SECRET-DATA
+        }
+        gateway gw_vpn-pgm {
+            ike-policy ike_pol_vpn-pgm;
+            address 39.110.237.12;
+            external-interface ge-0/0/0.0;
+        }
+    }
+    ipsec {
+        proposal test_pgm {
+            protocol esp;
+            authentication-algorithm hmac-md5-96;
+            encryption-algorithm aes-128-cbc;
+        }
+        policy ipsec_pol_vpn-pgm {
+            perfect-forward-secrecy {
+                keys group2;
+            }
+            proposals test_pgm;
+        }
+        vpn vpn-pgm {
+            bind-interface st0.1;
+            ike {
+                gateway gw_vpn-pgm;
+                ipsec-policy ipsec_pol_vpn-pgm;
+            }
+            establish-tunnels immediately;
+        }
+    }
+    nat {
+        source {
+            rule-set NAT_Outside {
+                from zone Inside;
+                to zone Outside;
+                rule src-interface {
+                    match {
+                        source-address 0.0.0.0/0;
+                        destination-address 0.0.0.0/0;
+                    }
+                    then {
+                        source-nat {
+                            interface;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    policies {
+        from-zone Inside to-zone Outside {
+            policy Inside_Outside {
+                match {
+                    source-address any;
+                    destination-address any;
+                    application any;
+                    source-identity any;
+                }
+                then {
+                    permit;
+                    log {
+                        session-close;
+                    }
+                }
+            }
+            policy policy_out_vpn-pgm {
+                match {
+                    source-address addr_192_168_13_0_24;
+                    destination-address addr_192_168_150_0_24;
+                    application any;
+                    source-identity any;
+                }
+                then {
+                    permit;
+                    log {
+                        session-close;
+                    }
+                }
+            }
+        }
+        from-zone Outside to-zone Inside {
+            policy policy_in_vpn-pgm {
+                match {
+                    source-address addr_192_168_150_0_24;
+                    destination-address addr_192_168_13_0_24;
+                    application any;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy Out_to_in {
+                match {
+                    source-address any;
+                    destination-address any;
+                    application any;
+                    source-identity any;
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+        from-zone Inside to-zone Inside {
+            policy Inside_2 {
+                match {
+                    source-address any;
+                    destination-address any;
+                    application any;
+                    source-identity any;
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+    }
+    zones {
+        security-zone Inside {
+            address-book {
+                address addr_192_168_13_0_24 192.168.13.0/24;
+                address add_10_1_40_0_24 10.1.40.0/24;
+            }
+            host-inbound-traffic {
+                system-services {
+                    all;
+                }
+                protocols {
+                    all;
+                }
+            }
+            interfaces {
+                ge-0/0/2.0 {
+                    host-inbound-traffic {
+                        system-services {
+                            any-service;
+                        }
+                        protocols {
+                            all;
+                        }
+                    }
+                }
+                ge-0/0/3.0 {
+                    host-inbound-traffic {
+                        system-services {
+                            all;
+                        }
+                        protocols {
+                            all;
+                        }
+                    }
+                }
+                ge-0/0/1.100 {
+                    host-inbound-traffic {
+                        system-services {
+                            all;
+                        }
+                        protocols {
+                            all;
+                        }
+                    }
+                }
+            }
+        }
+        security-zone Outside {
+            address-book {
+                address addr_192_168_150_0_24 192.168.150.0/24;
+            }
+            host-inbound-traffic {
+                system-services {
+                    ike;
+                }
+                protocols {
+                    all;
+                }
+            }
+            interfaces {
+                ge-0/0/0.0;
+                st0.1;
+            }
+        }
+    }
+}
+interfaces {
+    ge-0/0/0 {
+        unit 0 {
+            family inet {
+                address 113.164.228.220/29;
+            }
+        }
+    }
+    ge-0/0/1 {
+        vlan-tagging;
+        unit 100 {
+            vlan-id 100;
+            family inet {
+                address 192.168.100.254/24;
+            }
+        }
+    }
+    ge-0/0/2 {
+        unit 0 {
+            family inet {
+                address 192.168.13.1/24;
+            }
+        }
+    }
+    ge-0/0/3 {
+        unit 0 {
+            family inet {
+                address 10.1.40.254/24;
+            }
+        }
+    }
+    irb {
+        unit 1 {
+            family inet {
+                address 10.1.41.254/24;
+            }
+        }
+    }
+    st0 {
+        unit 0 {
+            family inet;
+        }
+        unit 1 {
+            family inet;
+        }
+    }
+}
+routing-options {
+    static {
+        route 0.0.0.0/0 next-hop 113.164.228.217;
+        route 192.168.150.0/24 next-hop st0.1;
+    }
+}
+protocols {
+    l2-learning {
+        global-mode switching;
+    }
+}
+vlans {
+    vlan100 {
+        vlan-id 100;
+        l3-interface irb.100;
+    }
+    vlan240 {
+        description vlan240;
+        vlan-id 240;
+    }
+    vlan241 {
+        vlan-id 241;
+        l3-interface irb.1;
+    }
+}
+
+[edit]
+root@VIT# load factory-default
+warning: activating factory configuration
+
+[edit]
+root@VIT# show protocols
+l2-learning {
+    global-mode switching;
+}
+rstp {
+    ##
+    ## Warning: statement ignored: unsupported platform (srx300)
+    ##
+    interface all;
+}
+
+[edit]
+root@VIT# exit
+The configuration has been changed but not committed
+Exit with uncommitted changes? [yes,no] (yes) yes
+
+Exiting configuration mode
+
+root@VIT> edit
+Entering configuration mode
+The configuration has been changed but not committed
+
+[edit]
+root@VIT# rollback 0
+load complete
+
+[edit]
+root@VIT#
+
+[edit]
+root@VIT#
+
+[edit]
+root@VIT#
+
+[edit]
+root@VIT# 2run
+          ^
+unknown command.
+root@VIT# show interfaces ge-0/0/1
+vlan-tagging;
+unit 100 {
+    vlan-id 100;
+    family inet {
+        address 192.168.100.254/24;
+    }
+}
+
+[edit]
+root@VIT# show cli
+               ^
+syntax error.
+root@VIT# show his
+               ^
+syntax error.
+root@VIT# show ?
+Possible completions:
+  <[Enter]>            Execute this command
+> access               Network access configuration
+> access-profile       Access profile for this instance
+> accounting-options   Accounting data configuration
+> applications         Define applications by protocol characteristics
++ apply-groups         Groups from which to inherit configuration data
+> chassis              Chassis configuration
+> class-of-service     Class-of-service configuration
+> event-options        Event processing configuration
+> firewall             Define a firewall configuration
+> forwarding-options   Configure options to control packet forwarding
+> groups               Configuration groups
+> interfaces           Interface configuration
+> policy-options       Policy option configuration
+> protocols            Routing protocol configuration
+> routing-instances    Routing instance configuration
+> routing-options      Protocol-independent routing option configuration
+> schedulers           Security scheduler
+> security             Security configuration
+> services             Set services parameters
+> smtp                 Simple Mail Transfer Protocol service configuration
+> snmp                 Simple Network Management Protocol configuration
+> switch-options       Options for default routing-instance of type virtual-switch
+> system               System parameters
+> unified-edge
+> vlans                VLAN configuration
+  |                    Pipe through a command
+[edit]
+root@VIT# exit
+Exiting configuration mode
+
+root@VIT> show his
+               ^
+syntax error, expecting <command>.
+root@VIT> show cl
+                 ^
+'cl' is ambiguous.
+Possible completions:
+  class-of-service     Show class-of-service (CoS) information
+  cli                  Show command-line interface settings
+root@VIT> show cli history
+  09:33:23 -- edit
+  10:03:01 -- show cli history
+
+root@VIT> cli
+          ^
+unknown command.
+root@VIT> configure
+Entering configuration mode
+
+[edit]
+root@VIT# run show his
+                   ^
+syntax error, expecting <command>.
+root@VIT# run show cli history 10
+  09:42:56 -- top
+  09:43:01 -- commit
+  09:43:44 -- show
+  09:44:05 -- load factory-default
+  09:44:09 -- show protocols
+  09:44:21 -- exit
+  09:44:26 -- rollback 0
+  09:45:42 -- show interfaces ge-0/0/1
+  10:02:52 -- exit
+  10:04:18 -- run show cli history 10
+
+[edit]
+root@VIT# run show cli history 100
+  09:33:25 -- show
+  09:36:00 -- show interfaces ge-0/0/1
+  09:36:15 -- show security zones | match ge-0/0/1 | display set
+  09:36:18 -- show security zones
+  09:37:39 -- set security zones security-zone Inside interfaces ge-0/0/1.0 host-inbound-traffic system-services all
+  09:37:43 -- set security zones security-zone Inside interfaces ge-0/0/1.0 host-inbound-traffic protocols all
+  09:37:47 -- show security zones security-zone Inside
+  09:38:02 -- show interfaces ge-0/0/1
+  09:38:06 -- delete interfaces ge-0/0/1
+  09:38:14 -- show interfaces irb
+  09:38:52 -- delete interfaces irb unit 100
+  09:39:00 -- set interfaces ge-0/0/1 vlan-tagging
+  09:39:18 -- set interfaces ge-0/0/1.100 family inet address 192.168.100.254/24
+  09:39:21 -- show interfaces ge-0/0/1
+  09:39:43 -- set interfaces ge-0/0/1.100 vlan-id 100
+  09:39:45 -- show interfaces ge-0/0/1
+  09:39:50 -- show | compare rollback 0
+  09:39:54 -- show | compare rollback 1
+  09:39:58 -- commit check
+  09:40:25 -- show security zones security-zone Inside
+  09:40:32 -- edit security zones security-zone Inside
+  09:40:34 -- show
+  09:40:42 -- replace pattern 1.0 with 1.100
+  09:40:43 -- show
+  09:40:47 -- top
+  09:40:48 -- commit check
+  09:41:17 -- show security zones security-zone Inside address-book
+  09:42:11 -- edit security zones security-zone Inside address-book
+  09:42:20 -- delete address addr_10_1_1.100_24
+  09:42:21 -- show
+  09:42:26 -- commit check
+  09:42:56 -- top
+  09:43:01 -- commit
+  09:43:44 -- show
+  09:44:05 -- load factory-default
+  09:44:09 -- show protocols
+  09:44:21 -- exit
+  09:44:26 -- rollback 0
+  09:45:42 -- show interfaces ge-0/0/1
+  10:02:52 -- exit
+  10:04:18 -- run show cli history 10
+  10:04:27 -- run show cli history 100
+---(more)---
+
+
+login as: root
+WELCOME TO VIT
+Using keyboard-interactive authentication.
+Password:
+Last login: Mon Oct  8 02:45:24 2018
+--- JUNOS 15.1X49-D90.7 built 2017-04-29 06:16:43 UTC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+root@VIT%
+root@VIT%
+root@VIT% cli
+
+
+
+root@VIT>
+
+root@VIT>
+
+root@VIT>
+
+root@VIT>
+
+root@VIT>
+
+root@VIT> edit
+Entering configuration mode
+
+[edit]
+root@VIT#
+
+[edit]
+root@VIT#
+
+[edit]
+root@VIT#
+
+[edit]
+root@VIT#
+
+[edit]
+root@VIT# show
+## Last changed: 2018-10-15 08:46:15 GMT+7
+version 15.1X49-D90.7;
+system {
+    host-name VIT;
+    time-zone GMT+7;
+    root-authentication {
+        encrypted-password "$5$r2UqlV2H$.jNtwgQak9g3jkKE6eELKDx2Ji5n7XGOF9GDGdmGtH8"; ## SECRET-DATA
+    }
+    name-server {
+        8.8.8.8;
+        8.8.8.4;
+    }
+    login {
+        message "WELCOME TO VIT";
+        user admin {
+            full-name admin;
+            uid 200;
+            class super-user;
+            authentication {
+                encrypted-password "$5$JqC0Sx7c$Z3gwxqSECDmpuohWtpFiRkGN85mdYyQtCkQS6bzk1SC"; ## SECRET-DATA
+            }
+        }
+    }
+    services {
+        ssh {
+            root-login allow;
+        }
+        telnet;
+        xnm-clear-text;
+        web-management {
+            http {
+                interface [ ge-0/0/2.0 ge-0/0/3.0 ];
+            }
+            https {
+                system-generated-certificate;
+                interface [ ge-0/0/2.0 ge-0/0/3.0 ];
+            }
+            session {
+                idle-timeout 60;
+            }
+        }
+    }
+}
+security {
+    ike {
+        policy ike_pol_vpn-pgm {
+            mode main;
+            proposal-set basic;
+            pre-shared-key ascii-text "$9$89Fxb2goGDHqaJm5zFAt8Lx7bYoJDi.5ZG9t"; ## SECRET-DATA
+        }
+        gateway gw_vpn-pgm {
+            ike-policy ike_pol_vpn-pgm;
+            address 39.110.237.12;
+            external-interface ge-0/0/0.0;
+        }
+    }
+    ipsec {
+        proposal test_pgm {
+            protocol esp;
+            authentication-algorithm hmac-md5-96;
+            encryption-algorithm aes-128-cbc;
+        }
+        policy ipsec_pol_vpn-pgm {
+            perfect-forward-secrecy {
+                keys group2;
+            }
+            proposals test_pgm;
+        }
+        vpn vpn-pgm {
+            bind-interface st0.1;
+            ike {
+                gateway gw_vpn-pgm;
+                ipsec-policy ipsec_pol_vpn-pgm;
+            }
+            establish-tunnels immediately;
+        }
+    }
+    nat {
+        source {
+            rule-set NAT_Outside {
+                from zone Inside;
+                to zone Outside;
+                rule src-interface {
+                    match {
+                        source-address 0.0.0.0/0;
+                        destination-address 0.0.0.0/0;
+                    }
+                    then {
+                        source-nat {
+                            interface;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    policies {
+        from-zone Inside to-zone Outside {
+            policy Inside_Outside {
+                match {
+                    source-address any;
+                    destination-address any;
+                    application any;
+                    source-identity any;
+                }
+                then {
+                    permit;
+                    log {
+                        session-close;
+                    }
+                }
+            }
+            policy policy_out_vpn-pgm {
+                match {
+                    source-address addr_192_168_13_0_24;
+                    destination-address addr_192_168_150_0_24;
+                    application any;
+                    source-identity any;
+                }
+                then {
+                    permit;
+                    log {
+                        session-close;
+                    }
+                }
+            }
+        }
+        from-zone Outside to-zone Inside {
+            policy policy_in_vpn-pgm {
+                match {
+                    source-address addr_192_168_150_0_24;
+                    destination-address addr_192_168_13_0_24;
+                    application any;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy Out_to_in {
+                match {
+                    source-address any;
+                    destination-address any;
+                    application any;
+                    source-identity any;
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+        from-zone Inside to-zone Inside {
+            policy Inside_2 {
+                match {
+                    source-address any;
+                    destination-address any;
+                    application any;
+                    source-identity any;
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+    }
+    zones {
+        security-zone Inside {
+            address-book {
+                address addr_10_1_1_0_24 10.1.1.0/24;
+                address addr_192_168_13_0_24 192.168.13.0/24;
+                address add_10_1_40_0_24 10.1.40.0/24;
+            }
+            host-inbound-traffic {
+                system-services {
+                    all;
+                }
+                protocols {
+                    all;
+                }
+            }
+            interfaces {
+                ge-0/0/2.0 {
+                    host-inbound-traffic {
+                        system-services {
+                            any-service;
+                        }
+                        protocols {
+                            all;
+                        }
+                    }
+                }
+                ge-0/0/3.0 {
+                    host-inbound-traffic {
+                        system-services {
+                            all;
+                        }
+                        protocols {
+                            all;
+                        }
+                    }
+                }
+            }
+        }
+        security-zone Outside {
+            address-book {
+                address addr_192_168_150_0_24 192.168.150.0/24;
+            }
+            host-inbound-traffic {
+                system-services {
+                    ike;
+                }
+                protocols {
+                    all;
+                }
+            }
+            interfaces {
+                ge-0/0/0.0;
+                st0.1;
+            }
+        }
+    }
+}
+interfaces {
+    ge-0/0/0 {
+        unit 0 {
+            family inet {
+                address 113.164.228.220/29;
+            }
+        }
+    }
+    ge-0/0/1 {
+        unit 0 {
+            family ethernet-switching {
+                interface-mode trunk;
+                vlan {
+                    members vlan100;
+                }
+            }
+        }
+    }
+    ge-0/0/2 {
+        unit 0 {
+            family inet {
+                address 192.168.13.1/24;
+            }
+        }
+    }
+    ge-0/0/3 {
+        unit 0 {
+            family inet {
+                address 10.1.40.254/24;
+            }
+        }
+    }
+    irb {
+        unit 1 {
+            family inet {
+                address 10.1.41.254/24;
+            }
+        }
+        unit 100 {
+            family inet {
+                address 192.168.100.254/24;
+            }
+        }
+    }
+    st0 {
+        unit 0 {
+            family inet;
+        }
+        unit 1 {
+            family inet;
+        }
+    }
+}
+routing-options {
+    static {
+        route 0.0.0.0/0 next-hop 113.164.228.217;
+        route 192.168.150.0/24 next-hop st0.1;
+    }
+}
+protocols {
+    l2-learning {
+        global-mode switching;
+    }
+}
+vlans {
+    vlan100 {
+        vlan-id 100;
+        l3-interface irb.100;
+    }
+    vlan240 {
+        description vlan240;
+        vlan-id 240;
+    }
+    vlan241 {
+        vlan-id 241;
+        l3-interface irb.1;
+    }
+}
+
+[edit]
+root@VIT# show interfaces ge-0/0/1
+unit 0 {
+    family ethernet-switching {
+        interface-mode trunk;
+        vlan {
+            members vlan100;
+        }
+    }
+}
+
+[edit]
+root@VIT# show security zones | match ge-0/0/1 | display set
+
+[edit]
+root@VIT# show security zones
+security-zone Inside {
+    address-book {
+        address addr_10_1_1_0_24 10.1.1.0/24;
+        address addr_192_168_13_0_24 192.168.13.0/24;
+        address add_10_1_40_0_24 10.1.40.0/24;
+    }
+    host-inbound-traffic {
+        system-services {
+            all;
+        }
+        protocols {
+            all;
+        }
+    }
+    interfaces {
+        ge-0/0/2.0 {
+            host-inbound-traffic {
+                system-services {
+                    any-service;
+                }
+                protocols {
+                    all;
+                }
+            }
+        }
+        ge-0/0/3.0 {
+            host-inbound-traffic {
+                system-services {
+                    all;
+                }
+                protocols {
+                    all;
+                }
+            }
+        }
+    }
+}
+security-zone Outside {
+    address-book {
+        address addr_192_168_150_0_24 192.168.150.0/24;
+    }
+    host-inbound-traffic {
+        system-services {
+            ike;
+        }
+        protocols {
+            all;
+        }
+    }
+    interfaces {
+        ge-0/0/0.0;
+        st0.1;
+    }
+}
+
+[edit]
+root@VIT# set security zones security-zone Inside interfaces ge-0/0/1.0 host-inbound-traffic system-services all
+
+[edit]
+root@VIT# set security zones security-zone Inside interfaces ge-0/0/1.0 host-inbound-traffic protocols all
+
+[edit]
+root@VIT# show security zones security-zone Inside
+address-book {
+    address addr_10_1_1_0_24 10.1.1.0/24;
+    address addr_192_168_13_0_24 192.168.13.0/24;
+    address add_10_1_40_0_24 10.1.40.0/24;
+}
+host-inbound-traffic {
+    system-services {
+        all;
+    }
+    protocols {
+        all;
+    }
+}
+interfaces {
+    ge-0/0/2.0 {
+        host-inbound-traffic {
+            system-services {
+                any-service;
+            }
+            protocols {
+                all;
+            }
+        }
+    }
+    ge-0/0/3.0 {
+        host-inbound-traffic {
+            system-services {
+                all;
+            }
+            protocols {
+                all;
+            }
+        }
+    }
+    ge-0/0/1.0 {
+        ##
+        ## Warning: Referenced interface must not be ethernet-switching interface of switching mode
+        ##
+        host-inbound-traffic {
+            system-services {
+                all;
+            }
+            protocols {
+                all;
+            }
+        }
+    }
+}
+
+[edit]
+root@VIT# show interfaces ge-0/0/1
+unit 0 {
+    ##
+    ## Warning: In switching mode, ethernet-switching interface must not be in security zone.
+    ##
+    family ethernet-switching {
+        interface-mode trunk;
+        vlan {
+            members vlan100;
+        }
+    }
+}
+
+[edit]
+root@VIT# delete interfaces ge-0/0/1
+
+[edit]
+root@VIT# show interfaces i
+                           ^
+'i' is ambiguous.
+Possible completions:
+  <interface-name>     Interface name
+> interface-range      Interface ranges configuration
+> interface-set        Logical interface set configuration
+  irb                  Interface name
+[edit]
+root@VIT# show interfaces irb
+unit 1 {
+    family inet {
+        address 10.1.41.254/24;
+    }
+}
+unit 100 {
+    family inet {
+        address 192.168.100.254/24;
+    }
+}
+
+[edit]
+root@VIT# delete interfaces irb unit 100
+
+[edit]
+root@VIT# set interfaces ge-0/0/1 vlan-tagging
+
+[edit]
+root@VIT# set interfaces ge-0/0/1.100 family inet address 192.168.100.254/24
+
+[edit]
+root@VIT# show interfaces ge-0/0/1
+vlan-tagging;
+unit 100 {
+    family inet {
+        address 192.168.100.254/24;
+    }
+}
+
+[edit]
+root@VIT# set interfaces ge-0/0/1.100 family vl
+                                             ^
+syntax error.
+root@VIT# set interfaces ge-0/0/1.100 vlan-id 100
+
+[edit]
+root@VIT# show interfaces ge-0/0/1
+vlan-tagging;
+unit 100 {
+    vlan-id 100;
+    family inet {
+        address 192.168.100.254/24;
+    }
+}
+
+[edit]
+root@VIT# show | compare rollback 0
+[edit security zones security-zone Inside interfaces]
+      ge-0/0/3.0 { ... }
++     ge-0/0/1.0 {
++         host-inbound-traffic {
++             system-services {
++                 all;
++             }
++             protocols {
++                 all;
++             }
++         }
++     }
+[edit interfaces ge-0/0/1]
++   vlan-tagging;
+[edit interfaces ge-0/0/1]
+-    unit 0 {
+-        family ethernet-switching {
+-            interface-mode trunk;
+-            vlan {
+-                members vlan100;
+-            }
+-        }
+-    }
++    unit 100 {
++        vlan-id 100;
++        family inet {
++            address 192.168.100.254/24;
++        }
++    }
+[edit interfaces irb]
+-    unit 100 {
+-        family inet {
+-            address 192.168.100.254/24;
+-        }
+-    }
+
+[edit]
+root@VIT# show | compare rollback 1
+[edit security zones security-zone Inside interfaces]
+      ge-0/0/3.0 { ... }
++     ge-0/0/1.0 {
++         host-inbound-traffic {
++             system-services {
++                 all;
++             }
++             protocols {
++                 all;
++             }
++         }
++     }
+[edit interfaces ge-0/0/1]
++   vlan-tagging;
+[edit interfaces ge-0/0/1]
+-    unit 0 {
+-        family ethernet-switching {
+-            interface-mode trunk;
+-            vlan {
+-                members [ vlan241 vlan240 vlan100 ];
+-            }
+-        }
+-    }
++    unit 100 {
++        vlan-id 100;
++        family inet {
++            address 192.168.100.254/24;
++        }
++    }
+[edit interfaces irb]
+-    unit 100 {
+-        family inet {
+-            address 192.168.100.254/24;
+-        }
+-    }
+
+[edit]
+root@VIT# commit check
+warning: L2 global mode is switching mode, please add an interface in ethernet-switching mode, or change the L2 global mode!
+[edit security zones security-zone Inside]
+  'interfaces ge-0/0/1.0'
+    Interface ge-0/0/1.0 must be configured under interfaces
+error: configuration check-out failed
+
+[edit]
+root@VIT# show security zones security-zone Inside
+address-book {
+    address addr_10_1_1_0_24 10.1.1.0/24;
+    address addr_192_168_13_0_24 192.168.13.0/24;
+    address add_10_1_40_0_24 10.1.40.0/24;
+}
+host-inbound-traffic {
+    system-services {
+        all;
+    }
+    protocols {
+        all;
+    }
+}
+interfaces {
+    ge-0/0/2.0 {
+        host-inbound-traffic {
+            system-services {
+                any-service;
+            }
+            protocols {
+                all;
+            }
+        }
+    }
+    ge-0/0/3.0 {
+        host-inbound-traffic {
+            system-services {
+                all;
+            }
+            protocols {
+                all;
+            }
+        }
+    }
+    ge-0/0/1.0 {
+        host-inbound-traffic {
+            system-services {
+                all;
+            }
+            protocols {
+                all;
+            }
+        }
+    }
+}
+
+[edit]
+root@VIT# edit security zones security-zone Inside
+
+[edit security zones security-zone Inside]
+root@VIT# show
+address-book {
+    address addr_10_1_1_0_24 10.1.1.0/24;
+    address addr_192_168_13_0_24 192.168.13.0/24;
+    address add_10_1_40_0_24 10.1.40.0/24;
+}
+host-inbound-traffic {
+    system-services {
+        all;
+    }
+    protocols {
+        all;
+    }
+}
+interfaces {
+    ge-0/0/2.0 {
+        host-inbound-traffic {
+            system-services {
+                any-service;
+            }
+            protocols {
+                all;
+            }
+        }
+    }
+    ge-0/0/3.0 {
+        host-inbound-traffic {
+            system-services {
+                all;
+            }
+            protocols {
+                all;
+            }
+        }
+    }
+    ge-0/0/1.0 {
+        host-inbound-traffic {
+            system-services {
+                all;
+            }
+            protocols {
+                all;
+            }
+        }
+    }
+}
+
+[edit security zones security-zone Inside]
+root@VIT# replace pattern 1.0 with 1.100
+
+[edit security zones security-zone Inside]
+root@VIT# show
+address-book {
+    address addr_10_1_1.100_24 10.1.1.100/24;
+    address addr_192_168_13_0_24 192.168.13.0/24;
+    address add_10_1_40_0_24 10.1.40.0/24;
+}
+host-inbound-traffic {
+    system-services {
+        all;
+    }
+    protocols {
+        all;
+    }
+}
+interfaces {
+    ge-0/0/2.0 {
+        host-inbound-traffic {
+            system-services {
+                any-service;
+            }
+            protocols {
+                all;
+            }
+        }
+    }
+    ge-0/0/3.0 {
+        host-inbound-traffic {
+            system-services {
+                all;
+            }
+            protocols {
+                all;
+            }
+        }
+    }
+    ge-0/0/1.100 {
+        host-inbound-traffic {
+            system-services {
+                all;
+            }
+            protocols {
+                all;
+            }
+        }
+    }
+}
+
+[edit security zones security-zone Inside]
+root@VIT# top
+
+[edit]
+root@VIT# commit check
+warning: L2 global mode is switching mode, please add an interface in ethernet-switching mode, or change the L2 global mode!
+[edit security zones security-zone Inside address-book]
+  'address addr_10_1_1.100_24'
+    Invalid address entry
+error: configuration check-out failed
+
+[edit]
+root@VIT# show security zones security-zone Inside ad
+                                                     ^
+'ad' is ambiguous.
+Possible completions:
+> address-book         Address book entries
+> advance-policy-based-routing-profile  Enable Advance Policy Based Routing on this zone
+[edit]
+root@VIT# show security zones security-zone Inside address-book
+address addr_10_1_1.100_24 10.1.1.100/24;
+address addr_192_168_13_0_24 192.168.13.0/24;
+address add_10_1_40_0_24 10.1.40.0/24;
+
+[edit]
+root@VIT# edit security zones security-zone Inside address-book
+
+[edit security zones security-zone Inside address-book]
+root@VIT# delete address addr_10_1_1.100_24
+
+[edit security zones security-zone Inside address-book]
+root@VIT# show
+address addr_192_168_13_0_24 192.168.13.0/24;
+address add_10_1_40_0_24 10.1.40.0/24;
+
+[edit security zones security-zone Inside address-book]
+root@VIT# commit check
+warning: L2 global mode is switching mode, please add an interface in ethernet-switching mode, or change the L2 global mode!
+configuration check succeeds
+
+[edit security zones security-zone Inside address-book]
+root@VIT# top
+
+[edit]
+root@VIT# commit
+warning: L2 global mode is switching mode, please add an interface in ethernet-switching mode, or change the L2 global mode!
+commit complete
+
+[edit]
+root@VIT# show
+## Last changed: 2018-10-18 09:43:21 GMT+7
+version 15.1X49-D90.7;
+system {
+    host-name VIT;
+    time-zone GMT+7;
+    root-authentication {
+        encrypted-password "$5$r2UqlV2H$.jNtwgQak9g3jkKE6eELKDx2Ji5n7XGOF9GDGdmGtH8"; ## SECRET-DATA
+    }
+    name-server {
+        8.8.8.8;
+        8.8.8.4;
+    }
+    login {
+        message "WELCOME TO VIT";
+        user admin {
+            full-name admin;
+            uid 200;
+            class super-user;
+            authentication {
+                encrypted-password "$5$JqC0Sx7c$Z3gwxqSECDmpuohWtpFiRkGN85mdYyQtCkQS6bzk1SC"; ## SECRET-DATA
+            }
+        }
+    }
+    services {
+        ssh {
+            root-login allow;
+        }
+        telnet;
+        xnm-clear-text;
+        web-management {
+            http {
+                interface [ ge-0/0/2.0 ge-0/0/3.0 ];
+            }
+            https {
+                system-generated-certificate;
+                interface [ ge-0/0/2.0 ge-0/0/3.0 ];
+            }
+            session {
+                idle-timeout 60;
+            }
+        }
+    }
+}
+security {
+    ike {
+        policy ike_pol_vpn-pgm {
+            mode main;
+            proposal-set basic;
+            pre-shared-key ascii-text "$9$89Fxb2goGDHqaJm5zFAt8Lx7bYoJDi.5ZG9t"; ## SECRET-DATA
+        }
+        gateway gw_vpn-pgm {
+            ike-policy ike_pol_vpn-pgm;
+            address 39.110.237.12;
+            external-interface ge-0/0/0.0;
+        }
+    }
+    ipsec {
+        proposal test_pgm {
+            protocol esp;
+            authentication-algorithm hmac-md5-96;
+            encryption-algorithm aes-128-cbc;
+        }
+        policy ipsec_pol_vpn-pgm {
+            perfect-forward-secrecy {
+                keys group2;
+            }
+            proposals test_pgm;
+        }
+        vpn vpn-pgm {
+            bind-interface st0.1;
+            ike {
+                gateway gw_vpn-pgm;
+                ipsec-policy ipsec_pol_vpn-pgm;
+            }
+            establish-tunnels immediately;
+        }
+    }
+    nat {
+        source {
+            rule-set NAT_Outside {
+                from zone Inside;
+                to zone Outside;
+                rule src-interface {
+                    match {
+                        source-address 0.0.0.0/0;
+                        destination-address 0.0.0.0/0;
+                    }
+                    then {
+                        source-nat {
+                            interface;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    policies {
+        from-zone Inside to-zone Outside {
+            policy Inside_Outside {
+                match {
+                    source-address any;
+                    destination-address any;
+                    application any;
+                    source-identity any;
+                }
+                then {
+                    permit;
+                    log {
+                        session-close;
+                    }
+                }
+            }
+            policy policy_out_vpn-pgm {
+                match {
+                    source-address addr_192_168_13_0_24;
+                    destination-address addr_192_168_150_0_24;
+                    application any;
+                    source-identity any;
+                }
+                then {
+                    permit;
+                    log {
+                        session-close;
+                    }
+                }
+            }
+        }
+        from-zone Outside to-zone Inside {
+            policy policy_in_vpn-pgm {
+                match {
+                    source-address addr_192_168_150_0_24;
+                    destination-address addr_192_168_13_0_24;
+                    application any;
+                }
+                then {
+                    permit;
+                }
+            }
+            policy Out_to_in {
+                match {
+                    source-address any;
+                    destination-address any;
+                    application any;
+                    source-identity any;
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+        from-zone Inside to-zone Inside {
+            policy Inside_2 {
+                match {
+                    source-address any;
+                    destination-address any;
+                    application any;
+                    source-identity any;
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+    }
+    zones {
+        security-zone Inside {
+            address-book {
+                address addr_192_168_13_0_24 192.168.13.0/24;
+                address add_10_1_40_0_24 10.1.40.0/24;
+            }
+            host-inbound-traffic {
+                system-services {
+                    all;
+                }
+                protocols {
+                    all;
+                }
+            }
+            interfaces {
+                ge-0/0/2.0 {
+                    host-inbound-traffic {
+                        system-services {
+                            any-service;
+                        }
+                        protocols {
+                            all;
+                        }
+                    }
+                }
+                ge-0/0/3.0 {
+                    host-inbound-traffic {
+                        system-services {
+                            all;
+                        }
+                        protocols {
+                            all;
+                        }
+                    }
+                }
+                ge-0/0/1.100 {
+                    host-inbound-traffic {
+                        system-services {
+                            all;
+                        }
+                        protocols {
+                            all;
+                        }
+                    }
+                }
+            }
+        }
+        security-zone Outside {
+            address-book {
+                address addr_192_168_150_0_24 192.168.150.0/24;
+            }
+            host-inbound-traffic {
+                system-services {
+                    ike;
+                }
+                protocols {
+                    all;
+                }
+            }
+            interfaces {
+                ge-0/0/0.0;
+                st0.1;
+            }
+        }
+    }
+}
+interfaces {
+    ge-0/0/0 {
+        unit 0 {
+            family inet {
+                address 113.164.228.220/29;
+            }
+        }
+    }
+    ge-0/0/1 {
+        vlan-tagging;
+        unit 100 {
+            vlan-id 100;
+            family inet {
+                address 192.168.100.254/24;
+            }
+        }
+    }
+    ge-0/0/2 {
+        unit 0 {
+            family inet {
+                address 192.168.13.1/24;
+            }
+        }
+    }
+    ge-0/0/3 {
+        unit 0 {
+            family inet {
+                address 10.1.40.254/24;
+            }
+        }
+    }
+    irb {
+        unit 1 {
+            family inet {
+                address 10.1.41.254/24;
+            }
+        }
+    }
+    st0 {
+        unit 0 {
+            family inet;
+        }
+        unit 1 {
+            family inet;
+        }
+    }
+}
+routing-options {
+    static {
+        route 0.0.0.0/0 next-hop 113.164.228.217;
+        route 192.168.150.0/24 next-hop st0.1;
+    }
+}
+protocols {
+    l2-learning {
+        global-mode switching;
+    }
+}
+vlans {
+    vlan100 {
+        vlan-id 100;
+        l3-interface irb.100;
+    }
+    vlan240 {
+        description vlan240;
+        vlan-id 240;
+    }
+    vlan241 {
+        vlan-id 241;
+        l3-interface irb.1;
+    }
+}
+
+[edit]
+root@VIT# load factory-default
+warning: activating factory configuration
+
+[edit]
+root@VIT# show protocols
+l2-learning {
+    global-mode switching;
+}
+rstp {
+    ##
+    ## Warning: statement ignored: unsupported platform (srx300)
+    ##
+    interface all;
+}
+
+[edit]
+root@VIT# exit
+The configuration has been changed but not committed
+Exit with uncommitted changes? [yes,no] (yes) yes
+
+Exiting configuration mode
+
+root@VIT> edit
+Entering configuration mode
+The configuration has been changed but not committed
+
+[edit]
+root@VIT# rollback 0
+load complete
+
+[edit]
+root@VIT#
+
+[edit]
+root@VIT#
+
+[edit]
+root@VIT#
+
+[edit]
+root@VIT# 2run
+          ^
+unknown command.
+root@VIT# show interfaces ge-0/0/1
+vlan-tagging;
+unit 100 {
+    vlan-id 100;
+    family inet {
+        address 192.168.100.254/24;
+    }
+}
+
+[edit]
+root@VIT# show cli
+               ^
+syntax error.
+root@VIT# show his
+               ^
+syntax error.
+root@VIT# show ?
+Possible completions:
+  <[Enter]>            Execute this command
+> access               Network access configuration
+> access-profile       Access profile for this instance
+> accounting-options   Accounting data configuration
+> applications         Define applications by protocol characteristics
++ apply-groups         Groups from which to inherit configuration data
+> chassis              Chassis configuration
+> class-of-service     Class-of-service configuration
+> event-options        Event processing configuration
+> firewall             Define a firewall configuration
+> forwarding-options   Configure options to control packet forwarding
+> groups               Configuration groups
+> interfaces           Interface configuration
+> policy-options       Policy option configuration
+> protocols            Routing protocol configuration
+> routing-instances    Routing instance configuration
+> routing-options      Protocol-independent routing option configuration
+> schedulers           Security scheduler
+> security             Security configuration
+> services             Set services parameters
+> smtp                 Simple Mail Transfer Protocol service configuration
+> snmp                 Simple Network Management Protocol configuration
+> switch-options       Options for default routing-instance of type virtual-switch
+> system               System parameters
+> unified-edge
+> vlans                VLAN configuration
+  |                    Pipe through a command
+[edit]
+root@VIT# exit
+Exiting configuration mode
+
+root@VIT> show his
+               ^
+syntax error, expecting <command>.
+root@VIT> show cl
+                 ^
+'cl' is ambiguous.
+Possible completions:
+  class-of-service     Show class-of-service (CoS) information
+  cli                  Show command-line interface settings
+root@VIT> show cli history
+  09:33:23 -- edit
+  10:03:01 -- show cli history
+
+root@VIT> cli
+          ^
+unknown command.
+root@VIT> configure
+Entering configuration mode
+
+[edit]
+root@VIT# run show his
+                   ^
+syntax error, expecting <command>.
+root@VIT# run show cli history 10
+  09:42:56 -- top
+  09:43:01 -- commit
+  09:43:44 -- show
+  09:44:05 -- load factory-default
+  09:44:09 -- show protocols
+  09:44:21 -- exit
+  09:44:26 -- rollback 0
+  09:45:42 -- show interfaces ge-0/0/1
+  10:02:52 -- exit
+  10:04:18 -- run show cli history 10
+
+[edit]
+root@VIT# run show cli history 100
+  09:33:25 -- show
+  09:36:00 -- show interfaces ge-0/0/1
+  09:36:15 -- show security zones | match ge-0/0/1 | display set
+  09:36:18 -- show security zones
+  09:37:39 -- set security zones security-zone Inside interfaces ge-0/0/1.0 host-inbound-traffic system-services all
+  09:37:43 -- set security zones security-zone Inside interfaces ge-0/0/1.0 host-inbound-traffic protocols all
+  09:37:47 -- show security zones security-zone Inside
+  09:38:02 -- show interfaces ge-0/0/1
+  09:38:06 -- delete interfaces ge-0/0/1
+  09:38:14 -- show interfaces irb
+  09:38:52 -- delete interfaces irb unit 100
+  09:39:00 -- set interfaces ge-0/0/1 vlan-tagging
+  09:39:18 -- set interfaces ge-0/0/1.100 family inet address 192.168.100.254/24
+  09:39:21 -- show interfaces ge-0/0/1
+  09:39:43 -- set interfaces ge-0/0/1.100 vlan-id 100
+  09:39:45 -- show interfaces ge-0/0/1
+  09:39:50 -- show | compare rollback 0
+  09:39:54 -- show | compare rollback 1
+  09:39:58 -- commit check
+  09:40:25 -- show security zones security-zone Inside
+  09:40:32 -- edit security zones security-zone Inside
+  09:40:34 -- show
+  09:40:42 -- replace pattern 1.0 with 1.100
+  09:40:43 -- show
+  09:40:47 -- top
+  09:40:48 -- commit check
+  09:41:17 -- show security zones security-zone Inside address-book
+  09:42:11 -- edit security zones security-zone Inside address-book
+  09:42:20 -- delete address addr_10_1_1.100_24
+  09:42:21 -- show
+  09:42:26 -- commit check
+  09:42:56 -- top
+  09:43:01 -- commit
+  09:43:44 -- show
+  09:44:05 -- load factory-default
+  09:44:09 -- show protocols
+  09:44:21 -- exit
+  09:44:26 -- rollback 0
+  09:45:42 -- show interfaces ge-0/0/1
+  10:02:52 -- exit
+  10:04:18 -- run show cli history 10
+  10:04:27 -- run show cli history 100
+
+[edit]
+root@VIT# run show cli history 200
+  09:33:25 -- show
+  09:36:00 -- show interfaces ge-0/0/1
+  09:36:15 -- show security zones | match ge-0/0/1 | display set
+  09:36:18 -- show security zones
+  09:37:39 -- set security zones security-zone Inside interfaces ge-0/0/1.0 host-inbound-traffic system-services all
+  09:37:43 -- set security zones security-zone Inside interfaces ge-0/0/1.0 host-inbound-traffic protocols all
+  09:37:47 -- show security zones security-zone Inside
+  09:38:02 -- show interfaces ge-0/0/1
+  09:38:06 -- delete interfaces ge-0/0/1
+  09:38:14 -- show interfaces irb
+  09:38:52 -- delete interfaces irb unit 100
+  09:39:00 -- set interfaces ge-0/0/1 vlan-tagging
+  09:39:18 -- set interfaces ge-0/0/1.100 family inet address 192.168.100.254/24
+  09:39:21 -- show interfaces ge-0/0/1
+  09:39:43 -- set interfaces ge-0/0/1.100 vlan-id 100
+  09:39:45 -- show interfaces ge-0/0/1
+  09:39:50 -- show | compare rollback 0
+  09:39:54 -- show | compare rollback 1
+  09:39:58 -- commit check
+  09:40:25 -- show security zones security-zone Inside
+  09:40:32 -- edit security zones security-zone Inside
+  09:40:34 -- show
+  09:40:42 -- replace pattern 1.0 with 1.100
+  09:40:43 -- show
+  09:40:47 -- top
+  09:40:48 -- commit check
+  09:41:17 -- show security zones security-zone Inside address-book
+  09:42:11 -- edit security zones security-zone Inside address-book
+  09:42:20 -- delete address addr_10_1_1.100_24
+  09:42:21 -- show
+  09:42:26 -- commit check
+  09:42:56 -- top
+  09:43:01 -- commit
+  09:43:44 -- show
+  09:44:05 -- load factory-default
+  09:44:09 -- show protocols
+  09:44:21 -- exit
+  09:44:26 -- rollback 0
+  09:45:42 -- show interfaces ge-0/0/1
+  10:02:52 -- exit
+  10:04:18 -- run show cli history 10
+  10:04:27 -- run show cli history 100
+---(more)---
+

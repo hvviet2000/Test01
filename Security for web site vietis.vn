@@ -1,0 +1,1 @@
+Header set Content-Security-Policy "default-src 'self' data: *.gstatic.com  *.gravatar.com *.w.org *.fontawesome.com *.google.com *.facebook.com *.chromestatus.com; script-src 'self' 'unsafe-inline' *.bootstrapcdn.com *.cloudflare.com *.facebook.net; style-src 'self' 'unsafe-inline' *.bootstrapcdn.com *.fontawesome.com *.cloudflare.com *.googleapis.com"

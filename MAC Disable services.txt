@@ -1,0 +1,209 @@
+﻿http://hints.macworld.com/article.php?story=20090510120814850
+https://superuser.com/questions/930389/how-to-start-a-service-using-mac-osxs-launchctl
+
+https://makandracards.com/dev/16439-disable-daemons-services-in-mac-os-x
+
+https://apple.stackexchange.com/questions/2488/start-stop-internet-sharing-from-a-script
+https://makandracards.com/dev/16439-disable-daemons-services-in-mac-os-x
+http://hints.macworld.com/article.php?story=20090510120814850
+https://www.xarg.org/2017/07/set-up-internet-sharing-on-mac-osx-using-command-line-tools/
+
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.mDNSResponderHelper.plist
+
+
+
+csrutil disable; reboot
+
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.NetworkSharing.plist
+
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.InternetSharing.plist
+ 
+
+
+csrutil enable; reboot
+
+launchctl load  -w /System/Library/LaunchDaemons/com.apple.InternetSharing.plist
+
+history -c
+
+
+
+
+$ sudo ls -all /System/Library/LaunchAgents/
+$ sudo ls -all ~/Library/LaunchAgents/
+Launchd also runs SystemStarter during boot, which loads legacy third-party OSX startup items that can be viewed with 2 commands:
+$ sudo ls -all /System/Library/StartupItems/
+$ sudo ls -all /Library/StartupItems/
+
+Login Items are started at the very end of the user’s login and can be found with the next 2 commands:
+$ sudo ls -all ~/Library/Preferences/com.apple.loginitems.plist
+$ sudo nano /private/var/db/launchd.db/com.apple.launchd.peruser.501/overrides.plist
+
++++ How to disable unneeded services from running on each startup? +++
+
+You need to use the launchctl command as follows:
+sudo launchctl unload -w /path/to/.plist/file
+sudo launchctl unload -w /System/Library/LaunchDaemons/file.plist
+
+In this example, you are disabling the Netbios service, enter:
+$ sudo launchctl unload -w System/Library/LaunchDaemons/com.apple.netbiosd.plist
+
+sudo launchctl start com.apple.NetworkSharing
+
+and
+
+sudo launchctl stop com.apple.NetworkSharing
+
+respectively.
+
+From the command line:
+
+    List agents/jobs loaded using
+
+    launchctl list
+
+    Remove an agent/job using
+
+    launchctl remove <name>
+
+    Disable an agent/job for the currently booted session alone using
+
+    launchctl unload <name>
+
+    Load an agent/job manually using
+
+    launchctl load <name>
+
+
+
+
+
+
+
+
+
+
+
+You can use MCX to force Internet Sharing off.
+
+Apply Setting To: System Level Enforced
+Domain: com.apple.MCX
+Key Name: forceInternetSharingOff
+Key Type: boolean
+Value: true
+
+
+For most of the Mac OS X system and application settings Casper users can do this:
+
+Locate /System/Library/CoreServices/ManagedClient.app
+Right-click or Control-click the file and select Show Package Contents.
+Navigate to Contents/Resources/.
+Select any one of the 26 manifest files you see there. I'll use com.apple.MCX as an example.
+Right-click or Control-click the com.apple.MCX.manifest file and select Show Package Contents.
+Navigate to Contents/Resources/com.apple.MCX.manifest.
+Use any text editor to open and view this file. You can also import it into the JSS under Managed Preferences to view the descriptions there and create a preference setting.
+This particular manifest contains about 25 settings such as:
+
+Create Portable Home Directory
+Time Zone
+Time Server
+Disable Guest Account
+Require Admin For AirPort Network Change
+In this case note that the forceInternetSharingOff key isn't even mentioned in the manifest. It's undocumented. I only found this because I used Workgroup Manager to make the setting and then looked under the Details tab to see what changed.
+
+
+
+System/Library/LaunchDaemons/ - System-wide daemons provided by Mac OS X
+/System/Library/LaunchAgents/ - Per-user agents provided by Mac OS X.
+~/Library/LaunchAgents/ - Per-user agents provided by the user.
+/Library/LaunchAgents/ - Per-user agents provided by the administrator.
+/Library/LaunchDaemons/ - System-wide daemons provided by the administrator.
+Assuming .plist is the daemon in question, do this in the command line:
+
+COPY
+sudo launchctl unload -w /path/to/.plist/<file>
+sudo launchctl unload -w /System/Library/LaunchDaemons/<file>.plist
+For example:
+
+COPY
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.mDNSResponder.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.mDNSResponderHelper.plist
+
+
+sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.InternetSharing.plist
+
+
+
+
+
+The solution for Leopard turned out to be extremely straightforward, and can be found in the unix help file for InternetSharing -- just type man InternetSharing to read it in Terminal:
+Copy the plist file /Library » Preferences » SystemConfiguration » com.apple.nat.plist to your home directory, eg: sudo cp /Library/Preferences/SystemConfiguration/com.apple.nat.plist ~.
+Use Xcode's Property List Editor (or any other property list editor) to edit the file in your home directory.
+Add a new key (child) to the NAT dict. Call it SharingNetworkNumberStart. The type should be String, and the value is the IP network you want to use (eg 10.168.2.0). As an example, here's what my edited file looks like:
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NAT</key>
+	<dict>
+		<key>AirPort</key>
+		<dict>
+			<key>40BitEncrypt</key>
+			<integer>1</integer>
+			<key>Channel</key>
+			<integer>0</integer>
+			<key>Enabled</key>
+			<integer>0</integer>
+			<key>Extreme</key>
+			<string></string>
+			<key>NetworkName</key>
+			<string>pimpedwifi</string>
+			<key>NetworkPassword</key>
+			<data>################</data>
+		</dict>
+		<key>Enabled</key>
+		<integer>1</integer>
+		<key>PrimaryInterface</key>
+		<dict>
+			<key>Device</key>
+			<string>HUAWEIMobile-Modem</string>
+			<key>Enabled</key>
+			<integer>0</integer>
+			<key>HardwareKey</key>
+			<string></string>
+			<key>PrimaryUserReadable</key>
+			<string>HUAWEI Mobile</string>
+		</dict>
+		<key>PrimaryService</key>
+		<string>C42284CE-6803-42A7-9F54-627DB90321DF</string>
+		<key>SharingDevices</key>
+		<array>
+			<string>en0</string>
+		</array>
+		<key>SharingNetworkNumberStart</key>
+		<string>10.168.2.0</string>
+	</dict>
+</dict>
+</plist>
+Save your changes.
+Copy the edited file back to the original location. sudo cp ~/com.apple.nat.plist /Library/Preferences/SystemConfiguration/
+Now you can (re-)start Internet Sharing, and it will run on your defined subnet. Hopefully some day Apple will add this as a config option in the Sharing System Preferences panel. 
+
+
+
+
+First, bring down any active internet interfaces using the terminal command:
+
+ifconfig [interface*] down
+
+Then a launch daemon found here:
+
+/System/Library/LaunchDaemons/com.apple.NetworkSharing.plist
+
+needs to be toggled with the launchctl command.
+
+then bring up the interfaces with the command
+
+ifconfig [interface*] up
+
+OK Thanks

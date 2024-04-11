@@ -1,0 +1,211 @@
+## Last changed: 2018-10-05 07:32:41 GMT+7
+version 15.1X49-D90.7;
+system {
+    host-name VIT;
+    time-zone GMT+7;
+    root-authentication {
+        encrypted-password "$5$r2UqlV2H$.jNtwgQak9g3jkKE6eELKDx2Ji5n7XGOF9GDGdmGtH8";
+    }
+    name-server {
+        8.8.8.8;
+        8.8.8.4;
+    }
+    login {
+        message "WELCOME TO VIT";
+    }
+    services {
+        ssh;
+        telnet;
+        web-management {
+            http {
+                interface [ ge-0/0/1.0 ge-0/0/2.0 ];
+            }
+            https {
+                system-generated-certificate;
+                interface [ ge-0/0/0.1 ge-0/0/1.0 ge-0/0/2.0 ];
+            }
+            session {
+                idle-timeout 60;
+            }
+        }
+    }
+}
+security {
+    ike {
+        policy ike_pol_vpn-pgm {
+            mode main;
+            proposal-set basic;
+            pre-shared-key ascii-text "$9$89Fxb2goGDHqaJm5zFAt8Lx7bYoJDi.5ZG9t";
+        }
+        gateway gw_vpn-pgm {
+            ike-policy ike_pol_vpn-pgm;
+            address 39.110.237.12;
+            external-interface ge-0/0/0.0;
+        }
+    }
+    ipsec {
+        proposal test_pgm {
+            protocol esp;
+            authentication-algorithm hmac-md5-96;
+            encryption-algorithm aes-128-cbc;
+        }
+        policy ipsec_pol_vpn-pgm {
+            perfect-forward-secrecy {
+                keys group2;
+            }
+            proposals test_pgm;
+        }
+        vpn vpn-pgm {
+            bind-interface st0.1;
+            ike {
+                gateway gw_vpn-pgm;
+                ipsec-policy ipsec_pol_vpn-pgm;
+            }
+            establish-tunnels immediately;
+        }
+    }
+    nat {
+        source {
+            rule-set NAT_Outside {
+                from zone Inside;
+                to zone Outside;
+                rule src-interface {
+                    match {
+                        source-address 0.0.0.0/0;
+                        destination-address 0.0.0.0/0;
+                    }
+                    then {
+                        source-nat {
+                            interface;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    policies {
+        from-zone Inside to-zone Outside {
+            policy Inside_Outside {
+                match {
+                    source-address any;
+                    destination-address any;
+                    application any;
+                }
+                then {
+                    permit;
+                    log {
+                        session-init;
+                        session-close;
+                    }
+                }
+            }
+            policy policy_out_vpn-pgm {
+                match {
+                    source-address addr_192_168_13_0_24;
+                    destination-address addr_192_168_150_0_24;
+                    application any;
+                    source-identity any;
+                }
+                then {
+                    permit;
+                    log {
+                        session-init;
+                        session-close;
+                    }
+                }
+            }
+        }
+        from-zone Outside to-zone Inside {
+            policy policy_in_vpn-pgm {
+                match {
+                    source-address addr_192_168_150_0_24;
+                    destination-address addr_192_168_13_0_24;
+                    application any;
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+    }
+    zones {
+        security-zone Inside {
+            address-book {
+                address addr_10_1_1_0_24 10.1.1.0/24;
+                address addr_192_168_13_0_24 192.168.13.0/24;
+            }
+            host-inbound-traffic {
+                system-services {
+                    all;
+                }
+            }
+            interfaces {
+                ge-0/0/1.0 {
+                    host-inbound-traffic {
+                        system-services {
+                            any-service;
+                        }
+                    }
+                }
+                ge-0/0/2.0 {
+                    host-inbound-traffic {
+                        system-services {
+                            any-service;
+                        }
+                    }
+                }
+            }
+        }
+        security-zone Outside {
+            address-book {
+                address addr_192_168_150_0_24 192.168.150.0/24;
+            }
+            host-inbound-traffic {
+                system-services {
+                    ike;
+                }
+            }
+            interfaces {
+                ge-0/0/0.0;
+                st0.1;
+            }
+        }
+    }
+}
+interfaces {
+    ge-0/0/0 {
+        unit 0 {
+            family inet {
+                address 113.164.228.220/29;
+            }
+        }
+    }
+    ge-0/0/1 {
+        unit 0 {
+            family inet {
+                address 10.1.1.1/24;
+            }
+        }
+    }
+    ge-0/0/2 {
+        unit 0 {
+            family inet {
+                address 192.168.13.1/24;
+            }
+        }
+    }
+    st0 {
+        unit 0 {
+            family inet;
+        }
+        unit 1 {
+            family inet;
+        }
+    }
+}
+routing-options {
+    static {
+        route 0.0.0.0/0 next-hop 113.164.228.217;
+        route 192.168.150.0/24 next-hop st0.1;
+    }
+}

@@ -1,0 +1,28 @@
+
+
+While you could edit your /etc/ssh/sshd_config to look something like this:
+
+ForceCommand           /bin/sh
+PermitOpen             0.0.0.0
+AllowTcpForwarding     no
+PermitTunnel           no
+# Subsystem sftp       /usr/lib/openssh/sftp-server
+PermitUserEnvironment  no
+
+I would instead determine what the user is likely to use it for. Because if there are only a few commands that you want them to have access to, I would instead remove the ability for them to even invoke a normal ssh shell.
+
+AllowUsers             root
+PermitRootLogin        forced-commands-only
+
+PermitUserEnvironment  no
+
+AllowTcpForwarding     no
+PermitTunnel           no
+
+# Subsystem sftp       /usr/lib/openssh/sftp-server
+Subsystem smb-reload   /usr/bin/smbcontrol smbd reload-config
+Subsystem status       /opt/local/bin/status.sh
+
+ssh root@example -s smb-reload
+
+If you find that you really do need to be able to run a normal shell, the most you really can hope for, is to slow them down, and make it more difficult.

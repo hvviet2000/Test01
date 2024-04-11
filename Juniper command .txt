@@ -1,0 +1,53 @@
+set security zones security-zone Inside interfaces ge-0/0/1.0 host-inbound-traffic system-services all
+set security zones security-zone Inside interfaces ge-0/0/1.0 host-inbound-traffic protocols all
+
+set interfaces ge-0/0/1 vlan-tagging
+set interfaces ge-0/0/1.100 family inet address 192.168.100.254/24
+set interfaces ge-0/0/1.100 vlan-id 100
+
+
+unit 100 {
+vlan-id 100;
+family inet {
+address 192.168.100.254/24;
+}
+}
+unit 100 {
+vlan-id 100;
+family inet {
+address 192.168.100.254/24;
+}
+}
+anh chỉ cần tạo thêm unit 254 vlan-id 254 và IP cho mạng 254
+T460 (15:35): thì dưới sw trunk thêm 254 vào nữa
+
+
+
+
+
+
+ ge-0/0/1.100 {
+      host-inbound-traffic {
+          system-services {
+              all;
+          }
+          protocols {
+              all;
+          }
+		}
+					
+    ge-0/0/1 {
+        vlan-tagging;
+        unit 100 {
+            vlan-id 100;
+            family inet {
+                address 192.168.100.254/24;
+            }
+        }
+    }
+	
+vlans {
+    vlan100 {
+        vlan-id 100;
+        l3-interface irb.100;
+    }

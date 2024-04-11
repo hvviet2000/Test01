@@ -1,0 +1,90 @@
+Cấu hình chặn HTTP, HTTPS sử dụng IDP trên Juniper SRX
+
+Example I want to block http://docbao.vn and https://facebook.com
+
+root@VNE#show security policies from-zone Internal to-zone Internet policy All_Internal_Internet                      
+match {
+    source-address any;
+    destination-address any;
+    application any;
+}
+then {
+    permit {
+        application-services {
+            idp;
+        }
+    }
+}
+
+[edit]
+
+root@VNE# show security idp active-policy 
+active-policy idp;
+
+[edit]
+root@VNE# show security idp idp-policy idp 
+rulebase-ips {
+    rule docbao.vn {
+        match {
+            from-zone Internal;
+            to-zone Internet;
+            application default;
+            attacks {
+                custom-attacks [ docbao.vn facebook.com ];
+            }
+        }
+        then {
+            action {
+                recommended;
+            }
+            notification {
+                log-attacks;
+            }
+        }
+    }
+}
+
+[edit]
+
+root@VNE# show security idp custom-attack facebook.com 
+recommended-action close;
+severity major;
+attack-type {
+    chain {
+        expression "ssl1 or ssl2";
+        member ssl1 {
+            attack-type {
+                signature {
+                    context ssl-client-hello;
+                    pattern ".*facebook\.com.*";
+                    direction client-to-server;
+                }
+            }
+        }
+        member ssl2 {
+            attack-type {
+                signature {
+                    context ssl-cert-common-name;
+                    pattern ".*facebook\.com.*";
+                    direction server-to-client;
+                }
+            }
+        }
+    }                                   
+}
+
+[edit]
+root@VNE# show security idp custom-attack docbao.vn 
+recommended-action close;
+severity critical;
+attack-type {
+    signature {
+        context http-header-host;
+        pattern ".*docbao\.vn.*";
+        direction client-to-server;
+    }
+}
+
+[edit]
+
+

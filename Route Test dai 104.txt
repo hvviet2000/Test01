@@ -1,0 +1,48 @@
+ip access-list extended VietIS_PBR
+ deny   ip 10.1.0.0 0.0.255.255 10.1.0.0 0.0.255.255
+ permit ip host 192.168.100.233 any
+
+route-map PBR  permit 10
+ match ip address VietIS_PBR
+ set ip next-hop 192.168.200.1
+
+interface GigabitEthernet0/1.501
+ description VietIS_CORE_01_To_ISP_WAN_FPT
+ encapsulation dot1Q 501
+ ip address 192.168.200.254 255.255.255.0
+ ip nat outside
+ ip virtual-reassembly in
+
+
+
+
+
+ip access-list extended VietIS_PBR
+ deny   ip 10.1.0.0 0.0.255.255 10.1.0.0 0.0.255.255
+ deny   ip 192.168.0.0 0.0.255.255 192.168.0.0 0.0.255.255 
+ permit ip host 192.168.100.233 any
+
+
+interface GigabitEthernet0/1.100
+ description VietIS_Server
+ encapsulation dot1Q 100
+ ip address 192.168.100.2 255.255.255.0
+ ip nat inside
+ ip virtual-reassembly in
+ standby 1 ip 192.168.100.1
+ standby 1 priority 110
+ standby 1 preempt
+
+
+interface GigabitEthernet0/1.104
+ ip policy route-map PBR
+
+ip access-list extended VietIS_PBR
+ deny  ip 10.1.0.0 0.0.255.255 10.1.0.0 0.0.255.255
+ deny  ip 192.168.0.0 0.0.255.255 192.168.0.0 0.0.255.255
+ permit ip 192.168.104.0 0.0.1.255 any
+
+
+192.168.104.2
+118.70.128.119
+* * * *

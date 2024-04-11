@@ -1,0 +1,78 @@
+10 * * * *
+
+* * * * * root /usr/bin/php /var/www/html/operator/app/Console/
+
+https://stackoverflow.com/questions/49883425/cron-job-for-a-php-artisan-command
+
+https://laracasts.com/discuss/channels/laravel/laravel-artisan-commands-trough-cron-tab
+
+
+* * * * * /Applications/MAMP/bin/php/php5.6.2/bin/php /Users/jimm/WebProjects/laravel42/artisan scheduled:run 1>> /dev/null 2>&1
+
+
+https://www.sitepoint.com/managing-cronjobs-with-laravel/
+
+
+
+https://appdividend.com/2018/03/01/laravel-cronjob-scheduling-tutorial/
+
+
+https://scotch.io/tutorials/creating-a-laravel-404-page-using-custom-exception-handlers
+
+
+* * * * * /usr/bin/php /var/www/html/operator/guimail.php >> /dev/null 2>&1
+* * * * * /usr/bin/php /var/www/html/operator/artisan schedule:run 1>> /dev/null 2>&1
+* * * * * /usr/bin/php /var/www/html/operator/artisan schedule:run 1>> /root/crontab.txt 2>&1
+
+
+ALTER TABLE HisofChangeOperator MODIFY note TEXT CHARACTER SET utf8;
+
+ALTER TABLE ServerManagerment MODIFY Application TEXT CHARACTER SET utf8;
+
+ALTER TABLE Operator MODIFY description TEXT CHARACTER SET utf8;
+
+git checkout master
+
+git init
+
+git add README.md
+git add .
+git commit -m "first commit"
+git remote add origin https://repo.vietis.com.vn:8009/VIETIS/operator.git
+git push --force origin master
+
+
+
+cd existing_folder
+git init
+git remote add origin https://repo.vietis.com.vn:8009/VIETIS/op.git
+git add .
+git commit -m "Initial commit"
+git push -u origin master
+
+
+
+https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html#onlystrong
+https://linuxtogether.org/how-to-setup-hsts-for-apache/
+
+
+Add the following to your httpd.conf in your VirtualHost or in an .htaccess file:
+
+Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+Header always set Strict-Transport-Security "max-age=31536000; includeSubdomains; preload"
+
+Header set Content-Security-Policy "default-src 'self';"
+
+.htaccess
+
+Header set Content-Security-Policy "default-src 'self'"
+
+
+
+SSLCipherSuite HIGH:!MEDIUM:!aNULL:!MD5:!RC4
+
+
+0 2 * * * root /backup/mysql-backup.sh

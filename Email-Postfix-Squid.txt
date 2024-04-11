@@ -1,0 +1,195 @@
+https://www.tecmint.com/install-laravel-in-centos/
+https://devops.ionos.com/tutorials/install-the-laravel-php-framework-on-centos-7/
+Intsall PHP lavarel 
+
+rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
+
+yum install nginx
+systemctl start nginx
+systemctl enable nginx
+systemctl status nginx
+firewall-cmd --permanent --add-port=80/tcp
+firewall-cmd --reload 
+
+# yum install mariadb-server php-mysql
+# systemctl start mariadb.service
+# /usr/bin/mysql_secure_installation
+
+# yum install yum-utils
+# yum-config-manager --enable remi-php72
+# yum install php php-fpm php-common php-xml php-mbstring php-json php-zip
+
+# systemctl start php-fpm
+# systemctl enable php-fpm
+# systemctl status php-fpm
+
+# curl -sS https://getcomposer.org/installer | php
+# mv composer.phar /usr/local/bin/composer
+# chmod +x /usr/local/bin/composer
+
+# cd /var/www/html/
+# sudo composer create-project --prefer-dist laravel/laravel testsite 
+
+
+https://www.hugeserver.com/kb/install-laravel5-php7-apache-centos7/
+
+
+
+
+./configure --user=nginx --group=nginx --sbin-path=/usr/sbin/nginx --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --with-select_module --with-poll_module --with-file-aio --with-ipv6 --with-http_ssl_module --with-http_spdy_module --with-http_realip_module --with-http_addition_module --with-http_xslt_module --with-http_image_filter_module --with-http_geoip_module --with-http_sub_module --with-http_dav_module --with-http_flv_module --with-http_mp4_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_auth_request_module --with-http_random_index_module --with-http_secure_link_module --with-http_degradation_module --with-http_stub_status_module --with-http_perl_module --with-mail --with-mail_ssl_module --with-cpp_test_module  --with-cpu-opt=CPU --with-pcre  --with-pcre-jit  --with-md5-asm  --with-sha1-asm  --with-zlib-asm=CPU --with-libatomic --with-debug --with-ld-opt="-Wl,-E"
+
+
+./configure --prefix=/etc/nginx \
+            --sbin-path=/usr/sbin/nginx \
+            --modules-path=/usr/lib64/nginx/modules \
+            --conf-path=/etc/nginx/nginx.conf \
+            --error-log-path=/var/log/nginx/error.log \
+            --pid-path=/var/run/nginx.pid \
+            --lock-path=/var/run/nginx.lock \
+            --user=nginx \
+            --group=nginx \
+            --build=CentOS \
+            --with-select_module \
+            --with-poll_module \
+            --with-threads \
+            --with-file-aio \
+            --with-http_ssl_module \
+            --with-http_v2_module \
+            --with-http_realip_module \
+            --with-http_addition_module \
+            --with-http_xslt_module=dynamic \
+            --with-http_image_filter_module=dynamic \
+            --with-http_geoip_module=dynamic \
+            --with-http_sub_module \
+            --with-http_dav_module \
+            --with-http_flv_module \
+            --with-http_mp4_module \
+            --with-http_gunzip_module \
+            --with-http_gzip_static_module \
+            --with-http_auth_request_module \
+            --with-http_random_index_module \
+            --with-http_secure_link_module \
+            --with-http_degradation_module \
+            --with-http_slice_module \
+            --with-http_stub_status_module \
+            --http-log-path=/var/log/nginx/access.log \
+            --http-client-body-temp-path=/var/cache/nginx/client_temp \
+            --http-proxy-temp-path=/var/cache/nginx/proxy_temp \
+            --http-fastcgi-temp-path=/var/cache/nginx/fastcgi_temp \
+            --http-uwsgi-temp-path=/var/cache/nginx/uwsgi_temp \
+            --http-scgi-temp-path=/var/cache/nginx/scgi_temp \
+            --with-mail=dynamic \
+            --with-mail_ssl_module \
+            --with-stream=dynamic \
+            --with-stream_ssl_module \
+            --with-debug
+
+       yum remove sendmail		
+  290  yum install -y postfix
+  291  alternatives --set mta /usr/sbin/postfix 
+  292  service postfix restart
+  293  chkconfig postfix on
+
+  293  chkconfig postfix on
+  294  firewall-cmd --add-service=smtp --permanent
+  295  firewall-cmd --reload 
+  296  firewall-cmd --list-services 
+  297  telnet 127.0.0.1 25
+  298  echo "My message" | mail -s subject luutuyen256@gmail.com
+  
+  vim /etc/postfix/sasl_passwd
+  
+  [smtp.gmail.com]:587 booklive.vietis@gmail.com:159753113
+  
+  
+    301  sudo chmod 400 /etc/postfix/sasl_passwd
+  302  postmap /etc/postfix/sasl_passwd
+  303  cat /etc/ssl/certs/Thawte_Premium_Server_CA.pem | sudo tee -a /etc/postfix/cacert.pem
+  304  cat /etc/ssl/certs/thawte_Premium_Server_CA.pem | sudo tee -a /etc/postfix/cacert.pem
+  305  cat /etc/ssl/certs/ca-bundle.trust.crt | sudo tee -a /etc/postfix/cacert.pem
+  306  postfix reload
+  307  echo "Test mail from postfix" | mail -s "Test Postfix" luutuyen256@gmail.com
+  
+  
+
+  
+1.- create file with host ip address
+
+vi /etc/squid/ip-group1.txt
+# Listados de Pcs
+192.168.2.20
+192.168.2.33
+192.168.2.50
+
+2.- create file with domains and host
+
+vi /etc/squid/website1.txt
+
+# nombre de dominios
+mail.google.com
+www.sport.es
+.marca.com
+.microsoft.com
+.peoplenet.com.gt
+
+3.- create file with ip destination host
+
+vi /etc/squid/website1ip.txt
+
+#sitios destino a nivel de IP
+190.4.33.202
+200.49.168.84
+216.230.128.32
+
+4.- edit /etc/squid/squid.conf
+
+acl ip-group1 src "/etc/squid/ip-group1.txt"
+acl website1 dstdomain "/etc/squid/website1.txt"
+acl website1ip dst "/etc/squid/website1ip.txt"
+
+
+
+http_access allow localhost
+http_access allow ip-group1 website1
+http_access allow ip-group1 website1ip
+http_access deny ip-group1
+http_access allow webconfig_to_lan
+http_access allow webconfig_lan
+http_access deny all
+
+5.- squid -k reconfigure
+
+
+
+
+
+acl specialIP src x.x.x.x
+http_access allow specialIP 
+
+
+GitHub
+flipdrive.com
+Fshare.vn
+www.mega.com
+Dropbox.com 
+Mega.nz
+Onedrive.live.com
+iCloud.com 
+Box.com
+Nextcloud.com
+IDrive.com 
+pCloud.com
+Mediafire.com
+IDrive.com 
+pCloud.com
+
+
+acl facebooktime time MTWHF 09:00-10:00
+acl FBDomain  dstdomain .facebook.com
+http_access allow FBDomain facebooktime
+http_access deny  FBDomain
+
+
+
+

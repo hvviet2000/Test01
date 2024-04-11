@@ -1,0 +1,228 @@
+
+
+
+   12  ifconfig 
+   13  vi /etc/udev/rules.d/70-persistent-net.rules 
+   14  vi /etc/hosts
+   39  cat /var/log/maillog 
+   40  service iptables tatus
+   41  service iptables top
+   42  service iptables stop
+   43  alternatives --config mta
+   44  ssmtp viethv74@gmail.com
+   45  cat /var/log/maillog 
+   46  sendmail -V
+   47  ssmtp viethv74@gmail.com
+   48  echo "ABC" | mail -s "test nagiosalerts" viethv74@gmail.com
+   49  yum install httpd gcc glibc glibc-common gd gd-devel php
+   50  yum install  gcc glibc glibc-common gd gd-devel php
+   51  chkconfig httpd on
+   52  useradd -m nagios
+   53  groupadd nagcmd
+   54  usermod -a -G nagcmd nagios
+   55  usermod -a -G nagcmd apache
+   56  cd /tmp/
+   57  mkdir nagios
+   58  cd nagios/
+   59  wget http://sourceforge.net/projects/nagios/files/latest/download
+   60  ll
+   61  ls
+   62  cd download 
+   63  ll
+   64  cd download 
+   65  wget http://prdownloads.sourceforge.net/sourceforge/nagios/nagios-4.1.1.tar.gz
+   66  tar xzf nagios-4.1.1.tar.gz
+   67  cd nagios-4.1.1
+   68  ./configure -with-command-group=nagcmd
+   69  make all
+   70  make install
+   71  make install-init
+   72  make install-config
+   73  make install-commandmode
+   74  make install-webconf
+   75  htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
+   76  cd ..
+   77  wget http://nagios-plugins.org/download/nagios-plugins-2.1.1.tar.gz
+   78   tar xzf nagios-plugins-2.1.1.tar.gz
+   79  cd nagios-plugins-2.1.1
+   80  ./configure --with-nagios-user=nagios --with-nagios-group=nagios
+   81  make
+   82  make install
+   83  service nagios start
+   84  chkconfig nagios on
+   85  service httpd restart
+   86  chkconfig httpd on
+   87  exit
+   88  service network restart
+   89  ifconfig 
+   90  shutdown -h now
+   91  service nagios restart
+   92  /usr/local/nagios/libexec/check_http -H host.hostname.com -w 5 -c 10 -p 80
+   93  service httpd restart
+   94  shutdown -h now
+   95  ifconfig 
+   96  shutdown -h now
+   97  vi /etc/udev/rules.d/70-persistent-ne
+   98  vi /etc/udev/rules.d/70-persistent-net.rules 
+   99  service network restart
+  100  ifconfig 
+  101  ping 192.168.100.1
+  102  passwd 
+  103  exit
+  104  ls
+  105  sudo yum install curl openssh-server openssh-clients postfix cronie
+  106  sudo service postfix start
+  107  sudo chkconfig postfix on
+  108  sudo lokkit -s http -s ssh
+  109  curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash
+  110  sudo yum install gitlab-ce
+  111  sudo gitlab-ctl reconfigure
+  112  cd /etc/gitlab/
+  113  ls
+  114  vi gitlab.rb 
+  115  sudo gitlab-ctl reconfigure
+  116  systemctl status iptables
+  117  service status iptables
+  118  service
+  119  service iptables --status-all
+  120  service iptables status
+  121   iptables -A INPUT -p tcp --dport 8009 -j ACCEPT
+  122  service iptables save
+  123  service iptables restart
+  124  service iptables status
+  125   iptables -A INPUT -p tcp --dport 8022 -j ACCEPT
+  126  service iptables save
+  127  service iptables reload
+  128  sudo gitlab-ctl reconfigure
+  129  service iptables stop
+  130  cd /
+  131  ls
+  132  cd var/opt/gitlab/
+  133  ls
+  134  cd git-data/
+  135  ls
+  136  cd ..
+  137  cd backups/
+  138  ls
+  139  clear
+  140  ls
+  141  pwd
+  142  clear
+  143  pwd
+  144  ls
+  145  sudo gitlab-ctl stop unicorn
+  146  sudo gitlab-ctl stop sidekiq
+  147  # Verify
+  148  sudo gitlab-ctl status
+  149  sudo gitlab-rake gitlab:backup:restore BACKUP=1479723182
+  150  sudo gitlab-ctl
+  151  sudo gitlab-ctl uninstall
+  152  curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash
+  153  sudo yum install gitlab-ce-8.13.5-ce.0.el6.x86_64
+  154  sudo rpm -e gitlab-ce
+  155  sudo yum install gitlab-ce-8.13.5-ce.0.el6.x86_64
+  156  sudo gitlab-ctl restart
+  157  clear
+  158  pwd
+  159  ls
+  160  sudo gitlab-ctl stop unicorn
+  161  sudo gitlab-ctl stop sidekiq
+  162  sudo gitlab-ctl status
+  163  sudo gitlab-ctl stop sidekiq
+  164  clear
+  165  sudo -u gitlab-psql /opt/gitlab/embedded/bin/dropdb gitlabhq_production
+  166  sudo gitlab-rake gitlab:backup:restore BACKUP=1479723182
+  167  sudo gitlab-ctl start
+  168  sudo gitlab-rake gitlab:check SANITIZE=true
+  169  exit
+  170  pwd
+  171  ls /var/opt/gitlab/git-data/repositories/backups/
+  172  ls /var/opt/gitlab/git-data/repositories
+  173  mkdir /var/opt/gitlab/git-data/repositories/backups
+  174  DIR="/var/opt/gitlab/git-data/repositories/backups/"
+  175  TODAY=$(date +"%d-%m-%Y")
+  176  cd $DIR
+  177  tar -zcvf config$TODAY.tar.gz /etc/gitlab
+  178  ls
+  179  tar -zxvf config22-11-2016.tar.gz 
+  180  ls
+  181  ls etc/
+  182  ls etc/gitlab/
+  183  ls etc/gitlab/trusted-certs/
+  184  ls etc/gitlab/
+  185  ls
+  186  rm -rf *
+  187  ls
+  188  tar -cvf config$TODAY.tar.gz /etc/gitlab
+  189  rm -rf *
+  190  tar -cvf config$TODAY.tar.gz /etc/gitlab/
+  191  ls
+  192  tar - config22-11-2016.tar.gz 
+  193  tar -zxvf config22-11-2016.tar.gz 
+  194  tar -xvf config22-11-2016.tar.gz 
+  195  ls
+  196  ls etc/
+  197  ls etc/gitlab/
+  198  ls /etc/gitlab/
+  199  exit
+  200  history 
+  201  pwd
+  202  cd /
+  203  history >install_git_command
+
+  https://packages.gitlab.com/gitlab/gitlab-ce/packages/el/6/gitlab-ce-8.13.5-ce.0.el6.x86_64.rpm
+  wget http://mirrors.zju.edu.cn/gitlab-ce/yum/el6/gitlab-ce-8.13.5-ce.0.el6.x86_64.rpm
+  rpm -ivh gitlab-ce-8.13.5-ce.0.el6.x86_64.rpm
+  
+  curl -LJO https://packages.gitlab.com/gitlab/gitlab-ce/packages/el/7/gitlab-ce-8.14.2-ce.0.el7.x86_64.rpm/download
+  wget https://packages.gitlab.com/gitlab/gitlab-ce/packages/el/7/gitlab-ce-8.14.2-ce.0.el7.x86_64.rpm
+  rpm -ivh gitlab-ce-8.14.2-ce.0.el7.x86_64.rpm
+  sudo gitlab-ctl reconfigure
+  sudo gitlab-ctl restart
+  sudo gitlab-ctl status
+  sudo gitlab-ctl stop unicorn
+  sudo gitlab-ctl stop sidekiq
+  #sudo -u gitlab-psql /opt/gitlab/embedded/bin/dropdb gitlabhq_production
+  sudo gitlab-rake gitlab:backup:restore BACKUP=1480456917
+  sudo gitlab-ctl start
+  sudo gitlab-rake gitlab:check SANITIZE=true
+  
+  
+  
+  
+#12-2017  
+curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash
+sudo yum install gitlab-ce-10.2.1-ce.0.el7.x86_64
+sudo gitlab-ctl reconfigure
+sudo gitlab-ctl restart
+sudo gitlab-ctl status
+sudo gitlab-ctl stop unicorn
+sudo gitlab-ctl stop sidekiq
+
+
+
+COPY cho nay vao locate moi
+
+
+etc/gitlab/
+etc/gitlab/gitlab-secrets.json
+etc/gitlab/trusted-certs/
+etc/gitlab/ssl/
+etc/gitlab/ssl/ssl-bundle.crt
+etc/gitlab/ssl/repo.vietis.com.vn.key
+etc/gitlab/custom_mattermost_server.conf
+etc/gitlab/custom_gitlab_server.conf
+etc/gitlab/gitlab.rb
+
+/var/opt/gitlab/gitlab-rails/etc/smtp_settings.rb
+/var/opt/gitlab/gitlab-rails/etc/gitlab.yml
+
+
+/var/opt/gitlab/nginx/conf/nginx.conf
+/var/opt/gitlab/nginx/conf/gitlab-http.conf
+
+
+
+
+
+  

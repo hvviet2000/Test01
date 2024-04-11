@@ -1,0 +1,58 @@
+https://www.poftut.com/what-is-default-sftp-port-and-how-to-change-sftp-port-number/
+
+Change Default SFTP Port
+
+/etc/ssh/sshd_config
+#Port 22
+Port 2222
+
+sudo systemctl restart sshd
+
+
+
+
+sftp -P 2222 poftut.com
+
+
+How to Configure Separate Port For SSH and SFTP On CentOS/RHEL
+https://www.thegeekdiary.com/how-to-configure-separate-port-for-ssh-and-sftp-on-centos-rhel/
+
+
+ /etc/ssh/sshd_config
+ # vi /etc/ssh/sshd_config
+Port 22
+Port 2222
+
+# vi /etc/ssh/sshd_config
+Subsystem sftp internal-sftp
+
+# vi /etc/ssh/sshd_config
+Match LocalPort 22
+AllowTCPForwarding no
+X11Forwarding no
+ForceCommand internal-sftp
+
+# service sshd restart
+
+
+# ssh root@192.168.10.12
+root@192.168.10.12's password:
+This service allows sftp connections only.
+Connection to 192.168.10.12 closed.
+
+
+# ssh -p 2222 root@192.168.10.12
+root@192.168.10.12's password:
+
+
+# sftp root@192.168.10.12
+Connecting to 192.168.10.12...
+root@192.168.10.12's password:
+sftp>
+
+ip nat inside source static tcp 10.1.7.32 2223 interface GigabitEthernet0/0 2223
+
+user : salejp
+password : vietis123
+W1FiH2d2
+

@@ -1,0 +1,73 @@
+Upgrade gitlab 10 to 11
+
+sudo yum update gitlab-ce-10.8.5 --downloadonly 
+sudo yum update gitlab-ce-10.8.5 
+sudo gitlab-rake gitlab:env:info
+sudo yum update gitlab-ce --downloadonly
+sudo yum update gitlab-ce
+
+sudo yum update gitlab-ce-10.*
+Commenting out the offending lines in /etc/gitlab/gitlab.rb
+sudo gitlab-ctl reconfigure
+sudo yum update gitlab-ce
+sudo gitlab-ctl restart 
+
+resolved my problem.
+
+to get the Mattermost version on GitLab Omnibus:
+
+cd /opt/gitlab/embedded/service/mattermost
+sudo -u mattermost /opt/gitlab/embedded/bin/mattermost --config=/var/opt/gitlab/mattermost/config.json version
+
+
+==Upgrade==
+/var/opt/gitlab/mattermost/config.json
+{
+    "ServiceSettings": {
+  "EnableInsecureOutgoingConnections": true,
+
+
+ =========================== /etc/gitlab/gitlab.rb
+
+ mattermost['gitlab_enable'] = true
+ mattermost['gitlab_id'] = "480352e0d4fe92abe8b6fc62bfbd7bdd86e0e0e77323b896b3546cc328c05b91"
+ mattermost['gitlab_secret'] = "fb21b262688082665b23b0b7236910d8271439d5f8074627a23410ccc871b7e3"
+ 
+ Token nay get tu trang web
+ Application: Gitlab Mattermost BK
+ Application Id: 
+ Secret:
+ 
+ https://repo-bk.vietis.com.vn:8009/admin/applications
+ name: Gitlab Mattermost BK
+ URL: 
+ https://repo-bk.vietis.com.vn:8025/signup/gitlab/complete
+ https://repo-bk.vietis.com.vn:8025/login/gitlab/complete
+
+ Scopes: (X) checked API
+		 (X) checked openid
+		
+
+
+https://docs.gitlab.com/omnibus/gitlab-mattermost/#upgrading-gitlab-mattermost-from-versions-prior-to-11-0
+
+
+The following settings in gitlab.rb:
+
+
+curl -k --header "Private-Token:rCfcdtXxSbqijs3eppzs" https://repo.vietis.com.vn:8009/api/v4/projects/120/members -o test3.txt
+
+
+
+192.168.100.66
+Pbs9Y7c-DEtdXBixP6kj
+
+curl -k --header "Private-Token:Pbs9Y7c-DEtdXBixP6kj" https://repo-bk.vietis.com.vn:8009/api/v4/projects/104/members  -o danhsach2.txt
+
+
+https://github.com/jehiah/json2csv
+
+https://github.com/zemirco/json2csv
+http://www.convertcsv.com/json-to-csv.htm
+
+git config --system --unset credential.helper

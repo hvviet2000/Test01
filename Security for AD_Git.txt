@@ -1,0 +1,15 @@
+https://social.technet.microsoft.com/wiki/contents/articles/28241.controlling-object-visibility-deny-list-content.aspx
+
+https://social.technet.microsoft.com/Forums/office/en-US/fb2629d7-43cc-4657-9734-cf19f09d85c5/restrict-ldap-access-to-ou?forum=winserverDS
+
+https://docs.gitlab.com/ee/api/members.html
+
+10 => Guest access
+20 => Reporter access
+30 => Developer access
+40 => Maintainer access
+50 => Owner access # Only valid for groups
+
+GET /groups/:id/members
+GET /projects/:id/members
+

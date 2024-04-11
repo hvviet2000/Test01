@@ -1,0 +1,190 @@
+10.1.38.17 www-exuat.lifenet.local
+10.1.38.17 www-exuat-aws05.local
+10.1.38.17 localhost.local
+
+		40.121.80.200
+          104.40.50.126
+          23.102.255.237
+          40.115.34.155
+		  
+		  
+ip access-list extended PRI_INTERNET_DIRECT_ACL
+ permit ip 192.168.100.0 0.0.0.255 any
+ permit ip 10.1.6.0 0.0.0.255 any
+ permit ip 10.1.7.0 0.0.0.255 any
+ permit ip 192.168.108.0 0.0.0.255 any
+ permit ip 192.168.120.0 0.0.0.255 any
+ permit ip 10.1.35.0 0.0.0.255 any
+ permit icmp any any echo-reply
+ permit icmp any any echo
+ permit tcp any any eq domain
+ permit udp any any eq domain
+ permit tcp any any eq pop3
+ permit tcp any any eq 143
+ permit tcp any any eq smtp
+ permit tcp any any eq 995
+ permit tcp any any eq 993
+ permit tcp any any eq 587
+ permit tcp any any eq 465
+ permit tcp any any eq 22
+ permit tcp any any eq 3389
+ permit tcp any any eq 3306
+ permit tcp any host 118.103.49.84 eq 443
+ permit tcp any host 176.34.50.98 eq 443
+ permit tcp any host 176.34.50.94 eq 443
+ remark skype==begin
+ permit tcp any host 40.121.80.200 eq 443
+ permit tcp any host 104.40.50.126 eq 443
+ permit tcp any host 23.102.255.237 eq 443
+ permit tcp any host 40.115.34.155 eq 443
+ permit tcp any host 40.121.80.200 eq 443
+ permit tcp any host 104.40.50.126 eq 443
+ permit tcp any host 23.102.255.237 eq 443
+ permit tcp any host 40.115.34.155 eq 443
+ remark skype==end
+ 
+ 
+ 
+ip access-list extended PRI_INTERNET_DIRECT_ACL
+ permit ip 192.168.100.0 0.0.0.255 any
+ permit ip 10.1.6.0 0.0.0.255 any
+ permit ip 10.1.7.0 0.0.0.255 any
+ permit ip 192.168.108.0 0.0.0.255 any
+ permit ip 192.168.120.0 0.0.0.255 any
+ permit ip 10.1.35.0 0.0.0.255 any
+ permit icmp any any echo-reply
+ permit icmp any any echo
+ permit tcp any any eq domain
+ permit udp any any eq domain
+ permit tcp any any eq pop3
+ permit tcp any any eq 143
+ permit tcp any any eq smtp
+ permit tcp any any eq 995
+ permit tcp any any eq 993
+ permit tcp any any eq 587
+ permit tcp any any eq 465
+ permit tcp any any eq 22
+ permit tcp any any eq 3389
+ permit tcp any any eq 3306
+ permit tcp any host 118.103.49.84 eq 443
+ permit tcp any host 176.34.50.98 eq 443
+ permit tcp any host 176.34.50.94 eq 443
+ permit tcp any host 52.193.6.209 eq 443
+ permit tcp any host 52.69.230.127 eq 443
+ remark skype==start
+ permit tcp any host 23.102.255.237
+ permit tcp any host 40.115.34.155
+ permit tcp any host 40.121.80.200
+ permit tcp any host 104.40.50.126
+ remark skype==END
+ deny   ip any any
+ 
+ 
+pmtool.demo@vietis.vn
+roland.yamashita@vietis.vn
+sazaby.he@vietis.vn
+sazaby.ishibashi@vietis.vn
+sazaby.kimura@vietis.vn
+sazaby.ozawa@vietis.vn
+
+systena.kimura@vietis.vn
+
+systena.nakamura@vietis.vn
+123Server.Miyahara@vietis.vn
+123Server.Otsuka@vietis.vn
+123Server.Satoh@vietis.vn
+123Server.Tokimatsu@vietis.vn
+AINIX.yamanaka@vietis.vn
+at.Kikuchi@vietis.vn
+AT.Tsujiuchi@vietis.vn
+at.yamaguchi@vietis.vn
+AXSEED.Kado@vietis.vn
+c3.komatsu@vietis.vn
+C3.Yoshida_za@vietis.vn
+CPV.Mike@vietis.vn
+digitalk@vietis.vn
+dk.fukuda@vietis.vn
+dk.nagamatsu@vietis.vn
+dk.nakamura@vietis.vn
+dk.satou@vietis.vn
+GBA.Iwai@vietis.vn
+GBA.Kobayashi@vietis.vn
+
+hvn.user@vietis.vn
+
+isms_cus2@vietis.vn
+isms_dev@vietis.vn
+isms_dev2@vietis.vn
+isms_pm@vietis.vn
+isms_pm2@vietis.vn
+isms_test@vietis.vn
+isms_test2@vietis.vn
+dao.nguyenngoc@vietis.vn
+duc.nguyen@vietis.vn
+hieu.nguyen@vietis.vn
+anh.dongoc@vietis.vn
+anh.trinhminh@vietis.vn
+hung.hoang2@vietis.vn
+hung.le@vietis.vn
+huong.pham@vietis.vn
+huyen.lethi.sv@vietis.vn
+nam.nguyenxuan@vietis.vn
+quan.trannguyen@vietis.vn
+tay.nguyencanh.sv@vietis.vn
+thang.nguyen@vietis.vn
+thanh.trinhvan.sv@vietis.vn
+tuan.phamvan@vietis.vn
+tung.nguyen@vietis.vn
+
+191.233.95.169
+40.114.149.220
+13.107.3.128
+157.55.56.175
+52.174.255.177
+64.4.23.149
+64.4.23.159
+111.221.77.158
+111.221.77.176
+52.233.139.130
+157.56.52.26
+13.69.188.18
+52.114.74.5
+111.221.77.146
+13.94.214.96
+239.255.255.250
+91.190.216.65
+91.190.216.55
+52.169.150.154
+91.190.218.55
+91.190.218.54
+91.190.218.59
+91.190.218.63
+91.190.218.51
+91.190.218.65
+91.190.218.60
+91.190.217.43
+13.77.82.37
+91.190.216.54
+65.55.223.23
+91.190.218.53
+157.55.235.146
+111.221.77.157
+104.46.49.241
+91.190.217.48
+91.190.217.45
+91.190.216.61
+91.190.219.39
+91.190.219.44
+40.115.1.44
+157.55.130.166
+91.190.218.62
+91.190.218.61
+91.190.219.43
+65.52.139.168
+46.218.71.133
+137.116.195.37
+91.190.219.37
+91.190.218.56
+40.77.226.192
+65.55.223.37
+
