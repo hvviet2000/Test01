@@ -1,0 +1,70 @@
+GMail SMTP Settings are:
+
+    SMTP username: Your Gmail address
+    SMTP password: Your Gmail password
+    SMTP server address: smtp.gmail.com:587
+    GMail SMTP port (TLS): 587
+    GMail SMTP port (SSL): 465
+    SMTP TLS/SSL required: yes 
+	
+https://tecadmin.net/gmail-smtp-settings/
+
+yum -y install postfix cyrus-sasl-plain mailx
+systemctl restart postfix
+systemctl enable postfix
+
+/etc/postfix/main.cf
+
+myhostname = hostname.example.com
+
+relayhost = [smtp.gmail.com]:587
+smtp_use_tls = yes
+smtp_sasl_auth_enable = yes
+smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+smtp_tls_CAfile = /etc/ssl/certs/ca-bundle.crt
+smtp_sasl_security_options = noanonymous
+smtp_sasl_tls_security_options = noanonymous
+
+https://kifarunix.com/configure-postfix-to-use-gmail-smtp-on-centos-8/
+
+https://linuxscriptshub.com/configure-smtp-with-gmail-using-postfix/
+
+yum update && yum install postfix mailx cyrus-sasl cyrus-sasl-plain
+vi /etc/postfix/sasl_passwd
+[smtp.gmail.com]:587 username@gmail.com:password
+
+
+========================= 
+vi /etc/postfix/main.cf
+ relayhost = [smtp.gmail.com]:587
+ smtp_use_tls = yes
+ smtp_sasl_auth_enable = yes
+ smtp_sasl_security_options =
+ smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+ smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
+ 
+ vi /etc/postfix/main.cf
+  relayhost = [smtp.gmail.com]:587
+ smtp_use_tls = yes
+ smtp_sasl_auth_enable = yes
+ smtp_sasl_security_options =
+ smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+ smtp_tls_CAfile = /etc/ssl/certs/ca-bundle.crt
+ 
+ 
+========================= 
+ postmap /etc/postfix/sasl_passwd
+ chmod 600 /etc/postfix/sasl_passwd
+ systemctl restart postfix && systemctl enable postfix
+ 
+ 
+ Enable “Less Secure Apps” In Gmail
+ 
+ mail -s "Test subject" recipient@domain.com
+ 
+  CTRL-D to send it. 
+  To cancel the email, press CTRL-C twice.
+  
+  
+  setsebool -P httpd_can_network_connect 1
+  

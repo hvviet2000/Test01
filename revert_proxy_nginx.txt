@@ -1,0 +1,64 @@
+server {
+    listen         *:443 ssl;
+    server_name   domain1.com;
+    ssl_certificate /path/to/domain1.crt; 
+    ssl_certificate_key /path/to/domain1.key;
+    return         301 https://www.domain1.com$request_uri;
+}
+
+server {
+    listen         *:443 ssl;
+    server_name   domain2.com www.domain2.com;
+    ssl_certificate /path/to/domain2.crt; 
+    ssl_certificate_key /path/to/domain2.key;
+    return         301 https://www.domain1.com$request_uri;
+}
+
+server {
+    listen         *:443 ssl;
+    server_name   domain3.com www.domain3.com;
+    ssl_certificate /path/to/domain3.crt; 
+    ssl_certificate_key /path/to/domain3.key;
+    return         301 https://www.domain1.com$request_uri;
+}
+
+server {
+    listen 443 http2 ssl;
+    listen [::]:443 http2 ssl;
+
+    server_name  gitlab.vietis.com.vn;
+
+    location / {
+                    proxy_pass https://repo.vietis.com.vn:8009;
+	}
+
+
+#   ssl_certificate /etc/ssl/gitlab_vietis_com_vn.crt;
+    ssl_certificate /etc/ssl/ssl-bundle.crt;
+    ssl_certificate_key /etc/ssl/gitlab.vietis.com.vn.key;
+    ssl on;
+
+
+   
+}
+
+
+
+server {
+    listen 443 http2 ssl;
+    listen [::]:443 http2 ssl;
+   
+	server_name  center.vietis.com.vn;
+
+    location / {
+                    proxy_pass https://center.vietis.com.vn:98;
+	}
+
+    ssl_certificate /etc/ssl/login_center_bundle.crt;
+    ssl_certificate_key /etc/ssl/login_center.key;
+   ssl on;
+}
+
+
+openssl pkcs12 -export -out logincenter.pfx -inkey login_center.key -in login_center_bundle.crt -certfile center_vietis_com_vn.ca-bundle
+

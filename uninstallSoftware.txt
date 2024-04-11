@@ -1,0 +1,334 @@
+wmic product where (caption like "7-Zip%") call uninstall /nointeractive
+
+$computers = gc "C:\scripts\computers.txt"
+
+foreach ($computer in $computers) {
+    if (test-Connection -Cn $computer -quiet) {
+        & C:\pstools\psexec.exe \\$computer "C:\folder\install.bat"
+    } else {
+        "$computer is not online"
+    }
+}
+
+
+Alias           Clear-WUJob                                        2.1.1.2    PSWindowsUpdate
+Alias           Download-WindowsUpdate                             2.1.1.2    PSWindowsUpdate
+Alias           Get-WUInstall                                      2.1.1.2    PSWindowsUpdate
+Alias           Get-WUList                                         2.1.1.2    PSWindowsUpdate
+Alias           Hide-WindowsUpdate                                 2.1.1.2    PSWindowsUpdate
+Alias           Install-WindowsUpdate                              2.1.1.2    PSWindowsUpdate
+Alias           Show-WindowsUpdate                                 2.1.1.2    PSWindowsUpdate
+Alias           UnHide-WindowsUpdate                               2.1.1.2    PSWindowsUpdate
+Alias           Uninstall-WindowsUpdate                            2.1.1.2    PSWindowsUpdate
+Cmdlet          Add-WUServiceManager                               2.1.1.2    PSWindowsUpdate
+Cmdlet          Enable-WURemoting                                  2.1.1.2    PSWindowsUpdate
+Cmdlet          Get-WindowsUpdate                                  2.1.1.2    PSWindowsUpdate
+Cmdlet          Get-WUApiVersion                                   2.1.1.2    PSWindowsUpdate
+Cmdlet          Get-WUHistory                                      2.1.1.2    PSWindowsUpdate
+Cmdlet          Get-WUInstallerStatus                              2.1.1.2    PSWindowsUpdate
+Cmdlet          Get-WUJob                                          2.1.1.2    PSWindowsUpdate
+Cmdlet          Get-WULastResults                                  2.1.1.2    PSWindowsUpdate
+Cmdlet          Get-WURebootStatus                                 2.1.1.2    PSWindowsUpdate
+Cmdlet          Get-WUServiceManager                               2.1.1.2    PSWindowsUpdate
+Cmdlet          Get-WUSettings                                     2.1.1.2    PSWindowsUpdate
+Cmdlet          Invoke-WUJob                                       2.1.1.2    PSWindowsUpdate
+Cmdlet          Remove-WindowsUpdate                               2.1.1.2    PSWindowsUpdate
+Cmdlet          Remove-WUServiceManager                            2.1.1.2    PSWindowsUpdate
+Cmdlet          Set-PSWUSettings                                   2.1.1.2    PSWindowsUpdate
+Cmdlet          Set-WUSettings                                     2.1.1.2    PSWindowsUpdate
+Cmdlet          Update-WUModule                                    2.1.1.2    PSWindowsUpdate
+
+https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.1#:~:text=Set-Execution%20Policy%201%20Description.%20The%20Set-ExecutionPolicy%20cmdlet%20changes,4%20Outputs.%20Set-ExecutionPolicy%20doesn%27t%20return%20any%20output.%20
+
+
+2. Run the following 2 cmdlets to set .NET Framework strong cryptography registry keys:
+
+    Set strong cryptography on 64 bit .Net Framework (version 4 and above)
+
+    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Wow6432Node\Microsoft\.NetFramework\v4.0.30319' -Name 'SchUseStrongCrypto' -Value '1' -Type DWord
+
+    set strong cryptography on 32 bit .Net Framework (version 4 and above)
+
+    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\.NetFramework\v4.0.30319' -Name 'SchUseStrongCrypto' -Value '1' -Type DWord
+
+3. Restart Powershell and check again for supported protocol by using [Net.ServicePointManager]::SecurityProtocol
+
+
+Restart-Computer -ComputerName $Names -Credential $Creds -Force
+https://4sysops.com/archives/scan-download-and-install-windows-updates-with-powershell/
+https://www.nakivo.com/blog/automate-windows-updates-using-powershell-short-overview/
+https://docs.microsoft.com/en-us/powershell/module/packagemanagement/install-packageprovider?view=powershell-7.2
+
+wuinstall.exe /install /useUpdateService WindowsUpdate
+
+winrm quickconfig
+
+Find-Module -Name PSWindowsUpdate
+ | Install-Module
+
+https://adamtheautomator.com/pswindowsupdate/
+
+Invoke-Command -ComputerName Server01 -ScriptBlock { Get-ExecutionPolicy } | Set-ExecutionPolicy
+
+Set-ExecutionPolicy -ExecutionPolicy AllSigned -Scope CurrentUser
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
+
+
+Install-Module PSWindowsUpdate -Force
+Install-Module -Name PSWindowsUpdate -Force
+Get-Command -Module PSWindowsUpdate
+Get-WindowsUpdate
+Get-WUServiceManager
+Get-WURebootStatus
+
+Install-WindowsUpdate -AcceptAll -AutoReboot
+
+
+Get-WUHistory
+Remove-WindowsUpdate -KBArticleID KB2267602
+
+
+
+$comps = get-content c:\folder\computers.txt
+
+foreach ($comp in $comps){
+
+new-pssession -computername $comp
+
+invoke-command (get-pssession) -scriptblock{
+
+#insert your script here! Untested, please try.
+
+}}
+
+
+psexec \\server -s powershell Enable-PSRemoting -Force 
+psexec \\server -s powershell Start-Service WinRM
+Invoke-Command -computername server  -script { \\domain.local\NETLOGON\windowsupdate.ps1 }
+
+
+
+
+$servers = "server1","server2","server3"
+
+foreach ($server in $servers){
+Invoke-Command -ComputerName $server -Scriptblock {
+    powershell.exe \\domain.com\sysvol\domain.com\scripts\update.ps1
+    }
+}
+
+$servers = "server1","server2","server3"
+
+foreach ($server in $servers){
+Invoke-Command -ComputerName $server -Scriptblock {
+    #This is where the code goes
+    }
+}
+
+
+
+New-PSDrive -Name "Visio" -PSProvider "FileSystem" -Root "\\servername\share\visio std_2013\"
+cd Visio:
+Start-Process ".\visio-std-13.bat" -Wait
+Write-Host "Installed..." -ForegroundColor Green
+Write-Host "Cleaning up..." -ForegroundColor Magenta
+cd C:
+Remove-PSDrive -Name "Visio"
+
+Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
+
+Start-Process -Wait -FilePath "C:\Setup.exe" -ArgumentList "/S" -PassThru
+
+\\192.168.100.155\Training\TrainingSetup\IT\setup\PSTools\nuget.exe
+
+WARNING: Unable to download from URI 'https://go.microsoft.com/fwlink/?LinkID=627338&clcid=0x409' to ''.
+WARNING: Unable to download the list of available providers. Check your internet connection.
+No match was found for the specified search criteria for the provider 'NuGet'. The package provider requires 'PackageManagement' and 'Provider' tags. 
+Please check if the specified package has the tags.
+
+
+The solution mentioned above is a workaround, to solve your issue permanently
+
+1. Open Powershell and check for supported protocols by using[Net.ServicePointManager]::SecurityProtocol
+
+
+2. Run the following 2 cmdlets to set .NET Framework strong cryptography registry keys:
+
+    Set strong cryptography on 64 bit .Net Framework (version 4 and above)
+
+    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Wow6432Node\Microsoft\.NetFramework\v4.0.30319' -Name 'SchUseStrongCrypto' -Value '1' -Type DWord
+
+    set strong cryptography on 32 bit .Net Framework (version 4 and above)
+
+    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\.NetFramework\v4.0.30319' -Name 'SchUseStrongCrypto' -Value '1' -Type DWord
+
+3. Restart Powershell and check again for supported protocol by using [Net.ServicePointManager]::SecurityProtocol
+
+Niels Weistra
+
+
+
+@echo off
+cd/
+echo "Downloading Patches; This will take several minutes depends on your Internet speed"
+powershell -Command "(New-Object Net.WebClient).DownloadFile('http://download.windowsupdate.com/c/msdownload/update/software/uprl/2020/03/windows-kb000000-x64-v5.81_74132082f1421c2217b1b07673b671ceddba20fb.exe', ' kb000000_Scan.exe')"
+echo "1 out of 4 downloaded"
+echo "****"
+powershell -Command "(New-Object Net.WebClient).DownloadFile('http://download.windowsupdate.com/c/msdownload/update/software/secu/2020/03/windows10.0- kb000000-x64_5db6cfc57a8bda4d13107ad24b3fe8fd790219cf.msu', ' kb000000.msu')"
+echo "2 out of 4 downloaded"
+echo "****"
+powershell -Command "(New-Object Net.WebClient).DownloadFile('http://download.windowsupdate.com/c/msdownload/update/software/secu/2020/04/windows10.0- kb000000-x64_705fda69935538eab5054d9d616e1761742816ec.msu', ' kb000000.msu')"
+echo "3 out of 4 downloaded"
+echo "****"
+powershell -Command "(New-Object Net.WebClient).DownloadFile('http://download.windowsupdate.com/d/msdownload/update/software/secu/2020/04/windows10.0- kb000000-x64_5411f88ea08bfc0ac98f388f5a3bdc8bcfea3261.msu', ' kb000000.msu')"
+echo "4 out of 4 are downloaded, Now installing patches!"
+echo "****"
+@echo off
+cd/
+wusa.exe C:\ kb000000.msu /quiet /norestart
+echo " kb000000 is installed, processing the next one"
+echo "****"
+wusa.exe C:\ kb000000.msu /quiet /norestart
+echo " kb000000 is installed, processing the next one"
+echo "****"
+echo "This will take 5-10 mins for installing"
+echo "****"
+wusa.exe C:\ kb000000.msu /quiet /norestart
+echo "All the patches are installed & Your system is about to restart now"
+shutdown -r
+
+
+@ECHO OFF
+title Administrative Windows Updates
+CLS
+
+setlocal enabledelayedexpansion
+
+:START
+REM GO TO UPDATES PATH
+C:
+CD\MS_Updates\
+
+REM SCAN THROUGH INSTALLING EACH UPDATE SILENTLY
+FOR %%# IN (*.msu) DO (
+Echo Installing Microsoft Update: %%#
+C:\Windows\System32\Wusa.exe “%%#” /quiet /norestart
+)
+ECHO.
+
+:END
+ECHO Windows Update is complete!
+PING -n 10 127.0.0.1>nul
+EXIT
+
+
+
+====
+::##check if update pending reboot key exists
+@echo off
+reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update\RebootRequired" >nul 2>&1
+IF NOT %ERRORLEVEL% == 0 goto Not_Pending_Restart
+echo System Reboot Pending: Yes
+
+::##check if the time since update has been pending reboot
+for /f "tokens=3,4" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update\RebootRequired" /f "RebootRequiredSince" ^| findstr "REG_SZ"') do echo Pending since: %%a %%b
+for /f %%i in ('wmic qfe list ^| find "KB" /c') do echo Number of Installed Updates: %%i
+goto EOF
+
+:Not_Pending_Restart
+echo System Reboot Pending: No
+for /f %%i in ('wmic qfe list ^| find "KB" /c') do echo Number of Installed Updates: %%i
+
+:EOF
+
+
+====================================
+@ECHO OFF
+REM Sunday is 0
+for /f "delims=" %%a in ('c:\date.exe +%%w') do set DayOfWeek=%%a
+if %DayOfWeek% == 0 (
+  cmd /c c:\path\to\exe\file.exe
+) else (
+  echo Do Nothing
+)
+
+@echo off
+    setlocal enableextensions disabledelayedexpansion
+
+    set "now=%time: =0%"
+
+    set "task=day"
+    if "%now%" lss "03:30:00,00" ( set "task=night" ) 
+    if "%now%" geq "22:00:00,00" ( set "task=night" )
+
+    call :task_%task%
+
+    endlocal
+    exit /b
+
+:task_day
+    :: do daily task
+    goto :eof
+
+:task_night
+    :: do nightly task
+    goto :eof
+
+
+set DAY=Sun
+
+for /F "tokens=1 delims= " %%A in ('Date /t') do ( Set TODAY=%%A )
+if %TODAY% == %DAY% goto START
+
+:STOP
+color 47
+goto END
+
+:START
+color 27
+
+start "" "%FILE%"
+goto END
+
+:END
+exit
+
+
+net stop wuauserv
+net stop bits
+rd /s /q %windir%\softwaredistribution
+net start bits
+net start wuauserv
+wuauclt.exe /detectnow
+
+wuauclt /detectnow /updatenow && shutdown /s /t 0
+
+
+
+
+https://www.scriptinghouse.com/2017/08/batch-powershell-how-to-check-pending-computer-restart-after-installing-windows-update.html
+
+https://gist.github.com/AveYo/234d561dec43abc6c41f43d223a87170
+
+wuauclt /detectnow /updatenow && shutdown /s /t 0
+
+
+
+for /f "tokens=1-4 delims=/ " %%i in ("%date%") do (
+     set dow=%%i
+     set month=%%j
+     set day=%%k
+     set year=%%l
+)
+set datestr=%month%_%day%_%year%
+echo datestr is %datestr% and %dow%
+
+  SETLOCAL
+  For /f "tokens=1-3 delims=1234567890 " %%a in ("%time%") Do set "delims=%%a%%b%%c"
+  For /f "tokens=1-4 delims=%delims%" %%G in ("%time%") Do (
+    Set _hh=%%G
+    Set _min=%%H
+    Set _ss=%%I
+    Set _ms=%%J
+  )
+  

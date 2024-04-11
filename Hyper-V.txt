@@ -1,0 +1,44 @@
+
+/usr/share/nginx/html/vietis.tuyendung
+/usr/share/nginx/html/vis.website.english
+/usr/share/nginx/html/vis.website.renewal
+
+%windir%\System32\wbadmin.exe
+
+wbadmin delete systemstatebackup -keepVersions:3
+
+https://www.youtube.com/watch?v=YoDbTzeznKk&ab_channel=VIETCLOUDTV
+
+
+https://wiki.lyrasis.org/display/VIVO/Install+CentOS+7+in+Hyper-V+on+Windows+10
+
+https://thuanbui.me/hyper-v-virtual-switch/
+
+https://thuanbui.me/hyper-v-virtual-switch/
+
+https://audministrator.wordpress.com/2017/11/06/windows-server-2016-event-id-307-error/
+
+https://www.tenforums.com/virtualization/190700-eventviewer-bootup-error-cannot-load-virtual-machine-configuration.html
+
+icacls  "D:\HyperV\Centos7\Centos7.vhdx" /grant "NT VIRTUAL MACHINE\4B34" :(F)
+icacls "E:\VMs\VMName\Disk0.vhd" /grant "NT VIRTUAL MACHINE\5FC5C385-BD98-451F-B3F3-1E50E06EE663":(F)
+
+
+https://fptshop.com.vn/tin-tuc/thu-thuat/cach-khac-phuc-loi-distributedcom-10016-tren-windows-10-139355
+https://www.pctricksguru.com/2021/05/cannot-connect-to-virtual-machine-try.html
+https://www.youtube.com/watch?v=UDmh-KQEN_U&ab_channel=NetworkingBit
+https://www.youtube.com/watch?v=AGNeFmkE7Zg&ab_channel=PCTricksGuru
+
+Open HyperV and right click on your virtual machine and click on Turn Off.
+Now open registry editor by running regedit command in RUN and then navigate to HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization and look for the DWORD "ListenerPort".
+Double click on "ListenerPort" and click on "Decimal" and change the value to 21791 and click OK
+
+netstat -ano | find "21791"
+
+PS C:\WINDOWS\system32> Stop-Service vmms
+PS C:\WINDOWS\system32> Stop-Service vmms
+PS C:\WINDOWS\system32> Start-Service vmms
+
+
+Fix HyperV Error - Cannot connect to the virtual machine, try to connect again
+bcdedit /set hypervisorlaunchtype auto

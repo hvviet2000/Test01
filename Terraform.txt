@@ -1,0 +1,4 @@
+https://hocdevops.com/infrastructure-as-code/lam-quen-voi-terrafom/
+https://devopsvn.tech/terraform-series/terraform/bai-0-infrastructure-as-code-va-terraform
+
+provider

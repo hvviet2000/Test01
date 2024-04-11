@@ -1,0 +1,172 @@
+https://dangkyhosting.com/huong-dan-mot-so-tip-bao-mat-nginx-server.html
+
+https://thebackroomtech.com/2019/01/28/configure-nginx-reverse-proxy-step-by-step/
+https://mangolassi.it/topic/6905/setting-up-nginx-on-centos-7-as-a-reverse-proxy
+
+https://deviant.engineer/2015/05/nginx-reverseproxy-centos7/
+
+
+option
+firewall-cmd --zone=public --add-port=http/tcp --permanent
+firewall-cmd --zone=public --add-port=https/tcp --permanent
+firewall-cmd --reload
+
+This is the default list of allowed http/tcp ports.
+http_port_t tcp 80, 81, 443, 488, 8008, 8009, 8443, 9000
+
+
+
+# yum install epel-release
+# yum install nginx
+# systemctl enable nginx
+# systemctl start nginx
+# firewall-cmd --permanent --zone=public --add-service=http
+# firewall-cmd --permanent  --zone=public --add-service=https
+# firewall-cmd --reload
+# vi /etc/nginx/nginx.conf
+include /etc/nginx/conf.d/*.conf;
+
+
+#vi /etc/nginx/conf.d/reverseproxy.conf
+
+---
+ssl_certificate  ssl/domain.crt;   # Replace with your cert info (I generate my own self-signed certs with openssl)
+ssl_certificate_key  ssl/domain.key;   # Replace with your cert info (I generate my own self-signed certs with openssl)
+ssl_dhparam  ssl/domain.pem;   # Replace with your cert info (I generate my own self-signed certs with openssl)
+ssl_session_timeout  5m;
+ssl_prefer_server_ciphers  on;
+ssl_protocols  TLSv1 TLSv1.1 TLSv1.2;
+ssl_ciphers  AES256+EECDH:AES256+EDH:!aNULL;
+
+server  {
+
+  listen  80;   # Redirect any port http/80 requests, to https/443 -- generally only matters for internal requests
+  server_name  *.domain.com;
+  return 301 https://$host$request_uri;
+}
+
+server  {
+  listen  443 ssl;   # Return 404 page if requesting the root url; can set this to whatever you want, but I just leave this at a 404
+  server_name domain.com;
+  ssl  on;
+  location  / {
+    return  404;
+  }
+}
+
+server  {
+  listen  443 ssl;   # Example config for SubSonic, browsable at https://subsonic.domain.com
+  server_name  subsonic.domain.com;
+  ssl  on;
+  location  / {
+    proxy_pass  http://interal_ip_to_subsonic:4040/;
+  }
+}
+
+server  {
+  listen  443 ssl;   # Example config for OwnCloud, browsable at https://owncloud.domain.com
+  server_name  owncloud.domain.com;
+  client_max_body_size  0;
+  ssl  on;
+  location  / {
+    proxy_pass  http://internal_ip_to_owncloud/;
+  }
+}
+
+server  {
+  listen  443 ssl;   # Example config for SABnzbd, browsable at https://sab.domain.com
+  server_name  sab.domain.com;
+  ssl  on;
+  location  / {
+    proxy_pass  http://internal_ip_to_sabnzbd:8080/;
+  }
+}
+
+server  {
+  listen  443 ssl;   # Example config for SickRage, browsable at https://sr.domain.com
+  server_name  sr.domain.com;
+  ssl  on;
+  location  / {
+    proxy_pass  http://interal_ip_to_sickrage:8081/;
+  }
+}
+
+server  {
+  listen  443 ssl;   # Example config for CouchPotatoServer, browsable https://cps.domain.com
+  server_name  cps.domain.com;
+  ssl  on;
+  location  / {
+    proxy_pass  http://internal_ip_to_sickbeard:5050/;
+  }
+}
+
+server  {
+  listen  443 ssl;   # Example config for Headphones, browsable at https://hp.domain.com
+  server_name  hp.domain.com;
+  ssl  on;
+  location  / {
+    proxy_pass  http://internal_ip_to_headphones:9090/;
+  }
+}
+
+server  {
+  listen  443 ssl;   # Example config for Guacamole, browsable at https://guac.domain.com/guacamole
+  server_name  guac.domain.com;
+  ssl  on;
+  location  / {
+    proxy_buffering  off;
+    proxy_pass  http://interl_ip_to_guacamole:8080/;
+    proxy_http_version  1.1;
+    proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header  Upgrade $http_upgrade;
+    proxy_set_header  Connection $http_connection;
+    access_log  off;
+  }
+}
+
+server  {
+  listen  443 ssl;   # Example config for Plex Media Server, browsable at https://pms.domain.com/web
+  server_name  pms.domain.com;
+  ssl  on;
+  location  / {
+    proxy_pass  http://internal_ip_to_plex:32400/;
+  }
+}
+
+server {
+  listen  443 ssl;    # Example config for Stash, browsable at https://git.domain.com
+  server_name  git.domain.com;
+  ssl  on;
+  client_max_body_size  256m;
+  location  / {
+    proxy_pass  http://internal_ip_to_stash:7990;
+    proxy_set_header  X-Forwarded-Host $host;
+    proxy_set_header  X-Forwarded-Server $host;
+    proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
+  }
+}
+---
+
+#systemctl enable nginx.service   # Start nginx as system boot
+
+
+
+#save as file: /etc/nginx/conf.d/helpdesk.domain.conf
+server {
+	client_max_body_size 40M;
+	listen 443 ssl;
+	server_name helpdesk.domain.com;
+	ssl          on;
+	ssl_certificate /etc/ssl/cacert.pem;
+	ssl_certificate_key /etc/ssl/privkey.pem;
+
+	location / {
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header Host $http_host;
+		proxy_set_header X-NginX-Proxy true;
+		proxy_pass https://10.0.0.4:8090;
+		proxy_redirect off;
+	}
+}
+

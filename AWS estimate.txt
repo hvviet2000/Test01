@@ -1,0 +1,43 @@
+#sh processes cpu | exclude 0.00%__0.00%__0.00%
+https://mcle8.wordpress.com/2013/05/30/monitor-routerswitch-dung-nagios/
+https://www.youtube.com/watch?v=jnFjdqtKcMU&ab_channel=NETVN
+
+
+no access-list 23 permit 192.168.100.0 0.0.0.255
+no access-list 90 permit 10.1.6.10
+no access-list 100 deny ip any any
+
+access-list 23 permit 192.168.100.0 0.0.0.255
+access-list 24 permit 10.1.37.43 0.0.0.0
+access-list 90 permit 10.1.6.10
+access-list 100 deny ip any any
+
+https://techhay.vn/tong-hop-aws-tim-hieu-ve-amazon-vpc/
+
+https://aws.amazon.com/blogs/networking-and-content-delivery/using-aws-sso-with-aws-client-vpn-for-authentication-and-authorization/
+
+https://calculator.aws/#/createCalculator/VPC
+
+
+VN:  3 client
+JP:  1 client
+Cus: 2 client
+=============
+Cần vpn 10 client to site
+Hệ thống ở vùng Asia Pacific (Singapore) ap-southeast-1
+
+    2 subnets x 730 hours per month x 0.15 USD = 219.00 USD (Client VPN endpoint cost)
+    Client VPN endpoint cost (monthly): 219.00 USD
+    10 connections x 7 hours per day x 22 working days x 0.05 USD = 77.00 USD (Client VPN connection cost)
+    Client VPN connection cost (monthly): 77.00 USD
+    219.00 USD + 77.00 USD = 296.00 USD (Client VPN total cost)
+
+    Total Client VPN cost (monthly): 296.00 USD
+	
+	
+	730 hours in a month x 0.059 USD = 43.07 USD (Gateway usage hourly cost)
+    10 GB per month x 0.059 USD = 0.59 USD (NAT Gateway data processing cost)
+    43.07 USD + 0.59 USD = 43.66 USD (NAT Gateway processing and month hours)
+    1 NAT Gateways x 43.66 USD = 43.66 USD (Total NAT Gateway usage and data processing cost)
+
+    Total NAT Gateway usage and data processing cost (monthly): 43.66 USD

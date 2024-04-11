@@ -1,0 +1,87 @@
+https://cnttshop.vn/blogs/cisco/kich-hoat-giao-dien-web-switch-cisco
+
+10.1.2.10
+cisco
+vietis@875
+
+
+
+10.1.2.11
+cisco/abcd123-
+en:cisco
+
+Cisco Network Assistant.
+
+ip http authentication local
+
+
+10.1.2.18
+cisco/abcd123-
+en:vietis@875
+no ip http secure-server
+ip http authentication local
+
+
+
+https://anninhmang.net/tu-hoc-quan-tri-mang/tu-hoc-ccna/tu-hoc-ccna-bai-4-cac-loai-password-tren-router-cisco/
+https://kenh49.vn/huong-dan-cach-recovery-password-tren-thiet-bi-cisco/
+https://vnexperts.vn/reset-password-router-switch-cisco.html
+
+Configuring Username and Password Pairs
+SUMMARY STEPS
+
+    1.    enable
+
+    2.    configure terminal
+
+    3.    username name [privilege level] {password encryption-type password}
+		  username cisco privilege 15 secret 5
+    4.    Use one of the following:
+        line console 0
+        line vty 0 15
+
+    5.    login local
+
+    6.    end
+
+    7.    show running-config
+
+    8.    copy running-config startup-config 
+
+
+Setting a Telnet Password for a Terminal Line	
+1.    enable
+
+2.    configure terminal
+
+3.    line vty 0 15
+
+4.    password password
+
+5.    end
+
+6.    show running-config
+
+7.    copy running-config startup-config 
+
+Catalyst 2960CX Switches:
+WS-C2960CX-8PC-L
+WS-C2960CX-8TC-L
+
+Catalyst 2960CX Switches:
+WS-C2960CX-8PC-L
+WS-C2960CX-8TC-L
+
+
+
+
+
+https://www.youtube.com/watch?v=LlnZTCwN-78&ab_channel=Dr.WynnTranOfficial
+https://www.youtube.com/watch?v=LlnZTCwN-78&ab_channel=Dr.WynnTranOfficial
+
+https://netsystem.vn/chuc-nang-cua-switch-layer-3/
+
+
+Mã đơn phòng: HTEKMT
+
+http://www.idz.vn/2016/07/thiet-ke-ha-tang-mang-lan-du-phong-ay-u.html

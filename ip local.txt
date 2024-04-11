@@ -1,0 +1,134 @@
+Require ip 113.164.228.218 #VIETIS_VNPT_LL
+Require ip 113.164.228.219 #VIETIS
+Require ip 113.164.228.220 #VIetIS
+Require ip 113.164.228.221 #VIETIS
+Require ip 113.164.228.222 #VIETIS
+
+Require ip 118.70.128.119 #VIETIS FTTH 3A
+Require ip 118.70.16.140 #VIETIS FTTH AC
+Require ip 118.70.72.152 #VIETIS FTTH 3A
+
+Require ip 192.168.100.0/24 # VietIS local LAN server
+
+Require ip 192.168.4.0/24 #VPN Client TMG
+Require ip 192.168.5.0/24 #VPN Client TMG
+Require ip 192.168.8.0/24 #Open Client VPN 3A
+Require ip 192.168.11.0/24# Client VPN AC
+Require ip 192.168.13.0/24#Open VPN JP
+
+Require ip 172.16.80.0/24 # LAN Lifenet ODC
+Require ip 172.16.10.0/24 # LAN VP Japan
+
+Require ip 10.1.2.0/24 #LAN
+Require ip 10.1.3.0/24
+Require ip 10.1.7.0/24
+Require ip 10.1.6.0/24
+
+Require ip 10.1.32.0/23
+Require ip 10.1.34.0/24
+Require ip 10.1.35.0/24
+Require ip 10.1.36.0/24
+Require ip 10.1.37.0/24
+Require ip 10.1.38.0/24
+Require ip 10.1.39.0/24
+Require ip 10.1.40.0/24
+Require ip 10.1.41.0/24
+Require ip 10.1.54.0/24
+Require ip 10.1.55.0/24
+
+
+Require ip 153.231.190.238 #thinh.daodang 15/1/2023 
+Require ip 60.65.44.44  #thinh.daodang 15/1/2023 
+Require ip 35.79.153.62 #manh.nguyenthe ESC 30-6-2023
+Require ip 35.79.138.236 #manh.nguyenthe ESC 30-6-2023
+Require ip 54.64.174.215 #NihonJumbo 
+Require ip 20.205.39.154 #axio.checkpoint  30-3-2023
+Require ip 20.239.248.113 #axio.checkpoint  30-3-2023
+Require ip 60.76.75.197 #AH 30-3-2023
+Require ip 52.199.4.63 #Lifenet.Renewsite 31-12-2023
+deny all
+
+
+        Require ip 192.168.100.0/24
+	Require ip 172.16.0.0/24
+	Require ip 113.190.232.25
+	Require ip 118.70.128.119
+	Require ip 172.16.80.0/24
+	Require ip 118.103.49.93
+	Require ip 113.164.228.218
+	Require ip 113.164.228.219
+	Require ip 113.164.228.220
+	Require ip 113.164.228.221
+	Require ip 113.164.228.222
+	Require ip 192.168.5.0/24
+	Require ip 172.16.45.0/24
+	Require ip 10.1.7.0/24
+	Require ip 10.1.6.0/24
+	Require ip 10.1.2.0/24
+	Require ip 10.1.3.0/24
+	Require ip 10.1.32.0/23
+	Require ip 10.1.34.0/24
+	Require ip 10.1.35.0/24
+	Require ip 10.1.36.0/24
+	Require ip 10.1.37.0/24
+	Require ip 10.1.38.0/24
+	Require ip 10.1.39.0/24
+	Require ip 10.1.40.0/24
+	Require ip 10.1.41.0/24
+	Require ip 10.1.54.0/24
+	Require ip 192.168.8.0/24
+	Require ip 192.168.4.0/24
+	Require ip 192.168.10.0/24
+	Require ip 192.168.11.0/24
+	
+allow 113.164.228.218;
+allow 113.164.228.219;
+allow 113.164.228.220;
+allow 113.164.228.221;
+allow 113.164.228.222;
+allow 118.70.128.119;
+allow 118.70.16.140;
+allow 118.70.72.152;
+allow 192.168.100.0/24;
+allow 192.168.5.0/24;
+allow 192.168.8.0/24;
+allow 192.168.11.0/24;
+allow 192.168.13.0/24;
+allow 192.168.4.0/24;
+allow 172.16.80.0/24;
+allow 172.16.10.0/24;
+allow 10.1.2.0/24;
+allow 10.1.3.0/24;
+allow 10.1.7.0/24;
+allow 10.1.6.0/24;
+allow 10.1.32.0/23;
+allow 10.1.34.0/24;
+allow 10.1.35.0/24;
+allow 10.1.36.0/24;
+allow 10.1.37.0/24;
+allow 10.1.38.0/24;
+allow 10.1.39.0/24;
+allow 10.1.40.0/24;
+allow 10.1.41.0/24;
+allow 10.1.54.0/24;
+allow 10.1.55.0/24;
+allow 153.231.190.238;
+allow 60.65.44.44;
+allow 35.79.153.62;
+allow 52.193.154.240;
+allow 18.177.174.230;
+allow 54.64.174.215;
+allow 20.205.39.154;
+allow 20.239.248.113;
+allow 60.76.75.197;
+allow 52.199.4.63;
+allow 35.74.41.144;
+allow 35.76.249.37;
+allow 52.69.237.168;
+allow 18.176.194.16;
+allow 35.79.133.100;
+allow 58.186.205.161;
+allow 18.183.72.160;
+allow 54.250.157.36;
+allow 43.206.190.95;
+allow 52.199.197.228;

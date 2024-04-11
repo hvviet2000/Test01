@@ -1,0 +1,4 @@
+https://www.colasoft.com/capsa/detecting-trojan-and-worm-with-capsa-network-analyzer.php
+https://www.colasoft.com/capsa/how-to-detect-syn-flood-attacks-with-capsa.php
+
+https://blog.colasoft.com/how-to-detect-email-worm-with-colasoft-packet-sniffer/

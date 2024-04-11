@@ -1,0 +1,87 @@
+allow 113.190.232.25; # VietIS internet
+allow 118.70.128.119; # VietIS internet
+allow 118.70.72.152; #Vietis-Ftth-FPT-3A
+allow 118.70.16.140; #Vietis-Ftth-FPT-AC
+allow 113.164.228.218; #VIETIS_VNPT_LL
+allow 113.164.228.219; #VIETIS
+allow 113.164.228.220; #VIetIS
+allow 113.164.228.221; #VIETIS
+allow 113.164.228.222; #VIETIS
+allow 192.168.5.0/24; #VPN Client
+allow 192.168.100.0/24; #VietIS LAN
+allow 172.16.0.0/24; # VietIS LAN
+allow 10.1.7.0/24; #VIETIS LAN
+allow 10.1.6.0/24; #VIETIS LAN
+allow 10.1.3.0/24; #VIETIS LAN
+allow 10.1.32.0/23;#VIETIS LAN
+allow 10.1.34.0/24;#VIETIS LAN
+allow 10.1.35.0/24;#VIETIS LAN
+allow 10.1.36.0/24;#VIETIS LAN
+allow 10.1.37.0/24;#VIETIS LAN
+allow 10.1.38.0/24;#VIETIS LAN
+allow 10.1.39.0/24;#VIETIS LAN
+allow 10.1.40.0/24;#VIETIS LAN
+allow 10.1.41.0/24;#VIETIS LAN
+allow 10.1.50.0/24;#VIETIS LAN
+allow 172.16.80.0/24; # Lifenet ODC
+allow 118.103.49.93; # Lifenet customer 
+allow 119.104.11.150; #ViETIS-JP-Dev
+allow 121.113.76.56; #tien.leminh
+allow 114.16.148.35; #van.ngohai
+allow 180.57.221.158;#anh.dotuan
+allow 126.74.68.241;#gianglt
+allow 157.250.254.13;#huynx
+allow 60.98.16.105;#thinh.daodang
+allow 20.205.39.154; #axio
+allow 222.252.30.6; #tinhnx
+allow 118.70.176.249; #tinhnx:
+allow 118.103.49.92; # Lifenet customer
+allow 220.108.137.41; #onsite
+allow 210.2.238.49; #onsite
+allow 126.43.224.76; #onsite
+allow 126.200.201.143; # Lifenet customer
+deny all;
+
+
+
+
+OLD
+# allow rules
+allow 192.168.100.0/24; # VietIS local
+allow 113.190.232.25; # VietIS internet
+allow 118.70.178.93; # VietIS internet
+allow 172.16.80.0/24; # Lifenet ODC
+allow 118.103.49.93; # Lifenet customer
+allow 202.222.202.60; # Lifenet customer
+allow 113.164.228.218; #VIETIS_VNPT_LL
+allow 113.164.228.219;
+allow 113.164.228.220;
+allow 113.164.228.221;
+allow 113.164.228.222;
+allow 192.168.5.0/24;
+allow 10.1.7.0/24;
+allow 10.1.6.0/24;
+allow 10.1.3.0/24;
+allow 10.1.32.0/23;
+allow 10.1.34.0/24;
+allow 10.1.35.0/24;
+allow 10.1.36.0/24;
+allow 10.1.37.0/24;
+allow 10.1.38.0/24;
+allow 10.1.39.0/24;
+allow 10.1.40.0/24;
+allow 10.1.41.0/24;
+allow 118.70.128.119;  # VietIS internet
+allow 118.103.49.92; # Lifenet customer
+allow 220.108.137.41; #onsite
+allow 210.2.238.49; #onsite
+allow 126.43.224.76; #onsite
+allow 114.16.148.35; #onsite hai
+allow 118.70.72.152; #Vietis-Ftth-FPT-3A
+allow 118.70.16.140; #Vietis-Ftth-FPT-AC
+#deny    all;
+
+
+121.113.76.56 - Lê Minh Tiến (tien.leminh)
+114.16.148.35 - Ngô Hải Vân (van.ngohai)
+180.57.221.158 - Đỗ Tuấn Anh (anh.dotuan)

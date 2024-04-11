@@ -1,0 +1,39 @@
+https://ostechnix.com/how-to-backup-and-restore-linux-system-with-timeshift/
+https://www.linuxhowto.net/how-to-backup-and-restore-linux-system-with-timeshift/
+https://bytexd.com/how-to-backup-and-restore-your-linux-system-with-timeshift/
+
+https://dev.to/rahedmir/how-to-use-timeshift-from-command-line-in-linux-1l9b
+
+yum makecache
+yum -y install timeshift
+which timeshift
+
+sudo timeshift --create --comments "A new backup" --tags D
+
+--tags D stands for Daily Backup
+
+--tags W stands for Weekly Backup
+
+--tags M stands for Monthly Backup
+
+--tags O stands for On-demand Backup
+
+
+Add a New Disk to an Existing Linux Server
+fdisk -l
+
+fdisk /dev/xvdc
+mkfs.ext4 /dev/xvdc1
+mount /dev/xvdc1 /data
+
+# ls /dev/sd*
+/dev/sda /dev/sda1 /dev/sda2
+fdisk /dev/sdb
+/sbin/mkfs.ext4 -L /dev/sdb1
+/sbin/mkfs.ext4 /dev/sdb1
+mkdir /backup
+mount /dev/sdb1 /backup
+
+/etc/fstab
+LABEL=/backup           /backup                       ext4     defaults          1 2
+

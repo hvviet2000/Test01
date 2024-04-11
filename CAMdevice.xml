@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DeviceManager version="2.0">
+	<Device name="CAM" domain="3A001BFPAPC522B" port="37777" username="admin" password="vpVsunKX4t0Aw+SIm5yMjt63fr272QhHAKSSy3y6hLQNiZJVk8V+LP+z" protocol="1" connect="19" />
+	<Device name="3A001F5PAEAD84Z" domain="3A001F5PAEAD84Z" port="37777" username="admin" password="kcgFEJEE0auuu9CwZLjvv5r/JODkAO4sCiIJdCcnaznoNdItITBDhWZa" protocol="1" connect="19" />
+</DeviceManager>

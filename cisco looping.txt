@@ -1,0 +1,11 @@
+https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/28943-170.html
+https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9600/software/release/17-2/configuration_guide/lyr2/b_172_lyr2_9600_cg/configuring_loop_detection_guard.pdf
+https://www.youtube.com/watch?v=eiaYS780_2U&ab_channel=TheTechnologyFirm
+
+
+https://cnttshop.vn/blogs/cisco/dhcp-snooping-hoat-dong-va-cach-cau-hinh-tren-cisco
+https://vnpro.vn/thu-vien/tan-cong-giao-thuc-dhcp-3133.html
+https://vnexperts.vn/cau-hinh-dhcp-snooping-cisco.html
+https://highlandsoft.com.vn/cau-hinh-dhcp-snooping/
+
+https://cnttshop.vn/blogs/cisco/dhcp-snooping-hoat-dong-va-cach-cau-hinh-tren-cisco

@@ -1,0 +1,48 @@
+https://cuongquach.com/firewall-asa-bai-1-cau-hinh-co-ban.html
+https://securityzone.vn/t/chapter-2-1-cac-lenh-co-ban-tren-cisco-asa.190/
+https://vnpro.vn/thu-vien/chuong-1--tong-quat-hoat-dong-va-cau-hinh-co-ban-thiet-bi-asa-phan-1-3639.html
+
+
+    Mức bảo mật (Security Level) 100: Đây là mức bảo mật cao nhất, thường được gán cho cổng thuộc mạng bên trong (inside).
+    Mức bảo mật 0: Đây là mức bảo mật thấp nhất, thường được gán cho cổng mà kết nối ra Internet hay vùng không tin cậy còn gọi là vùng bên ngoài (outside).
+    Mức bảo mật từ 1-99: Cho phép bạn sử dụng để gán cho những cổng còn lại nếu yêu cầu mở rộng vùng mạng.
+
+
+
+Bước 2: Cấu hình giao diện Public bên ngoài (Configure the public outside interface)
+
+ASA-TGM(config)# interface Ethernet0/0
+ASA-TGM(config-if)# nameif outside
+ASA-TGM(config-if)# security-level 0
+ASA-TGM(config-if)# ip address 100.100.100.1 255.255.255.252
+ASA-TGM(config-if)# no shut
+
+Bước 3: Cấu hình giao diện nội bộ đáng tin cậy (Configure the trusted internal interface)
+
+ASA-TGM(config)# interface Ethernet0/1
+ASA-TGM(config-if)# nameif inside
+ASA-TGM(config-if)# security-level 100
+ASA-TGM(config-if)# ip address 192.168.10.1 255.255.255.0
+ASA-TGM(config-if)# no shut
+
+Bước 4: Định cấu hình PAT trên giao diện bên ngoài (Configure PAT on the outside interface)
+
+ASA-TGM(config)# global (outside) 1 interface
+ASA-TGM(config)# nat (inside) 1 0.0.0.0 0.0.0.0
+
+Với Cisco ASA phiên bản 8.3 trở lên. Lệnh "global" không còn được hỗ trợ. NAT (tĩnh và động) và PAT được cấu hình dưới dạng đối tượng mạng. Cấu hình PAT bên dưới dành cho ASA 8.3 trở lên:
+
+ASA-TGM(config)#object network obj_any
+ASA-TGM(config)#subnet 0.0.0.0 0.0.0.0
+ASA-TGM(config)#nat (inside,outside) dynamic interface
+
+Bước 5: Cấu hình định tuyến mặc định (default route) tới ISP (giả sử cổng mặc định là 100.100.100.2)
+
+ASA-TGM(config)# route outside 0.0.0.0 0.0.0.0 100.100.100.2 1
+
+Bước 6: Cấu hình DHCP trên tường lửa để cấp IP cho các hosts trong mạng
+
+ASA-TGM(config)# dhcpd dns 200.200.200.10
+ASA-TGM(config)# dhcpd address 192.168.10.10-192.168.10.200 inside
+ASA-TGM(config)# dhcpd enable inside
+

@@ -1,0 +1,105 @@
+Quy tắc liên quan tới việc xóa các branch trên GIT của công ty
+1. Khi người review thực hiện review xong merge request và thực hiện merge code vào develop thì đồng thời cũng lick vào checkbox "delete current branch"
+2. KHi dự án kết thúc PM phải kiểm tra lại trên GIT của dự án xem còn Branch nào chưa được remove thì remove tránh trường hợp sót lại gây tốn bộ nhớ
+3. Mình vào phần danh sách branh nếu thấy mấy cái branch feature vẫn còn thì là chưa hoàn thành
+
+
+
+
+
+Sử dụng Git Large File Storage (LFS): Git LFS là một công cụ cho phép bạn lưu trữ các tập tin lớn trong một kho lưu trữ độc lập và chỉ lưu trữ một bản sao duy nhất của tập tin trong kho chính.
+
+
+https://forge.etsi.org/rep/help/api/members.md
+
+curl --header "PRIVATE-TOKEN:glpat-yoEBMM5V5GyW2vMY4zRQ" "https://gitlab.example.com/api/v4/projects/:id/members/all"
+curl --header "PRIVATE-TOKEN:glpat-yoEBMM5V5GyW2vMY4zRQ" "https://repo.vietis.com.vn:8009/api/v4/projects/:id/members/all"
+
+https://repo.vietis.com.vn:8009/adx/adx.acswebsite.git
+
+
+curl --header "PRIVATE-TOKEN: xxx" "https://gitlab.com/api/v3/projects/234/issues"
+
+curl --header "PRIVATE-TOKEN:glpat-yoEBMM5V5GyW2vMY4zRQ" "https://repo.vietis.com.vn:8009/api/v4/adx.acswebsite/issues"
+
+curl --header "PRIVATE-TOKEN:glpat-yoEBMM5V5GyW2vMY4zRQ""https://repo.vietis.com.vn:8009/projects/387"
+
+curl --request GET "https://repo.vietis.com.vn:8009"
+
+curl --header "PRIVATE-TOKEN:glpat-yoEBMM5V5GyW2vMY4zRQ" "https://repo.vietis.com.vn:8009/adx/adx.acswebsite/-/blob/master/license.txt"
+
+https://www.wake-up-neo.net/vi/api/toi-tim-id-du-cho-api-gitlab-o-dau/828334117/
+
+
+api/v3/users?per_page=100
+  
+  316  curl -k --header "Private-Token:Pbs9Y7c-DEtdXBixP6kj" https://repo-bk.vietis.com.vn:8009/api/v4/projects
+  317   
+  318  curl -k --header "Private-Token:Pbs9Y7c-DEtdXBixP6kj" https://repo-bk.vietis.com.vn:8009/api/v4/projects -o danhsach1.txt
+  319  curl -k --header "Private-Token:rCfcdtXxSbqijs3eppzs" https://192.168.100.66:8009/api/v4/projects/106/members  -o danhsach2.txt
+  320  curl -k --header "Private-Token:Pbs9Y7c-DEtdXBixP6kj" https://192.168.100.66:8009/api/v4/projects/106/members  -o danhsach2.txt
+  321  curl -k --header "Private-Token:Pbs9Y7c-DEtdXBixP6kj" https://192.168.100.66:8009/api/v4/projects/104/members  -o danhsach2.txt
+  322  curl -k --header "Private-Token:Pbs9Y7c-DEtdXBixP6kj" https://repo-bk.vietis.com.vn/api/v4/projects/106/members  -o danhsach2.txt
+  323  curl -k --header "Private-Token:Pbs9Y7c-DEtdXBixP6kj" https://repo-bk.vietis.com.vn:8009/api/v4/projects/106/members  -o danhsach2.txt
+  324  curl -k --header "Private-Token:Pbs9Y7c-DEtdXBixP6kj" https://repo-bk.vietis.com.vn:8009/api/v4/projects/104/members  -o danhsach2.txt
+  325  curl -k --header "Private-Token:Pbs9Y7c-DEtdXBixP6kj" https://repo-bk.vietis.com.vn:8009/api/v4/projects/104/members
+  326  curl -k --header "Private-Token:Pbs9Y7c-DEtdXBixP6kj" https://repo-bk.vietis.com.vn:8009/api/v4/projects/102/members
+  327  curl -k --header "Private-Token:Pbs9Y7c-DEtdXBixP6kj" https://repo-bk.vietis.com.vn:8009/api/v4/projects/102/members -o danhsach2.txt
+  
+===> Lấy danh sách các dự án
+  curl -k --header "Private-Token:glpat-yoEBMM5V5GyW2vMY4zRQ" https://repo.vietis.com.vn:8009/api/v4/projects -o danhsach1.txt
+  curl --header "Private-Token:glpat-yoEBMM5V5GyW2vMY4zRQ" https://repo.vietis.com.vn:8009/api/v4/projects -o danhsach1.txt
+  
+  
+  curl --header "Private-Token:glpat-yoEBMM5V5GyW2vMY4zRQ" "https://repo.vietis.com.vn:8009/api/v4/projects/106/search?scope=users&search=doe"
+  curl --header "Private-Token:glpat-yoEBMM5V5GyW2vMY4zRQ" "https://repo.vietis.com.vn:8009/api/v4/projects/387/" -o danhsach4.txt
+  
+  
+  curl --request GET --header "Private-Token:glpat-yoEBMM5V5GyW2vMY4zRQ" "https://repo.vietis.com.vn:8009/api/
+  
+  
+  
+ import gitlab
+# private token or personal token authentication
+gl = gitlab.Gitlab('https://gitlab.company.be', private_token='dklsfjksldjfkdsjf', api_version=4)
+gl.auth()
+
+project = gl.projects.get('path/to/project')
+items = project.repository_tree()
+
+print(items)
+
+import gitlab
+import json
+from pprint import pprint
+import requests
+import urllib.request
+
+
+# private token authentication
+gl = gitlab.Gitlab('<path_to_gitlab_repo>', private_token=<token_here>)
+
+gl.auth()
+
+# list all projects
+projects = gl.projects.list()
+for project in projects:
+    # print(project) # prints all the meta data for the project
+    print("Project: ", project.name)
+    print("Gitlab URL: ", project.http_url_to_repo)
+    # print("Branches: ", project.repo_branches)
+    pprint(project.repository_tree(all=True))
+    f = urllib.request.urlopen(project.http_url_to_repo)
+    myfile = f.read()
+    print(myfile)
+    print("\n\n")
+	
+	
+https://gitbetter.substack.com/p/how-to-clean-up-the-git-repo-and
+git gc
+git gc --aggressive
+git prune
+
+https://rowannicholls.github.io/git/advanced/shrink_repository.html#reclaim-space
+
+https://dothanhlong.org/cach-giam-dung-luong-thu-muc-git/

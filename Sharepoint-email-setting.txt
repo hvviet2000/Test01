@@ -1,0 +1,31 @@
+https://pgbhoyar.com/2015/12/22/how-to-setup-gmail-as-smtp-relay-server-in-sharepoint/
+
+
+
+PS C:\script> get-wmiobject Win32_Product -computername thiemkhuc | Select-Object -Property PackageName,Vendor,Description,HelpLink,InstallLocation,InstallSource,Name,URLInfoAbout 
+get-wmiobject : The RPC server is unavailable. (Exception from HRESULT: 0x800706BA)
+At line:1 char:1
++ get-wmiobject Win32_Product -computername thiemkhuc | Select-Object -Property Pa ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Get-WmiObject], COMException
+    + FullyQualifiedErrorId : GetWMICOMException,Microsoft.PowerShell.Commands.GetWmiObjectCommand
+ 
+PS C:\script> get-wmiobject Win32_Product -computername thiemkhucvan.vietis.vn | Select-Object -Property PackageName,Vendor,Description,HelpLink,InstallLocation,InstallSource,Name,URLInfoAbout 
+
+
+https://collab365.com/optimizing-sql-server-performance-for-microsoft-sharepoint-2010/
+
+https://www.techtask.com/sql-server-best-practices-for-sharepoint-server-2016/
+
+SELECT (physical_memory_in_use_kb/1024) AS Used_Memory_By_SqlServer_MB FROM sys.dm_os_process_memory
+
+SELECT * FROM TestDB.dbo.TableA
+
+SELECT (physical_memory_in_use_kb/1024) AS Used_Memory_By_SqlServer_MB FROM sys.dm_os_process_memory	
+
+DECLARE @maxMem INT = 2147483647 --Max. memory for SQL Server instance in MB
+EXEC sp_configure 'show advanced options', 1
+RECONFIGURE
+
+EXEC sp_configure 'max server memory', @maxMem
+RECONFIGURE

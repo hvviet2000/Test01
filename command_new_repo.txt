@@ -1,0 +1,553 @@
+    1  his
+    2  history 
+    3  sudo yum -y install epel-release curl vim policycoreutils-python
+    4  sudo yum -y install curl vim policycoreutils python3-policycoreutils
+    5  sudo yum -y install postfix
+    6  sudo systemctl enable postfix && sudo systemctl start postfix
+    7  curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash
+    8  sudo yum install gitlab-ce
+    9  df -h
+   10  vi /etc/ssh/sshd_config
+   11  sudo semanage port -a -t ssh_port_t -p tcp 2222
+   12  firewall-cmd --add-port 222/tcp --permanent
+   13  sudo firewall-cmd --reload
+   14  service sshd restart
+   15  exit
+   16  ping 192.168.100.10
+   17  ping 10.1.41.1
+   18  route -n
+   19  ip route list
+   20  cat /etc/sysconfig/network
+   21  ls /etc/sysconfig/network-scripts
+   22  ifconfig 
+   23  service network restart
+   24  systemctl restart network.service
+   25  systemctl start NetworkManager
+   26  systemctl enable NetworkManager
+   27  systemctl restart network.service
+   28  systemctl enable NetworkManager
+   29  yum install network-scripts
+   30  systemctl restart network
+   31  ping 10.1.41.1
+   32  history 
+   33  route -n
+   34  sudo /etc/init.d/networking restart
+   35  netplan apply
+   36  sudo systemctl start NetworkManager.service
+   37  sudo systemctl restart NetworkManager.service
+   38  systemctl restart NetworkManager
+   39  route -n
+   40  ping 10.1.32.1
+   41  ping 10.1.34.1
+   42  ping 10.1.41.1
+   43  ping 172.16.80.1
+   44  ping 192.168.5.1
+   45  dnf install epel-release
+   46  dnf install fail2ban
+   47  sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+   48  systemctl enable fail2ban
+   49  systemctl start fail2ban
+   50  fail2ban-client status
+   51  fail2ban-client status sshd
+   52  fail2ban-client status ssh
+   53  systemctl restart fail2ban
+   54  fail2ban-client status sshd
+   55  fail2ban-client status ssh
+   56  sudo systemctl status fail2ban
+   57  systemctl restart fail2ban
+   58  fail2ban-client status sshd
+   59  sudo systemctl status fail2ban
+   60  fail2ban-client stop
+   61  systemctl enable fail2ban
+   62  systemctl start fail2ban
+   63  sudo systemctl status fail2ban
+   64  cat /var/log/fail2ban.log
+   65  systemctl status sshd
+   66  cat /var/log/fail2ban.log
+   67  sudo systemctl restart fail2ban
+   68  cat /var/log/fail2ban.log
+   69  sudo systemctl status fail2ban
+   70  sudo systemctl restart fail2ban
+   71  cat /var/log/fail2ban.log
+   72  sudo systemctl status fail2ban
+   73  yum install denyhosts
+   74  sysctl -p 
+   75  clear
+   76  sysctl -p 
+   77  reboot
+   78  yum install telnet
+   79  ifconfig 
+   80  yum update
+   81  ping 192.168.100.230
+   82  telnet localhost 2222
+   83  history 
+   84  systemctl restart sshd.service
+   85  vi /etc/selinux/config 
+   86  netstat -tupln
+   87  firewall-cmd --add-port 2222/tcp --permanent
+   88  firewall-cmd --add-port 2222/tcp
+   89  firewall-cmd --reload
+   90  sudo systemctl status fail2ban
+   91  sysctl net.ipv4.tcp_available_congestion_control
+   92  sysctl net.ipv4.tcp_congestion_control
+   93  uname -r
+   94  cat /etc/resolv.conf
+   95  sudo firewall-cmd --permanent --add-service={ssh,http,https} --permanent
+   96  vi /etc/gitlab/gitlab.rb
+   97  sudo gitlab-ctl reconfigure
+   98  cat  /etc/gitlab/initial_root_password
+   99  history 
+  100  @89
+  101  firewall-cmd --reload
+  102  cat  /etc/gitlab/initial_root_password
+  103  cat /proc/cpuinfo
+  104  scpu
+  105  lscpu
+  106  pwd
+  107  clear
+  108  openssl req -new -newkey rsa:2048 -nodes -out server.csr -keyout server.key -subj "/C=VN/ST=084/L=024/O=VIETIS/OU=VIETIS Software Corporation/CN=192.168.100.58"
+  109  ls
+  110  sudo openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+  111  vi /etc/nginx/conf.d/ssl.conf
+  112  whereis nginx
+  113  find / -name nginx
+  114  ls
+  115  cp server.key server.crt /etc/gitlab/ssl/*
+  116  cp server.key server.crt /etc/gitlab/ssl/*.*
+  117  cp server.key server.crt /etc/gitlab/ssl/
+  118  history 
+  119  gitlab-ctl reconfigure
+  120  gitlab-ctl stop
+  121  gitlab-ctl reconfigure
+  122  gitlab-ctl start
+  123  reboot
+  124  yum makecache
+  125  yum -y install timeshift
+  126  sudo dnf update
+  127  sudo dnf install timeshift
+  128  his
+  129  history 
+  130  sudo dnf update
+  131  tracer 8.8.8.8
+  132  tracepath 8.8.8.8
+  133  ping 8.8.8.8
+  134  tracepath www.google.com
+  135  yum install traceroute 
+  136  traceroute -d 8.8.8.8
+  137  sudo yum install timeshift
+  138  timeshift
+  139  exit
+  140  pwd
+  141  ls
+  142  openssl req -new -newkey rsa:2048 -nodes -out repo.vietis.com.vn.scr -keyout repo.vietis.com.vn.key -subj "/C=VN/ST=084/L=024/O=VIETIS/OU=VIETIS JSC/CN=repo.vietis.com.vn"
+  143  exit
+  144  df -h
+  145  history | grep network
+  146  systemctl restart network.service
+  147  ifconfig 
+  148  traceroute -d 8.8.8.8
+  149  crontab -e
+  150  crontab -l
+  151  sudo dnf -y install iperf3
+  152  iperf -s
+  153  iperf3 -c la.speedtest.clouvider.net -p 5209
+  154  iperf3 -c la.speedtest.clouvider.net -p 5209 -R
+  155  iperf3 -c iperf.par2.as49434.net -p 9200 -R
+  156  iperf3 -c iperf.par2.as49434.net -p 9240
+  157  iperf3 -c iperf.par2.as49434.net
+  158  iperf -c iperf.par2.as49434.net -p 9200
+  159  iperf -c iperf.par2.as49434.net -p 9200 -R
+  160  iperf -c speedtest.serverius.net -p 5002 -R
+  161  iperf -c speedtest.serverius.net -p 5002
+  162  iperf3 -c speedtest.serverius.net -p 5002
+  163  exit
+  164  history 
+  165  curl -I https://192.168.100.58
+  166  exit
+  167  history 
+  168  gitlab-ctl reconfigure
+  169  crontab -l
+  170  exit
+  171  yum install ftp
+  172  cd /var/opt/script/
+  173  ls
+  174  chmod +x *
+  175  ls
+  176  ./copy_ftp.sh 
+  177  ./clean_folder.sh 
+  178  exit
+  179  history 
+  180  curl -I https://192.168.100.58
+  181  ifconfig 
+  182  history | grep firewall
+  183  firewall-cmd --add-port 8009/tcp --permanent
+  184  firewall-cmd --reload
+  185  ifconfig 
+  186  telnet 192.168.200.66 8009
+  187  firewall-cmd --add-port 8009/udp --permanent
+  188  firewall-cmd --reload
+  189  ping 192.168.200.1
+  190  traceroute -d 192.168.200.1
+  191  traceroute -d 8.8.8.8
+  192  vi /etc/sysconfig/network-scripts/route-enp1s0 
+  193  vi /etc/sysconfig/network-scripts/ifcfg--enp1s0 
+  194  vi /etc/sysconfig/network-scripts/ifcfg-enp1s0 
+  195  exit
+  196  history | grep network
+  197  systemctl restart network.service
+  198  vi /etc/sysconfig/network-scripts/ifcfg-enp1s0 
+  199  ping 10.1.6.9
+  200  vi /etc/sysconfig/network-scripts/route-enp1s0 
+  201  systemctl restart network.service
+  202  ping 10.1.6.9
+  203  history 
+  204  gitlab-ctl reconfigure
+  205  gitlab-ctl restart
+  206  traceroute -d 8.8.8.8
+  207  ping 8.8.8.8
+  208  traceroute 10.1.6.9
+  209  traceroute 10.1.6.10
+  210  vi /etc/sysconfig/network-scripts/ifcfg-enp2s0 
+  211  history 
+  212  systemctl restart network.service
+  213  traceroute 10.1.6.10
+  214  ping 10.1.6.9
+  215  ping 10.1.6.10
+  216  telnet 10.1.6.9 389
+  217  reboot
+  218  sudo gitlab-ctl stop puma
+  219  sudo gitlab-ctl stop sidekiq
+  220  sudo yum remove gitlab-ce
+  221  clear
+  222  sudo yum install gitlab-ce-12.10.3
+  223  sudo gitlab-ctl restart
+  224  clear
+  225  sudo gitlab-ctl reconfigure
+  226  cd /var/opt/gitlab/backups/
+  227  sudo chown git.git 1655936214_2022_06_23_12.10.3_gitlab_backup.tar 
+  228  sudo gitlab-ctl stop unicorn
+  229  sudo gitlab-ctl stop puma
+  230  sudo gitlab-ctl stop sidekiq
+  231  sudo gitlab-ctl status
+  232  sudo gitlab-backup restore BACKUP=1655936214_2022_06_23_12.10.3
+  233  sudo gitlab-ctl restart
+  234  sudo systemctl restart gitlab-runsvdir.service
+  235  sudo gitlab-ctl restart
+  236  systemctl stop gitlab-runsvdir && systemctl start gitlab-runsvdir
+  237  sudo gitlab-ctl reconfigure
+  238  sudo gitlab-ctl stop
+  239  sudo systemctl stop gitlab-runsvdir.service
+  240  ps aux | grep postgre
+  241  sudo rm /var/opt/gitlab/postgresql/data/postmaster.pid
+  242  sudo systemctl start gitlab-runsvdir.service
+  243  sudo gitlab-ctl reconfigure
+  244  sudo gitlab-ctl tail postgre
+  245  sudo gitlab-ctl tail postgresql
+  246  clear
+  247  sudo yum remove gitlab-ce
+  248  sudo rm -rf /var/opt/gitlab
+  249  sudo rm -rf /opt/gitlab
+  250  sudo pkill -f gitlab
+  251  sudo yum install gitlab-ce-12.10.3
+  252  sudo gitlab-ctl reconfigure
+  253  sudo gitlab-ctl restart
+  254  cd /
+  255  sudo gitlab-ctl reconfigure
+  256  sudo gitlab-ctl restar
+  257  sudo gitlab-ctl restart
+  258  sudo gitlab-ctl status
+  259  sudo gitlab-ctl restart
+  260  cd /var/opt/gitlab/
+  261  ls
+  262  sudo gitlab-ctl reconfigur
+  263  clear
+  264  sudo gitlab-ctl stop
+  265  sudo yum remove gitlab-ce
+  266  sudo rm -rf /var/opt/gitlab
+  267  sudo rm -rf /opt/gitlab
+  268  sudo pkill -f gitlab
+  269  clear
+  270  sudo yum install gitlab-ce-12.10.3
+  271  sudo gitlab-ctl reconfigure
+  272  pwd
+  273  cd /
+  274  clear
+  275  sudo gitlab-ctl reconfigure
+  276  systemctl restart gitlab-runsvdir.service
+  277  sudo gitlab-ctl reconfigure
+  278  clear
+  279  sudo gitlab-ctl reconfigure
+  280  sudo rm -rf /var/opt/gitlab
+  281  sudo rm -rf /opt/gitlab
+  282  sudo pkill -f gitlab
+  283  sudo yum remove gitlab-ce
+  284  clear
+  285  sudo gitlab-ctl status
+  286  clear
+  287  sudo yum install gitlab-ce-13.0.0
+  288  sudo gitlab-ctl reconfigure
+  289  clear
+  290  sudo systemctl restart gitlab-runsvdir.service
+  291  sudo gitlab-ctl reconfigure
+  292  cat /var/log/gitlab/redis/config 
+  293  cat /opt/gitlab/sv/gitaly/log/config
+  294  clear
+  295  sudo yum remove gitlab-ce
+  296  sudo rm -rf /var/opt/gitlab
+  297  sudo rm -rf /opt/gitlab
+  298  sudo pkill -f gitlab
+  299  sudo yum install gitlab-ce-12.10.3
+  300  cd /etc/gitlab/
+  301  cp config /opt/gitlab/sv/redis/log
+  302  cp config /var/log/gitlab/gitaly
+  303  cp config /opt/gitlab/sv/gitaly/log
+  304  cp config /opt/gitlab/sv/postgresql/log
+  305  clear
+  306  cp -R config /opt/gitlab/sv/redis/log
+  307  cp -R config /var/log/gitlab/gitaly
+  308  cp -R config /opt/gitlab/sv/gitaly/log
+  309  cp -R config /opt/gitlab/sv/postgresql/log
+  310  ls
+  311  cp -r config /opt/gitlab/sv/redis/log
+  312  cp -r config /var/log/gitlab/gitaly
+  313  cp -r config /opt/gitlab/sv/gitaly/log
+  314  cp -r config /opt/gitlab/sv/postgresql/log
+  315  sudo gitlab-ctl reconfigure
+  316  cp -r config /opt/gitlab/sv/redis/log
+  317  cp -r config /var/log/gitlab/gitaly
+  318  sudo gitlab-ctl reconfigure
+  319  sudo systemctl restart gitlab-runsvdir.service
+  320  sudo gitlab-ctl reconfigure
+  321  cp -r config /opt/gitlab/sv/gitaly/log
+  322  sudo gitlab-ctl reconfigure
+  323  cp -r config /opt/gitlab/sv/postgresql/log
+  324  sudo gitlab-ctl reconfigure
+  325  cp config /opt/gitlab/sv/sidekiq/log
+  326  sudo gitlab-ctl reconfigure
+  327  cp config /opt/gitlab/sv/gitlab-workhorse/log/config
+  328  sudo gitlab-ctl reconfigure
+  329  cp config /opt/gitlab/sv/nginx/log/config
+  330  sudo gitlab-ctl reconfigure
+  331  cp config /opt/gitlab/sv/logrotate/log/config
+  332  sudo gitlab-ctl reconfigure
+  333  cp config /opt/gitlab/sv/node-exporter/log/config
+  334  sudo gitlab-ctl reconfigure
+  335  cp config /opt/gitlab/sv/gitlab-exporter/log/config
+  336  sudo gitlab-ctl reconfigure
+  337  cp config /opt/gitlab/sv/redis-exporter/log/config
+  338  sudo gitlab-ctl reconfigure
+  339  cp config /opt/gitlab/sv/prometheus/log/config
+  340  sudo gitlab-ctl reconfigure
+  341  cp config /opt/gitlab/sv/alertmanager/log/config
+  342  sudo gitlab-ctl reconfigure
+  343  sudo gitlab-ctl restart
+  344  sudo chown git.git /var/opt/gitlab/backups/1655936214_2022_06_23_12.10.3_gitlab_backup.tar 
+  345  sudo gitlab-ctl stop unicorn
+  346  sudo gitlab-ctl stop puma
+  347  sudo gitlab-ctl stop sidekiq
+  348  sudo gitlab-ctl status
+  349  sudo gitlab-backup restore BACKUP=1655936214_2022_06_23_12.10.3
+  350  sudo gitlab-ctl reconfigure
+  351  sudo gitlab-ctl restart
+  352  sudo gitlab-rake gitlab:check SANITIZE=true
+  353  sudo gitlab-ctl reconfigure
+  354  sudo gitlab-ctl restart
+  355  sudo gitlab-ctl reconfigure
+  356  sudo gitlab-ctl restart
+  357  sudo touch /etc/gitlab/skip-auto-backup
+  358  cd /opt/gitlab/sv
+  359  ls
+  360  cd /opt/gitlab/demo/
+  361  ls
+  362  sh config.sh 
+  363  clear
+  
+  
+  
+  364  cd /
+  365  yum install gitlab-ce-12.10.14
+  366  sudo gitlab-ctl reconfigure
+  367  sudo gitlab-ctl restart
+  https://access.redhat.com/solutions/3141231
+  /etc/yum.conf
+  deltarpm=0
+  
+  rpm -q deltarpm
+  sudo gitlab-ctl pg-upgrade
+  
+  368  yum install gitlab-ce-13.0.14
+  369  sudo gitlab-ctl reconfigure
+  370  sudo gitlab-ctl restart
+  371  yum install gitlab-ce-13.1.11
+  372  yum install gitlab-ce-13.8.8
+  373  yum install gitlab-ce-13.12.15
+  374  cd /etc/gitlab/ssl/ssl-2022/repo_vietis_com_vn
+  375  ls
+  376  cat   repo_vietis_com_vn.crt repo_vietis_com_vn.ca-bundle > ssl-bundle.crt 
+  377  sudo gitlab-ctl reconfigure
+  378  sudo gitlab-ctl restart
+  379  yum install gitlab-ce-14.0.12
+  380   sudo gitlab-ctl restart
+  381  yum install gitlab-ce-14.3.6
+  382  yum install gitlab-ce-14.9.5
+  383  yum install gitlab-ce-14.10.4
+  384  sudo gitlab-ctl reconfigure
+  385  sudo gitlab-ctl restart
+  386  yum install gitlab-ce-15.0.3
+  387  sudo gitlab-ctl reconfigure
+  388  sudo gitlab-ctl restart
+  389  sudo gitlab-backup create SKIP=builds,registry,artifacts  >>/var/opt/gitlab/backups/bak.log 2>&1  
+  390  clear
+  391  sudo gitlab-ctl stop
+  392  sudo yum remove gitlab-ce
+  393  sudo rm -rf /var/opt/gitlab
+  394  sudo rm -rf /opt/gitlab
+  395  sudo pkill -f gitlab
+  396  sudo yum install gitlab-ce-12.10.3
+  397  sudo gitlab-ctl reconfigure
+  398  cd /opt/gitlab/sv
+  399  sh config.sh 
+  400  sudo gitlab-ctl reconfigure
+  401  sudo systemctl restart gitlab-runsvdir.service
+  402  sudo gitlab-ctl reconfigure
+  403  sudo gitlab-ctl restart
+  404  sudo gitlab-ctl reconfigure
+  405  clear
+  406  sudo gitlab-ctl stop unicorn
+  407  sudo gitlab-ctl stop puma
+  408  sudo gitlab-ctl stop sidekiq
+  409  sudo gitlab-ctl status
+  410  sudo gitlab-backup restore BACKUP=1655936214_2022_06_23_12.10.3
+  411  sudo gitlab-backup restore BACKUP=1656021835_2022_06_24_12.10.3
+  412  sudo gitlab-ctl reconfigure
+  413  sudo gitlab-ctl restart
+  414  sudo gitlab-ctl reconfigure
+  415  sudo gitlab-ctl restart
+  416  sudo gitlab-ctl restart nginx
+  417  exit
+  418  sudo gitlab-ctl restart nginx
+  419  shutdown -h now
+  420  ifconfig 
+  421  ping 192.168.200.1
+  422  traceroute 8.8.8.8
+  423  traceroute -d 8.8.8.8 
+  424  history 
+  425  ethtool enp1s0
+  426  ethtool enp2s0
+  427  cd /var/opt/gitlab/backups
+  428  ftp 192.168.100.100
+  429  ps | grep ftp
+  430  crontab -l
+  431  crontab -e
+  432  reboot
+  433  history 
+  434  cd /var/opt/gitlab/backups
+  435  ftp 192.168.100.100
+  436  cd cd /var/opt/gitlab/backups/
+  437  cd /var/opt/gitlab/backups/
+  438  sudo chown git.git /var/opt/gitlab/backups/1656195373_2022_06_26_12.10.3_gitlab_backup.tar
+  439  sudo gitlab-ctl stop unicorn
+  440  sudo gitlab-ctl stop puma
+  441  sudo gitlab-ctl stop sidekiq
+  442  sudo gitlab-ctl status
+  443  sudo gitlab-backup restore BACKUP=1656195373_2022_06_26_12.10.3
+  444  sudo gitlab-ctl reconfigure
+  445  sudo gitlab-ctl restart
+  446  sudo gitlab-rake gitlab:check SANITIZE=true
+  447  reboot
+  448  crontab -l
+  449  history | grep 8009
+  450  firewall-cmd --add-port 8009/udp --permanent
+  451  firewall-cmd --add-port 8009/tcp --permanent
+  452  firewall-cmd --reload
+  453  firewall-cmd --list
+  454  firewall-cmd --list-all-zones
+  455  exit
+  456  vi /etc/selinux/config 
+  457  exit
+  458  firewall-cmd --get-default-zone
+  459  firewall-cmd --get-active-zones
+  460  firewall-cmd --list-all
+  461  firewall-cmd --get-zones
+  462  firewall-cmd --get-active-zones
+  463  firewall-cmd --zone=public --add-port=8009/tcp
+  464  firewall-cmd --zone=public --add-port=8009/udp
+  465  firewall-cmd --get-zones
+  466  firewall-cmd --zone=public --list-services
+  467  firewall-cmd --zone=public --list-all
+  468  exit
+  469  systemctl restart network.service
+  470  tracert -d 8.8.8.8
+  471  traceroute -d 8.8.8.8
+  472  reboot
+  473  yum install gitlab-ce-12.10.14
+  474  yum install gitlab-ce-13.0.14
+  475  yum install gitlab-ce-13.1.11
+  476  yum install gitlab-ce-13.8.8
+  477  yum install gitlab-ce-13.12.15
+  478  yum install gitlab-ce-14.0.12
+  479  yum install gitlab-ce-14.3.6
+  480  yum install gitlab-ce-14.9.5
+  481  yum install gitlab-ce-14.10.4
+  482  dnf install nrpe
+  483  systemctl start nrpe.service
+  484  systemctl enable nrpe.service
+  485  systemctl status nrpe.service
+  486  firewall-cmd --add-port=5666/tcp --permanent
+  487  firewall-cmd --reload
+  488  vi /etc/nagios/nrpe.cfg 
+  489  systemctl restart nrpe.service
+  490  telnet localhost 5666
+  491  exit
+  492  crontab -e
+  493  systemctl restart crond.service
+  494  exit
+  495  yum install gitlab-ce-15.0.3
+  496  sudo gitlab-ctl reconfigure
+  497  sudo gitlab-ctl restart
+  498  sudo gitlab-backup create SKIP=builds,registry,artifacts  >>/var/opt/gitlab/backups/bak.log 2>&1  
+  499  yum install gitlab-ce
+  500  sudo gitlab-ctl reconfigure
+  501  sudo gitlab-ctl restart
+  502  sudo gitlab-ctl reconfigure
+  503  sudo gitlab-ctl restart
+  504  rm -rf /var/opt/gitlab/backups/tmp/
+  505  crontab -l
+  506  crontab -e
+  507  cd /var/opt/script
+  508  systemctl restart crond.service
+  509  ./clean_folder.sh 
+  510  crontab -e
+  511  systemctl restart crond.service
+  512  crontab -l
+  513  exit
+  514  history 
+  515  vi /etc/nagios/nrpe.cfg
+  516  exit
+  517  passwd 
+  518  history > command_new_repo.txt
+
+
+Step 2 – Unmount Home dir
+sudo df
+sudo umount /dev/mapper/cl-home
+
+Step 3 – Delete Home Volume 
+lvremove /dev/cl/home
+
+
+Step 4 – Shrink Home Dir
+
+vgdisplay | grep “VG Name”
+VG Name               cl
+
+lvcreate -L +5GB -n home cl
+mkfs.xfs /dev/cl/home
+
+Step 6 – Mount Home dir
+
+mount /dev/cl/home
+
+Step 7 – Extend Root
+lvdisplay | grep “LV Path”
+lvextend -rl +100%FREE /dev/cl/root

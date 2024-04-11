@@ -1,0 +1,88 @@
+https://docs.microsoft.com/en-us/answers/questions/253555/software-list-inventory-wmic-product.html
+https://silentinstallhq.com/7-zip-silent-uninstall-powershell/
+
+
+
+$myComputers = Get-Content
+"c:\scripts\mycomputers.txt"
+
+foreach ($computer in $myComputers) {
+
+ Uninstall-HotFix -ComputerName $computer -HotfixID KB5013624
+
+}
+
+
+KB5013624
+KB5013624
+
+function Uninstall-Hotfix {
+[cmdletbinding()]
+param(
+$computername = $env:computername,
+[string] $HotfixID
+)            
+
+$hotfixes = Get-WmiObject -ComputerName $computername -Class Win32_QuickFixEngineering | select hotfixid            
+
+if($hotfixes -match $hotfixID) {
+    $hotfixID = $HotfixID.Replace("KB","")
+    Write-host "Found the hotfix KB" + $HotfixID
+    Write-Host "Uninstalling the hotfix"
+    $UninstallString = "cmd.exe /c wusa.exe /uninstall /KB:$hotfixID /quiet /norestart"
+    ([WMICLASS]"\\$computername\ROOT\CIMV2:win32_process").Create($UninstallString) | out-null            
+
+    while (@(Get-Process wusa -computername $computername -ErrorAction SilentlyContinue).Count -ne 0) {
+        Start-Sleep 3
+        Write-Host "Waiting for update removal to finish ..."
+    }
+write-host "Completed the uninstallation of $hotfixID"
+}
+else {            
+
+write-host "Given hotfix($hotfixID) not found"
+return
+}            
+
+}
+
+hotfixID
+Start-Process -FilePath "wusa.exe" -Argumentlist "/Uninstall /KB:5013624 /quiet /norestart" 
+
+
+
+windows
+- SQL
+- Portgree 
+- CSV
+chèn data từ csv -> Portgree 
+
+https://www.anycodings.com/1questions/1949935/retrieve-data-from-postgresql-using-powershell
+
+https://www.cdata.com/kb/tech/postgresql-ado-powershell.rst
+
+function Get-ODBC-Data{
+   param([string]$query=$(throw 'query is required.'))
+   $conn = New-Object System.Data.Odbc.OdbcConnection
+   $conn.ConnectionString = "Driver={PostgreSQL Unicode(x64)};Server=SOMENAME;Port=5432;Database=DBNAME;Uid=SOMEUSER;Pwd=SOMEPASS;"
+   $conn.open()
+   $cmd = New-object System.Data.Odbc.OdbcCommand($query,$conn)
+   $ds = New-Object system.Data.DataSet
+   (New-Object system.Data.odbc.odbcDataAdapter($cmd)).fill($ds) | out-null
+   $conn.close()
+   $ds.Tables[0]
+}
+
+function Set-ODBC-Data{
+   param([string]$query=$(throw 'query is required.'))
+  $conn = New-Object System.Data.Odbc.OdbcConnection
+  $conn.ConnectionString= "Driver={PostgreSQL Unicode(x64)};Server=SOMENAME;Port=5432;Database=DBNAME;Uid=SOMEUSER;Pwd=SOMEPASS;"
+  $cmd = new-object System.Data.Odbc.OdbcCommand($query,$conn)
+  $conn.open()
+  $cmd.ExecuteNonQuery()
+  $conn.close()
+}
+$query = "select * from clients"
+$result = Get-ODBC-Data -query $query
+$query = "INSERT INTO clients (id) VALUES (3)"
+set-odbc-data -query $query

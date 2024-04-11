@@ -1,0 +1,41 @@
+Hệ thống PrivacyMark là một hệ thống được thiết lập để đánh giá các doanh nghiệp tư nhân
+có thực hiện các biện pháp phù hợp để bảo vệ thông tin cá nhân hay không.
+Các doanh nghiệp tư nhân như vậy được cấp quyền hiển thị "PrivacyMark" trong quá trình hoạt động kinh doanh của họ.
+
+
+Hệ thống PrivacyMark là một hệ thống được thiết lập để đánh giá các doanh nghiệp tư nhân có thực hiện các biện pháp phù hợp để bảo vệ thông tin cá nhân hay không. Các doanh nghiệp tư nhân như vậy được cấp quyền hiển thị "PrivacyMark" trong quá trình hoạt động kinh doanh của họ. Hệ thống tuân thủ Tiêu chuẩn Công nghiệp Nhật Bản (JIS Q 15001: [Hệ thống quản lý bảo vệ thông tin cá nhân - Yêu cầu]).
+
+
+Hệ thống PrivacyMark là một hệ thống được thiết lập để đánh giá các doanh nghiệp tư nhân có thực hiện các biện pháp phù hợp để bảo vệ thông tin cá nhân hay không. Các doanh nghiệp tư nhân như vậy được cấp quyền hiển thị "PrivacyMark" trong quá trình hoạt động kinh doanh của họ. Hệ thống tuân thủ Tiêu chuẩn Công nghiệp Nhật Bản (JIS Q 15001: [Hệ thống quản lý bảo vệ thông tin cá nhân - Yêu cầu]).
+
+
+
+Các doanh nghiệp tư nhân phải đáp ứng các yêu cầu nêu dưới đây và phải thực sự thúc đẩy việc bảo vệ thông tin cá nhân trong các hoạt động của họ.
+
+    Phải thiết lập hệ thống quản lý bảo vệ thông tin cá nhân (sau đây gọi là PMS* ) tuân thủ JIS Q 15001.
+    Phải chuẩn bị một hệ thống có hiệu lực thi hành dựa trên PMS và phải xử lý thông tin cá nhân một cách thích hợp.
+    Không có điều kiện nào (điều kiện bị loại) dưới đây phải áp dụng cho doanh nghiệp tư nhân:
+        Các doanh nghiệp tư nhân trước đây đã đăng ký hoặc yêu cầu xem xét và bị từ chối cấp chứng nhận PrivacyMark 3 tháng trước khi đăng ký.
+        Các doanh nghiệp tư nhân đã bị thu hồi chứng nhận PrivacyMark hoặc việc sử dụng hợp đồng PrivacyMark bị hủy bỏ trong vòng một năm trước khi nộp đơn.
+        Các doanh nghiệp tư nhân chưa hoàn thành thời gian thử việc đối với ứng dụng PrivacyMark do vi phạm các tiêu chuẩn được quy định riêng liên quan đến rò rỉ thông tin cá nhân hoặc xâm phạm quyền và lợi ích của các đối tượng được đề cập.
+        Các điều kiện dưới đây áp dụng cho thành viên điều hành của các nhà điều hành (bao gồm người đại diện hoặc người quản lý được bổ nhiệm cho các tổ chức phi doanh nghiệp)
+            1. Người bị kết án phạt tù đã chấp hành xong hình phạt hoặc thời hạn chấp hành án treo mà chưa đủ hai năm kể từ ngày chấp hành xong hình phạt.
+            2. Những người đã bị kết án theo Đạo luật bảo vệ thông tin cá nhân, đã chấp hành xong bản án hoặc thời gian tạm hoãn thi hành án nhưng hai năm vẫn chưa trôi qua kể từ ngày chấp hành xong.
+
+
+Đánh giá Privacy Mark được thực hiện định kỳ 2 năm/lần theo quy định của tiêu chuẩn JISQ15000:2017
+
+Để đạt được chứng chỉ này, Japan đã thực hiện đầy đủ các nhiệm vụ:
+✅Hệ thống lại toàn bộ các loại thông tin cá nhân của khách hàng, của nhân viên cũng như của ứng viên có nguyện vọng gia nhập công ty.
+✅Phân tích và đưa ra đánh giá rủi ro tổng thể có thể xảy ra trong việc quản lý thông tin cá nhân.
+✅Chuẩn chỉnh hóa quy trình kiểm soát thông tin cá nhân
+✅Đào tạo và kiểm tra nhận thức về bảo mật thông tin cho toàn thể nhân viên toàn công ty 
+
+
+
+Công ty TNHH PHẦN MỀM ABC (sau đây gọi là “Công ty”), nhận thấy tầm quan trọng của việc bảo vệ thông tin cá nhân, coi đó là trách nhiệm của mình trong việc xử lý thông tin cá nhân một cách thích hợp và an toàn trong việc cung cấp các sản phẩm và dịch vụ của mình theo chính sách cơ bản của công ty đối với bảo vệ và quản lý thông tin cá nhân dựa trên các luật và quy định liên quan đến bảo vệ thông tin cá nhân và Triết lý doanh nghiệp do Tập đoàn ABC thiết lập.
+
+https://socialsolution-omron-com.translate.goog/software/en/general/privacy/?_x_tr_sl=en&_x_tr_tl=vi&_x_tr_hl=vi&_x_tr_pto=sc
+
+Công ty thực hiện các biện pháp quản lý bảo mật cần thiết và phù hợp để kiểm soát Dữ liệu Cá nhân bao gồm các biện pháp ngăn ngừa rò rỉ, mất mát và thiệt hại. Dữ liệu Cá nhân được xử lý theo cách phù hợp khi đạt được mục đích sử dụng dựa trên thời gian lưu giữ được quy định theo mục đích sử dụng. Ngoài ra, Công ty thực hiện giám sát cần thiết và phù hợp đối với nhân viên và nhà thầu phụ của mình (bao gồm cả nhà thầu phụ của họ) xử lý Dữ liệu Cá nhân.
+

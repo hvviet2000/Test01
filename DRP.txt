@@ -1,0 +1,47 @@
+Business Continuity Planning (BCP) và Disaster Recovery Planning (DRP)
+Hoạch định Liên tục Kinh doanh (BCP - Business Continuity Planning) và Hoạch định Khôi phục Sau thảm họa (DRP - Disaster Recovery Planning) là hai chương trình cực kỳ quan trọng để đảm bảo sự ổn định và tiếp tục hoạt động kinh doanh của tổ chức trong các tình huống khẩn cấp hoặc khi xảy ra sự cố gây ảnh hưởng đến tổ chức. Trong các phần I – IV, chúng ta đã trải qua những khái niệm cơ bản về cả hai loại phương pháp hoạch định này. Tuy nhiên, trong thực tế, có khá nhiều tổ chức nhầm lẫn giữa DRP và BCP và đôi khi, cho rằng DRP của mình chính là BCP. Vì vậy, chúng ta cần phải so sánh và phân biệt giữa hai phương pháp này để áp dụng chúng một cách thích hợp vào đời sống và hoạt động hàng ngày của tổ chức.
+Điểm tương đồng
+- Cả hai đều là những phương pháp hoạch định để đảm bảo khả năng phục hồi của hoạt động kinh doanh của một tổ chức trong tình huống xảy ra sự cố nghiêm trọng gây ảnh hưởng đến môi trường hoạt động của tổ chức, chẳng hạn như đại dịch, thảm họa tự nhiên và nhân tạo, khủng bố, phá hoại, v.v…
+- Cả hai đều có những mục tiêu liên quan đến bảo vệ những tài sản quan trọng của tổ chức khi xảy ra tình huống khẩn cấp hoặc sự cố, tuy nhiên, DRP nghiêng về những tài sản kỹ thuật số cụ thể hơn so với BCP.
+- Cả hai đều liên quan mật thiết đến Quản lý Rủi ro: cả hai phương pháp này đều dựa trên đánh giá và ước lượng rủi ro (cả định tính lẫn định lượng) để thiết lập nên những kế hoạch, quy trình, thủ tục, hướng dẫn nhằm giúp tổ chức có phương án thích hợp nhất để đối phó với từng rủi ro đã được xác định, thích nghi và phục hồi sau những sự kiện là hệ quả của những rủi ro không thể lường trước được.
+- Cả hai đều giúp tổ chức có được một chương trình có hệ thống, có cấu trúc chặt chẽ, linh hoạt và kịp thời thích ứng với thay đổi đồng thời cung cấp một khuôn khổ để giúp tổ chức đưa ra những quyết định sáng suốt nhất có thể dựa trên dữ liệu hiện có trong một tình huống khẩn cấp hoặc sự cố.
+- Cả hai đều đòi hỏi phải được kiểm nghiệm định kỳ và thường xuyên: cả hai phương pháp đều được khuyến cáo nên xây dựng theo hướng chương trình, vốn đòi hỏi các kế hoạch kiểm nghiệm và diễn tập trên cơ sở định kỳ và thường xuyên nhằm xác định khả năng thích ứng với sự thay đổi, đối phó với rủi ro, khôi phục lại sau các sự kiện bất lợi, đồng thời đưa ra những sáng kiến cải tiến và cập nhật cho các kế hoạch.
+Điểm khác biệt
+1. Mục tiêu
+a. BCP: Đảm bảo việc duy trì sự vận hành của các hoạt động kinh doanh của tổ chức, bất kể điều kiện và môi trường.
+b. DRP: Đảm bảo khôi phục lại các hệ thống công nghệ và dữ liệu để hỗ trợ cho hoạt động kinh doanh của tổ chức.
+2. Mục đích
+a. BCP: Đảm bảo tổ chức vẫn có thể tiếp tục cung cấp các sản phẩm và dịch vụ cho thị trường thông qua các quy trình và thủ tục được xác định trước.
+b. DRP: Đảm bảo tính sẵn sàng của các hệ thống CNTT và dữ liệu của tổ chức trong mọi tình huống và đáp ứng được những mục tiêu về RTO và RPO.
+3. Trọng tâm
+a. BCP: Toàn bộ các quy trình nghiệp vụ liên quan đến hoạt động kinh doanh.
+b. DRP: Chủ yếu tập trung vào các hệ thống CNTT và dữ liệu.
+4. Bối cảnh – Phạm vi
+a. BCP:
+i. Chủ động hơn,
+ii. Bao gồm tất cả những chức năng và quy trình nghiệp vụ cần thiết để giữ cho tổ chức tiếp tục hoạt động, kể cả các hệ thống CNTT và dữ liệu.
+iii. Tìm cách duy trì hoạt động của tổ chức, bất kể tình huống.
+iv. Đòi hỏi sự tham gia từ tất cả các bộ phận, phòng ban, đơn vị kinh doanh của tổ chức.
+b. DRP:
+i. Mang tính ứng phó nhiều hơn.
+ii. Bao gồm những hệ thống công nghệ hoặc dữ liệu cụ thể bị tác động bởi sự kiện.
+iii. Tìm cách khôi phục lại những hệ thống công nghệ và dữ liệu bị ảnh hưởng càng nhanh càng tốt.
+iv. Chủ yếu yêu cầu sự tham gia của các bộ phận Tài chính, Kỹ thuật và Quản lý cơ sở hạ tầng.
+5. Mức độ chi tiết
+a. BCP: chi tiết hơn, bao gồm
+i. Các kế hoạch sao lưu, khôi phục,
+ii. Các địa điểm dự phòng,
+iii. Các kế hoạch truyền thông,
+iv. Các kế hoạch ứng phó với tình huống khẩn cấp,
+v. Các kế hoạch đối phó với khủng hoảng,
+vi. Kế hoạch sơ tán và đảm bảo tính mạng con người
+vii. Và, bao gồm cả các kế hoạch khôi phục sau thảm họa.
+b. DRP: ít chi tiết hơn, tập trung chủ yếu vào
+i. Các kế hoạch sao lưu, khôi phục,
+ii. Các phương án dự phòng nhằm đảm bảo các hệ thống CNTT và dữ liệu luôn sẵn sàng để được sử dụng bởi nhân sự của tổ chức trong mọi tình huống,
+iii. Và là một phần của BCP lớn hơn.
+6. Thời điểm:
+a. BCP: các kế hoạch BCP được kích hoạt khi thảm họa hoặc sự kiện kích hoạt ĐANG diễn ra, kết thúc khi thảm họa hoặc sự kiện đã được giải quyết và hoạt động kinh doanh của tổ chức đáp ứng được các tiêu chí trong SLA hoặc các thỏa thuận hợp đồng và/hoặc các quy định pháp lý hoặc theo tiêu chuẩn của các cơ quan có thẩm quyền.
+b. DRP: các kế hoạch DRP được bắt đầu khi tình huống khẩn cấp vừa kết thúc, tiếp tục duy trì cho đến khi các hệ thống CNTT và dữ liệu được khôi phục lại hoàn toàn theo đúng các mục tiêu về RTO và RPO.
+Nguồn:
+- ITIL v4, Kiểm toán viên hệ thống thông tin được chứng nhận (CISA),

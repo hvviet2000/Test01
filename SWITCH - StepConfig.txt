@@ -1,0 +1,165 @@
+SW-08
+https://www.cisco.com/c/en/us/support/docs/switches/catalyst-2950-series-switches/41845-192.html
+Did you set xmodem protocol in Hyper Terminal >> send file>>protocol>>xmodem ???  after give tis command ???
+
+copy xmodem: flash:
+switch: boot flash:c2960-lanlitek9-mz.152-4.E8.bin
+
+
+1.Password Console
+2.Password Enable
+3.Password Telnet
+4.Ma hoa cac password
+
+
+1.Password Console
+
+Router(config)#line console 0
+Router(config-line)#password songvugia
+Router(config-line)#login
+Router(config-line)#end
+
+2.Password Enable
+enable secret matkhausecret
+Router(config)#end
+
+3.Password Telnet
+Router(config)#line vty 0 4  cho phep 5 may truy cap cung luc
+Router(config-line)#password matkhausecret
+Router(config-line)#login
+Router(config-line)#end
+
+4.Ma hoa cac password
+Router#conf ter
+Router(config)#service password-encryption
+
+
+#config terminal
+Switch(config)#host VIETIS_SW_08
+
+enable secret 5 $1$mH3P$rt5KIiiQeWlijwRaOLLBC/
+enable password 7 094F471A1A0A
+!
+username cisco password 7 05080F1C2243
+aaa new-model
+!
+!
+aaa authentication dot1x default group radius
+aaa authorization network default group radius 
+aaa accounting dot1x default start-stop group radius
+
+
+interface GigabitEthernet0/1
+ switchport mode trunk
+!
+interface GigabitEthernet0/2
+!
+interface GigabitEthernet0/3
+ switchport mode trunk
+!
+interface GigabitEthernet0/4
+ switchport mode trunk
+!
+interface Vlan1
+ no ip address
+ no ip route-cache
+!
+interface Vlan202
+ ip address 10.1.2.18 255.255.255.0
+ no ip route-cache
+!
+ip default-gateway 10.1.2.1
+no ip http server
+no ip http secure-server
+!
+================
+dot1x system-auth-control
+radius-server host 10.1.3.10 auth-port 1812 acct-port 1813 key vietis.vn
+
+radius-server host 10.1.3.10 auth-port 1812 acct-port 1813 key 7 120F0C1206021F4A3C25
+
+OR
+
+radius server ACS01
+ address ipv4 10.1.3.10 auth-port 1812 acct-port 1813
+ key 7 150402091023386A3E3D
+!
+radius server ACS01
+ address ipv4 10.1.3.10 auth-port 1812 acct-port 1813
+ key vietis.vn
+ ==============
+
+###########check khong can : vtp mode client
+ 
+vlan database
+vtp mode client
+vtp domain vietis.vn
+vtp password vietis@123
+
+ copy running-config startup-config
+
+ 
+ Switch(config)#host VIETIS_SW_08
+
+
+interface GigabitEthernet0/1
+ switchport mode trunk
+ 
+interface Vlan202
+ ip address 10.1.2.18 255.255.255.0
+ no ip route-cache
+ 
+ip default-gateway 10.1.2.1
+
+
+vtp mode client
+vtp domain vietis.vn
+vtp password vietis
+
+
+show vtp password
+
+
+
+interface FastEthernet0/44
+ switchport mode access
+ authentication port-control auto
+ dot1x pae authenticator
+ spanning-tree portfast
+ 
+
+ 
+cho ESX
+interface GigabitEthernet1/0/24
+ switchport trunk native vlan 100
+ switchport trunk allowed vlan 100,206
+ switchport mode trunk
+ spanning-tree portfast
+end
+
+
+https://thegioimang.vn/dien-dan/threads/c%C3%A1c-b%C6%B0%E1%BB%9Bc-c%E1%BA%A5u-h%C3%ACnh-giao-th%E1%BB%A9c-vtp-tr%C3%AAn-switch-cisco.294/
+
+https://www.quantrimangdn.com/blogs/post/vtp
+
+http://planet.com.vn/hotro/kienthuc/basic/cisco/mlnews.2010-07-15.5425311788/view
+
+ 
+
+ 
+
+ 
+ 
+ 
+copy usbflash0:name_of_image.bin flash:name_of_image.bin 
+
+! or
+
+copy usbflash1:name_of_image.bin flash:name_of_image.bin 
+
+! once the copy is complete tell the switch to boot
+
+boot 
+
+https://support.solarwinds.com/SuccessCenter/s/article/Mac-Address-Flap-causes-and-details?language=en_US
+

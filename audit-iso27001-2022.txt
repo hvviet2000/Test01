@@ -1,0 +1,92 @@
+1. Update rủi ro dịch bệnh và biện pháp kiểm soát vào bảng quản lý rủi ro
+2. Phần backup cần tổ chức lại thư mục evident restore hàng năm
+3. Cập nhật kiểm soát truy cập , điểm yếu kỹ thuật
+4. Xem xét cải tiến hệ thống VPN "											
+											
+											
+											
+
+- Cần thay đổi template quản lý tài sản cho phù hợp với thực tế
+- Việc kiểm soát tài sản mobile cần kiểm soát định kỳ hàng tháng, phối hợp với QA thực hiện rà soát định kỳ, phạt nếu nhân viên không tuân  thủ"											
+- Cập nhật lại danh sách các đối tác cần liên hệ
+
+"Other:
+1- Với freelancer , khi ký hợp đồng BMTT theo template chỉ rõ các ràng buộc và bằng chứng xóa data khi kết thức hợp đồng.
+2- Đề nghị tìm hiểu phần mềm quản lý nhân sự thay thế cho excel hiện thời.
+3- Về đào tạo, sửa tool có ghi rõ câu hỏi chọn 1 hay nhiều đáp án cho từng câu hỏi, update lại nội dung đào tạo
+"											
+											
+											
+											
+1. Xác định quyền của PM/Trưởng phòng sx/BOD trong quy định yêu cầu và phê duyệt , cập nhật thay đổi vào quy trình quản lý truy cập, ban hành quy định toàn Cty
+2. Xác định quyền phê duyệt quyền sử dụng/truy cập của trưởng phòng sx
+3. Quy định đơn vị chịu trách nhiệm đảm bảo tool nội bộ/Hoạt động liên tục trong SXKD
+4. Cập nhật vào tài liệu đào tạo những thay đổi này, tiến hành semina cho các PM/Trưởng phòng SX"											
+											
+											
+											
+"1. Một số PM chưa được đào tạo PMF nên chưa có view của PM về quản lý dự án
+2. Tài liệu Kickoff dự án cần bổ sung phần BMTT là mục bắt buộc trong tài liệu kickoff
+3. Quản lý thiết bị test chưa theo quy định, vẫn còn tình trạng thiết bị hết pin hoặc không có bàn giao giữa PM và người sử dụng cuối
+4. Chưa có các testcase hay review code về BMTT trong dự án"											
+											
+											
+
+
+Thông báo về ban hành tiêu chuẩn ISO/IEC 27001:2022 và kế hoạch chuyển đổi ISO/IEC 27001:2013 lên phiên bản mới.
+Phiên bản mới của tiêu chuẩn ISO/IEC 27001:2022 dự kiến được bạn hành vào ngày 30 tháng 9 năm 2022, với tên gọi mới là ISO 27001:2022 – An toàn thông tin, an ninh mạng và bảo vệ quyền riêng tư - Hệ thống quản lý an toàn thông tin - Các yêu cầu.
+Tiêu chuẩn mới sẽ có Phụ lục A được cập nhật bao gồm các biện pháp kiểm soát an toàn thông tin phù hợp với ISO/IEC 27002:2022 được xuất bản vào tháng 3 năm 2022.
+Tổng quan về Lịch trình Chuyển đổi:
+Dựa trên khoảng thời gian chuyển đổi là 3 năm, thời hạn sử dụng của các chứng chỉ được cấp sau chứng nhận ban đầu hoặc tái chứng nhận tham chiếu ISO/IEC 27001:2013 sẽ không vượt quá ngày kết thúc chuyển đổi được công bố (tức là 3 năm kể từ ngày tiêu chuẩn được công bố). Dựa trên thông tin hiện tại, sau đây là tóm tắt về các sắp xếp:
+• Tất cả các chứng chỉ được công nhận ISO/IEC 27001:2013 sẽ hết hạn hoặc bị thu hồi không muộn hơn ngày 29 tháng 9 năm 2025 (kết thúc giai đoạn chuyển đổi).
+• Không có việc đánh giá cấp chứng nhận và đánh giá tái chứng nhận ISO/IEC 27001:2013 nào được thực hiện sau ngày 29 tháng 3 năm 2024 (18 tháng kể từ ngày 30 tháng 9 năm 2022)
+Đánh giá chuyển đổi:
+BSI chuẩn bị sẵn sàng cung cấp các cuộc đánh giá chuyển đổi cho khách hàng sau khi tiêu chuẩn mới được ban hành. 
+Thông tin cụ thể sẽ được gửi tới Quí khách hàng và những bên liên quan thông qua các kênh truyền thông của BSI cũng như qua thư điện tử.											
+											
+
+1. Process (Quy trình)
+
+Nhân viên:
+PM:
+SM:
+Trưởng bộ phận:
+
+2. Bộ phận tiếp nhận thông tin
+IT
+Admin
+
+3. Bộ phận xử lý thông tin
+IT/Admin/BOD
+
+4. 
+
+
+-----------
+Nhân viên: (Staff) có quyền gửi các yêu cầu phục vụ dự án
+- Thiết bị:
+	+ Test:
+	+ Cá nhân:
+	+ Màn hình:
+	+ 
+
+PM: (Project Manager) có quyền gửi các yêu cầu phục vụ dự án: mà không cần approve
+- Thiết bị:
+	+ Test:
+	+ Cá nhân:
+	+ Màn hình:
+	+ Các truy cập liên quan đến dự án
+	+ Server
+	
+SM: (trưởng bộ phận): có quyền phê duyệt 
+- Quyền truy cập: liên quan đến chi phí
+- Server: liên quan đến chi phí
+- 
+
+
+
+
+
+
+											
+											

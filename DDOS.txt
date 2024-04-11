@@ -1,0 +1,478 @@
+https://m.cpc.vn/vi-vn/m/Tin-tuc-su-kien/Tin-tuc-chi-tiet/articleId/40012
+https://hanghieugiatot.com/may-chu-can-bat-phien-ban-tls-12-tro-len
+https://bobcares.com/blog/centos-ddos-protection/
+https://topic.alibabacloud.com/a/centos-font-classtopic-s-color00c1depreventfont-syn-font-classtopic-s-color00c1deattackfont-ddos-font-classtopic-s-color00c1deattackfont-method_1_18_20056841.html
+
+https://mangmaytinh.net/threads/bao-mat-nang-cao-linux-kernel-voi-sysctl-conf.189/
+
+
+sudo firewall-cmd --permanent --add-service=https
+sudo firewall-cmd --permanent --add-service=smtp
+
+sudo firewall-cmd --get-services
+sudo firewall-cmd --permanent --list-all
+sudo firewall-cmd --reload
+
+https://quantrinet.com/forum/showthread.php?t=2961
+
+https://www.tecmint.com/protect-apache-using-mod_security-and-mod_evasive-on-rhel-centos-fedora/
+https://github.com/jzdziarski/mod_evasive/find/master
+https://sharenhanh.com/chong-ddos-cho-website-iis-7-tren-windows-server-2008/
+
+http://chiencong.com/chong-tan-cong-ddos-ban-iis7
+https://quantrimang.com/cach-bao-mat-iis-trong-windows-server-2012-172912
+https://www.acunetix.com/blog/articles/iis-security-best-practices/
+https://docs.microsoft.com/en-us/iis/get-started/whats-new-in-iis-8/iis-80-dynamic-ip-address-restrictions
+
+https://whitehat.vn/threads/gioi-thieu-cong-cu-dos-loic.3600/
+https://kenh49.vn/cach-tan-cong-ddos/
+
+https://bobcares.com/blog/centos-ddos-protection/
+
+https://vicloud.vn/community/huong-dan-bao-ve-apache-khoi-bi-tan-cong-bang-cong-cu-mod-evasive-tren-centos-370.html
+
+https://anninhmang.net/bao-mat/%EF%BB%BFmot-module-chong-ddos-cho-iis-va-apache-p2/
+
+https://anonyviet.com/sql-injection-la-gi-lam-the-nao-de-ngan-chan-lo-hong-sql-injection/
+https://tanvietblog.com/wordpress-ngan-chan-tan-cong-sql-injection
+
+https://codex.wordpress.org/Data_Validation
+
+https://www.acunetix.com/blog/articles/iis-security-best-practices/
+
+https://www.nginx.com/resources/wiki/start/topics/examples/server_blocks/
+
+https://docs.microsoft.com/en-us/answers/questions/486172/birthday-attacks-against-tls-ciphers-with-64bit-sw.html
+
+Giải thích các tham số trên:
+    DOSHashTableSize là kích thước của bảng băm để lưu các địa chỉ IP
+    DOSPageCount là số trang cho phép tải trong một giây khi chưa bị gán cờ vi phạm
+    DOSSiteCount là số các đối tượng cho phép truy xuất trong thời gian DOSSiteInterval (các đối tượng đó như: images, style sheets, javascripts, SSI, …)trong  trường hợp này là 50 đối tượng trên 1 giây.
+    DOSPageInterval là khoảng thời gian bằng giây để thiết lập cho DOSPageCount
+    DOSSiteInterval là khoảng thời gian bằng giây để thiết lập cho DOSSiteCount
+    DOSBlockingPeriod là thời gian tính bằng giây IP đó sẽ bị cấm và sẽ nhận lỗi (Forbidden)
+Lưu ý: mod_evasive xuất hiện có thể xung đột cấu hình với FrontPage Server Extensions. 
+Nên bạn cần check cài đặt Apache web server để đảm bảo mod_evasive hoạt động đúng chức năng của nó. 
+Gợi ý điều chỉnh Apache ở gia trị thật cao cho MaxRequestsPerChild và hữu hiệu hóa KeepAlive cùng với KeepAliveTimeout .
+
+sudo yum install -y perl 
+
+yum install epel-release
+sudo yum install yum-plugin-protectbase.noarch -y 
+sudo yum install mod_evasive -y 
+
+vi /etc/httpd/conf.d/mod_evasive.conf
+LoadModule evasive20_module modules/mod_evasive24.so
+
+sudo httpd -M | grep evasive
+evasive20_module (shared)
+=========================================================
+vi /etc/httpd/conf.d/mod_evasive.conf 
+Contents:
+
+DOSEmailNotify sammy@example.com
+DOSWhitelist 111.111.111.111
+DOSWhitelist 111.111.111.111
+DOSWhitelist 222.222.222.222
+
+#DOSPageCount là số lượng giới hạn truy cập cùng một trang trên một đơn vị thời gian ( thường là 1 giây) với mỗi địa chỉ IP
+#Vì giá trị mặc định rất thấp là 2 nên ta sẽ tăng lên đến giá trị là 20 bằng cách chỉnh file sau /etc/httpd/conf.d/mod_evasive.conf
+DOSPageCount 20
+
+#DOSSiteCount là số lượng giới hạn truy cập của một địa chỉ IP trên một website trong một khoảng thời gian nhất định( mặcđịnh là 1 giây), ta cần thay đổi giá trị lớn hơn là 100 giây.
+DOSSiteCount 100
+
+#DOSBlockingPeriod, là khoảng thời gian mà một địa chỉ IP của khách hàng bị chặn khi bị đưa vào danh sách đen. Trong thời gian này tất cả các yêu cầu truy cập con khác sẽ bị phản hồi về giá trị lỗi là 403(Fobidden) và sẽ được reset lại trong 10 giây.
+
+DOSBlockingPeriod 300
+
+DOSLogDir "/var/log/mod_evasive"
+=========================================================
+sudo mkdir /var/log/mod_evasive 
+sudo chown -R apache:apache /var/log/mod_evasive 
+
+TEST
+The example above will send 1,000 requests in batches of 50.
+[root@localhost ~]# ab -n 1000 -c 50 http://127.0.0.1:80/index.html
+
+https://viblo.asia/p/phong-chong-ddos-voi-nginx-va-nginx-plus-Eb85oBpjl2G
+
+https://inmediatum.com/en/blog/engineering/ddos-attacks-prevention-nginx/
+
+https://www.nginx.com/blog/rate-limiting-nginx/
+
+/etc/nginx/nginx.conf.
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\
+Giới hạn tuần suất các yêu cầu
+Bình thường có thể gửi 2 yêu cầu login (request) mỗi giây là nhiều rồi. 
+Cấu hình cho phép một địa chỉ client IP có thể gửi request đến trang login 2 lần mỗi giây (tương đương với trung bình 30 yêu cầu / 1 phút)
+
+limit_req_zone $binary_remote_addr zone=one:10m rate=30r/m;
+
+server {
+    # ...
+    location /login.html {
+        limit_req zone=one;
+    # ...
+    }
+}
+
+limit_req_zone cấu hình một vùng nhớ chia sẻ (zone) có tên là one để lưu trữ trạng thái (state) của yêu cầu theo kiểu key-value, trong trường hợp này key là địa chỉ IP của client. limit_request có hiệu lực trong block /login.html và tham chiếu điến cấu hình bộ nhớ chia sẻ one.
+
+
+limit_req_zone $binary_remote_addr zone=one:1m rate=30r/m;
+
+server {
+    location /wp_login.php {
+        limit_req zone=one;
+    }
+}
+
+\\\\\\\\\\\\\\\\\\\\\\\
+Giới hạn số lượng kết nối
+Cho phép tối đa 10 kết nối đến địa chỉ /store trên trang web của bạn
+
+limit_conn_zone cấu hình một vùng nhớ chia sẻ là addr để lưu trữ thông tin các request theo từng địa chỉ client IP
+
+limit_conn_zone $binary_remote_addr zone=addr:10m;
+
+server {
+    # ...
+    location /store/ {
+        limit_conn addr 10;
+        # ...
+    }
+}
+
+
+limit_conn_zone $binary_remote_addr zone=two:1m;
+
+server {
+    location / {
+        limit_conn two 10;
+    }
+}
+
+
+//////////////////////////
+Chặn một số địa chỉ IP
+
+location / {
+    deny 123.123.123.0/28;
+    # ...
+	deny 123.123.123.3;
+    deny 123.123.123.5;
+    deny 123.123.123.7;
+    # ...
+	}
+	
+location / {
+    allow 192.168.1.0/24;
+    deny all;
+    # ...
+}
+
+/////
+
+Giới hạn số lượng kết nối đến server
+Với Nginx Nếu quá số lượng này server sẽ tự động từ chối yêu cầu. 
+Ví dụ bạn muốn cấu hình cho server chỉ nhận tối đa 200 kết nối bạn có thể làm như sau
+
+max_conns để khai báo số lượng kết nối tối đa đến server. 
+queue là hàng đợi dùng khi tất cả server đều đạt số lượng tối đa kết nối thì yêu cầu tiếp theo sẽ được đưa vào hàng đơi và sẽ được giữ trong hàng đợi tối đa là 30 giây
+
+upstream website {
+    server 192.168.100.1:80 max_conns=200;
+    server 192.168.100.2:80 max_conns=200;
+    queue 10 timeout=30s;
+}
+
+//////////////////////////////
+
+server {
+    client_body_timeout 5s;
+    client_header_timeout 5s;
+}
+
+client_body_buffer_size 200K;
+client_header_buffer_size 2k;
+client_max_body_size 200k;
+large_client_header_buffers 3 1k;
+
+
+
+https://webhostinggeeks.com/howto/nginx-ddos-attack-tutorial/
+1. In /etc/nginx/nginx.conf, include the following parameters :
+
+client_body_buffer_size 128k;
+large_client_header_buffers 4 256k;
+limit_conn_zone $binary_remote_addr zone=conn_limit_per_ip:10m;
+limit_req_zone $binary_remote_addr zone=req_limit_per_ip:10m rate=50r/s;
+server {
+    limit_conn conn_limit_per_ip 10;
+    limit_req zone=req_limit_per_ip burst=10 nodelay;
+}
+
+a) Limit the number of connections per single IP :
+
+    limit_conn_zone $binary_remote_addr zone=conn_limit_per_ip:10m;
+
+b) Limit the number of requests for a given session :
+
+    limit_req_zone $binary_remote_addr zone=req_limit_per_ip:10m rate=50r/s;
+
+C) Zone which we want to limit by upper values, we want limit whole server :
+
+    server {
+    limit_conn conn_limit_per_ip 10;
+    limit_req zone=req_limit_per_ip burst=10 nodelay;
+    }
+
+/etc/init.d/nginx restart
+
+
+=============TEST
+sudo yum install -y perl 
+/usr/share/doc/mod_evasive-1.10.1/test.pl
+/usr/share/doc/mod_evasive-1.10.1/test.pl:
+for(0..100) {
+for(0..200) {
+
+sudo perl /usr/share/doc/mod_evasive-1.10.1/test.pl 
+
+
+
+#!/usr/bin/perl
+
+# test.pl: small script to test mod_dosevasive's effectiveness
+
+#!/usr/bin/perl
+
+# test.pl: small script to test mod_dosevasive's effectiveness
+
+use IO::Socket;
+use strict;
+
+for(0..100) {
+  my($response);
+  my($SOCKET) = new IO::Socket::INET( Proto   => "tcp",
+                                      PeerAddr=> "127.0.0.1:80");
+  if (! defined $SOCKET) { die $!; }
+  print $SOCKET "GET /?$_ HTTP/1.0\n\n";
+  $response = <$SOCKET>;
+  print $response;
+  close($SOCKET);
+}
+
+
+1.2.3.4 - - [25/Mar/2015:16:52:38 +0800] "POST /wp-login.php HTTP/1.0" 200 6203 "-" "-"
+1.2.3.4 - - [25/Mar/2015:16:52:39 +0800] "POST /wp-login.php HTTP/1.0" 200 6203 "-" "-"
+1.2.3.4 - - [25/Mar/2015:16:52:39 +0800] "POST /wp-login.php HTTP/1.0" 200 6203 "-" "-"
+1.2.3.4 - - [25/Mar/2015:16:52:40 +0800] "POST /wp-login.php HTTP/1.0" 200 6203 "-" "-"
+1.2.3.4 - - [25/Mar/2015:16:52:40 +0800] "POST /wp-login.php HTTP/1.0" 200 6203 "-" "-"
+1.2.3.4 - - [25/Mar/2015:16:52:41 +0800] "POST /wp-login.php HTTP/1.0" 200 6203 "-" "-"
+1.2.3.4 - - [25/Mar/2015:16:52:41 +0800] "POST /wp-login.php HTTP/1.0" 200 6203 "-" "-"
+1.2.3.4 - - [25/Mar/2015:16:52:42 +0800] "POST /wp-login.php HTTP/1.0" 200 6203 "-" "-"
+1.2.3.4 - - [25/Mar/2015:16:52:42 +0800] "POST /wp-login.php HTTP/1.0" 200 6203 "-" "-"
+1.2.3.4 - - [25/Mar/2015:16:52:43 +0800] "POST /wp-login.php HTTP/1.0" 200 6203 "-" "-"
+1.2.3.4 - - [25/Mar/2015:16:52:43 +0800] "POST /wp-login.php HTTP/1.0" 200 6203 "-" "-"
+1.2.3.4 - - [25/Mar/2015:16:52:44 +0800] "POST /wp-login.php HTTP/1.0" 200 6203 "-" "-"
+1.2.3.4 - - [25/Mar/2015:16:52:44 +0800] "POST /wp-login.php HTTP/1.0" 200 6203 "-" "-"
+1.2.3.4 - - [25/Mar/2015:16:52:45 +0800] "POST /wp-login.php HTTP/1.0" 200 6203 "-" "-"
+1.2.3.4 - - [25/Mar/2015:16:52:45 +0800] "POST /wp-login.php HTTP/1.0" 200 6203 "-" "-"
+
+#============Add for limited request=======Nginx
+limit_req_zone $binary_remote_addr zone=one:1m rate=30r/m;
+limit_conn_zone $binary_remote_addr zone=two:1m;
+
+    server {
+        listen       80;
+        listen       [::]:80;
+        server_name  _;
+        root         /usr/share/nginx/html;
+#	location /index.html {
+		limit_req zone=one;
+		limit_conn two 10;
+#	}
+        # Load configuration files for the default server block.
+        include /etc/nginx/default.d/*.conf;
+
+        error_page 404 /404.html;
+        location = /404.html {
+        }
+
+        error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+        }
+
+    client_body_timeout 5s;
+    client_header_timeout 5s;
+
+    }
+
+####################################
+
+https://blog.vinahost.vn/toi-uu-kernel
+
+sysctl -a
+
+Network – Improving Security
+khi dùng lệnh sysctl –w thì thay đổi chỉ có giá trị trong session đó, 
+nếu hệ thống khởi động lại thì giá trị đó sẽ trở về mặc định, không được lưu lại. 
+Để lưu lại giá trị cấu hình kernel, ta cần thay đổi file /etc/sysctl.conf và nạp lại cấu hình bằng lệnh 
+
+sysctl –p
+
+https://mangmaytinh.net/threads/bao-mat-nang-cao-linux-kernel-voi-sysctl-conf.189/
+https://cloudcraft.info/huong-dan-toi-uu-linux-kernel/
+
+Example:
+### Improving Network Performance ###
+## Congestion control ##
+net.ipv4.tcp_congestion_control = htcp
+net.ipv4.tcp_timestamps = 1
+net.ipv4.tcp_window_scaling = 1
+net.ipv4.tcp_sack = 1
+ 
+## Increase socket buffer ##
+# Increase Read Memory Buffer #
+# TCP Read Memory: Min - Default - Max #
+net.ipv4.tcp_rmem = 8192 87380 16777216
+net.ipv4.udp_rmem_min = 16384
+# Default read memory buffer of all receiving sockets (except TCP and UDP)
+net.core.rmem_default = 262144
+net.core.rmem_max = 16777216
+ 
+# Increase Write Memory Buffer #
+# TCP Write Memory: Min - Default - Max #
+net.ipv4.tcp_wmem = 8192 65536 16777216
+net.ipv4.udp_wmem_min = 16384
+# Default read memory buffer of all sending sockets (except TCP and UDP)
+net.core.wmem_default = 262144
+net.core.wmem_max = 16777216
+ 
+# Increase connection queue #
+net.core.somaxconn = 16384
+ 
+# Improve packet processing queue, speed #
+net.core.netdev_max_backlog = 16384
+net.core.dev_weight = 64
+ 
+## Improve connection tracking ##
+# For high-loaded servers #
+net.nf_conntrack_max = 100000
+#or
+net.netfilter.nf_conntrack_max = 100000
+ 
+# Decrease connection timeout in netfilter table #
+net.netfilter.nf_conntrack_tcp_timeout_established = 600
+ 
+## Improving Network Security ##
+# Prevent SYN Attack #
+net.ipv4.tcp_syncookies = 1
+net.ipv4.tcp_max_syn_backlog = 4096
+net.ipv4.tcp_syn_retries = 2
+net.ipv4.tcp_synack_retries = 2
+ 
+## Prevent IP spoofing ##
+# Enable reverse path filter to verify IPs #
+net.ipv4.conf.all.rp_filter = 1
+net.ipv4.conf.default.rp_filter = 1
+net.ipv4.conf.all.log_martians = 1
+net.ipv4.conf.default.log_martians = 1
+ 
+## Decrease TCP FIN timeout ##
+net.ipv4.tcp_fin_timeout = 7
+ 
+## Decrease keep alive waiting time ##
+net.ipv4.tcp_keepalive_time = 300
+net.ipv4.tcp_keepalive_probes = 5
+net.ipv4.tcp_keepalive_intvl = 15
+ 
+# Disable Proxy ARP #
+net.ipv4.conf.all.proxy_arp = 0
+ 
+### Filesystem Tuning ###
+## Increase open file limit ##
+# For web/database/log servers which need a lot of open files #
+fs.file-max = 300000
+ 
+### Memory Tuning ###
+## Decrease swapping ##
+vm.swappiness = 10
+vm.dirty_background_ratio = 5
+vm.dirty_ratio = 10
+vm.overcommit_memory = 0
+vm.overcommit_ratio = 50
+
+
+
+sudo sysctl -p /etc/sysctl.conf 
+
+https://dev-notes.eu/2015/10/restrict-access-by-ip-apache-2-4/
+
+https://www.itsolutionstuff.com/post/how-to-whitelist-allow-ip-address-in-apache-ubuntuexample.html
+
+https://confluence.jaytaala.com/display/TKB/Securing+Apache+and+blocking+a+list+of+ip+addresses
+
+# Block ip addresses in our ipblacklist.conf file
+<Location />
+   <RequireAll>
+      Require all granted
+      Include /etc/apache2/ipblacklist.conf
+   </RequireAll>
+</Location>
+
+
+https://viblo.asia/p/http-security-headers-ByEZkwwWZQ0
+
+https://www.nginx.com/blog/http-strict-transport-security-hsts-and-nginx/
+
+https://webdock.io/en/docs/how-guides/security-guides/how-to-configure-security-headers-in-nginx-and-apache
+
+https://securitydaily.net/ky-thuat-khai-thac-xss-phan-1-reflected-xss/
+
+https://www.virtuesecurity.com/preventing-cross-site-scripting-php/
+
+/* Prevent XSS input */
+$_GET   = filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
+$_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+/* I prefer not to use $_REQUEST...but for those who do: */
+$_REQUEST = (array)$_POST + (array)$_GET + (array)$_REQUEST;
+
+add_header Strict-Transport-Security 'max-age=31536000; includeSubDomains; preload';
+
+https://webdock.io/en/docs/how-guides/security-guides/how-to-configure-security-headers-in-nginx-and-apache
+
+
+https://gist.github.com/plentz/6737338
+
+server_tokens off;
+add_header X-Frame-Options SAMEORIGIN;
+add_header X-Content-Type-Options nosniff;
+add_header X-XSS-Protection "1; mode=block";
+
+add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://ssl.google-analytics.com https://assets.zendesk.com https://connect.facebook.net; img-src 'self' https://ssl.google-analytics.com https://s-static.ak.facebook.com https://assets.zendesk.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://assets.zendesk.com; font-src 'self' https://themes.googleusercontent.com; frame-src https://assets.zendesk.com https://www.facebook.com https://s-static.ak.facebook.com https://tautt.zendesk.com; object-src 'none'";
+
+
+https://computingforgeeks.com/configure-http-security-headers-in-nginx-apache/
+
+
+Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+Header set X-XSS-Protection "1; mode=block"
+
+
+https://dothanhlong.org/using-htaccess-to-restrict-access-to-files-and-directories/
+# Deny access to files with extensions .ini, .psd, .log, .sh
+<FilesMatch "\.(ini|psd|log|sh)$">
+Order allow,deny
+Deny from all
+
+</FilesMatch>
+
+https://httl.com.vn/wiki/splunk-la-gi/
+https://securityzone.vn/t/tong-hop-kien-thuc-co-ban-ve-splunk-danh-cho-nguoi-moi-bat-dau.11792/
+https://softgeek.org/huong-dan-su-dung-splunk-cho-nguoi-moi-bat-dau-cong-cu-splunk-la-gi-lam-the-nao-de-su-dung
+
+https://vietnix.vn/wireshark-la-gi/

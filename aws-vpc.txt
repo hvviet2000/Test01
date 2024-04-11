@@ -1,0 +1,278 @@
+https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/what-is.html
+
+https://cuongquach.com/tao-aws-vpc-public-subnet-va-private-subnet.html
+
+https://vinasupport.com/aws-vpc-la-gi-huong-dan-tao-vpc/
+
+https://viblo.asia/p/aws-lab-building-your-first-amazon-virtual-private-cloud-vpc-part-1-gAm5yXVAldb
+
+
+    Tạo và hiểu được mục đích của 1 VPC là gì? => Task 1
+    Tạo và hiểu được mục đích của 1 public subnet là gì? => Task 2
+    Tạo và hiểu được mục đích của 1 Internet Geteway là gì? => Task 3
+    Tạo và hiểu được mục đích của 1 Route Table là gì?! => Task 4
+
+https://tkwebgiare.com/aws-hoc-ve-amazon/huong-dan-aws-vpc-cach-cau-hinh-vpc-network-tren-aws.html
+
+Bước 2: VPC với một Subnet riêng
+
+    IPv4 CIDR block: dãy địa chỉ IPV4 để sử dụng cho VPC, dãy này phải nằm trong khoảng netmask /16 và /28. Ví dụ: 10.0.0.0/16
+    IPv6 CIDR block: dãy địa chỉ cho ipv6 nếu sử dụng cho VPC thì chọn Amazon provided IPv6 CIDR block, ở đây mình sẽ không dùng ipv6 nên chọn No IPv6 CIDR Block.
+    VPC name: Tên của VPC, ví dụ: hocmangmaytinh
+    Public subnet’s IPv4 CIDR: dãy địa chỉ IPV6 public, ví dụ: 10.0.0.0/24
+    Availability Zone: vùng có sẵn mình chọn us-east-1a
+    Subnet name: tên subnet, ví dụ Public subnet
+    Service endpoints: Để giảm độ trễ của dữ liệu trong các ứng dụng của bạn.
+    Enable DNS hostnames: kích hoạt DNS hostnames.
+    Hardware tenancy: Default: dịch vụ của bạn chạy trên phần cứng được chia sẻ. Dedicated: dịch vụ của bạn chạy trên phần cứng của một người thuê duy nhất.
+
+https://sentayho.com.vn/vpc-la-gi.html
+
+https://beginaws.awsstudygroup.com/vi/2-vpc-setup/1-create-vpc/5-build-simple-lab/
+
+
+Một Amazon VPC bao gồm các thành phần sau
+
+    Subnets
+    Route tables
+    Dynamic Host Configuration Protocol (DHCP) option sets
+    Security groups
+    Network Access Control Lists (ACLs)
+
+Bên cạnh đó là các thành phần bổ sung như:
+
+    Internet Gateways (IGWs)
+    Elastic IP (EIP) addresses
+    Elastic Network Interfaces (ENIs)
+    Endpoints
+    Peering
+    Network Address Translation (NATs) instances and NAT gatewaysVirtual Private Gateway (VPG), Customer Gateways (CGWs), and Virtual Private Networks (VPNs)
+
+
+    Truy cập trang Amazon VPC tại https://console.aws.amazon.com/vpc/
+    Trên thanh điều hướng, chọn Your VPCs, Create VPC.
+    Khai báo thông tin khởi tạo VPC sau đó chọn Create.
+        Name tag: thông tin Name cho VPC. Đây là thông tin tùy chọn.
+            IPv4 CIDR block: khai báo dải địa chỉ IPv4 CIDR cho VPC. Tốt nhất ta nên chọn IPv4 CIDR nằm trong dải Private đã được quy định trong RFC 1918; ví dụ, 10.0.0.0/16, hoặc 192.168.0.0/16.
+            IPv6 CIDR block: đây là thông tin tùy chọn và có thể lấy từ các nguồn sau:
+                Amazon-provided IPv6 CIDR block: Lấy dải IPv6 CIDR từ Amazon’s pool.
+                IPv6 CIDR owned by me: (BYOIP) sử dụng dải địa chỉ IPv6 sở hữu.
+        Tenancy: lựa chọn Dedicated tenancy mang ý nghĩa Intance sẽ được chạy trên phần cứng single-tenant duy nhất.
+
+https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Scenario1.html
+
+https://aws.cmctelecom.vn/post/amazon-vpc-virtual-private-cloud
+
+https://co-well.vn/nhat-ky-cong-nghe/nhung-loi-hay-gap-khi-lam-du-an-php/
+
+https://cloudconnect.vn/vi/aws-direct-connect
+
+https://nicovibert.com/2019/09/16/aws-client-vpn-tutorial/
+
+https://dev.to/kasukur/how-to-setup-an-aws-client-vpn-51f
+
+
+https://fitdevops.in/access-aws-resources-securely-using-client-vpn-endpoint/
+https://aws.amazon.com/vpn/client-vpn-download/
+Open the .ovpn configuration file and add the below configurations to the end of the file/
+
+cert pathto/client.crt
+
+key pathto/client.key
+
+
+
+Server and Client Certificate and keys:
+
+Generate Server and Client Certificates and Keys using below steps on any Linux system
+
+    git clone https://github.com/OpenVPN/easy-rsa.git
+    cd easy-rsa/easyrsa3
+    ./easyrsa init-pki
+    ./easyrsa build-ca nopass
+    ./easyrsa build-server-full server nopass (This step will generate server certificate and key)
+    ./easyrsa build-client-full client1.domain.tld nopass (This step will generate client certificate and the client private key)
+    Store/Copy the server and client certificates and keys in specified location as these are important
+    mkdir /custom_folder/
+    cp pki/ca.crt /custom_folder/
+    cp pki/issued/server.crt /custom_folder/
+    cp pki/private/server.key /custom_folder/
+    cp pki/issued/client1.domain.tld.crt /custom_folder
+    cp pki/private/client1.domain.tld.key /custom_folder/
+
+Key:
+E:\VPN\easy-rsa\easyrsa3\pki\private
+
+
+E:\VPN\easy-rsa\easyrsa3\pki\issued
+server.crt
+client1.domain.tld.crt
+
+E:\VPN\easy-rsa\easyrsa3\pki\reqs
+server.req
+
+=====================================
+Certificate body –> server.crt
+
+Certificate private key –> server.key
+
+Certificate chain –> ca.crt
+
+=====================================
+
+
+https://dev.to/kasukur/how-to-setup-an-aws-client-vpn-51f
+
+C:\Users\viet.hoang.DC-VIETIS\vpn-cer
+
+git clone https://github.com/kasukur/clientvpn.git
+cd clientvpn
+
+chmod 755 generate_certs.sh
+./generate_certs.sh
+
+aws acm import-certificate --certificate fileb://server.crt --private-key fileb://server.key --certificate-chain fileb://ca.crt
+aws acm import-certificate --certificate fileb://client1.domain.tld.crt --private-key fileb://client1.domain.tld.key --certificate-chain fileb://ca.crt
+
+https://www.youtube.com/watch?v=8En5Dd-dHFw&ab_channel=AmazonWebServices
+https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html
+
+  498  aws config
+  499  aws configure
+AWSAccessKeyId=AKIATL7SAKMZAQRRRFPB
+AWSSecretKey=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
+
+  505  cd ~/vpn-cer
+  506  ls
+  507  aws acm import-certificate --certificate fileb://server.crt --private-key fileb://server.key --certificate-chain fileb://ca.crt
+  508  ls
+  509  aws acm import-certificate --certificate fileb://client1.do.--private-key fileb://server.key --certificate-chain fileb://ca.cr
+  510  aws acm import-certificate --certificate fileb://client1.domain.tld.crt --private-key fileb://client1.domain.tld.key --certificate-chain fileb://ca.crt
+  511  history
+
+Regional Setting: us-east-1
+
+Associate target network
+VPC
+Route Table
+https://beginaws.awsstudygroup.com/vi/1-account-setup/2-mfa-setup-for-aws-user-root/1-virtual-mfa-device/
+
+
+https://www.youtube.com/watch?v=4E02MVpBETo&ab_channel=cloudgeeksinc
+https://www.youtube.com/watch?v=cyFwaGsbfbw&ab_channel=TamilCloud
+https://www.youtube.com/watch?v=LxuTikgpC3s&ab_channel=CloudGuru
+https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/cvpn-getting-started.html
+
+https://www.youtube.com/watch?v=tyXpcVxRndU&ab_channel=TendaiMusonza
+
+Prerequisites
+    Step 1: Generate server and client certificates and keys
+    Step 2: Create a Client VPN endpoint
+    Step 3: Associate a target network
+    Step 4: Add an authorization rule for the VPC
+    Step 5: Provide access to the internet
+    Step 6: Verify security group requirements
+    Step 7: Download the Client VPN endpoint configuration file
+    Step 8: Connect to the Client VPN endpoint
+
+
+
+UDP: 1194
+
+Step 1: Prepaire 
+Step 2: Create Certificate 
+Step 3: Upload Certificate
+Step 4: Create VPN Client Endpoints
+
+Client IPv4 CIDR: 10.0.0.0/22
+Dải ip này dành cho Clients
+
+- Associations:		Select the VPC we created earlier and then chose a subnet to associate with
+		+ Phải tạo VPC trước
+			Create VPC
+			CIDR of 10.5.0.0/16
+		+ Phải tạo subnet trước:
+			- Subnet là mạng con của VPC				
+			vpn1 with a CIDR of 10.5.0.0/24 in us-west-2a
+			vpn2 with a CIDR of 10.5.0.1/24 in us-west-2b
+			vpn3 with a CIDR of 10.5.0.3/24 in us-west-2a
+		+ Subnet có thể là private subnet hoặc public subnet
+			- Public Subnet: thường là subnet cho phép ra ngoài internet
+			- Private subnet: thường là subnet nội bộ
+			
+			
+- Security Group: 
+- Authorization: 
+- Route Table: 
+- Connection: 
+- Target: 
+
+==========
+- Create VPC
+- Create Subnet
+- Create Network access list (ACL)
+
+
+
+cert pathto/client.crt
+key pathto/client.key
+
+=========
+https://www.youtube.com/watch?v=LxuTikgpC3s&ab_channel=CloudGuru
+https://www.youtube.com/watch?v=tyXpcVxRndU&ab_channel=TendaiMusonza
+
+
+https://beginaws.awsstudygroup.com/vi/2-vpc-setup/1-create-vpc/5-build-simple-lab/
+https://plainlygeek.com/aws/aws-client-vpn.html
+
+
+Server
+arn:aws:acm:us-east-1:231898895154:certificate/bf90ae0a-ad16-43a7-9ce1-539427664881
+
+Client
+arn:aws:acm:us-east-1:231898895154:certificate/0727513b-96c4-48ae-96b5-c30cb60bb21b
+
+
+cvpn-endpoint-0af8f72a63634c8ea
+cvpn-endpoint-0af8f72a63634c8ea
+
+
+
+    Client certificate — easy-rsa/easyrsa3/pki/issued/client1.domain.tld.crt
+
+    Client key — easy-rsa/easyrsa3/pki/private/client1.domain.tld.key
+
+
+Open the Client VPN endpoint configuration file using your preferred text editor. Add <cert></cert> and <key></key> tags to the file. Place the contents of the client certificate and the contents of the private key between the corresponding tags, as such:
+
+<cert>
+Contents of client certificate (.crt) file
+</cert>
+
+<key>
+Contents of private key (.key) file
+</key>
+
+
+
+
+
+C:\Users\viet.hoang.DC-VIETIS\CUsersviet.hoang.DC-VIETISDesktopAWS
+
+aws acm import-certificate --certificate fileb://client1.domain.tld.crt --private-key fileb://client1.domain.tld.key --certificate-chain fileb://ca.crt
+aws acm import-certificate --certificate fileb://server.crt --private-key fileb://server.key --certificate-chain fileb://ca.crt
+
+
+aws acm import-certificate --certificate fileb://server.crt --private-key fileb://server.key --certificate-chain fileb://ca.crt
+{
+    "CertificateArn": "arn:aws:acm:us-east-1:231898895154:certificate/e4406d69-a2b4-471f-a4b4-67c8b3dc5609"
+}
+
+viet.hoang@viethoang MINGW64 ~/C:Usersviet.hoang.DC-VIETISDesktopAWS
+$ aws acm import-certificate --certificate fileb://client1.domain.tld.crt --private-key fileb://client1.domain.tld.key --certificate-chain fileb://ca.crt
+{
+    "CertificateArn": "arn:aws:acm:us-east-1:231898895154:certificate/cdbe47f0-8d8e-4589-8843-298d3997ecb0"
+}
+
+
+https://priocept.com/2009/08/21/calculating-http-server-load/

@@ -1,0 +1,78 @@
+Quy Dinh_Su dung thu dien tu :
+- page 2: 
+xóa lịch sử cập nhật, vì là phiên bản mới 1.0 cho phía JP
+
+- page 4: 
+sửa lại tên cty thành tên phía bên JP
+Update phần tài liệu liên quan 
+
+- page 6: 
+a. xem xét tính phù hợp với pháp luật nhật bản không
+c.	Khi có nhu cầu tạo nhóm thư điện tử, hoặc tạo thư điện tử dùng cho test sản phẩm, cần phải đăng ký thông qua hệ thống call-log của công ty để được Trưởng phòng sản xuất xem xét giải quyết cái này không đúng thực tế bên JP
+e. Trưởng phòng sản xuất chịu trách quản lý,vận hành hệ thống thư điện tử của tổ chức -->  cái này không đúng thực tế bên JP
+
+
+- page 7: 
+
+- page 8:
+Nội dung
+a. "Quy định quản lý và sử dụng tài khoản, mật khẩu" -->vietis JP có tài liệu này không
+b. Không được xuyên tạc các vấn đề chính trị, kêu gọi chống phá lại Nhà nước Việt Nam, vi phạm pháp luật Việt Nam. -->JP
+
+Gửi thư
+a. Chỉ các nhân viên có thẩm quyền được các trưởng phòng/ban chức năng phê duyệt mới được gửi thư ra các địa chỉ email ngoài organization (*@vietis.com.vn)
+-->cái này không đúng thực tế bên JP
+
+e. Khi trao đổi các thông tin mật bằng hệ thống thư điện tử trong nội bộ phải sử dụng biện pháp bảo mật phù hợp theo quy định về Mã hóa thông tin
+-->vietis JP có tài liệu này không
+
+- page 9:
+5.5.1	Quy định tạo mới, thay đổi, hủy bỏ tài khoản thư điện tử 
+--> vietis JP có tạo được tài khoản  mới không
+5.5.2	Quy định về an toàn bảo mật Hệ thống thư điện tử
+--> vietis JP có quản trị hệ thống thư điện tử không 
+
+Page 10: update hồ sơ, người tạo, người phê duyệt 
+
+
+
+
+
+
+
+
+Quy Dinh_quan ly tai san
+- page 1: cập nhật mã văn bản, phiên bản mới 1.0 cho phía JP , ngày hiệu lực, header/footer, version
+- page 4:  3.	TÀI LIỆU LIÊN QUAN (bỏ định nghĩa PHY, SOF,..đi, phần này trước bên tài sản nhầm lẫn với định nghĩa)
+thay vào đó là mã và tên tài liệu có liên quan
+- Page 11: 5.4.2.	Đối với tài sản vật lý
+  Tài sản vật lý được dán nhãn (hoặc gán mã QR code) --> jp có dùng cái này không
+
+Page 11: tài liệu hướng dẫn môi trường làm việc tiêu chuẩn (VietIS Standard Working Environment). -->vietis JP có tài liệu này không
+page 12: “Quy định an toàn thiết bị”. -->vietis JP có tài liệu này không
+Xem lại phần quản lý thiết bị test
+
+Page 14: Khai báo vào Bieu mau_Giay de nghi mang tai san ra ngoai cong ty -->vietis JP có tài liệu này không
+Phải được sự phê duyệt của cán bộ Quản lý tài sản và BOD ký xác nhận: --> mỗi lần ông tân bay sang ký à hay sếp linh
+- cán bộ IT bên JP có không 
+
+Page 15: 5.2.3.1 “Quy định An ninh thông tin trong tuyển dụng và quản lý cán bộ” --vietis JP có tài liệu này không
+
+Page 16: update lại hồ sơ
+Phần cuối phụ lục: thiếu biểu mẫu quản lý các loại tài sản
+
+
+
+
+Quy Dinh_kiem soat ma doc
+- page 1: cập nhật mã văn bản, phiên bản mới 1.0 cho phía JP , ngày hiệu lực, header/footer, version
+- Page 5: -	Trưởng nhóm có trách nhiệm báo cho bộ phận IT và các bên liên quan -->vietis JP có cán bộ chuyên trách hay như nào
+- Page 6: xem xét lại hồ sơ và người lập
+
+Quy trinh_quan ly su co
+- page 1: cập nhật mã văn bản, phiên bản mới 1.0 cho phía JP , ngày hiệu lực, header/footer, version
+Cần xem lại Trưởng bộ phận ISMS
+DM : chưa được định nghĩa trong tài liệu này
+- Page 10: xem xét lại hồ sơ và người lập
+
+

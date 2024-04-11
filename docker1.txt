@@ -1,0 +1,419 @@
+    Right click Docker icon in the Windows System Tray
+    Go to Settings \     Daemon \     Advanced
+    Set the "experimental": true
+    Restart Docker
+
+docker pull mcr.microsoft.com/windows/nanoserver:1903
+docker images
+docker run -it mcr.microsoft.com/windows/nanoserver:1903 cmd.exe
+echo "Hello World!" > Hello.txt
+exit
+
+docker ps -a
+
+docker commit <containerid> helloworld
+
+docker run --rm helloworld cmd.exe /s /c type Hello.txt
+https://docs.microsoft.com/en-us/virtualization/windowscontainers/quick-start/run-your-first-container
+
+
+#mount share --> to data 
+
+docker run -it -v g:\docker\share:c:\data mcr.microsoft.com/windows/nanoserver:1903 
+
+
+XAMP
+https://www.usna.edu/Users/cs/adina/teaching/it350/fall2013/labs/InstallXAMPP.htm
+
+php composer-setup.php --install-dir=bin
+
+
+
+
+
+
+http://techgenix.com/Enable-Cross-Premises-Connectivity-Amazon-EC2-Forefront-Threat-Management-Gateway-TMG-2010/
+Installing Docker on CentOS 7 With Yum
+sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum install docker
+sudo systemctl start docker
+sudo systemctl enable docker
+sudo systemctl status docker
+sudo curl -L "https://github.com/docker/compose/releases/download/1.23.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+
+
+docker
+1. list image
+docker images
+docker search centos
+--> hub docker
+
+2. pull images
+docker pull centos:7
+docker pull ubuntu:16.04
+docker pull centos 
+(latest version auto pull)
+
+3. delete image
+docker image rm centos:7
+docker image rm ubuntu:16.04
+docker image rm ID
+
+4. run image -> tao ra container
+docker run parameter  image command parameter
+docker run -it centos:7
+docker run -it abcdxyz /sbin/init
+docker run --privileged -p 8080:80 centos:7 /sbin/init
+docker run -d "BACKGROUND" 
+
+docker run -it --name "CentOSHTTP" -h centoshost centost:7 /sbin/init
+docker run --it --name "CentOSHTTP" -h centoshost centost:7 /sbin/init
+docker run --privileged --itd -p 8080:80 --name "CentOSHTTP" -h centoshost centos:7 /sbin/init
+docker run -it --name "CENTOS1" docker.io/centos /bin/bash
+docker run -itd -p 8080:80 --name "CentOSHTTP" -h centoshost centos:7 /sbin/init
+
+docker run -p 8000:80 -d nginx
+
+
+5. List container
+docker ps 
+docker ps -all
+
+6. login vao container
+docker attach containerID
+Ctrl_P_Q 	--> thoat tam thoi
+Exit  		--> stop container
+
+7. Xoa container
+docker rm container
+docker rm -f container
+
+8. run command in container
+docker exec --it containerID /bin/bash
+docker exec centos1 ls
+
+9.export container-->image
+stop container truoc
+docker commit containerID image:version
+docker commit -m "centos a" containerID centosmoi:v1
+
+10.luu image thanh file
+docker save --output myCentos.tar imageID 
+
+12. load file
+docker load -i myimages.tar
+
+13. add tag cho image
+docker tag f myimage:version
+
+upload image len mang
+login vao hub
+docker push image:version
+
+
+Mình cũng bị lỗi tương tự. Khắc phục bằng cách sửa lại tên của image cho đúng với id của docker hub.
+
+Ví dụ, docker hub là ngonghe90 thì khi tạo image bạn tạo như sau:
+
+docker commit -m "Centos Project01" -a "Nguyen Van A" 5360577f8494 ngonghe90/project01:v1
+docker commit -m "Centos proj" -a "Nguyen Van A" fb9764eeaa58 viethv74/httpd:v1
+docker push viethv74/httpd:v1
+
+14. docker rm $(docker ps -a -q)
+xoa tat ca container dang chay
+
+
+==========================
+
+14. volume
+docker run -it -v /user/share:/home/date containerID
+/home/data -->tren container
+/user/share -->tren host
+
+lay volume tu container khac
+docker run -it --name centos3 --volumes-from Centos2 centos:v1
+
+tao vlume local
+docker volume ls
+docker volume create D1
+docker volume rm D1
+
+docker volume inspect D1 
+(Xem chi tiet D1 localtion)
+
+mount
+docker run -it --name Centos1 --mount source=D1 target=/home/disk2 centos:7
+-->mount to /home/disk2
+
+docker volume create --opt device=/user/desktop/data/ --opt type=none --opt o=bind DISK1
+docker volume ls
+docker volume inspect DISK1
+--> tao o dia tu 1 thu muc host
+
+2 tham so mount va -v khac nhau
+docker run --it -v DISK1:/home/data2 centos:7
+
+
+3. docker volume inspect D1 -->location /home/data/d1
+vi /home/data/d1/index.html
+
+docker run --name project01 -p 8080:80 -v DISKVolume:/usr/local/appache2/htdocs -d httpd
+
+docker volume create project_data
+docker run --name mysql -v projec_data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=pass -p 3306:3306 -d mysql:5.7
+
+======= docker file=======================================
+
+Biên tập Dockerfile và sử dụng lệnh docker build để tạo các Image
+1. Cần buil 1 đoạn mã sau
+tạo ra container -> cài đặt httpd, update, cài vim, ...
+đóng gói thành image version 1
+
+#docker run -it --name cent centos:lastest
+#yum update -y
+#yum install httpd -y
+#yum install vim -y
+#docker commit cent myimage:v1
+
+2. soạn file với nội dung sau:
+syntack https://docs.docker.com/engine/reference/builder/
+
+FROM centos:latest
+
+#RUN yum update -y
+RUN yum install httpd -y
+RUN yum install vim -y
+
+ADD ./test.html /var/www/html/
+
+EXPOSE 80
+
+ENTRYPOINT [ "httpd" ]
+CMD [ "-D", "FOREGROUND" ]
+
+3. lưu file và thực hiện command build
+
+docker build -t myimage:v1 -f Dockerfile .
+
+4. kiểm tra KQ
+docker run -p 8080:80 myimage:v1
+
+
+======Docker compose =========
+
+YML: Ngôn ngữ tuần tự hóa dữ liệu (data serialization language) 
+
+#Example:
+#key:value thụt đầu dòng 2 khoẳng trắng so với phần tử cha
+product: Laptop ABC
+price: 333
+specifications:
+  os: Windows 10
+  hdd: 500 GB
+  ram: # Mảng ram
+    - branch: XYZ
+    - speed: XXX
+
+sherlock: 
+  name: Sherlock Holmes
+  address: 221B Baker Street, London
+  job: Detective
+  assistant: John Watson
+  employed: true
+
+  knowledge: 
+    - Chemistry
+    - Anatomy
+    - Sensational Literature
+    - British law
+  
+  skill: 
+    - Playing violin
+    - Singlestick player
+    - Boxing
+
+  social:  
+    - Twitter: SherlockSH
+
+vi docker-compose.yml
+version: "3"
+
+#NETWORK
+networks:
+  my-network:
+    driver: bridge
+
+#VOLUMES
+
+
+#SERVICES
+services:
+
+#container PHP
+#  my-php:
+#    container_name: php-product
+#    build:
+#      dockerfile: Dockerfile
+#    hostname: php
+#    restart: always
+#    networks:
+#      - my-network
+
+#container HTTPD
+  my-httpd:
+    container_name: c-httpd01
+    image: "myimage:v1"
+    hostname: httpd
+    restart: always
+#    networks:
+#      - my-network
+    ports:
+      - "8890:80"
+
+#      - "443:443"
+
+3. run Docker-compose 
+docker-compose up
+
+4. docker-compose ref 
+https://docs.docker.com/compose/compose-file/
+https://docs.docker.com/compose/reference/
+https://viblo.asia/p/cach-tao-docker-compose-3P0lPeaP5ox
+https://viblo.asia/p/cach-tao-docker-compose-3P0lPeaP5ox
+version 	Version của file docker-compose
+services 	chứa các container. Với mỗi service là tên của một container
+volumes 	Gắn đường dẫn trên host machine được sử dụng trên container
+networks 	Sử dụng để cấu hình network cho ứng dụng
+
+#Với services có một số thành phần sau:
+image 		Chỉ ra image sẽ được dùng để build container.Tên image được chỉ định khi build một image trên máy host hoặc download từ Docker Hub
+port 		Kết nối port của máy host đến port của container
+volumes 	Gắn đường dẫn trên host machine được sử dụng trên container
+enviroment 	Định nghĩa các biến môi trường được truyền vào Docker
+depends_on 	Chọn các service được dùng là dependency cho container được xác định trong service hiện tại.
+build 		Chỉ ra vị trị đường dẫn đặt Dockerfile
+
+
+
+https://levelup.gitconnected.com/your-private-ci-cd-using-self-hosted-gitlab-ci-and-docker-ee1aca71b99e
+
+docker run --detach --hostname gitlab.example.com --publish 127.0.0.1:4443:443 --publish 127.0.0.1:4000:80 --name gitlab --restart always --volume /srv/gitlab/config:/etc/gitlab --volume /srv/gitlab/logs:/var/log/gitlab   --volume /srv/gitlab/data:/var/opt/gitlab gitlab/gitlab-ce:latest
+
+sudo docker run --detach \
+  --hostname gitlab.example.com \
+  --publish 127.0.0.1:4443:443 --publish 127.0.0.1:4000:80 \
+  --name gitlab \
+  --restart always \
+  --volume /srv/gitlab/config:/etc/gitlab \
+  --volume /srv/gitlab/logs:/var/log/gitlab \
+  --volume /srv/gitlab/data:/var/opt/gitlab \
+  gitlab/gitlab-ce:latest
+  
+So what this means is:
+
+    Set the hostname of the installation to gitlab.example.com
+    Expose the ports 443, 80, 22, and map them to the same ports to the host machine.
+    Mount the volumes of the container to the host machine
+    /srv/gitlab/config will hold GitLab's configuration
+    /srv/gitlab/logs will hold the GitLab's logs
+    /srv/gitlab/data will hold the actual git repo's data.
+
+
+6. Docker proxy
+https://cuongquach.com/cau-hinh-docker-su-dung-http-proxy-server.html
++ Tạo một file chứa thông tin biến môi trường về Proxy Server dành cho Docker sử dụng.
+# vi /etc/sysconfig/docker
+http_proxy="http://10.13.92.251:3128"
+https_proxy="http://10.13.92.251:3128"
+no_proxy="127.0.0.1, localhost"
+
++ Xác định file khởi động của dịch vụ Docker.
+# systemctl status docker
+● docker.service - Docker Application Container Engine
+Loaded: loaded (/usr/lib/systemd/system/docker.service; enabled; vendor preset: disabled)
+
++ Giờ thêm dòng cấu hình sau vào file này dưới section [Service] , để khi dịch vụ Docker khởi động lại sẽ load các biến môi trường từ file ‘/etc/sysconfig/docker‘ mà bạn quy định.
+# vi /usr/lib/systemd/system/docker.service
+..
+[Service]
+EnvironmentFile=/etc/sysconfig/docker
+..
+
++ Khởi động lại
+# systemctl daemon-reload
+# systemctl restart docker
+
+=========Build docker image==========
+Các Container này cũng có nhu cầu truy xuất Internet Public qua HTTP Proxy Server
+
+# docker build \
+--build-arg http_proxy=http://10.13.92.251:3128 \
+--build-arg https_proxy=http://10.13.92.251:3128 \
+-t yourimage .
+
++ Docker Container sử dụng Proxy
+# docker build \
+--build-arg http_proxy=http://10.13.92.251:3128 \
+--build-arg https_proxy=http://10.13.92.251:3128 \
+-t yourimage .
+
+========OTHER=========
+export http_proxy=http://proxyaddress:port
+docker build --build-arg http_proxy .
+
+docker build --build-arg \ http_proxy=”http://username:password@proxy:port/” --build-arg \ https_proxy=”https:// username:password@proxy:port /” --network=host.
+
+docker build \
+--build-arg http_proxy=http://192.168.100.12:8080 \
+--build-arg https_proxy=http://192.168.100.12:8080 \
+-t centos:7 .
+
+========OTHER=========
+# docker run --env http_proxy=http://192.168.100.12:8080 --env https_proxy=http://192.168.100.12:8080 -itd centos:7 /sbin/init
+docker exec --it containerID /bin/bash
+
+
+7. Docker network
+https://medium.com/@phamducquan/docker-networking-ki%E1%BA%BFn-th%E1%BB%A9c-v%E1%BB%81-docker-ph%E1%BA%A7n-3-94dd36138fdb
+https://techblog.vn/tim-hieu-va-lam-viec-voi-docker-container-networks-p2
+https://levanphu.info/docker-la-gi-tim-hieu-ve-docker-cho-dan-devops
+
+
+
+stages:
+  - build
+  - test
+build:
+  stage: build
+  scrip:
+    - echo "building"
+    - mkdir build
+    - touch build/info.txt
+test:
+  stage: test
+  script:
+    - echo "testing"
+    - test -f build/info.txt
+	
+https://sysadmins.co.za/see-how-easy-it-is-to-setup-a-gitlab-ci-pipeline/
+https://hackernoon.com/setting-up-ci-cd-on-gitlab-step-by-step-guide-part-1-826385728223
+
+
+https://www.youtube.com/playlist?list=PLVx1qovxj-akoYTAboxT1AbHlPmrvRYYZ&fbclid=IwAR2vxamW-gj_3SlEf88pOukA2zoYY0rQRbO9OaniU6cqxlBFiRekFX70Kqg
+
+docker Proxy
+https://docs.docker.com/network/proxy/
+{
+ "proxies":
+ {
+   "default":
+   {
+     "httpProxy": "http://192.168.1.12:3128",
+     "httpsProxy": "http://192.168.1.12:3128",
+     "noProxy": "*.test.example.com,.example2.com,127.0.0.0/8"
+   }
+ }
+}

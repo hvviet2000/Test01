@@ -1,0 +1,383 @@
+yum install ansible
+
+https://developers.redhat.com/blog/2016/09/02/how-to-install-and-configure-ansible-on-rhel/
+https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-ansible-on-centos-7
+https://sysadmincasts.com/episodes/43-19-minutes-with-ansible-part-1-4
+https://www.educba.com/ansible-when/
+
+$ ssh-agent bash
+$ ssh-add ~/.ssh/id_rsa
+
+/etc/ansible/hosts
+server1 ansible_host=127.0.0.1 ansible_port=3022 
+
+https://bknet.edu.vn/phan1-ansible-la-gi-437.html
+
+https://viblo.asia/p/infrastructure-as-code-la-gi-tai-sao-lai-chon-terraform-LzD5dwrEljY
+
+https://quantrimang.com/cong-nghe/su-khac-biet-giua-terraform-va-ansible-194581
+
+https://www.youtube.com/watch?v=UUsxD6B445Y&list=PLnBf5IyN-e4WwpSrumMRnVTa-0LOCndDW&ab_channel=To%C3%A0nNai
+
+
+https://devopsvn.tech/terraform-series/terraform/bai-0-infrastructure-as-code-va-terraform
+
+https://viblo.asia/p/toi-da-vuot-qua-vong-phong-van-ve-terraform-nhu-the-nao-aWj53zE1l6m
+
+https://labs.flinters.vn/continuous-integration/terraform-mot-cong-cu-de-lam-infrastructure-as-code/
+
+
+
+https://hainguyenit.edubit.vn/blog/cau-hinh-bop-bang-thong-voi-police-qos
+https://blog.vietnamlab.vn/phan-1-ansible-khai-niem-co-ban/
+
+
+
+# Cài đặt trên Ubuntu
+apt-add-repository -y ppa:ansible/ansible
+apt-get update
+apt-get install -y ansible
+
+
+# Cài đặt trên centos
+yum install epel-release
+yum install ansible
+
+1. Inventory Host
+
+vim /etc/ansible/hosts
+[local]
+127.0.0.1
+103.110.86.151 ansible_user="root" ansible_password="b0c7moYkrX"
+
+[apiserver]
+192.168.88.13
+192.168.88.14
+
+[jobserver]
+192.168.89.100
+192.168.89.101
+
+[dbservers]
+192.168.90.200
+192.168.90.201
+
+[group_server1:childrens]
+apiserver
+jobserver
+
+2. ansible -i /etc/ansible/hosts [tên host_group] -m [tên module] -a [tham số truyền vào module]
+ansible apiserver -m command -a uptime
+ansible webserver -m ping
+
+-i : inventory host. Trỏ thư viện group_host cần gọi, mặc định nếu không có -i thì sẽ gọi /etc/ansible/hosts
+-m : gọi module của ansible
+-a : command_argument gửi kèm theo module mà ta đang gọi
+-u : user
+-vvvv : debug option
+
+3.ssh
+Tạo ssh-key sử dụng passphare
+Tạo ssh-key
+
+mkdir ~/.ssh 
+chmod 700 ~/.ssh 
+cd  ~/.ssh
+ssh-keygen -t rsa
+
+stat -c "%a %n" .ssh
+
+
+
+Copy public key lên máy chủ host  (muon remote vao may nao thi copy vao may do)
+ssh-copy-id -i id_rsa.pub root@ip
+
+chmod 600 ~/.ssh/authorized_keys 
+
+Khai báo đường dẫn file private key
+vi /etc/ansible/ansible.cfg
+private_key_file =  ../.ssh/authorized_keys 
+
+
+=======Khai bao trong host
+ansible-playbook -i hosts my-book.yml --check
+
+[my_servers]
+1.2.3.4     ansible_ssh_private_key_file=/home/vivek/.ssh/id_ed25519.pem
+202.54.1.5  ansible_ssh_private_key_file=~/.ssh/Lightsail-us-west-2.pem
+www1        ansible_ssh_private_key_file=~/.ssh/Linode-us.rsa.pem
+vpn-box1    ansible_ssh_private_key_file=~/.ssh/Linode-us.rsa.pem
+
+===Create PEM file:
+
+openssl req -x509 -new -nodes -key cert.key -sha256 -days 1024 -out cert.pem
+
+
+
+4.Command Test
+ansible apiserver -m shell -a "whoami"
+ansible dbserver -m service -a "name=mysql state=restarted"
+
+ansible localhost -m service -a "name=apache2" 
+
+sudo ansible localhost  -m ansible.builtin.service -a "name=apache2 state=started"
+
+https://viblo.asia/p/phan-1-tim-hieu-ve-ansible-4dbZNxv85YM
+
+
+5.Play-Book
+ansible-playbook -i /etc/ansible/hosts install_apache.yaml
+
+- hosts: webserver 
+  become: true
+  tasks:
+  ########## install httpd and start .
+  - name: Install HTTP
+    yum: name=httpd state=latest
+  - name: Start HTTPD after install
+    service: name=httpd state=started
+########### Deploy config
+#backup
+  - name: Backup config HTTP (backup from client)
+    command: cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd.conf.backup1
+#Deploy
+  - name: Deploy config httpd
+    template:
+     src: "httpd.conf"
+     dest: "/etc/httpd/conf/httpd.conf"
+     owner: root
+     group: root
+     mode: 0644
+########### Đẩy code về client
+  - name: Deploy web file
+    template:
+     src: "index.html"
+     dest: "/var/www/html/index.html"
+
+########### Khởi động lại apache để áp dụng config
+  - name: Start HTTPD after install
+    service: name=httpd state=restarted
+
+https://linuxhint.com/control-systemd-ansible/
+
+
+6. check service
+
+- name: checking service status
+  hosts: www.linuxfoundation.org
+  tasks:
+  - name: checking service status
+    command: systemctl status "{{ item }}"
+    with_items:
+    - firewalld
+    - httpd
+    - vsftpd
+    - sshd
+    - postfix
+    register: result
+    ignore_errors: yes
+  - name: showing report
+    debug:
+     var: result
+	 
+---
+- name: my playbook example
+  hosts: all
+  gather_facts: no
+  tasks:
+  - name: test_task
+    shell: "if ! systemctl is-active firewalld; then  echo 'inactive' ; fi"
+    register: firewalld_active
+    failed_when: False
+    changed_when: False
+
+  - debug: var=firewalld_active
+
+  - name: check_value_firewalld
+    debug: 
+      msg: "'firewalld is inactive' if firewalld_active.stdout=='inactive' else 'service is active' "
+
+-----------------------
+---
+- name: Check service status
+  hosts: all
+  gather_facts: no
+  vars:
+    SERVICE: firewalld.service
+  tasks:
+    - name: Service Facts
+      service_facts:
+
+    - debug:
+        msg: "{{ services[SERVICE]['status'] }}"
+		
+-------------
+
+https://www.educba.com/ansible-when/
+https://www.linuxtechi.com/use-debug-module-ansible-playbook/
+---
+ - name: Installing HTTPD
+   hosts: server2
+   become: true
+   gather_facts: false
+   vars:
+     pkg: httpd
+   tasks:
+     - shell: rpm -q httpd | head -n 1
+       register: result
+     - set_fact:
+        result: "{{ result.stdout }}"
+     - debug:
+        msg: "Is the {{ pkg }} installed: {{ result }}"
+     - yum:
+        name: "{{ pkg }}"
+        state: latest
+       when: result | regex_search("not installed")
+
+=================================
+---
+- name: check service
+  hosts: webserver
+  become: true
+  gather_facts: false
+  vars:
+    pkg: httpd
+  tasks:
+    - shell: rpm -q httpd | head -n 1
+      register: result
+    - set_fact:
+       result: "{{ result.stdout }}"
+    - debug:
+       msg: "Is the {{ pkg }} installed: {{ result }}"
+    - debug:
+       msg: "HTTPD not install"
+      when: result | regex_search("not installed")
+
+
+
+
+----
+
+
+
+
+
+7. Loop
+https://viblo.asia/p/phan-2-tim-hieu-ve-ansible-YWOZry8rKQ0
+### VD cho Ubuntu###
+---
+- hosts: allone
+  become: yes
+
+  tasks:
+    - name: Install Apache.
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - apache2
+        - mysql-server
+        - php
+        - php-mysql
+    - name: Restart Apache and Mysql
+      service:
+        name: "{{item}}"
+        state:  running
+      loop:
+          - apache2
+          - mysql
+
+
+### VD cho Centos7###
+https://viblo.asia/p/ansible-mot-so-ansible-module-ma-ban-nen-biet-gGJ59MGG5X2
+--
+- hosts: allone
+  become: yes
+
+  tasks:
+    - name: Install Apache.
+      yum:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - nginx
+        - redis
+    - name: Restart Apache and Mysql
+      service:
+        name: "{{item}}"
+        state:  restarted
+      loop:
+          - nginx
+          - redis
+
+
+
+---
+---Check if exits, install
+
+- name: check service
+  hosts: webserver
+  become: true
+  gather_facts: false
+  vars:
+    pkg: httpd
+  tasks:
+    - shell: rpm -q {{ pkg }} | head -n 1
+      register: result
+    - set_fact:
+        result: "{{ result.stdout }}"
+    - debug:
+        msg: "1. {{ result }}"
+    - name: install appche
+      debug:
+        msg: "2, Result: {{ result }}"
+      when: result | regex_search("not installed")
+    - yum:
+        name: "{{ pkg }}"
+        state: latest
+      when: result | regex_search("not installed")
+
+
+8. Handlers
+https://wiki.nhanhoa.com/kb/ansible-tim-hieu-ve-playbook-phan-3/
+
+Các handler được sử dụng để kích hoạt một trạng thái nào đó của service như restart hay stop
+Các handler trông khá giống các task nhưng chúng chỉ được thực thi khi được kích hoạt bởi một chỉ thị notify bên trong một task
+Chúng thường được khai báo như một mảng trong phần handlers của playbook nhưng cũng hoàn toàn có thể đặt trong các tệp riêng biệt
+
+- hosts: centos7
+  become: True
+  vars:
+    my_name: 'TrungVBB'
+  tasks:
+  - name: template configuration file
+    template:
+      src: index.html
+      dest: /var/www/html/index.html
+    notify:
+      - restart httpd
+  handlers:
+    - name: restart httpd
+      service:
+        name: httpd
+        state: restarted
+		
+9. Template
+Các template thường được sử dụng để thiết lập cấu hình, cho phép sử dụng các biến và các tính năng khác nhằm làm cho các tệp trở nên linh hoạt hơn và thuận tiện cho việc sử dụng lại chúng
+Ansible sử dụng template engine có tên là Jinjia 2
+Ví dụ: 1 file index.html có nội dung như sau
+
+
+<h1>Website is hacked by {{my_name}}</h1>
+
+Hãy chú ý biến my_name
+Cùng với đó có một playbook ở cùng folder chứa file index.html kia
+- hosts: centos7
+  become: True
+  vars:
+    my_name: 'TrungVB'
+  tasks:
+  - name: Test template
+    template:
+      src: index.html
+      dest: /var/www/html/index.html

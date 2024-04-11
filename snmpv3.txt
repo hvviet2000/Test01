@@ -1,0 +1,195 @@
+VIETIS_2950(config)#snmp-server view vietisview iso included
+VIETIS_2950(config)#snmp-server group vietisgroup v3 auth read iso wr
+VIETIS_2950(config)#snmp-server group vietisgroup v3 auth read iso write vietisview
+VIETIS_2950(config)#snmp-server user vietisuser vietisgroup v3 auth md5 Vietis@123 priv 3des Vietis@123
+ VIETIS_2950(config)#snmp-server user vietisuser vietisgroup v3 auth md5 Vietis@123 ?
+  access  specify an access-list associated with this group
+  <cr>
+
+VIETIS_2950(config)#snmp-server user vietisuser vietisgroup v3 auth md5 Vietis@123
+Adding an snmpv3 user could cause a bootup delay,
+do you wish to continue? (y/n)[confirm]y
+VIETIS_2950(config)#exit
+VIETIS_2950#sh run | i snmp
+
+
+
+VietIS_SW_01(config)#snmp-server view vietisview iso included
+VietIS_SW_01(config)#snmp-server group vietisgroup v3 auth read iso write vietisview
+VietIS_SW_01(config)#snmp-server user vietisuser vietisgroup v3 auth md5 Vietis@123 priv des Vietis@123
+VietIS_SW_01(config)#exit
+
+
+=========Lenh chuan
+
+snmp-server view ALL-ACCESS iso included
+snmp-server view INT-ACCESS ifEntry included
+snmp-server group GROUP1 v3 priv read ALL-ACCESS
+snmp-server user vietisuser GROUP1 v3 auth sha Vietis@123 priv des Vietis@123
+
+========================
+
+
+Here is snmpv3 example to configure snmpv3  from scratch: 
+
+Switch# conf t
+
+Enter configuration commands, one per line.  End with CNTL/Z.
+
+Create SNMP view:
+
+Switch(config)#snmp-server view ?
+  WORD  Name of the view
+
+Switch(config)#snmp-server view vietisview ?
+  WORD  MIB view family name
+  <cr>
+Switch(config)#snmp-server view vietisview iso
+
+  excluded  MIB family is excluded from the view
+  included  MIB family is included in the view
+
+Switch(config)#snmp-server view vietisview iso included ?
+  <cr>
+
+Switch(config)#snmp-server view vietisview iso included
+
+Create SNMP v3 Group:
+
+Switch(config)#snmp-server group vietisgroup ?
+  v1   group using the v1 security model
+  v2c  group using the v2c security model
+  v3   group using the User Security Model (SNMPv3)
+
+Switch(config)#snmp-server group vietisgroup v3 ?
+  auth    group using the authNoPriv Security Level
+  noauth  group using the noAuthNoPriv Security Level
+  priv    group using SNMPv3 authPriv security level
+
+Switch(config)#snmp-server group vietisgroup v3 auth ?
+  access   specify an access-list associated with this group
+  context  specify a context to associate these views for the group
+  match    context name match criteria
+  notify   specify a notify view for the group
+  read     specify a read view for the group
+  write    specify a write view for the group
+  <cr>
+Switch(config)#snmp-server group vietisgroup v3 auth read ?
+  WORD  read view name
+
+Switch(config)#snmp-server group vietisgroup v3 auth read iso ?
+  access  specify an access-list associated with this group
+  notify  specify a notify view for the group
+  write   specify a write view for the group
+  <cr>
+
+Switch(config)#snmp-server group vietisgroup v3 auth read iso wr
+Switch(config)#snmp-server group vietisgroup v3 auth read vietisview write vietisview ?
+  access  specify an access-list associated with this group
+  notify  specify a notify view for the group
+  <cr>
+
+Switch(config)#snmp-server group vietisgroup v3 auth read vietisview write vietisview
+Switch(config)#snmp-ser
+Switch(config)#snmp-server user
+Switch(config)#snmp-server user vietisuser ?
+  WORD  Group to which the user belongs
+
+Create SNMP user:
+
+Switch(config)#snmp-server user ?
+  WORD  Name of the user
+
+Switch(config)#snmp-server user vietisuser ?
+  WORD  Group to which the user belongs
+
+Switch(config)#snmp-server user vietisuser vietisgroup ?
+  remote  Specify a remote SNMP entity to which the user belongs
+  v1      user using the v1 security model
+  v2c     user using the v2c security model
+  v3      user using the v3 security model
+
+Switch(config)#snmp-server user vietisuser vietisgroup v3 ?
+  access     specify an access-list associated with this group
+  auth       authentication parameters for the user
+  encrypted  specifying passwords as MD5 or SHA digests
+  <cr>
+
+Switch(config)#snmp-server user vietisuser vietisgroup v3 auth ?
+  md5  Use HMAC MD5 algorithm for authentication
+  sha  Use HMAC SHA algorithm for authentication
+
+Switch(config)#snmp-server user vietisuser vietisgroup v3 auth md5 ?
+  WORD  authentication pasword for user
+
+Switch(config)#snmp-server user vietisuser vietisgroup v3 auth md5 Vietis@123 ?
+  access  specify an access-list associated with this group
+  priv    encryption parameters for the user
+  <cr>
+
+Switch(config)#snmp-server user vietisuser vietisgroup v3 auth md5 Vietis@123 priv ?
+  3des  Use 168 bit 3DES algorithm for encryption
+  aes   Use AES algorithm for encryption
+  des   Use 56 bit DES algorithm for encryption
+
+Switch(config)#snmp-server user vietisuser vietisgroup v3 auth md5 Vietis@123 priv 3des ?
+  WORD  privacy pasword for user
+
+Switch(config)#snmp-server user vietisuser vietisgroup v3 auth md5 Vietis@123 priv 3des Vietis@123
+
+Switch# sh run | i snmp
+
+snmp-server group vietisgroup v3 auth read vietisview write vietisview
+
+Switch#show snmp user
+
+User name: vietisuser
+Engine ID: 8000000903000021568D2A81
+storage-type: nonvolatile        active
+Authentication Protocol: MD5
+Privacy Protocol: 3DES
+Group-name: vietisgroup
+
+nmsswitch#show snmp engineID
+
+Local SNMP engineID: 8000000903000021568D2A81
+
+Remote Engine ID          IP-addr    Port 
+
+Switch#show snmp group
+groupname: public                           security model:v1
+readview : v1default                        writeview: <no writeview specified>
+
+groupname: vietisgroup                         security model:v3 auth
+readview : vietisview                           writeview: vietisview 
+
+I did it in my lab and sending output to you. I hope this will definitely help you.
+
+SNMP service (at Control Panel > Terminal & SNMP > SNMP) allows users to monitor Synology NAS with network management software. Currently, SNMPv1, SNMPv2c and SNMPv3 protocols are supported.
+Enable SNMP Service
+
+NAS 
+Tick Enable SNMP service and follow the steps below.
+To enable SNMPv1, SNMPv2c service:
+
+    Tick SNMPv1, SNMPv2c service.
+    Enter a Community name.
+    Click Apply.
+
+To enable SNMPv3 service:
+
+    Tick SNMPv3 service.
+    Enter a User name and Password. Choose the Protocol you want to use.
+    Click Apply.
+
+snmp-server community public vietis ro
+snmp-server enable traps snmp
+snmp-server contact vietis
+snmp-server location vietis
+
+snmp-server community private RW
+snmp-server community vietis RO
+snmp-server location vietis
+snmp-server contact vietis
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+snmp-server host 10.1.2.45 version 2c vietis

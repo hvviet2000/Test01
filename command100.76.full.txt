@@ -1,0 +1,685 @@
+    1  vi /etc/selinux/config 
+    2  reboot
+    3  shutdown -h now
+    4  iptables -l
+    5  iptables -L
+    6  telnet
+    7  yum install telnet
+    8  yum -install telnet
+    9  yum install telnet
+   10  sudo yum install telnet
+   11  yum list
+   12  nslookup
+   13  sudo yum install telnet
+   14  df -h
+   15  vi /etc/sysconfig/network-scripts/ifcfg-ens192 
+   16  vi /etc/selinux/config 
+   17  ping 8.8.8.8
+   18  systemctl restart network.service
+   19  ping 8.8.8.8
+   20  shutdown -h now
+   21  ls /sys/class/scsi_host
+   22  echo "- - -" > /sys/class/scsi_host/host0/scan
+   23  echo "- - -" > /sys/class/scsi_host/host1/scan
+   24  echo "- - -" > /sys/class/scsi_host/host2/scan
+   25  ls /sys/class/scsi_device/
+   26  echo 1 > /sys/class/scsi_device/0\:0\:0\:0/device/rescan
+   27  echo 1 > /sys/class/scsi_device/2\:0\:0\:0/device/rescan
+   28  fdisk -l
+   29  fdisk /dev/sda
+   30  partprobe
+   31  fdisk -l
+   32  pvcreate /dev/sda3
+   33  vgextend centos /dev/sda3
+   34  df -h
+   35  lvextend -L +120G /dev/mapper/centos-root
+   36  xfs_growfs /dev/mapper/centos-root
+   37  df -h
+   38  reboot
+   39  yum update
+   40  vi /etc/sysconfig/network-scripts/ifcfg-ens192 
+   41  systemctl restart network.service
+   42  yum list
+   43  yum update
+   44  vi /etc/resolv.conf 
+   45  yum update
+   46  yum update --skip-broken
+   47  vi /etc/resolv.conf 
+   48  systemctl restart network.service
+   49  yum clean all
+   50  rm -rf /var/cache/yum
+   51  yum clean all
+   52  yum makecache
+   53  yum update
+   54  reboot
+   55  yum install -y curl policycoreutils-python postfix ca-certificates
+   56  wget https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh
+   57  bash script.rpm.sh
+   58  sudo yum install  gitlab-ce-12.10.3-ce.0.el7.x86_64
+   59  yum -y install curl policycoreutils openssh-server openssh-clients postfix
+   60  sudo yum install  gitlab-ce-12.10.3-ce.0.el7.x86_64
+   61  sudo mkdir -p /etc/gitlab/ssl
+   62  cd /etc/gitlab/ssl
+   63  ls
+   64  openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out 
+   65  openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out gitlabce.crt -keyout gitlabce.key
+   66  openssl dhparam -out /etc/gitlab/ssl/dhparams.pem 2048
+   67  ll
+   68  chmod 600 /etc/gitlab/ssl/*
+   69  vi /etc/gitlab/gitlab.rb 
+   70  systemctl start sshd
+   71  systemctl start postfix
+   72  systemctl enable sshd
+   73  systemctl enable postfix
+   74  gitlab-ctl reconfigure
+   75  sudo gitlab-ctl restart
+   76  sudo gitlab-ctl tail
+   77  sudo firewall-cmd --permanent --add-service=https
+   78  sudo firewall-cmd --permanent --add-service=http
+   79  sudo systemctl reload firewalld
+   80  gitlab-ctl reconfigure
+   81  sudo gitlab-ctl restart
+   82  gitlab-ctl reconfigure
+   83  history 
+   84  vi /etc/sysconfig/network-scripts/ifcfg-ens192
+   85  vi /etc/resolv.conf
+   86  reboot
+   87  shutdown -h now
+   88  sudo gitlab-ctl tail
+   89  gitlab-ctl reconfigure
+   90  gitlab-ctl restart
+   91  gitlab-ctl status
+   92  gitlab-ctl restart nginx
+   93  gitlab-ctl status
+   94  gitlab-ctl tail nginx
+   95  vi /var/opt/gitlab/nginx/conf/nginx.conf
+   96  gitlab-ctl restart nginx
+   97  gitlab-ctl status
+   98  vi /etc/gitlab/gitlab.rb
+   99  gitlab-ctl status
+  100  gitlab-ctl tail
+  101  gitlab-ctl reconfigure
+  102  sudo gitlab-rake gitlab:check SANITIZE=true
+  103  gitlab-ctl status
+  104  gitlab-ctl tail
+  105  history 
+  106  firewall-cmd --state
+  107  firewall-cmd --list-all-zones
+  108  sudo firewall-cmd --zone=public --permanent --add-port=8009/tcp
+  109  sudo systemctl reload firewalld
+  110  shutdown -h now
+  111  sudo gitlab-ctl stop unicorn
+  112  sudo gitlab-ctl stop sidekiq
+  113  sudo gitlab-ctl status
+  114  cd /var/opt/gitlab/backups/
+  115  ll
+  116  sudo gitlab-rake gitlab:backup:restore 1591654533_2020_06_09_12.10.3_gitlab_backup.tar force=yes
+  117  gitlab-ctl restart
+  118  sudo gitlab-rake gitlab:check SANITIZE=true
+  119  sudo -u git -H RAILS_ENV=production bin/background_jobs start
+  120  gitlab-ctl status
+  121  gitlab-ctl tail
+  122  exit
+  123  shutdown -h now
+  124   history 
+  125  sudo gitlab-ctl status
+  126  shutdown -h now
+  127  history 
+  128  df -h
+  129  history 
+  130  sudo gitlab-ctl stop unicorn
+  131  sudo gitlab-ctl stop sidekiq
+  132  sudo gitlab-ctl status
+  133  cd /var/opt/gitlab/backups/
+  134  ls -l
+  135  sudo gitlab-ctl stop puma
+  136  sudo gitlab-rake gitlab:backup:restore 1608675234_2020_12_23_12.10.3_gitlab_backup.tar
+  137  sudo gitlab-ctl restart
+  138  sudo gitlab-ctl status
+  139  history 
+  140  sudo gitlab-rake gitlab:check SANITIZE=true
+  141  sudo -u git -H RAILS_ENV=production bin/background_jobs start
+  142  sudo gitlab-ctl reconfigure
+  143  sudo gitlab-ctl restart
+  144  sudo gitlab-rake gitlab:check SANITIZE=true
+  145  cat /etc/passwd
+  146  sudo gitlab-ctl stop unicorn
+  147  sudo gitlab-ctl stop sidekiq
+  148  sudo gitlab-ctl status
+  149  sudo gitlab-rake gitlab:backup:restore 1608675234_2020_12_23_12.10.3_gitlab_backup.tar 
+  150  sudo gitlab-ctl restart
+  151  sudo gitlab-rake gitlab:check SANITIZE=true
+  152  sudo gitlab-ctl stop unicorn
+  153  sudo gitlab-ctl stop sidekiq
+  154  sudo gitlab-rake gitlab:backup:restore 1608675234_2020_12_23_12.10.3_gitlab_backup.tar 
+  155  sudo gitlab-ctl reconfigure
+  156  sudo gitlab-ctl stop unicorn
+  157  sudo gitlab-ctl stop sidekiq
+  158  sudo gitlab-rake gitlab:backup:restore 1608675234_2020_12_23_12.10.3_gitlab_backup.tar 
+  159  sudo gitlab-ctl restart
+  160  sudo gitlab-rake gitlab:check SANITIZE=true
+  161  sudo -u git -H editor /opt/gitlab/embedded/service/gitlab-shell/config.yml
+  162  sudo vi /opt/gitlab/embedded/service/gitlab-shell/config.yml
+  163  sudo gitlab-ctl reconfigure
+  164  sudo gitlab-ctl restart
+  165  gitlab-rake gitlab:check
+  166  sudo gitlab-ctl reconfigure
+  167  sudo gitlab-ctl restart
+  168  gitlab-rake gitlab:check
+  169  exit
+  170  gitlab-rake gitlab:check
+  171  find /home/git/gitlab
+  172  sudo gitlab-ctl reconfigure
+  173  gitlab-rake gitlab:check
+  174  chown -R git /var/opt/gitlab/gitlab-rails/uploads
+  175  gitlab-rake gitlab:check
+  176  cd /var/opt/gitlab/gitlab-rails/uploads
+  177  find . -type f -exec chmod 0644 {}
+  178  find . -type f | chmod 0644 {}
+  179  find *.* -type f | chmod 0644 {}
+  180  ls
+  181  ll
+  182  gitlab-rake gitlab:check
+  183   sudo chown -R -v git:root /var/opt/gitlab/gitlab-rails/uploads 
+  184  sudo chmod -R -v 0700 /var/opt/gitlab/gitlab-rails/uploads 
+  185  sudo gitlab-ctl reconfigure    
+  186  sudo gitlab-rake gitlab:check
+  187  sudo gitlab-ctl restart
+  188  ls
+  189  history 
+  190  cd /var/opt/gitlab/backups/
+  191  sudo gitlab-rake gitlab:backup:restore 1608675234_2020_12_23_12.10.3_gitlab_backup.tar 
+  192  sudo gitlab-ctl stop unicorn
+  193  sudo gitlab-ctl stop sidekiq
+  194  sudo gitlab-rake gitlab:backup:restore 1608675234_2020_12_23_12.10.3_gitlab_backup.tar 
+  195  sudo gitlab-ctl restart
+  196  sudo gitlab-rake gitlab:check SANITIZE=true
+  197  sudo chown -R -v git:root /var/opt/gitlab/gitlab-rails/uploads     
+  198  sudo chmod -R -v 0700 /var/opt/gitlab/gitlab-rails/uploads   
+  199  sudo chown -R -v git:root /var/opt/gitlab/git-data                           && sudo chmod -R -v 0700 /var/opt/gitlab/git-data                            && sudo chown -R -v git:git /var/opt/gitlab/git-data/repositories            && sudo chmod -R -v 2770 /var/opt/gitlab/git-data/repositories               && sudo chown -R -v git:gitlab-www /var/opt/gitlab/gitlab-rails/shared       && sudo chmod -R -v 0751 /var/opt/gitlab/gitlab-rails/shared                 && sudo chown -R -v git:root /var/opt/gitlab/gitlab-rails/shared/artifacts   && sudo chmod -R -v 0700 /var/opt/gitlab/gitlab-rails/shared/artifacts       && sudo chown -R -v git:root /var/opt/gitlab/gitlab-rails/shared/lfs-objects && sudo chmod -R -v 0700 /var/opt/gitlab/gitlab-rails/shared/lfs-objects     && sudo chown -R -v git:root /var/opt/gitlab/gitlab-rails/uploads            && sudo chmod -R -v 0700 /var/opt/gitlab/gitlab-rails/uploads                && sudo chown -R -v git:gitlab-www /var/opt/gitlab/gitlab-rails/shared/pages && sudo chmod -R -v 0750 /var/opt/gitlab/gitlab-rails/shared/pages           && sudo chown -R -v git:root /var/opt/gitlab/gitlab-ci/builds                && sudo chmod -R -v 0700 /var/opt/gitlab/gitlab-ci/builds                    && sudo chown -R -v gitlab-psql:git /var/opt/gitlab/postgresql/data          && sudo chmod -R -v 0700  /var/opt/gitlab/postgresql/data                    && sudo gitlab-ctl reconfigure                                               && sudo gitlab-rake gitlab:check                                             && sudo gitlab-ctl restart
+  200  sudo gitlab-rake gitlab:check     
+  201   yum upate
+  202   yum update
+  203  reboot
+  204  sudo gitlab-ctl status
+  205  sudo gitlab-rake gitlab:check 
+  206  exit
+  207  sudo gitlab-rake gitlab:check 
+  208  history 
+  209  sudo gitlab-ctl stop unicorn
+  210  sudo gitlab-ctl stop sidekiq
+  211  cd /var/opt/gitlab/backups/
+  212  sudo gitlab-rake gitlab:backup:restore 1608862315_2020_12_25_12.10.3_gitlab_backup.tar 
+  213  sudo gitlab-ctl restart
+  214  sudo gitlab-rake gitlab:check SANITIZE=true
+  215  shutdown -h now
+  216  df -h
+  217  history 
+  218  sudo gitlab-ctl stop unicorn
+  219  sudo gitlab-ctl stop sidekiq
+  220  cd /var/opt/gitlab/backups/
+  221  ls
+  222  sudo gitlab-ctl stop puma
+  223  sudo gitlab-rake gitlab:backup:restore 1623881649_2021_06_17_12.10.3_gitlab_backup.tar 
+  224  history 
+  225  sudo gitlab-ctl restart
+  226  sudo gitlab-rake gitlab:check SANITIZE=true
+  227  reboot
+  228  sudo gitlab-ctl status
+  229  sudo gitlab-ctl restart
+  230  sudo gitlab-ctl status
+  231  sudo gitlab-ctl stop puma
+  232  sudo gitlab-ctl stop sidekiq
+  233  sudo gitlab-ctl stop unicorn
+  234  cd/
+  235  cd /
+  236  sudo gitlab-ctl status
+  237  sudo gitlab-ctl stop sidekiq
+  238  sudo gitlab-ctl stop unicorn
+  239  sudo gitlab-ctl stop puma
+  240  history 
+  241  cd /var/opt/gitlab/backups/
+  242  ls
+  243  sudo gitlab-rake gitlab:backup:restore 1623795234_2021_06_16_12.10.3_gitlab_backup.tar 
+  244  sudo gitlab-ctl restart
+  245  sudo gitlab-rake gitlab:check SANITIZE=true
+  246  shutdown -h now
+  247  history 
+  248  sudo gitlab-ctl stop sidekiq
+  249  sudo gitlab-ctl stop unicorn
+  250  sudo gitlab-ctl stop puma
+  251  date
+  252  cd /var/opt/gitlab/backups/
+  253  sudo gitlab-ctl stop puma
+  254  udo gitlab-rake gitlab:backup:restore 1633990446_2021_10_12_12.10.3_gitlab_backup.tar 
+  255  sudo gitlab-rake gitlab:backup:restore 1633990446_2021_10_12_12.10.3_gitlab_backup.tar 
+  256  history 
+  257  sudo gitlab-ctl restart
+  258  sudo gitlab-rake gitlab:check SANITIZE=true
+  259  reboot
+  260  sudo gitlab-ctl status
+  261  df -h
+  262  cd /var/opt/gitlab/backups/
+  263  ls
+  264  sudo gitlab-ctl stop puma
+  265  history 
+  266  sudo gitlab-ctl stop unicorn
+  267  sudo gitlab-ctl stop sidekiq
+  268  sudo gitlab-ctl status
+  269  ls
+  270  sudo gitlab-rake gitlab:backup:restore 1633990446_2021_10_12_12.10.3_gitlab_backup.tar 
+  271  sudo gitlab-rake gitlab:check SANITIZE=true
+  272  sudo gitlab-ctl restart
+  273  shutdown -h now
+  274  sudo gitlab-ctl status
+  275  sudo gitlab-ctl restart
+  276  sudo gitlab-ctl status
+  277  exit
+  278  shutdown -h now
+  279  history 
+  280  cd /var/opt/gitlab/backups/
+  281  sudo gitlab-ctl stop puma
+  282  sudo gitlab-ctl stop unicorn
+  283  sudo gitlab-ctl stop sidekiq
+  284  sudo gitlab-ctl status
+  285  ls
+  286  date
+  287  sudo gitlab-rake gitlab:backup:restore 1640556782_2021_12_27_12.10.3_gitlab_backup.tar 
+  288  sudo gitlab-rake gitlab:backup:restore 1640556782_2021_12_27_12.10.3_gitlab_backup.tar  force=yes
+  289  sudo gitlab-ctl reconfigure
+  290  sudo gitlab-rake gitlab:backup:restore 1640556782_2021_12_27_12.10.3_gitlab_backup.tar  force=yes
+  291  sudo gitlab-rake gitlab:backup:restore 1640556782_2021_12_27_12.10.3_gitlab_backup.tar  force=yes --trace
+  292  sudo gitlab-ctl reconfigure
+  293  reboot
+  294  ls
+  295  history 
+  296  cd /var/opt/gitlab/backups/
+  297  sudo gitlab-ctl stop puma
+  298  sudo gitlab-ctl stop unicorn
+  299  sudo gitlab-ctl stop sidekiq
+  300  @291
+  301  ls
+  302  sudo gitlab-rake gitlab:backup:restore 1640556782_2021_12_27_12.10.3_gitlab_backup.tar  force=yes --trace
+  303  sudo gitlab-rake gitlab:backup:restore 1640556782_2021_12_27_12.10.3_gitlab_backup.tar  
+  304  history 
+  305  sudo gitlab-ctl restart
+  306  sudo gitlab-rake gitlab:check SANITIZE=true
+  307  shutdown -h now
+  308  history 
+  309  cd /var/opt/gitlab/backups/
+  310  sudo gitlab-ctl stop puma
+  311  sudo gitlab-ctl stop unicorn
+  312  sudo gitlab-ctl stop sidekiq
+  313  sudo gitlab-ctl staus
+  314  sudo gitlab-ctl status
+  315  sudo gitlab-ctl stop puma
+  316  history 
+  317  sudo gitlab-rake gitlab:backup:restore 1641247992_2022_01_04_12.10.3_gitlab_backup.tar 
+  318  history 
+  319  sudo gitlab-ctl restart
+  320  sudo gitlab-rake gitlab:check SANITIZE=true
+  321  shutdown -h now
+  322  sudo gitlab-ctl restart nginx
+  323  exit
+  324  cd /var/opt/gitlab/backups/
+  325  sudo chown git.git /var/opt/gitlab/backups/1653948994_2022_05_31_12.10.3_gitlab_backup.tar
+  326  sudo chown git.git /var/opt/gitlab/backups/1654726589_2022_06_09_12.10.3_gitlab_backup.tar 
+  327  sudo gitlab-ctl stop unicorn
+  328  sudo gitlab-ctl stop puma
+  329  sudo gitlab-ctl stop sidekiq
+  330  sudo gitlab-ctl status
+  331  sudo gitlab-backup restore BACKUP=1654726589_2022_06_09_12.10.3
+  332  sudo gitlab-ctl restart
+  333  sudo gitlab-rake gitlab:check SANITIZE=true
+  334  sudo chown git.git /var/opt/gitlab/backups/1652566570_2022_05_15_12.10.3_gitlab_backup.tar 
+  335  sudo gitlab-ctl stop unicorn
+  336  sudo gitlab-ctl stop puma
+  337  sudo gitlab-ctl stop sidekiq
+  338  sudo gitlab-ctl status
+  339  sudo gitlab-backup restore BACKUP=1652566570_2022_05_15_12.10.3
+  340  sudo gitlab-ctl restart
+  341  sudo gitlab-rake gitlab:check SANITIZE=true
+  342  sudo gitlab-ctl stop unicorn
+  343  sudo gitlab-ctl stop puma
+  344  sudo gitlab-ctl stop sidekiq
+  345  sudo gitlab-ctl status
+  346  sudo gitlab-backup restore BACKUP=1654726589_2022_06_09_12.10.3
+  347  sudo gitlab-ctl restart
+  348  sudo gitlab-rake gitlab:check SANITIZE=true
+  349  cat /etc/yum.conf 
+  350  vi /etc/yum.conf 
+  351  history
+  352  sudo gitlab-ctl status 
+  353  clear
+  354  sudo rm -f /etc/gitlab/disable-postgresql-upgrade
+  355  sudo touch /etc/gitlab/skip-auto-backup
+  356  yum install gitlab-ce-12.10.14
+  357  find / -type f -name "project_policy.rb"
+  358  yum install gitlab-ce-13.0.14
+  359  yum install gitlab-ce-13.1.11
+  360  yum install gitlab-ce-13.8.8
+  361  yum install gitlab-ce-13.12.15
+  362  sudo gitlab-ctl reconfigure
+  363  yum install gitlab-ce-14.0.12
+  364  sudo gitlab-ctl restart postgresql
+  365  yum install gitlab-ce-14.3.6
+  366  yum install gitlab-ce-14.9.5
+  367  yum install gitlab-ce-14.10.4
+  368  yum install gitlab-ce-15.0.2
+  369  sudo touch /etc/gitlab/disable-postgresql-upgrade
+  370  sudo rm /etc/gitlab/skip-auto-backup
+  371  sudo gitlab-backup create SKIP=builds,registry,artifacts  >>$LOGFILE 2>&1 
+  372  sudo gitlab-backup create SKIP=builds,registry,artifacts  >>/var/opt/gitlab/backups/back.log 2>&1 
+  373  sudo gitlab-ctl reconfigure
+  374  sudo gitlab-ctl restart
+  375  sudo gitlab-ctl status
+  376  reboot
+  377  sudo gitlab-ctl status
+  378  history 
+  379  sudo gitlab-ctl restart nginx
+  380  sudo gitlab-ctl status
+  381  sudo gitlab-ctl status -l
+  382  tail -f /var/log/messages
+  383  tail -f /var/log/gitlab/nginx/error.log
+  384  cat -f /var/log/gitlab/nginx/error.log
+  385  cat /var/log/gitlab/nginx/error.log
+  386  cat /var/log/gitlab/nginx/gitlab_error.log
+  387  tail /var/log/gitlab/nginx/gitlab_error.log
+  388  shutdown -h now
+  389  sudo gitlab-rake gitlab:check --trace
+  390  sudo chown -R git /var/opt/gitlab/gitlab-rails/uploads
+  391  sudo find /var/opt/gitlab/gitlab-rails/uploads -type f -exec chmod 0644 {} \;
+  392  sudo find /var/opt/gitlab/gitlab-rails/uploads -type d -not -path /var/opt/gitlab/gitlab-rails/uploads -exec chmod 0700 {} \;
+  393  sudo gitlab-rake gitlab:check --trace
+  394  sudo gitlab-ctl restart nginx
+  395  sudo gitlab-ctl status --detail
+  396  sudo gitlab-ctl status --trace
+  397  history 
+  398  sudo gitlab-ctl status --trace
+  399  sudo gitlab-ctl reconfigure
+  400  cat /var/log/gitlab/gitlab-workhorse/@400000005ee487ac27ff47dc.s 
+  401  cd /
+  402  clear
+  403  cls
+  404  exit
+  405  cat /var/log/gitlab/gitlab-rails/application.log
+  406  cat /var/log/gitlab/gitlab-rails/application_json.log
+  407  exit
+  408  sudo gitlab-ctl tail
+  409  df -h
+  410  ls /var/opt/gitlab/backups/
+  411  ll
+  412  cd /var/opt/gitlab/backups/
+  413  chown git:git lfs.tar.gz 
+  414  chown git:git uploads.tar.gz 
+  415  chown git:git pages.tar.gz 
+  416  sudo gitlab-ctl restart
+  417  gitlab-ctl status
+  418  /var/log/gitlab/gitlab-rails# free -h
+  419      check gitlab-ctl tail puma
+  420  gitlab-ctl tail puma
+  421  cat /var/log/gitlab/unicorn/unicorn_stderr.log
+  422  ps -aux | less
+  423  sudo gitlab-ctl stop
+  424  ps -aux | less
+  425  sudo gitlab-ctl start
+  426  shutdown -h now
+  427  date
+  428  sudo netstat -tulpn | grep 8080
+  429  sudo gitlab-ctl tail puma
+  430  cd /var/opt/gitlab/backups/
+  431  mkdir ~/gitlab-old
+  432  sudo cp /etc/gitlab/gitlab.rb ~/gitlab-old
+  433  sudo cp /etc/gitlab/gitlab-secrets.json ~/gitlab-old
+  434  sudo cp -R /etc/gitlab/ssl ~/gitlab-old
+  435  sudo ls -lart /var/opt/gitlab/backups/
+  436  sudo cp /var/opt/gitlab/backups/1654876410_2022_06_10_15.0.2_gitlab_backup.tar  ~/gitlab-old
+  437  sudo chown root:root -R ~/gitlab-old
+  438  gitlab-ctl tail puma
+  439  sudo gitlab-ctl tail
+  440  sudo gitlab-ctl reconfigure
+  441  sudo gitlab-ctl start
+  442  sudo gitlab-ctl restart
+  443  sudo gitlab-ctl tail
+  444  sudo gitlab-ctl reconfigure
+  445  sudo gitlab-ctl restart
+  446  sudo gitlab-ctl tail
+  447  sudo gitlab-ctl reconfigure
+  448  sudo gitlab-ctl restart
+  449  sudo gitlab-ctl tail
+  450  sudo gitlab-ctl reconfigure
+  451  sudo gitlab-ctl restart
+  452  sudo gitlab-ctl reconfigure
+  453  sudo gitlab-ctl restart
+  454  ll /var/opt/gitlab/gitlab-workhorse/socket
+  455  ll /var/opt/gitlab/gitlab-workhorse/sockets
+  456  sudo gitlab-ctl tail puma
+  457  date
+  458  sudo gitlab-ctl tail puma
+  459  sudo gitlab-ctl tail unicorn
+  460  sudo gitlab-ctl tail puma
+  461  sudo netstat -tulpn | grep 8080
+  462  sudo gitlab-ctl reconfigure
+  463  sudo gitlab-ctl restart
+  464  sudo gitlab-ctl tail
+  465  sudo gitlab-ctl reconfigure
+  466  sudo gitlab-ctl restart
+  467  sudo gitlab-ctl tail
+  468  sudo gitlab-ctl reconfigure
+  469  sudo gitlab-ctl restart
+  470  sudo gitlab-ctl tail
+  471  sudo gitlab-ctl reconfigure
+  472  sudo gitlab-ctl restart
+  473  sudo gitlab-ctl tail
+  474  sudo gitlab-ctl reconfigure
+  475  sudo gitlab-ctl restart
+  476  sudo gitlab-ctl tail
+  477  find / -type f -name "gitlab.rb"
+  478  sudo gitlab-ctl reconfigure
+  479  sudo gitlab-ctl restart
+  480  sudo gitlab-ctl tail
+  481  sudo chown git.git  /opt/gitlab/var/puma
+  482  sudo gitlab-ctl restart
+  483  sudo gitlab-ctl tail
+  484  sudo gitlab-ctl reconfigure
+  485  sudo gitlab-ctl restart
+  486  clear
+  487  sudo gitlab-backup create SKIP=builds,registry,artifacts  >>/var/opt/gitlab/backups/bak.log 2>&1  
+  488  sudo gitlab-ctl stop puma
+  489  sudo gitlab-ctl stop sidekiq
+  490  sudo yum remove gitlab-ce-15.0.2
+  491  sudo yum install gitlab-ce-15.0.0
+  492  sudo gitlab-ctl reconfigure
+  493  sudo gitlab-ctl restart
+  494  sudo gitlab-ctl tail
+  495  sudo gitlab-ctl status
+  496  sudo gitlab-ctl tail
+  497  sudo gitlab-ctl restart
+  498  sudo gitlab-ctl tail
+  499  sudo chown git.git /var/opt/gitlab/gitlab-rails/sockets/gitlab.socket
+  500  sudo gitlab-ctl tail
+  501  sudo gitlab-ctl restart
+  502  sudo gitlab-ctl reconfigure
+  503  sudo gitlab-ctl restart
+  504  sudo gitlab-ctl reconfigure
+  505  sudo gitlab-ctl restart
+  506  sudo gitlab-ctl tail
+  507  sudo gitlab-ctl reconfigure
+  508  sudo gitlab-ctl restart
+  509  sudo gitlab-ctl reconfigure
+  510  gitlab-ctl show-config
+  511  sudo gitlab-ctl restart
+  512  sudo chown git.gitlab-www  /var/opt/gitlab/gitlab-workhorse/sockets/socket
+  513  sudo chown git.gitlab-www  /var/opt/gitlab/gitlab-rails/sockets/gitlab.socket
+  514  sudo gitlab-ctl restart
+  515  sudo gitlab-ctl tail
+  516  sudo gitlab-ctl reconfigure
+  517  sudo gitlab-ctl restart
+  518  sudo gitlab-ctl reconfigure
+  519  sudo gitlab-ctl restart
+  520  sudo gitlab-ctl tail
+  521  sudo netstat -tulpn | grep 8080
+  522  sudo netstat -tulpn | grep 8009
+  523  sudo netstat -tulpn | grep 8080
+  524  sudo netstat -tulpn
+  525  sudo gitlab-ctl tail puma
+  526  sudo gitlab-ctl tail
+  527  sudo gitlab-ctl tail gitlab-rails
+  528  sudo touch /var/opt/gitlab/gitlab-rails/sockets/gitlab.socket
+  529  sudo chown git.git /var/opt/gitlab/gitlab-rails/sockets/gitlab.socket
+  530  sudo gitlab-ctl tail
+  531  sudo touch /opt/gitlab/var/puma/puma.pid
+  532  sudo touch /opt/gitlab/var/puma/puma.state
+  533  sudo chown git.git /opt/gitlab/var/puma/puma.pid
+  534  sudo chown git.git /opt/gitlab/var/puma/puma.state
+  535  sudo gitlab-ctl tail
+  536  sudo netstat -tulpn
+  537  sudo netstat -tulpn | grep 8080
+  538  sudo gitlab-ctl restart
+  539  sudo gitlab-ctl reconfigure
+  540  sudo gitlab-ctl restart
+  541  sudo gitlab-ctl tail
+  542  mkdir -p /var/tmp/gitlab-rails/sockets/
+  543  chown git:gitlab-www /var/tmp/gitlab-rails/sockets/
+  544  chmod 750 /var/tmp/gitlab-rails/sockets/
+  545  sudo gitlab-ctl reconfigure
+  546  sudo gitlab-ctl restart
+  547  sudo gitlab-ctl tail
+  548  sudo gitlab-ctl restart puma
+  549  sudo gitlab-ctl reconfigure
+  550  sudo gitlab-ctl restart
+  551  sudo gitlab-ctl tail
+  552  sudo netstat -tulpn
+  553  sudo gitlab-ctl reconfigure
+  554  sudo gitlab-ctl restart
+  555  sudo gitlab-ctl tail
+  556  firewall-cmd --list-all
+  557  sudo gitlab-ctl reconfigure
+  558  sudo gitlab-ctl restart
+  559  sudo gitlab-ctl tail
+  560  sudo firewall-cmd --zone=public --permanent --add-port=8010/tcp
+  561  sudo gitlab-ctl tail
+  562  sudo yum rmove gitlab-ce
+  563  sudo yum remove gitlab-ce
+  564  sudo rm -rf /var/opt/gitlab
+  565  sudo pkill -f gitlab
+  566  sudo rm -rf /opt/gitlab
+  567  curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh | sudo bash
+  568  curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash
+  569  sudo EXTERNAL_URL="http://192.168.100.67:8009" yum install -y gitlab-ce
+  570  clear
+  571  sudo systemctl status firewalld
+  572  sudo firewall-cmd --permanent --add-service=http
+  573  sudo firewall-cmd --permanent --add-service=https
+  574  sudo systemctl reload firewalld
+  575  sudo EXTERNAL_URL="http://192.168.100.67:8009" yum install -y gitlab-ce
+  576  sudo EXTERNAL_URL="https://192.168.100.67:8009" yum install -y gitlab-ce
+  577  sudo yum remove gitlab-ce
+  578  sudo rm -rf /var/opt/gitlab
+  579  sudo pkill -f gitlab
+  580  sudo rm -rf /opt/gitlab
+  581  curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash
+  582  sudo EXTERNAL_URL="https://192.168.100.67:8009" yum install -y gitlab-ce
+  583  sudo gitlab-ctl start
+  584  sudo gitlab-ctl reconfigure
+  585  sudo yum remove gitlab-ce
+  586  sudo rm -rf /var/opt/gitlab
+  587  sudo rm -rf /opt/gitlab
+  588  sudo pkill -f gitlab
+  589  sudo yum remove gitlab-ce-13.12.15
+  590  sudo yum install gitlab-ce-13.12.15
+  591  sudo gitlab-ctl reconfigure
+  592  systemctl restart gitlab-runsvdir.service
+  593  sudo gitlab-ctl reconfigure
+  594  sudo yum remove gitlab-ce-13.12.15
+  595  sudo pkill -f gitlab
+  596  sudo rm -rf /opt/gitlab
+  597  sudo rm -rf /var/opt/gitlab
+  598  sudo EXTERNAL_URL="https://192.168.100.67:8009" yum install -y gitlab-ce-14.0.12
+  599  sudo yum remove gitlab-ce
+  600  sudo pkill -f gitlab
+  601  sudo rm -rf /var/opt/gitlab
+  602  sudo rm -rf /opt/gitlab
+  603  sudo yum install gitlab-ce-14.0.12 
+  604  history
+  605  sudo gitlab-ctl reconfigure
+  606  systemctl restart gitlab-runsvdir.service
+  607  sudo gitlab-ctl reconfigure
+  608  sudo gitlab-ctl start
+  609  sudo gitlab-ctl reconfigure
+  610  sudo gitlab-ctl restart
+  611  sudo gitlab-ctl tail
+  612  sudo gitlab-ctl reconfigure
+  613  sudo gitlab-ctl restart
+  614  sudo gitlab-ctl tail
+  615  sudo gitlab-ctl reconfigure
+  616  sudo gitlab-ctl restart
+  617  sudo gitlab-ctl tail
+  618  sudo gitlab-ctl reconfigure
+  619  sudo gitlab-ctl restart
+  620  sudo yum remove gitlab-ce
+  621  sudo rm -rf /var/opt/gitlab
+  622  sudo rm -rf /opt/gitlab
+  623  sudo pkill -f gitlab
+  624  sudo EXTERNAL_URL="https://192.168.100.67:8009" yum install gitlab-ce-15.0.2 
+  625  sudo yum remove gitlab-ce
+  626  sudo rm -rf /var/opt/gitlab
+  627  sudo rm -rf /opt/gitlab
+  628  sudo pkill -f gitlab
+  629  sudo yum install gitlab-ce-15.0.2
+  630  sudo gitlab-ctl reconfigure
+  631  sudo systemctl restart gitlab-runsvdir.service
+  632  sudo gitlab-ctl reconfigure
+  633  sudo gitlab-ctl restart
+  634  sudo gitlab-ctl tail
+  635  sudo gitlab-ctl reconfigure
+  636  sudo gitlab-ctl restart
+  637  sudo gitlab-ctl tail
+  638  sudo gitlab-ctl reconfigure
+  639  sudo gitlab-ctl restart
+  640  sudo gitlab-ctl tail
+  641  clear
+  642  sudo gitlab-ctl reconfigure
+  643  sudo gitlab-ctl restart
+  644  sudo gitlab-ctl tail
+  645  sudo gitlab-ctl reconfigure
+  646  sudo gitlab-ctl restart
+  647  sudo gitlab-ctl reconfigure
+  648  sudo gitlab-ctl restart
+  649  sudo chown git.git /var/opt/gitlab/backups/1654876410_2022_06_10_15.0.2_gitlab_backup.tar
+  650  sudo gitlab-ctl stop unicorn
+  651  sudo gitlab-ctl stop puma
+  652  sudo gitlab-ctl stop sidekiq
+  653  sudo gitlab-ctl status
+  654  sudo gitlab-backup restore BACKUP=1654876410_2022_06_10_15.0.2
+  655  sudo gitlab-ctl reconfigure
+  656  sudo gitlab-ctl restart
+  657  sudo gitlab-ctl tail
+  658  sudo gitlab-rake gitlab:check SANITIZE=true
+  659  sudo gitlab-ctl reconfigure
+  660  sudo gitlab-ctl restart
+  661  sudo gitlab-ctl tail
+  662  date
+  663  ls -l /etc/localtime
+  664  timedatectl list-timezones | grep Asia
+  665  date
+  666  timedatectl set-time 09:02:00
+  667  date
+  668  sudo gitlab-ctl restart
+  669  clear
+  670  cd /var/opt/gitlab/backups/
+  671  ls
+  672  scp -r 1654876410_2022_06_10_15.0.2_gitlab_backup.tar root@10.1.41.76:/var/opt/gitlab/backups
+  673  scp -r ~/gitlab-old root@10.1.41.76:/var/opt/gitlab/backups/
+  674  cd /var/opt/gitlab/backups/
+  675  sudo chown git.git /var/opt/gitlab/backups/1654876410_2022_06_10_15.0.2_gitlab_backup.tar
+  676  sudo gitlab-ctl stop unicorn
+  677  sudo gitlab-ctl restart
+  678  history
+  679  clear
+  680  history 
+  681  history >command100.76.txt
+  682  history 
+  683  exit
+  684* history >
+  685  history >command100.76.full.txt

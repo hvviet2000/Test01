@@ -1,0 +1,185 @@
+acs/admin(config-GigabitEthernet)# ip address 172.16.0.1 255.255.255.224 ?
+<cr> Carriage Return
+acs/admin(config-GigabitEthernet)# ip address 172.16.0.1 255.255.255.224
+
+
+ACS-Malaga/admin# acs troubleshoot adcheck gaasdal.net
+acs/admin# application reset-config acs
+ acs reset-config
+acs/admin# application reset-config acs
+
+show clock
+clock set Jan 4 05:05:05 2007
+
+show disks
+debug aaa authentication 
+debug aaa accounting
+
+
+show acs-config-web-interface
+show acs-cores
+show acs-logs *
+show application *6
+show backup history
+show cdp
+show clock
+show cpu
+show disks
+show icmp-status
+show interface
+show inventory
+show ip route
+show logging
+show logins
+show memory
+show ntp
+show ports
+show process
+show repository
+show restore
+show running-configuration
+show startup-configuration
+show tech-support
+show terminal
+show timezone
+show timezones
+show udi
+show uptime
+show users
+show version *
+https://www.cisco.com/c/en/us/td/docs/net_mgmt/cisco_secure_access_control_system/5-2/command/reference/acs5_2_cli/cli_app_a.html
+
+https://www.cisco.com/c/en/us/td/docs/net_mgmt/cisco_secure_access_control_system/5-8/command/reference/cli/cli_app_a.html
+
+acs (instance) *
+
+acs (process) *
+
+acs backup *
+
+acs-config *
+
+acs config-web-interface
+
+acs delete core *
+
+acs delete log *
+
+acs patch *
+
+acs reset-config *
+
+acs reset-password *
+
+acs restore *
+
+acs support *
+
+acs zeroize-machine *
+
+application install
+
+application remove
+
+application reset-config
+
+application start
+
+application stop
+
+application upgrade
+
+backup *
+
+backup-logs
+
+banner
+
+clock
+
+configure
+
+copy *
+
+crypto
+
+debug
+
+delete
+
+dir
+
+exit
+
+forceout
+
+halt
+
+help
+
+mkdir
+
+nslookup
+
+password
+
+ping
+
+reload
+
+restore *
+
+rmdir
+
+show (see Show Commands)
+
+shutdown
+
+ssh
+
+tech
+
+telnet
+
+terminal length
+
+terminal session-timeout
+
+terminal session-welcome
+
+terminal terminal-type
+
+traceroute
+
+undebug
+
+write
+
+http://techgenix.com/ipsec_passthrough/
+
+acs restore ACS-VPN-backup-28-03-2016-160328-0006.tar.gpg repository BACKUP-FTP
+
+show repository BACKUP-FTP 
+
+repository myrepository
+acs/admin(config-Repository)#url ftp://101.10.10.1/
+acs/admin(config-Repository)#username anonymous password plain anonymous
+acs/admin(config-Reposotory)#exit
+
+restore backup1.tar.gpg repository repository1
+
+ACS-LAB-BK_ACS-201001-0000.tar.gpg
+acs restore ACS-LAB-BK_ACS-220101-0000.tar.gpg repository BACKUPVIETIS
+
+
+acs delete log acsupgrade.log.2
+
+
+interface GigabitEthernet 0
+  ip address 192.168.100.50 255.255.255.0
+  ipv6 address autoconfig
+  ipv6 enable
+!
+ip name-server 192.168.100.10
+!
+ip default-gateway 192.168.100.1

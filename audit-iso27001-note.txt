@@ -1,0 +1,74 @@
+Note: Dieu khoan 6.1
+Danh gia RR ve mat to chuc theo pham vi he thong
+1. KH
+2. Nhan vien (moi truong lam viec, dieu kien lam viec) -> improve values cho tuyen dung
+3. Ben lien quan
+4. 
+
+Note 2: xem xet co dua vao ky vong cua cac ben lien quan
+- tuan thu phap luat
+- Dap ung nhu cau khach hang
+
+Phuong phap:
+- Them 1 muc: 5.5: Rui ro va co hoi
+
+Note 3: Xem xet viec kiem soat tai san dich vu
+Xem co nen coi cac dich vu la loai tai san hay khong?
+Hay nen chuyen qua viec kiem soat nha cung cap (ben thu 3)
+
+Note 4: Lich danh gia noi bo
+Thieu phan danh gia lanh dao
+- 
+- 
+Note 5: thieu BB bao duong dinh ky thang 6
+
+Note 6: 
+====================================>>>>>>>>>>>>>>>>>>>>===============
+SOA: same
+1.Noi dung: da hoan thanh theo KH
+2.Ban lanh dao: NC (nho)
+- Danh gia RR va co hoi 
+	+ Lanh Dao
+	+ Nhan Vien
+	+ Co hoi
+- Neu vi pham cam ket kh thi anh huong gi den Cty
+- Neu vi pham nhan  vien thi anh huong gi
+- Neu
+3. Danh gia noi bo: NC (nho)
+- Khong co phan danh gia lanh dao
+- Khi len Plan thi forcust chinh xac ngay
+4. Review phan quyen: ko co evident ve viec review/phan quyen/thu quyen
+- Hoan truy cap vao dau
+- CHi
+- Viet duoc quyen  truy cap ...
+5. Dan nhan
+- Phan loai thong tin chua tot
+- Gan nhan vao luon document => Labeling 
+- Thay doi quy trinh 
+6. SX: OB
+- members khong co  trong d.s nhung van vao dc source code
+7. Update Patch: NC
+- OS
+- 
+8. Thay doi du an thi chua danh gia anh huong BMTT
+
+9. QLTS: T/s vat ly thieu Header/footer
+
+10.Phan quyen cho IT chua co quyet dinh
+
+11.Kiem soat thay doi/thieu review/approve
+
+12.Bang chung khac phuc -> from: 21-12 | to => 21-1 
+
+
+Lifenet.RenewSite.P9 => PM Bách
+Lifenet.KKG.P12 => PM Quang
+
+Vụ này em tham gia được ko anh?
+
+
+
+
+Lecre.KuraemonApp.Phase2
+Lecre.KuraemonPad-iOS
+PM: Tuyến phạm

@@ -1,0 +1,180 @@
+﻿
+rsop.msc
+http://wsus:8530/ClientWebService/client.asmx
+
+
+
+
+
+    Open Start.
+
+    Search for Command Prompt, right-click the top result, and select Run as administrator.
+
+    Type the following DISM command to repair corrupted system files and press Enter:
+
+    dism.exe /Online /Cleanup-image /Restorehealth
+
+    Type the following SFC command to repair system files and press Enter:
+
+    sfc /scannow
+
+
+net stop bits
+net stop wuauserv
+net stop appidsvc
+net stop cryptsvc
+
+https://pureinfotech.com/reset-windows-update-windows-10-fix-downloads-installs/
+
+
+
+    wuauclt.exe /resetauthorization
+    wuauclt.exe /r /detectnow
+    wuauclt.exe /reportnow
+
+	
+"C:\Program Files\Update Services\Tools\wsusutil.exe" postinstall /servicing 
+
+
+
+STEPS to take on Client PC having issues:
+
+    Stop Windows Update service
+    Delete everything in "C:\Windows\SoftwareDistribution" , *** not the SoftwareDistribution folder itself ***
+    Start Windows Update service
+    Open command prompt and run command at a time
+
+    wuauclt.exe /resetauthorization
+    wuauclt.exe /r /detectnow
+    wuauclt.exe /reportnow
+
+	
+	HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\windows\WindowsUpdate. 
+	There, in my case, the WUServer was setting as http//10.1.1.8:8350.
+   To fix this issue you need to change the register key UseWUServer in this path: 
+   HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WindowsUpdate\AU for the value 0 for the Windows looks for news updates from Microsoft Updates and not in WSUS Server.
+  After this restart the windows update service and try again!!
+  Find the DisableWindowsUpdateAccess REG_DWORD key and change its value from 1 to 0
+  
+  WUServer
+  http//192.168.100.15:8350
+  
+  
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\windows\WindowsUpdate]
+"WUServer"="http://wus08.live-servers.net"
+"WUStatusServer"="http://wus08.live-servers.net"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\windows\WindowsUpdate\AU]
+"NoAutoUpdate"=dword:00000000
+"AUOptions"=dword:00000004
+"ScheduledInstallDay"=dword:00000001
+"ScheduledInstallTime"=dword:00000002
+"UseWUServer"=dword:00000001
+"RescheduleWaitTime"=dword:00000014
+"NoAutoRebootWithLoggedOnUsers"=dword:00000000 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ping WSUSServerName
+
+
+http://WSUSServerName:portNumber
+
+where WSUSServerName is the name of the WSUS server, and portNumber is the port that has been configured for it (for example, 80 for HTTP, 443 for SSL, and 8530 for a custom port).
+
+Verify the existence of the self-update tree. In an Internet Explorer address bar, type:
+
+http://WSUSServerName/selfupdate/wuident.cab
+
+If the WSUS server is functioning properly, a File Download window will appear requesting to open or save the file.  Close the window.
+
+Review the registry entries to verify the Automatic Update client has been configured correctly.
+1.    Open a Command Prompt window.
+2.    Type:
+
+reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate
+
+The output should be like the following if the client computer has been configured to get its updates from a WSUS server:
+
+HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate
+WUServer    REG_SZ  http://WSUSServerName
+WUStatusServer      REG_SZ  http://WSUSServerName
+HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU
+
+The output should be similar to the following if Automatic Update is functioning, but the client computer has not been configured to get its updates from a WSUS server
+
+HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU
+
+If the output from Step 2 contains values for WUServer and WUStatusServer, try to contact the WSUS server that is listed in these values.
+1.    Open Internet Explorer and in the address bar type
+
+http://WUServer
+
+where WUServer stands for the value in the output from Step 2.
+
+You should see an “Under Construction” page if the WUServer value is valid. If it is not, you will get an HTTP error message.
+Reset the client settings
+
+If clients are still failing to check in as expected, performing a reset on the client will help get things back in place
+
+    Open a Command Prompt window
+
+    Type:
+
+wuauclt.exe /resetauthorization /detectnow
+
+    Wait 10 minutes for the detection cycle to finish.
+
+
+
+
+
+https://www.404techsupport.com/2016/03/21/iis-wsus-private-memory/
+To remove old updates from the WSUS database
+
+    As a local administrator, access the distribution server.
+    Stop the WSUS Web site in Internet Information Services (IIS).
+	click Stop.
+    Open a Command Prompt window and change folders to %drive%\Program Files\Update Services\Tools.
+
+    wsusutil.exe deleteunneededrevisions
+
+WSUSUtil.exe RESET
+
+
+https://docs.microsoft.com/en-us/archive/blogs/gborger/what-to-do-when-your-wsuscontent-folder-grows-too-large
+
+
+f you're using Group Policy to configure your updates, you can query the registry for the Target Group and WSUS server values:
+
+C:\> REG QUERY "HKLM\Software\Policies\Microsoft\Windows\WindowsUpdate"
+  WUServer    REG_SZ    http://fcsd-sccm
+  WUStatusServer    REG_SZ    http://fcsd-sccm
+  TargetGroupEnabled    REG_DWORD    0x1
+  TargetGroup    REG_SZ    Servers
+
+Or just get the WUServer value alone:
+
+C:> REG QUERY "HKLM\Software\Policies\Microsoft\Windows\WindowsUpdate" /v "WUServer"
+  WUServer    REG_SZ    http://fcsd-sccm
+
+If the WUServer value is not present, you're connecting to Microsoft.
+
+The Powershell equivalent:
+
+Get-ItemProperty HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate

@@ -1,0 +1,643 @@
+clear ip nat translation *
+
+access-list 23 permit 10.1.35.0 0.0.0.255
+access-list 100 permit ip 192.168.6.0 0.0.0.255 172.31.255.0 0.0.0.255
+
+access-list 23 permit 192.168.100.0 0.0.0.255
+access-list 100 deny   ip any any
+
+
+Internet 2 <----> Router <-- Vlan 41
+							 PBR
+							 VLAN41_ACL in
+Internet 1 <----> Router <-- Other Vlan (32.31.30)
+
+
+
+
+ip nat inside source route-map INTERNET_NAT interface GigabitEthernet0/1.200 overload
+ip nat inside source route-map PRI_INTERNET_NAT pool PRI_Gi0/0 overload
+ip nat inside source route-map SEC_INTERNET_NAT pool SEC_VLAN_501 overload
+ip route 0.0.0.0 0.0.0.0 113.164.228.217 track 1
+ip route 0.0.0.0 0.0.0.0 192.168.200.1 5 track 2
+
+
+route-map PRI_INTERNET_NAT permit 10
+ match ip address PRI_INTERNET_DIRECT_ACL
+ match interface GigabitEthernet0/0
+!
+route-map SEC_INTERNET_NAT permit 10
+ match ip address SEC_INTERNET_DIRECT_ACL
+ match interface GigabitEthernet0/1.501
+!
+route-map PBR permit 10
+ match ip address VietIS_PBR
+ set ip next-hop verify-availability 192.168.200.1 5 track 2
+!
+!
+snmp-server group GROUP1 v3 priv read ALL-ACCESS 
+snmp-server view ALL-ACCESS iso included
+snmp-server view INT-ACCESS ifEntry included
+access-list 23 permit 192.168.100.0 0.0.0.255
+access-list 100 permit ip 192.168.6.0 0.0.0.255 172.31.255.0 0.0.0.255
+access-list 100 deny   ip any any
+!
+
+
+ ip access-list extended VietIS_PBR
+ deny   ip 10.1.41.0 0.0.0.255 192.168.0.0 0.0.255.255
+ deny   ip 10.1.0.0 0.0.255.255 10.1.0.0 0.0.255.255
+ permit ip 10.1.41.0 0.0.0.255 any
+
+
+
+interface GigabitEthernet0/1.241
+ description DIRECT INTERNET QUA FPT LINE
+ encapsulation dot1Q 241
+ ip address 10.1.41.1 255.255.255.0
+ ip helper-address 10.1.6.10
+ ip helper-address 10.1.6.9
+ ip nat inside
+ ip virtual-reassembly in
+ standby 1 ip 10.1.41.2
+ standby 1 priority 110
+ standby 1 preempt
+ ip access-group VLAN41_ACL in
+ ip policy route-map PBR
+
+
+
+
+
+=======================================15-12-2020
+ip access-list extended VLAN41_ACL
+ permit ip host 10.1.41.27 any
+ permit ip host 10.1.41.28 any
+ permit ip host 10.1.41.20 any
+ permit ip host 10.1.41.38 any
+ permit ip host 10.1.41.12 any
+ permit ip host 10.1.41.33 any
+ permit ip host 10.1.41.166 any
+ permit ip host 10.1.41.170 any
+ permit ip host 10.1.41.48 any
+ permit ip host 10.1.41.55 any
+ deny   ip any host 157.240.217.35
+ deny   ip any host 112.213.89.38
+ deny   ip any host 104.219.168.162
+ deny   ip any host 142.250.199.78
+ deny   ip any host 172.217.161.142
+ deny   ip any host 172.217.161.174
+ deny   ip any host 172.217.163.238
+ deny   ip any host 172.217.24.47
+ deny   ip any host 172.217.25.14
+ deny   ip any host 172.217.26.142
+ deny   ip any host 172.217.31.238
+ deny   ip any host 216.58.199.110
+ deny   ip any host 216.58.199.14
+ deny   ip any host 216.58.200.14
+ deny   ip any host 216.58.200.78
+ deny   ip any host 216.58.220.206
+ deny   ip any host 216.58.221.238
+ permit ip any any
+ 
+
+=======================================14-12-2020
+ip access-list extended VLAN41_ACL
+ permit ip host 10.1.41.155 any
+ permit ip host 10.1.41.27 any
+ permit ip host 10.1.41.28 any
+ permit ip host 10.1.41.20 any
+ permit ip host 10.1.41.38 any
+ permit ip host 10.1.41.12 any
+ permit ip host 10.1.41.33 any
+ permit ip host 10.1.41.166 any
+ permit ip host 10.1.41.170 any
+ permit ip host 10.1.41.48 any
+ permit ip host 10.1.41.55 any
+ deny   ip any host 157.240.217.35
+ deny   ip any host 112.213.89.38
+ deny   ip any host 104.219.168.162
+ deny   ip any host 142.250.199.78
+ deny   ip any host 172.217.161.142
+ deny   ip any host 172.217.161.174
+ deny   ip any host 172.217.163.238
+ deny   ip any host 172.217.174.206
+ deny   ip any host 172.217.24.47
+ deny   ip any host 172.217.24.78
+ deny   ip any host 172.217.25.14
+ deny   ip any host 172.217.26.142
+ deny   ip any host 172.217.31.238
+ deny   ip any host 216.58.199.110
+ deny   ip any host 216.58.199.14
+ deny   ip any host 216.58.200.14
+ deny   ip any host 216.58.200.78
+ deny   ip any host 216.58.220.206
+ deny   ip any host 216.58.221.238
+ permit ip any any
+ 
+
+
+============
+
+
+
+ 
+ip access-list extended VLAN41_ACL
+ permit ip host 10.1.41.10 any
+ deny   ip any host 69.63.176.13
+ deny   ip any host 157.240.217.35
+ deny   ip any host 69.63.181.15
+ deny   ip any host 69.63.184.142
+ deny   ip any host 69.63.187.17
+ deny   ip any host 69.63.187.18
+ deny   ip any host 69.63.187.19
+ deny   ip any host 69.63.181.11
+ deny   ip any host 69.63.181.12
+ deny   ip any host 69.17.250.35
+ deny   ip any host 112.213.89.38
+ 
+ deny   ip 10.1.41.0 0.0.0.255 31.13.24.0 0.0.7.255
+ deny   ip 10.1.41.0 0.0.0.255 31.13.77.0 0.0.0.255
+ 
+ permit ip any any
+ 
+youtuble
+142.250.199.78
+172.217.161.142
+172.217.161.174
+172.217.163.238
+172.217.174.206
+172.217.24.47
+172.217.24.78
+172.217.25.14
+172.217.26.142
+172.217.31.238
+216.58.199.110
+216.58.199.14
+216.58.200.14
+216.58.200.78
+216.58.220.206
+216.58.221.238
+
+#==========YOUTUBE++++++++
+		
+ip access-list extended VLAN41_ACL	
+permit ip host 10.1.41.155 any
+permit ip host 10.1.41.27 any
+permit ip host 10.1.41.28 any
+deny  ip any host 104.219.168.162
+deny  ip any host 142.250.199.78
+deny  ip any host 172.217.161.142
+deny  ip any host 172.217.161.174
+deny  ip any host 172.217.163.238
+deny  ip any host 172.217.174.206
+deny  ip any host 172.217.24.47
+deny  ip any host 172.217.24.78
+deny  ip any host 172.217.25.14
+deny  ip any host 172.217.26.142
+deny  ip any host 172.217.31.238
+deny  ip any host 216.58.199.110
+deny  ip any host 216.58.199.14
+deny  ip any host 216.58.200.14
+deny  ip any host 216.58.200.78
+deny  ip any host 216.58.220.206
+deny  ip any host 216.58.221.238
+permit ip any any
+
+
+#==========YOUTUBE++++++++
+
+
+ 172.217.174.206
+ 142.250.199.78
+ 172.217.24.206
+ 216.58.220.206
+ 172.217.163.238
+ 216.58.221.238
+ 216.58.199.110
+ 172.217.26.142
+ 172.217.25.14
+ 172.217.24.46
+ 172.217.31.238
+ 216.58.200.78
+ 172.217.24.78
+
+
+    199.223.232.0 - 199.223.239.255
+    207.223.160.0 - 207.223.175.255
+    208.65.152.0 - 208.65.155.255
+    208.117.224.0 - 208.117.255.255
+    209.85.128.0 - 209.85.255.255
+    216.58.192.0 - 216.58.223.255
+    216.239.32.0 - 216.239.63.255
+
+
+    64.18.0.0/20
+    64.233.160.0/19
+    66.102.0.0/20
+    66.249.80.0/20
+    72.14.192.0/18
+    74.125.0.0/16
+    173.194.0.0/16
+    207.126.144.0/20
+    209.85.128.0/17
+    216.58.208.0/20
+    216.239.32.0/19
+
+
+
+Vào face app: 31-12-2020 nghĩa.lethanh
+10.1.41.20
+10.1.41.38
+10.1.41.12
+10.1.41.33
+10.1.41.166
+10.1.41.170
+10.1.41.48
+10.1.41.55
+
+Tuananh/dungdoan
+10.1.41.27
+10.1.41.28
+
+Testip
+10.1.41.155
+
+
+• Hiển thị tất cả ACLs đang sử dụng. Router(config)#show running-config
+• Xem ACLs hoạt động trên interface nào đó. Router(config)#show interface [ # ]
+• Xem việc đặt và hướng đi của ip ACLs: Router(config)#show ip interfaces [ # ]
+• Xem những câu lệnh ACLs: Router(config)#show access-list [ # ]
+• Hiển thị tất cả ip ACLs: Router#show ip access-list
+• Hiển thị ip ACL 100: Router#show ip access-list 100
+• Xóa bộ đếm (to clear the counters use):
+router(config)#show access-list [ # ]
+router(config)#clear access-list counter [ # ]
+• Xóa Access list
+
+router(config)#no ip access-list [standard-extended][#]
+router(config)#interface [interface-number]
+router(config-if)#no access-list [#] [permit deny] [wildcard mask]
+
+ip access-list extended VLAN41_ACL
+ permit ip host 10.1.41.147 any
+ deny ip any host 157.240.217.35
+ deny ip any host 49.213.114.131
+ deny ip any host 49.213.114.149
+ deny ip any host 103.224.182.242
+ deny ip any host 111.65.250.2
+ deny ip any host 183.81.34.136
+ deny ip any host 42.113.206.26
+ deny ip any host 125.212.247.245
+ deny ip any host 125.212.247.72
+ deny ip any host 123.30.184.9
+ permit ip any any
+
+==========
+
+ # permit ip host 10.1.41.27 any # anh.letuan
+ #ngo ngoc bach
+  permit ip host  10.1.41.99 any
+ 
+ #it
+ permit ip host 10.1.41.9 any #cuongnv
+ permit ip host 10.1.41.147 any #phuong
+ 
+ 
+  permit ip host   10.1.41.47 #vupa
+ 
+ #team dungdoan
+ permit ip host 10.1.41.163 any  #tuannn
+  permit ip host 10.1.41.195 any #tuyet
+   permit ip host 10.1.41.193 any #chuyennt
+  41.180 #huy
+   permit ip host 10.1.7.65 any #KhanhPT 
+    permit ip host 10.1.41.207 any #tien,tran
+	10.1.41.163 #tuannn
+ 10.1.41.26
+ 
+
+#team kien
+
+kien.do                   : 10.1.41.25
+cong.nguyenchien : 10.1.41.22
+lam.nguyenquynh  : 10.1.41.64
+huongpl                 :  10.1.41.26
+hieupv                    :  10.1.41.159
+tuan.domanh         :  10.1.41.17
+thongnc                 :   10.1.41.35-> nhờ anh chuyển cho bạn này sang dải 41 ạ
+taynn                     : 10.1.41.173
+xuyen.ntt               : 10.1.41.172
+anhntn                   :  10.1.41.101
+tienna					: 10.1.41.46
+permit ip host : 10.1.41.164
+
+ permit ip host 10.1.41.30 any Manh.nguyen
+permit ip host 10.1.41.91 any team Manh.nguyen
+ permit ip host10.1.41.18 any  team Manh.nguyen
+permit ip host 10.1.41.169 any # hungnv
+
+
+permit ip host ubuntu 10.1.41.36 #vu
+
+permit ip host 10.1.41.78 any #thanhnv
+ #team dat
+ permit ip host 10.1.41.10 any #dat le
+  10.1.41.21 #tonnv
+  
+  dat.le: 10.1.41.10 
+  thanhtv: 10.1.41.51 tonnv: 
+  10.1.41.21 
+  thanhnc: 10.1.41.78
+  
+==========
+10.1.41.183
+ ankdp, 10.1.41.99 
+
+huongvt:10.1.41.106
+chiennm:10.1.41.19
+namnx:10.1.41.142
+
+
+ permit icmp any any echo-reply
+ permit icmp any any echo
+ permit tcp any any eq domain
+ permit udp any any eq domain
+ permit tcp any any eq pop3
+ permit tcp any any eq 143
+ permit tcp any any eq smtp
+ permit tcp any any eq 995
+ permit tcp any any eq 993
+ permit tcp any any eq 587
+ permit tcp any any eq 465
+ permit tcp any any eq 22
+ permit tcp any any eq 3389
+ permit tcp any any eq 3306
+ permit tcp any any eq www
+ permit tcp any any eq 443
+
+10.1.41.9
+10.1.41.24
+10.1.41.25
+10.1.41.17
+10.1.41.169
+10.1.41.48
+10.1.41.99
+
+10.1.41.46
+10.1.41.44
+10.1.41.71
+
+10.1.41.176
+10.1.41.188
+10.1.41.185
+10.1.41.197
+
+
+
+deny tcp any any eq 80
+deny tcp any any eq 443
+
+ permit tcp any any range 81 443
+ permit tcp any any range 444 65535
+ 
+ip access-list extended VietIS_PBR
+ deny   ip 10.1.41.0 0.0.0.255 192.168.0.0 0.0.255.255
+ deny   ip 10.1.0.0 0.0.255.255 10.1.0.0 0.0.255.255
+ permit icmp any any echo-reply
+ permit icmp any any echo
+ permit tcp any any range 444 65535
+ permit udp any any range 444 65535
+ permit tcp any any eq domain
+ permit udp any any eq domain
+ permit tcp any any eq pop3
+ permit tcp any any eq 143
+ permit tcp any any eq smtp
+ permit tcp any any eq 995
+ permit tcp any any eq 993
+ permit tcp any any eq 587
+ permit tcp any any eq 465
+ permit tcp any any eq 22
+ permit tcp any any eq 3389
+ permit tcp any any eq 3306
+ permit tcp any any eq 8071
+ permit tcp any any eq 20022
+ permit ip host 10.1.41.163 any
+ permit ip host 10.1.41.190 any
+ permit ip host 10.1.41.64 any
+ permit ip host 10.1.41.173 any
+ permit ip host 10.1.41.172 any
+ permit ip host 10.1.41.101 any
+ permit ip host 10.1.41.159 any
+ permit ip host 10.1.41.35 any
+ permit ip host 10.1.41.77 any
+ permit ip host 10.1.41.193 any
+ permit ip host 10.1.41.27 any
+ permit ip host 10.1.41.30 any
+ permit ip host 10.1.41.36 any
+ permit ip host 10.1.41.151 any
+ permit ip host 10.1.41.142 any
+ permit ip host 10.1.41.78 any
+ permit ip host 10.1.41.45 any
+ permit ip host 10.1.41.179 any
+ permit ip host 10.1.41.26 any
+ permit ip host 10.1.41.51 any
+ permit ip host 10.1.41.175 any
+ permit ip host 10.1.41.220 any
+ permit ip host 10.1.41.63 any
+ permit ip host 10.1.41.50 any
+ permit ip host 10.1.41.170 any
+ permit ip host 10.1.41.106 any
+ permit ip host 10.1.41.42 any
+ permit ip host 10.1.41.152 any
+ permit ip host 10.1.41.70 any
+ permit ip host 10.1.41.141 any
+ permit ip host 10.1.41.155 any
+ permit ip host 10.1.41.160 any
+ permit ip host 10.1.41.158 any
+ permit ip host 10.1.41.165 any
+ permit ip host 10.1.41.166 any
+ permit ip host 10.1.41.162 any
+ permit ip host 10.1.41.149 any
+ permit ip host 10.1.41.24 any
+ permit ip host 10.1.41.103 any
+ permit ip host 10.1.41.16 any
+ permit ip host 10.1.41.167 any
+ permit ip host 10.1.41.32 any
+ permit ip host 10.1.41.168 any
+ permit ip host 10.1.41.157 any
+ permit ip host 10.1.41.49 any
+ permit ip host 10.1.41.54 any
+ permit ip host 10.1.41.85 any
+ permit ip host 10.1.41.60 any
+ permit ip host 10.1.41.147 any
+ permit ip host 10.1.41.138 any
+ permit ip host 10.1.41.150 any
+ permit ip host 10.1.41.22 any
+ permit ip host 10.1.41.154 any
+ permit ip host 10.1.41.195 any
+ permit ip host 10.1.41.171 any
+ permit ip host 10.1.41.12 any
+ permit ip host 10.1.41.224 any
+ permit ip host 10.1.41.177 any
+ permit ip host 10.1.41.31 any
+ permit ip host 10.1.41.11 any
+ permit ip host 10.1.41.21 any
+ permit ip host 10.1.41.62 any
+ permit ip host 10.1.41.52 any
+ permit ip host 10.1.41.176 any
+ permit ip host 10.1.41.145 any
+ permit ip host 10.1.41.72 any
+ permit ip host 10.1.41.178 any
+ permit ip host 10.1.41.69 any
+ permit ip host 10.1.41.66 any
+ permit ip host 10.1.41.74 any
+ permit ip host 10.1.41.180 any
+ permit ip host 10.1.41.55 any
+ permit ip host 10.1.41.174 any
+ permit ip host 10.1.41.57 any
+ permit ip host 10.1.41.13 any
+ permit ip host 10.1.41.14 any
+ permit ip host 10.1.41.139 any
+ permit ip host 10.1.41.164 any
+ permit ip host 10.1.41.19 any
+ permit ip host 10.1.41.73 any
+ permit ip host 10.1.41.10 any
+ permit ip host 10.1.41.81 any
+ permit ip host 10.1.41.191 any
+ permit ip host 10.1.35.126 any
+ permit ip host 10.1.35.21 any
+ permit ip host 10.1.41.155 any
+ permit ip host 10.1.41.201 any
+ permit ip host 10.1.41.222 any
+ permit ip host 10.1.41.41 any
+ permit ip host 10.1.41.44 any
+ permit ip host 10.1.41.181 any
+ permit ip host 10.1.41.224 any
+ permit ip host 10.1.41.79 any
+ permit ip host 10.1.41.167 any
+ permit ip host 10.1.41.190 any
+ permit ip host 10.1.41.157 any
+ permit ip host 10.1.41.179 any
+ permit ip host 10.1.41.145 any
+ permit ip host 10.1.41.101 any
+ permit ip host 10.1.41.199 any
+ permit ip host 10.1.41.59 any
+ 
+ 
+ ip access-list extended VietIS_PBR
+ deny   ip 10.1.41.0 0.0.0.255 192.168.0.0 0.0.255.255
+ deny   ip 10.1.0.0 0.0.255.255 10.1.0.0 0.0.255.255
+ permit icmp any any echo-reply
+ permit icmp any any echo
+ permit tcp any any range 444 65535
+ permit udp any any range 444 65535
+ permit tcp any any eq domain
+ permit udp any any eq domain
+ permit tcp any any eq pop3
+ permit tcp any any eq 143
+ permit tcp any any eq smtp
+ permit tcp any any eq 995
+ permit tcp any any eq 993
+ permit tcp any any eq 587
+ permit tcp any any eq 465
+ permit tcp any any eq 22
+ permit tcp any any eq 3389
+ permit tcp any any eq 3306
+ permit tcp any any eq 8071
+ permit tcp any any eq 20022
+ permit ip host 10.1.41.163 any
+ permit ip host 10.1.41.190 any
+ permit ip host 10.1.41.64 any
+ permit ip host 10.1.41.173 any
+ permit ip host 10.1.41.172 any
+ permit ip host 10.1.41.101 any
+ permit ip host 10.1.41.159 any
+ permit ip host 10.1.41.35 any
+ permit ip host 10.1.41.77 any
+ permit ip host 10.1.41.193 any
+ permit ip host 10.1.41.27 any
+ permit ip host 10.1.41.30 any
+ permit ip host 10.1.41.36 any
+ permit ip host 10.1.41.151 any
+ permit ip host 10.1.41.142 any
+ permit ip host 10.1.41.78 any
+ permit ip host 10.1.41.45 any
+ permit ip host 10.1.41.179 any
+ permit ip host 10.1.41.26 any
+ permit ip host 10.1.41.51 any
+ permit ip host 10.1.41.175 any
+ permit ip host 10.1.41.220 any
+ permit ip host 10.1.41.63 any
+ permit ip host 10.1.41.50 any
+ permit ip host 10.1.41.170 any
+ permit ip host 10.1.41.106 any
+ permit ip host 10.1.41.42 any
+ permit ip host 10.1.41.152 any
+ permit ip host 10.1.41.70 any
+ permit ip host 10.1.41.141 any
+ permit ip host 10.1.41.155 any
+ permit ip host 10.1.41.160 any
+ permit ip host 10.1.41.158 any
+ permit ip host 10.1.41.165 any
+ permit ip host 10.1.41.166 any
+ permit ip host 10.1.41.162 any
+ permit ip host 10.1.41.149 any
+ permit ip host 10.1.41.24 any
+ permit ip host 10.1.41.103 any
+ permit ip host 10.1.41.16 any
+ permit ip host 10.1.41.167 any
+ permit ip host 10.1.41.32 any
+ permit ip host 10.1.41.168 any
+ permit ip host 10.1.41.157 any
+ permit ip host 10.1.41.49 any
+ permit ip host 10.1.41.54 any
+ permit ip host 10.1.41.85 any
+ permit ip host 10.1.41.60 any
+ permit ip host 10.1.41.147 any
+ permit ip host 10.1.41.138 any
+ permit ip host 10.1.41.150 any
+ permit ip host 10.1.41.22 any
+ permit ip host 10.1.41.154 any
+ permit ip host 10.1.41.195 any
+ permit ip host 10.1.41.171 any
+ permit ip host 10.1.41.12 any
+ permit ip host 10.1.41.224 any
+ permit ip host 10.1.41.177 any
+ permit ip host 10.1.41.31 any
+ permit ip host 10.1.41.11 any
+ permit ip host 10.1.41.21 any
+ permit ip host 10.1.41.62 any
+ permit ip host 10.1.41.52 any
+ permit ip host 10.1.41.176 any
+ permit ip host 10.1.41.145 any
+ permit ip host 10.1.41.72 any
+ permit ip host 10.1.41.178 any
+ permit ip host 10.1.41.69 any
+ permit ip host 10.1.41.66 any
+ permit ip host 10.1.41.74 any
+ permit ip host 10.1.41.180 any
+ permit ip host 10.1.41.55 any
+ permit ip host 10.1.41.174 any
+ permit ip host 10.1.41.57 any
+ permit ip host 10.1.41.13 any
+ permit ip host 10.1.41.14 any
+ permit ip host 10.1.41.139 any
+ permit ip host 10.1.41.164 any
+ permit ip host 10.1.41.19 any
+ permit ip host 10.1.41.73 any
+ permit ip host 10.1.41.10 any
+ permit ip host 10.1.41.81 any
+ permit ip host 10.1.41.191 any
+ permit ip host 10.1.35.126 any
+ permit ip host 10.1.35.21 any
+ permit ip host 10.1.41.201 any
+ permit ip host 10.1.41.222 any
+ permit ip host 10.1.41.41 any
+ permit ip host 10.1.41.44 any
+ permit ip host 10.1.41.181 any
+ permit ip host 10.1.41.79 any
+ permit ip host 10.1.41.199 any
+ permit ip host 10.1.41.183 any
+ permit ip host 10.1.41.59 any
+ permit ip host 10.1.41.143 any

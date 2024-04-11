@@ -1,0 +1,61 @@
+https://script.google.com/home/all
+
+function invalidatePass() {
+  //Create logs
+  Logger.log('Execution started');
+  Logger.log('Following users forced to change password on next login');
+  Logger.log('--------------------------------------------------------');
+
+  var mailSent = false;
+
+  try {
+    //get all users in domain -- results are pagnated, so it will have to     use nextpageToken to get each page
+    var pageToken, page; 
+    do { //iterate for each page
+      page = AdminDirectory.Users.list({
+      domain: 'vietis.com.vn',
+      orderBy: 'givenName',
+      pageToken: pageToken
+    });
+    var users = page.users;    
+    //iterate for each user -- this is pagnated, so this will process only the users on this page, before moving to the next page and repeating
+    for (var i = 0; i < users.length; i++) {
+      if (users[i].primaryEmail == 'admin@vietis.com.vn') { //this user is exempt from the password change
+          //Put the email of the user in log
+          Logger.log('*'+users[i].primaryEmail)
+        } else {
+          //set the user to change password on next login
+          users[i].changePasswordAtNextLogin = true;
+          AdminDirectory.Users.update(users[i], users[i].primaryEmail);
+          //Put the email of the user in log
+          Logger.log(users[i].primaryEmail)
+        }
+     } 
+    pageToken = page.nextPageToken;
+    } while (pageToken);
+  }  
+  //Catch if any error occurs
+  catch(e){
+    //Log the error
+    Logger.log('--------------------------------------------------------');
+    Logger.log('Error occured: '+e.message);
+    //Send an email to yourself with logs
+    GmailApp.sendEmail(Session.getEffectiveUser().getEmail(), 'Log for User Pass Change Script : Error occured', Logger.getLog());
+    GmailApp.sendEmail('linh.dang@vietis.com.vn', 'Log for User Pass Change Script : Error occured', Logger.getLog());
+    GmailApp.sendEmail('giang.nguyen@vietis.com.vn', 'Log for User Pass Change Script : Error occured', Logger.getLog());
+    GmailApp.sendEmail('viet.hoang@vietis.com.vn', 'Log for User Pass Change Script : Error occured', Logger.getLog());
+    mailSent = true; 
+  }
+
+  if(!mailSent){
+    //if execution successful
+    Logger.log('--------------------------------------------------------');
+    Logger.log('Execution ended. Script completed successfully');
+    //Send an email to yourself with logs
+    GmailApp.sendEmail(Session.getEffectiveUser().getEmail(), 'Log for User Pass Change Script: Successful', Logger.getLog());
+    GmailApp.sendEmail('linh.dang@vietis.com.vn', 'Log for User Pass Change Script : Error occured', Logger.getLog());
+    GmailApp.sendEmail('giang.nguyen@vietis.com.vn', 'Log for User Pass Change Script : Error occured', Logger.getLog());
+    GmailApp.sendEmail('viet.hoang@vietis.com.vn', 'Log for User Pass Change Script : Error occured', Logger.getLog());    
+  }
+
+}

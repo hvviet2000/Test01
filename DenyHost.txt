@@ -1,0 +1,435 @@
+DDOS
+https://itcplus.vn/knowledgebase/81/CSF-cai-t-cu-hinh-firewall-cho-server.html
+https://itcplus.vn/knowledgebase/81/CSF-cai-t-cu-hinh-firewall-cho-server.html
+
+https://vietnetwork.vn/routers-switches/chong-ddos-voi-csf-firewall/
+https://ecshopvietnam.com/blog/csf-firewall-la-gi-cach-su-dung-csf-firewall-trong-quan-tri-vps-linux-78.html
+https://vietnix.vn/csf-firewall/
+
+https://netsa.vn/cach-giam-anh-huong-cua-ddos-tren-linux/
+
+https://anonyviet.com/cau-hinh-chong-ddos-tren-server-linux/
+
+https://vnxf.vn/threads/cai-dat-vddos-proxy-protection-chong-ddos-cho-may-chu-chay-website-blog-forum.11627/
+
+https://linoxide.com/tools/install-denyhosts-centos-7/
+https://github.com/denyhosts/denyhosts
+https://linoxide.com/tools/install-denyhosts-centos-7/
+https://ep.gnt.md/index.php/how-to-secure-nginx-with-fail2ban-from-botnet-attack/
+
+https://www.digitalocean.com/community/tutorials/how-to-protect-an-nginx-server-with-fail2ban-on-ubuntu-14-04
+
+yum install epel-release
+
+
+  
+
+  
+http://ftp.tu-chemnitz.de/pub/linux/dag/redhat/el7/en/x86_64/rpmforge/RPMS/denyhosts-2.6-5.el7.rf.noarch.rpm
+
+rpm -Uvh  
+
+yum install denyhosts
+ /etc/hosts.allow
+sshd 192.168.0.33
+sshd: Your_IP
+---------------
+/etc/hosts.deny
+
+
+sshd: ALL **
+-----------------
+
+
+# systemctl enable denyhosts
+# systemctl start denyhosts
+
+/etc/denyhosts.conf
+vi /etc/denyhosts/denyhosts.cfg
+
+ADMIN_EMAIL = 
+
+
+
+NginX Config var_opt_gitlab_Nginx
+
+include /etc/xxxxx/custom_gitlab_server.conf;
+
+custom_gitlab_server.conf;
+allow 192.168.100.0/24; # VietIS local
+allow 172.16.0.0/24; # VietIS local
+allow 113.190.232.25; # VietIS internet
+allow 118.70.128.119; # VietIS internet
+allow 153.142.226.76; # CLP
+allow 210.227.234.114; # CLP
+allow 172.16.80.0/24; # Lifenet ODC
+allow 118.103.49.93; # Lifenet customer
+allow 202.222.202.60; # Lifenet customer
+allow 113.164.228.218; #VIETIS_VNPT_LL
+allow 113.164.228.219; #VIETIS
+allow 113.164.228.220; #VIetIS
+allow 113.164.228.221; #VIETIS
+allow 113.164.228.222; #VIETIS
+allow 192.168.5.0/24; #VPN Client
+allow 10.1.7.0/24;
+allow 10.1.6.0/24;
+allow 10.1.3.0/24;
+allow 10.1.32.0/23;
+allow 10.1.34.0/24;
+allow 10.1.35.0/24;
+allow 10.1.36.0/24;
+allow 10.1.37.0/24;
+allow 10.1.38.0/24;
+allow 10.1.39.0/24;
+allow 10.1.40.0/24;
+allow 10.1.41.0/24;
+allow 113.43.200.107; #lecre cus 31-12
+allow 113.43.200.108; #lecre cus
+allow 50.249.194.17; #lecre cus
+allow 122.103.81.208; #lecre cus
+deny all;
+
+
+982  cat /var/lib/denyhosts/hosts
+  983  cat /var/lib/denyhosts/hosts | grep 118.103.49.93
+  984  cat /var/lib/denyhosts/hosts-valid | grep 118.103.49.93
+  985  cat /var/lib/denyhosts/hosts-root
+  986  cat /var/lib/denyhosts/hosts-root | grep 118.103.49.93
+  987  /etc/init.d/denyhosts stop
+  988  history
+  989  sudo systemctl restart mattermost
+  990  systemctl restart  nginx
+  991  /etc/init.d/denyhosts start
+  992  /etc/init.d/denyhosts restart
+  993  sudo /etc/init.d/denyhosts start
+  994  history
+  995  systemctl start denyhosts
+  996  exit
+  997  history
+  998  systemctl restart  mattermost
+  999  systemctl restart nginx
+  
+  
+  
+# yum update
+# yum install epel-release
+# yum install fail2ban
+# systemctl start fail2ban
+# systemctl enable fail2ban
+
+cp /etc/fail2ban/fail2ban.conf /etc/fail2ban/fail2ban.local
+cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+In case you are using CentOS or Fedora, you will need to change the backend in jail.local from “auto” to “systemd”.
+
+/etc/fail2ban/jail.local:
+[sshd]
+enabled = true
+
+
+
+/etc/fail2ban/jail.local
+
+ignoreip = 127.0.0.1/8  ::1
+
+
+
+systemctl enable fail2ban
+systemctl start fail2ban
+fail2ban-client status sshd
+
+yum --enablerepo=epel install denyhosts
+wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-9.noarch.rpm
+rpm -ivh epel-release-7-9.noarch.rpm
+yum --enablerepo=epel install denyhosts
+
+
+https://hocvps.com/cai-dat-fail2ban-tren-centos/
+https://www.tecmint.com/use-fail2ban-to-secure-linux-server/
+
+
+rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+
+sudo yum install epel-release
+sudo yum install nginx
+sudo systemctl start nginx
+sudo systemctl enable nginx
+
+sudo firewall-cmd --permanent --zone=public --add-service=http 
+sudo firewall-cmd --permanent --zone=public --add-service=https
+sudo firewall-cmd --reload
+
+
+hostnamectl set-hostname my.new-hostname.server
+
+
+change 443 
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/nginx.key -out /etc/ssl/nginx.crt
+
+sudo vi /etc/nginx/conf.d/ssl.conf
+
+server {
+    listen 443 http2 ssl;
+    listen [::]:443 http2 ssl;
+
+    server_name server_IP_address;
+
+    ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;
+    ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;
+    ssl_dhparam /etc/ssl/certs/dhparam.pem;
+}
+
+
+server {
+    listen 443 http2 ssl;
+    listen [::]:443 http2 ssl;
+
+    server_name  gitlab.vietis.com.vn;
+
+    location / {
+                    proxy_pass https://repo.vietis.com.vn:8009;
+	}
+
+
+    ssl_certificate /etc/ssl/gitlab_vietis_com_vn.crt;
+    ssl_certificate_key /etc/ssl/gitlab.vietis.com.vn.key;
+    ssl on;
+
+
+   
+}
+
+
+
+https://forum.gitlab.com/t/how-to-change-git-clone-url/10610/2
+
+You can achieve similar behavior in a 2 step process:
+1. Edit: config/gitlab.yml
+
+On the server, set the port to the one you use:
+
+ssh_port: 766
+
+2. Edit ~/.ssh/config
+
+On your machine, add the following section corresponding to your gitlab:
+
+Host sub.domain.com
+        Port 766
+
+Limit
+
+
+In Omnibus-packaged versions you can modify that property in the /etc/gitlab/gitlab.rb file:
+
+gitlab_rails['gitlab_shell_ssh_port'] = 766
+
+
+You will need to repeat this operation on each user's computer…
+
+
+gitlab-ctl reconfigure
+
+
+Location to edit
+/etc/gitlab/gitlab.rb,
+external_url 'http://192.168.187.134'
+sudo gitlab-ctl reconfigure needed.
+
+sudo gitlab-ctl restart
+
+
+ssh://git@gitlab.vietis.com.vn:2222/rimpack/rimpack.git
+https://gitlab.vietis.com.vn/rimpack/rimpack.git
+
+
+change ssh_port
+
+/etc/ssh/sshd_config
+Port 2222
+
+$ sudo firewall-cmd --permanent --zone=public --add-port=2222/tcp
+$ sudo firewall-cmd --reload
+sudo systemctl restart sshd
+
+
+
+https://www.tecmint.com/create-ssh-tunneling-port-forwarding-in-linux/
+
+https://www.putorius.net/how-to-configure-ssh-port-forwarding.html 
+
+
+firewall-cmd --permanent --add-forward-port=port=2222:proto=tcp:toaddr=repo.vietis.com.vn:toport=2222
+firewall-cmd --reload
+
+ firewall-cmd --permanent --remove-forward-port=port=:proto=tcp:toport=3000
+ 
+
+
+
+
+===============================================
+ssh retrict access from ip address
+
+# Authentication:
+LoginGraceTime 120
+PermitRootLogin no
+StrictModes yes
+
+## Permit local root login
+Match Address 192.168.100.230,127.0.0.1,192.168.100.0/24
+  PermitRootLogin yes
+Match All
+  PermitRootLogin no
+
+
+systemctl restart sshd.service
+==================================================
+
+https://www.digitalocean.com/community/tutorials/how-to-protect-ssh-with-fail2ban-on-centos-7
+
+
+yum install epel-release
+yum install fail2ban
+
+vi /etc/fail2ban/jail.conf
+
+
+    ignoreip: không block những địa chỉ này, thường địa chỉ IP ở VN là địa chỉ động, nên chúng ta không sử dụng được option này.
+    bantime: khoảng thời gian (giây) block IP
+    findtime: khoảng thời gian (giây) một IP phải login thành công
+    maxretry: số lần login false tối đa
+
+Cấu hình Fail2Ban bảo vệ SSH
+
+/etc/fail2ban/jail.d/sshd.local
+
+vi /etc/fail2ban/jail.local
+[sshd]
+
+enabled  = true
+filter   = sshd
+action   = iptables[name=SSH, port=2222, protocol=tcp]
+#           sendmail-whois[name=SSH, dest=root, sender=fail2ban@example.com]
+logpath  = /var/log/secure
+maxretry = 3
+bantime = 3600
+
+
+
+
+[sshd]
+enabled = true
+port = ssh
+#action = firewallcmd-ipset
+logpath = %(sshd_log)s
+maxretry = 5
+bantime = 86400
+
+    enabled: kích hoạt bảo vệ, nếu muốn tắt bạn hãy chuyển thành false
+    filter: giữ mặc định để sử dụng file cấu hình /etc/fail2ban/filter.d/sshd.conf
+    action: fail2ban sẽ ban địa chỉ IP nếu match filter /etc/fail2ban/action.d/iptables.conf. Nếu bạn đã thay đổi port ssh, sửa đoạn port=ssh bằng port mới, ví dụ port=2222
+    logpath: đường dẫn file log fail2ban sử dụng để theo dõi
+    maxretry: số lần login false tối đa
+    bantime: thời gian ban IP 3600 giây = 1 giờ, bạn có thể điều chỉnh lại nếu muốn
+
+
+systemctl enable fail2ban
+systemctl start fail2ban 
+
+
+[nginx-http-auth]
+
+enabled  = true
+filter   = nginx-http-auth
+port     = http,https
+logpath  = /var/log/nginx/error.log
+
+
+[nginx-noscript]
+
+enabled  = true
+port     = http,https
+filter   = nginx-noscript
+logpath  = /var/log/nginx/access.log
+maxretry = 6
+
+[nginx-badbots]
+
+enabled  = true
+port     = http,https
+filter   = nginx-badbots
+logpath  = /var/log/nginx/access.log
+maxretry = 2
+
+[nginx-nohome]
+
+enabled  = true
+port     = http,https
+filter   = nginx-nohome
+logpath  = /var/log/nginx/access.log
+maxretry = 2
+
+[nginx-noproxy]
+
+enabled  = true
+port     = http,https
+filter   = nginx-noproxy
+logpath  = /var/log/nginx/access.log
+maxretry = 2
+
+
+
+https://support.plesk.com/hc/en-us/articles/360009740660-How-to-protect-nginx-with-Fail2Ban-in-Plesk-for-Linux
+
+[nginx-http-auth]
+
+enabled = true
+filter = nginx-http-auth
+action = iptables-multiport[name=nginx, port="http,https"]
+logpath = /var/log/nginx/*error*.log
+          /var/www/vhosts/system/*/logs/proxy_error_log
+bantime = 600
+maxretry = 6
+
+[nginx-badbots]
+
+enabled = true
+action = iptables-multiport[name=BadBots, port="http,https"]
+filter = nginx-badbots
+logpath = /var/log/nginx/access.log
+          /var/www/vhosts/system/*/logs/proxy_access*log
+maxretry = 2
+
+
+vi /etc/fail2ban/filter.d/nginx-http-auth.conf
+[Definition]
+
+failregex = ^ \[error\] \d+#\d+: \*\d+ user "\S+":? (password mismatch|was not found in ".*"), client: <HOST>, server: \S+, request: "\S+ \S+ HTTP/\d+\.\d+", host: "\S+"\s*$
+            ^ \[error\] \d+#\d+: \*\d+ no user/password was provided for basic authentication, client: <HOST>, server: \S+, request: "\S+ \S+ HTTP/\d+\.\d+", host: "\S+"\s*$
+ignoreregex =
+
+
+
+https://www.cyberciti.biz/faq/linux-unix-delete-remove-ip-address-that-denyhosts-blocked/
+
+vietis@123456
+
+
+  868  cat /etc/hosts.deny | grep 113.164.228.218
+  869  sudo vi /var/lib/denyhosts/hosts
+  870  whereis denyhost
+  871  ls /usr/share/denyhosts/data/
+  872  ll /usr/share/denyhosts/data/
+  873  vi /usr/share/denyhosts/data/hosts
+  874  vi /usr/share/denyhosts/data/hosts-restricted
+  875  vi /usr/share/denyhosts/data/hosts-root
+  876  vi /usr/share/denyhosts/data/hosts-valid
+  877  vi /usr/share/denyhosts/data/users-hosts
+  
+  
+  sudo fail2ban-client set sshd unbanip 192.168.72.186
+  vit@is@757787
+  
+  
+  fail2ban-client status | sed -n 's/,//g;s/.*Jail list://p' | xargs -n1 fail2ban-client status
+  

@@ -1,0 +1,1 @@
+robocopy C:\Data T:\DesktopPC\C-Drive /MIR /XA:H /W:0 /R:1 /REG > C:\externalbackup.log

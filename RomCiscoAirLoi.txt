@@ -1,0 +1,3181 @@
+
+Enter Administrative User Name (24 characters max):
+Invalid response
+
+Enter Administrative User Name (24 characters max): admin
+Enter Administrative Password (3 to 24 characters): ********
+Use at least three of the following four classes in the password: lowercase letters, uppercase letters, digits or special characters .
+Enter Administrative Password (3 to 24 characters): ********
+Use at least three of the following four classes in the password: lowercase letters, uppercase letters, digits or special characters .
+Enter Administrative Password (3 to 24 characters): **********
+Some of the special characters in password are not supported.
+Enter Administrative Password (3 to 24 characters): **********
+Re-enter Administrative Password                 : **********
+
+System Name [Cisco_78:05:e0] (31 characters max): cisco
+
+Enter Country Code list (enter 'help' for a list of countries) [US]:
+
+Configure a NTP server now? [YES][no]: no
+Configure the system time now? [YES][no]: no
+
+Note! Default NTP servers will be used
+
+Management Interface IP Address: 192.168.100.232
+Management Interface Netmask: 255.255.255.0
+Management Interface Default Router: 192.168.100.1
+Cleaning up Provisioning SSID
+Create Management DHCP Scope? [yes][NO]: no
+Create Employee Network? [YES][no]: no
+Enable RF Parameter Optimization? [YES][no]: no
+
+Configuration correct? If yes, system will save it and reset. [yes][NO]: yes
+Cleaning up Provisioning SSID
+
+Configuration saved!
+Resetting system with new configuration...
+
+
+Writing reload timestamp (Sun Nov 20 02:02:06 UTC 2022) to disk
+
+
+
+[11/20/2022 02:02:09.0113] UBIFS: un-mount UBI device 0, volume 3
+[11/20/2022 02:02:09.8610] Restarting system.
+[11/20/2022 02:02:09.9010] Going down for restart now
+
+
+U-Boot 2012.07 (btldr release 38) (Oct 29 2019 - 06:39:45)
+
+This product contains some software licensed under the
+"GNU General Public License, version 2" provided with
+ABSOLUTELY NO WARRANTY under the terms of
+"GNU General Public License, version 2", available here:
+http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+
+DRAM:  1 GiB
+NAND (ONFI): Detected SPANSION S34MS02G1 [256 MiB]
+SF: Detected Macronix MX25U3235F [4 MiB]
+MFG data loaded
+Scanning shenv data blocks
+Total valid parts=4
+Active shenv part[0:1], write_counter=38
+PCI0 Link Intialized
+Net:
+PHY ID = 0x4dd074, eth0 found AR8033 PHY
+PHY ID = 0x4dd074, eth1 found AR8033 PHY
+Valid I2C chip addresses: 51 52
+AP 1832/1852 detected...
+Power Type: Power Brick detected...
+Signature returns 0
+BL signing verification success, continue to run...
+Auto boot mode, use bootipq directly
+Hit ESC key to stop autoboot:  0
+Specified BOOT: part1
+
+Booting from part1
+
+Read 1024 bytes from volume part1 to 45000000
+Read 42389536 bytes from volume part1 to 45000000
+Signature returns 0
+Image signing verification success, continue to run...
+Using machid 0x1260 from environment
+
+Starting image ...
+
+[01/01/1970 00:00:00.0000] CPU: ARMv7 Processor [512f04d0] revision 0 (ARMv7), cr=10c5387d
+[01/01/1970 00:00:00.0000] CPU: PIPT / VIPT nonaliasing data cache, PIPT instruction cache
+[01/01/1970 00:00:00.0000] Machine: Cisco Systems 11ac Wave2 Wifi Access Point
+[01/01/1970 00:00:00.0000] Memory policy: ECC disabled, Data cache writealloc
+[01/01/1970 00:00:00.0000] Kernel command line: ubi.mtd=0 crashkernel=30M@1280M console=ttyHSL1,9600n8 activepart=part1 activeboot=0 wdgtriggered=0
+[01/01/1970 00:00:00.1500] CPU1: Booted secondary processor
+[01/01/1970 00:00:00.2200]
+[01/01/1970 00:00:00.2200] +++ hydra_ap_gpio_value =3
+[01/01/1970 00:00:27.2616] acpuclk-ipq806x acpuclk-ipq806x: ACPU PVS: 1
+[01/01/1970 00:00:27.2616] ACPU PVS: 1
+[01/01/1970 00:00:28.3313] buginf tty flushing thread started, ttyport=ef60f290
+[*01/01/1970 00:00:33.0099] buginf() enabled.
+
+Welcome to Cisco.
+
+Usage of this device is governed by Cisco's End User License Agreement,
+available at:
+http://www.cisco.com/c/en/us/td/docs/general/warranty/English/EU1KEN_.html.
+
+
+             Restricted Rights Legend
+
+Use, duplication, or disclosure by the Government is subject to
+restrictions as set forth in subparagraph (c) of the Commercial
+Computer Software - Restricted Rights clause at FAR sec. 52.227-19 and
+subparagraph (c) (1) (ii) of the Rights in Technical Data and Computer
+Software clause at DFARS sec. 252.227-7013.
+
+            Cisco Systems, Inc.
+            170 West Tasman Drive
+            San Jose, California 95134-1706
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+
+This product contains some software licensed under the
+"GNU General Public License, version 2" provided with
+ABSOLUTELY NO WARRANTY under the terms of
+"GNU General Public License, version 2", available here:
+http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+
+
+This product contains some software licensed under the
+"GNU Library General Public License, version 2" provided
+with ABSOLUTELY NO WARRANTY under the terms of "GNU Library
+General Public License, version 2", available here:
+http://www.gnu.org/licenses/old-licenses/lgpl-2.0.html
+
+
+This product contains some software licensed under the
+"GNU Lesser General Public License, version 2.1" provided
+with ABSOLUTELY NO WARRANTY under the terms of "GNU Lesser
+General Public License, version 2.1", available here:
+http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html
+
+
+This product contains some software licensed under the
+"GNU General Public License, version 3" provided with
+ABSOLUTELY NO WARRANTY under the terms of
+"GNU General Public License, Version 3", available here:
+http://www.gnu.org/licenses/gpl.html.
+
+[*01/01/1970 00:00:33.0198] Made it into bootsh: May 17 2017 21:21:32
+[*01/01/1970 00:00:33.0198] bootsh build T-ea744460b77c6aa805022a071636bbe91bfbef81-gea744460-vipendya
+init started: BusyBox v1.23.2 (2017-05-17 21:07:38 PDT)
+[*01/01/1970 00:00:36.0589] GCM-128 POST passed
+[*01/01/1970 00:00:36.0589] GCM-256 POST passed
+[*01/01/1970 00:00:36.3588] Active version: 8.4.100.0
+[*01/01/1970 00:00:36.3588] Backup version: 8.10.151.0
+Jan  1 00:00:36 FIPS[803]: *** shell: FIPS Mode = disabled ***
+
+
+
+User Access Verification
+Username: [*01/01/1970 00:00:36.5687]
+[*01/01/1970 00:00:36.5687]  led patteren module start
+[*01/01/1970 00:00:36.6187] AP1852I
+[*01/01/1970 00:00:36.7187] nss_driver - Turbo Support 1
+[*01/01/1970 00:00:36.7187] Supported Frequencies - 110Mhz 550Mhz 733Mhz
+[*01/01/1970 00:00:36.7487] NSS firmware booted
+[*01/01/1970 00:00:36.7787] NSS firmware booted
+[*01/01/1970 00:00:37.2485] Current value of FACTORY_RESET=0
+[*01/01/1970 00:00:37.2685] Last reload time: Nov 20 02:02:06 2022
+[*11/20/2022 02:02:06.0000] Setting system time Sun Nov 20 02:02:06 UTC 2022
+[*11/20/2022 02:02:06.0699] device wired0 entered promiscuous mode
+[*11/20/2022 02:02:06.1699] device wired1 entered promiscuous mode
+[*11/20/2022 02:02:06.6198] stile module dp init successfully
+[*11/20/2022 02:02:06.6198] NBAR Label:BLD_MCP_DEV_LATEST_20150424_123021 NBAR VERSION:module build date: Nov  1 2016 at 16:53:57
+[*11/20/2022 02:02:07.2596] miibus get eec9d000!
+[*11/20/2022 02:02:07.2996]
+[*11/20/2022 02:02:07.3096] boot 21 build T-ea744460b77c6aa805022a071636bbe91bfbef81-gea744460-vipendya board corsica mac A0:F8:49:78:05:E8
+[*11/20/2022 02:02:07.3096] Module: mbedtls  .text=0xbf000000        data=0xbf007e18        bss=0xbf008070
+[*11/20/2022 02:02:07.3096] Module: aptrace  .text=0xbf00c000        data=0xbf014044        bss=0xbf014448
+[*11/20/2022 02:02:07.3096] Module: led_module  .text=0xbf01b000        data=0xbf01b3cc        bss=0xbf01ba34
+[*11/20/2022 02:02:07.3096] Module: qca_nss_gmac  .text=0xbf01f000        data=0xbf025be0        bss=0xbf0260a4
+[*11/20/2022 02:02:07.3096] Module: qca_nss_drv  .text=0xbf02f000        data=0xbf04a050        bss=0xbf04ae00
+[*11/20/2022 02:02:07.3096] Module: qca_nss_capwapmgr  .text=0xbf06b000        data=0xbf06fa88        bss=0xbf06fbd8
+[*11/20/2022 02:02:07.3096] Module: nssmgrctl  .text=0xbf076000        data=0xbf077730        bss=0xbf077a54
+[*11/20/2022 02:02:07.3096] Module: proclikefs  .text=0xbf07d000        data=        bss=0xbf07db40
+[*11/20/2022 02:02:07.3096] Module: stile_lm_ft  .text=        data=        bss=
+[*11/20/2022 02:02:07.3096] Module: stile_lm_dp  .text=        data=        bss=
+[*11/20/2022 02:02:07.3096] Module: ipv6  .text=0xbf9c8000        data=0xbf9f8fc0        bss=0xbf9fa86c
+[*11/20/2022 02:02:07.3096] Module: bonding  .text=0xbfa14000        data=0xbfa25644        bss=0xbfa25a70
+[*11/20/2022 02:02:07.3096] Module: lowmemorykiller  .text=0xbfa32000        data=0xbfa322c0        bss=0xbfa3244c
+[*11/20/2022 02:02:07.3096] Module: qca_nss_profile_drv  .text=0xbfa36000        data=0xbfa37320        bss=0xbfa37494
+[*11/20/2022 02:02:07.3096] Module: ssdk_reg  .text=0xbfa3c000        data=        bss=0xbfa3c838
+[*11/20/2022 02:02:07.7894] Last reload reason : 1: reload command
+[*11/20/2022 02:02:07.9694] set led_patteren 12
+[*11/20/2022 02:02:09.3789] __mm_init_module
+[*11/20/2022 02:02:09.4289]
+[*11/20/2022 02:02:09.4289] __ol_ath_attach() Allocated scn edfc0480
+[*11/20/2022 02:02:09.4389] ol_ath_attach interface_id 0
+[*11/20/2022 02:02:09.4389] Chip id: 0x9, chip version: 0x1000000
+[*11/20/2022 02:02:09.4389]
+[*11/20/2022 02:02:09.4389]  Target Version is 1000000
+[*11/20/2022 02:02:09.4389]
+[*11/20/2022 02:02:09.4389]  Flash Download Address  c0000
+[*11/20/2022 02:02:09.4389] ol_transfer_bin_file: flash data file defined
+[*11/20/2022 02:02:09.4389] Cal location [0]: 00000000
+[*11/20/2022 02:02:09.4389]
+[*11/20/2022 02:02:09.4389]  Wifi0 NAND FLASH Select OFFSET 0x1000
+[*11/20/2022 02:02:09.4589] qc98xx_verify_checksum: flash checksum passed: 0xe39d
+[*11/20/2022 02:02:09.4589] ol_transfer_bin_file 3754: Download Flash data len 12064
+[*11/20/2022 02:02:09.4789]
+[*11/20/2022 02:02:09.4789]  Board data initialized
+[*11/20/2022 02:02:09.5289] ol_ath_download_firmware :First OTP download and Execute is good address:0xa000 return param 4660
+[*11/20/2022 02:02:09.5289] ol_ath_download_firmware:##Board Id 8 , CHIP Id 1
+[*11/20/2022 02:02:09.5289] ol_transfer_bin_file: Board Data File download to address=0xc0000 file name=AR900B/hw.2/boardData_AR900B_CUS260_negative_pwr_offset_2G_v2_008.bin
+[*11/20/2022 02:02:09.6089]
+[*11/20/2022 02:02:09.6089]  [Flash] : Ignore Module param
+[*11/20/2022 02:02:09.6089] ol_ath_download_firmware : Second OTP download and Execute is good, param=0x0
+[*11/20/2022 02:02:09.6389] ol_transfer_bin_file: Downloading firmware file: AR900B/hw.2/athwlan.bin
+[*11/20/2022 02:02:10.7385] HTC Rx: insufficient length, got:4 expected =8
+[*11/20/2022 02:02:10.7485] Startup Mode-0 set
+[*11/20/2022 02:02:10.7485] HTC Service:0x0300 ep:1 TX flow control disabled
+[*11/20/2022 02:02:10.7485] HTC Service:0x0100 ep:2 TX flow control disabled
+[*11/20/2022 02:02:10.7485] Firmware_Build_Number:70
+[*11/20/2022 02:02:10.7485] num_rf_chain:0x00000004  ht_cap_info:0x0000185b  vht_cap_info:0x339a79b2  vht_supp_mcs:0x0000ffaa
+[*11/20/2022 02:02:10.7485]
+[*11/20/2022 02:02:10.7485]  RES CFG Support wmi_service_bitmap 9778
+[*11/20/2022 02:02:10.7485]
+[*11/20/2022 02:02:10.7485]  Sending Ext resource cfg: HOST PLATFORM as 0 and fw_feature_bitmap as 50 to TGT
+[*11/20/2022 02:02:10.7485] ol_ath_service_ready_event: sw_cal_support_check_flag: 1
+[*11/20/2022 02:02:10.8185] wmi_ready_event_rx:  WMI UNIFIED READY event
+[*11/20/2022 02:02:10.8185] htt_h2t_frag_desc_bank_cfg_msg - HTT_H2T_MSG_TYPE_FRAG_DESC_BANK_CFG sent to FW for radio ID = 0
+[*11/20/2022 02:02:10.8285] ACS not enabled
+[*11/20/2022 02:02:10.8285] ol_ath_thermal_mitigation_attach: --
+[*11/20/2022 02:02:10.8685]  pktlog_init: Initializing Pktlog for AR900B, pktlog_hdr_size = 16
+[*11/20/2022 02:02:11.7482] FWLOG: [42875] WAL_DBGID_TX_AC_BUFFER_SET ( 0x3, 0x1e, 0x94c, 0x94c, 0x0 )
+[*11/20/2022 02:02:11.7482] FWLOG: [42875] WAL_DBGID_TX_AC_BUFFER_SET ( 0x12, 0x1e, 0x94c, 0x94c, 0x0 )
+[*11/20/2022 02:02:11.7482] FWLOG: [42875] WAL_DBGID_TX_AC_BUFFER_SET ( 0x45, 0x1e, 0x94c, 0x94c, 0x0 )
+[*11/20/2022 02:02:11.7482] FWLOG: [42875] WAL_DBGID_TX_AC_BUFFER_SET ( 0x67, 0x1e, 0x94c, 0x94c, 0x0 )
+[*11/20/2022 02:02:14.0875] pid 1637's current affinity mask: 3
+[*11/20/2022 02:02:14.0875] pid 1637's new affinity mask: 1
+[*11/20/2022 02:02:17.3165] wmi_dbg_cfg_send: mod[0]00000000 dbgcfg40000000 cfgvalid[0] 00000000 cfgvalid[1] 00000000
+[*11/20/2022 02:02:19.1759] chatter: tohost_srcr6 :: ToHost: device 'srcr6' went down
+[*11/20/2022 02:02:19.2059] chatter: tohost_srcr6 :: ToHost: device 'srcr6' came up
+[*11/20/2022 02:02:19.2059] ip6_port srcr6, ip6local fe80::a2f8:49ff:fe78:5e8, ip6 ::, plen 0, gw6 ::, gw6_mac 00:00:00:00:00:00, mtu 1500, vid 0, mode6 3(slaac)
+[*11/20/2022 02:02:19.5958]
+[*11/20/2022 02:02:19.5958] phy_value=0: org="0x1000" phy_reg="0x1000"
+[*11/20/2022 02:02:30.2325] Loading sha2...
+[*11/20/2022 02:02:30.2325] Dumpping sha1...
+[*11/20/2022 02:02:31.8820] Loading MIC cert and key
+[*11/20/2022 02:02:31.8820] Dumpping sha2...
+[*11/20/2022 02:02:33.5914] Loading MIC cert and key
+[*11/20/2022 02:02:33.9713] Generating key, this may take a while...
+[*11/20/2022 02:02:35.7507] Public key portion is:
+[*11/20/2022 02:02:35.7507] ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCcKr8qdeMqGbhUKEFAILTtB1sFML13cP17izvIxaIHiyEqXRX75ZFEgSOEyyNF4lL3H3lPg/p4XSB54VNksE93bcd9tYfNhWKDNIjZeeCITAHzBqu2KeCAV8fpEaHEXeaX2rK+dnbEaDBJn2kyD0Ey7rw1ig7TUFKaziPemkB4VpDhOfzwSEXTDhibCd2XA73/14wrCgngmViFVhPjH5zp4bSTimiuNhPnYahIMYzoCueEs6+NJQ4oEMtHq1vk6Rk1gse+t7EhxT37GSTLBdhXJbthWvpYiKzk/KdoECxwL+HXt2lqpIEL0JAzp5jlN2fBEyx42Tg/Yxt9Rn2eN8gn root@mA0F8497805E8
+[*11/20/2022 02:02:35.7507] Fingerprint: md5 53:21:08:54:76:9f:19:12:40:29:6b:f7:da:71:c1:40
+[*11/20/2022 02:02:35.8207] pid 2863's current affinity mask: 3
+[*11/20/2022 02:02:35.8207] pid 2863's new affinity mask: 1
+[*11/20/2022 02:02:36.2606] gzip -dc /etc/wcp.usermodule.template.gz | sed  -e 's/__TX_POWER_2G_FILE__/\/radio_fw\/R2.csv/g' -e 's/__TX_POWER_5G_FILE__/\/radio_fw\/R5.csv/g' -e 's/__EVM_POWER_2G_FILE__/\/radio_fw\/EVM_2.csv/g' -e 's/__EVM_POWER_5G_FILE__/\/radio_fw\/EVM_5.csv/g' -e 's/__DOMAIN_2G__/1/g' -e 's/__DOMAIN_5G__/14/g' -e 's/__PRODUCT_ID__/AIR-AP1852E-S-K9/g' -e 's/__AP_TYPE__/47/g' -e 's/__WIRELESS_MAC__/A0:F8:49:78:72:80/g' -e 's/__WIRED_MAC__/A0:F8:49:78:05:E8/g' -e 's/__WIRED1_MAC__/A0:F8:49:78:05:E8/g' | DMALLOC_OPTIONS=debug=0x03,inter=1000,log=/tmp/wcp.dmalloc.log,limit=40000000 wcpd &
+[*11/20/2022 02:02:36.7504] Password for 'Cisco' changed
+[*11/20/2022 02:02:37.8401] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11BaseDriver get_vap_if_index ioctl SIOCGIFINDEX failed for apr1v0 error No such device
+[*11/20/2022 02:02:37.8401] wcpd: /san/BUILD/workspace/8.4ME_CCO/c8_4_throttle_170517205434/router/base/../elts-meraki/elements/wcp/wcp_db.cc: 1311: void WcpDb::populate_if_index_table(): Assertion `if_index >= 0 && if_index < 64' failed.
+[*11/20/2022 02:03:11.4696]
+[*11/20/2022 02:03:11.4696] !!!!! {watchdogd} Process wcpd no heartbeat for 60s
+[*11/20/2022 02:03:11.4696]
+[*11/20/2022 02:03:11.4696] !!!!! {watchdogd} Process capwapd no heartbeat for 60s
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] Socket Invalid Element wcp/wcp_db Handler has_rlan Data 0 Length 10
+[*11/20/2022 02:03:36.8017] Failed to load flex AP config from file. Default config will be used.
+[*11/20/2022 02:03:40.8004] Waiting for uplink IPv4 configuration
+[*11/20/2022 02:03:45.8089] Waiting for uplink IPv4 configuration
+
+
+Enter Administrative User Name (24 characters max):
+Invalid response
+
+Enter Administrative User Name (24 characters max): admin
+Enter Administrative Password (3 to 24 characters): ********
+Use at least three of the following four classes in the password: lowercase letters, uppercase letters, digits or special characters .
+Enter Administrative Password (3 to 24 characters): ********
+Use at least three of the following four classes in the password: lowercase letters, uppercase letters, digits or special characters .
+Enter Administrative Password (3 to 24 characters): **********
+Some of the special characters in password are not supported.
+Enter Administrative Password (3 to 24 characters): **********
+Re-enter Administrative Password                 : **********
+
+System Name [Cisco_78:05:e0] (31 characters max): cisco
+
+Enter Country Code list (enter 'help' for a list of countries) [US]:
+
+Configure a NTP server now? [YES][no]: no
+Configure the system time now? [YES][no]: no
+
+Note! Default NTP servers will be used
+
+Management Interface IP Address: 192.168.100.232
+Management Interface Netmask: 255.255.255.0
+Management Interface Default Router: 192.168.100.1
+Cleaning up Provisioning SSID
+Create Management DHCP Scope? [yes][NO]: no
+Create Employee Network? [YES][no]: no
+Enable RF Parameter Optimization? [YES][no]: no
+
+Configuration correct? If yes, system will save it and reset. [yes][NO]: yes
+Cleaning up Provisioning SSID
+
+Configuration saved!
+Resetting system with new configuration...
+
+
+Writing reload timestamp (Sun Nov 20 02:02:06 UTC 2022) to disk
+
+
+
+[11/20/2022 02:02:09.0113] UBIFS: un-mount UBI device 0, volume 3
+[11/20/2022 02:02:09.8610] Restarting system.
+[11/20/2022 02:02:09.9010] Going down for restart now
+
+
+U-Boot 2012.07 (btldr release 38) (Oct 29 2019 - 06:39:45)
+
+This product contains some software licensed under the
+"GNU General Public License, version 2" provided with
+ABSOLUTELY NO WARRANTY under the terms of
+"GNU General Public License, version 2", available here:
+http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+
+DRAM:  1 GiB
+NAND (ONFI): Detected SPANSION S34MS02G1 [256 MiB]
+SF: Detected Macronix MX25U3235F [4 MiB]
+MFG data loaded
+Scanning shenv data blocks
+Total valid parts=4
+Active shenv part[0:1], write_counter=38
+PCI0 Link Intialized
+Net:
+PHY ID = 0x4dd074, eth0 found AR8033 PHY
+PHY ID = 0x4dd074, eth1 found AR8033 PHY
+Valid I2C chip addresses: 51 52
+AP 1832/1852 detected...
+Power Type: Power Brick detected...
+Signature returns 0
+BL signing verification success, continue to run...
+Auto boot mode, use bootipq directly
+Hit ESC key to stop autoboot:  0
+Specified BOOT: part1
+
+Booting from part1
+
+Read 1024 bytes from volume part1 to 45000000
+Read 42389536 bytes from volume part1 to 45000000
+Signature returns 0
+Image signing verification success, continue to run...
+Using machid 0x1260 from environment
+
+Starting image ...
+
+[01/01/1970 00:00:00.0000] CPU: ARMv7 Processor [512f04d0] revision 0 (ARMv7), cr=10c5387d
+[01/01/1970 00:00:00.0000] CPU: PIPT / VIPT nonaliasing data cache, PIPT instruction cache
+[01/01/1970 00:00:00.0000] Machine: Cisco Systems 11ac Wave2 Wifi Access Point
+[01/01/1970 00:00:00.0000] Memory policy: ECC disabled, Data cache writealloc
+[01/01/1970 00:00:00.0000] Kernel command line: ubi.mtd=0 crashkernel=30M@1280M console=ttyHSL1,9600n8 activepart=part1 activeboot=0 wdgtriggered=0
+[01/01/1970 00:00:00.1500] CPU1: Booted secondary processor
+[01/01/1970 00:00:00.2200]
+[01/01/1970 00:00:00.2200] +++ hydra_ap_gpio_value =3
+[01/01/1970 00:00:27.2616] acpuclk-ipq806x acpuclk-ipq806x: ACPU PVS: 1
+[01/01/1970 00:00:27.2616] ACPU PVS: 1
+[01/01/1970 00:00:28.3313] buginf tty flushing thread started, ttyport=ef60f290
+[*01/01/1970 00:00:33.0099] buginf() enabled.
+
+Welcome to Cisco.
+
+Usage of this device is governed by Cisco's End User License Agreement,
+available at:
+http://www.cisco.com/c/en/us/td/docs/general/warranty/English/EU1KEN_.html.
+
+
+             Restricted Rights Legend
+
+Use, duplication, or disclosure by the Government is subject to
+restrictions as set forth in subparagraph (c) of the Commercial
+Computer Software - Restricted Rights clause at FAR sec. 52.227-19 and
+subparagraph (c) (1) (ii) of the Rights in Technical Data and Computer
+Software clause at DFARS sec. 252.227-7013.
+
+            Cisco Systems, Inc.
+            170 West Tasman Drive
+            San Jose, California 95134-1706
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+
+This product contains some software licensed under the
+"GNU General Public License, version 2" provided with
+ABSOLUTELY NO WARRANTY under the terms of
+"GNU General Public License, version 2", available here:
+http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+
+
+This product contains some software licensed under the
+"GNU Library General Public License, version 2" provided
+with ABSOLUTELY NO WARRANTY under the terms of "GNU Library
+General Public License, version 2", available here:
+http://www.gnu.org/licenses/old-licenses/lgpl-2.0.html
+
+
+This product contains some software licensed under the
+"GNU Lesser General Public License, version 2.1" provided
+with ABSOLUTELY NO WARRANTY under the terms of "GNU Lesser
+General Public License, version 2.1", available here:
+http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html
+
+
+This product contains some software licensed under the
+"GNU General Public License, version 3" provided with
+ABSOLUTELY NO WARRANTY under the terms of
+"GNU General Public License, Version 3", available here:
+http://www.gnu.org/licenses/gpl.html.
+
+[*01/01/1970 00:00:33.0198] Made it into bootsh: May 17 2017 21:21:32
+[*01/01/1970 00:00:33.0198] bootsh build T-ea744460b77c6aa805022a071636bbe91bfbef81-gea744460-vipendya
+init started: BusyBox v1.23.2 (2017-05-17 21:07:38 PDT)
+[*01/01/1970 00:00:36.0589] GCM-128 POST passed
+[*01/01/1970 00:00:36.0589] GCM-256 POST passed
+[*01/01/1970 00:00:36.3588] Active version: 8.4.100.0
+[*01/01/1970 00:00:36.3588] Backup version: 8.10.151.0
+Jan  1 00:00:36 FIPS[803]: *** shell: FIPS Mode = disabled ***
+
+
+
+User Access Verification
+Username: [*01/01/1970 00:00:36.5687]
+[*01/01/1970 00:00:36.5687]  led patteren module start
+[*01/01/1970 00:00:36.6187] AP1852I
+[*01/01/1970 00:00:36.7187] nss_driver - Turbo Support 1
+[*01/01/1970 00:00:36.7187] Supported Frequencies - 110Mhz 550Mhz 733Mhz
+[*01/01/1970 00:00:36.7487] NSS firmware booted
+[*01/01/1970 00:00:36.7787] NSS firmware booted
+[*01/01/1970 00:00:37.2485] Current value of FACTORY_RESET=0
+[*01/01/1970 00:00:37.2685] Last reload time: Nov 20 02:02:06 2022
+[*11/20/2022 02:02:06.0000] Setting system time Sun Nov 20 02:02:06 UTC 2022
+[*11/20/2022 02:02:06.0699] device wired0 entered promiscuous mode
+[*11/20/2022 02:02:06.1699] device wired1 entered promiscuous mode
+[*11/20/2022 02:02:06.6198] stile module dp init successfully
+[*11/20/2022 02:02:06.6198] NBAR Label:BLD_MCP_DEV_LATEST_20150424_123021 NBAR VERSION:module build date: Nov  1 2016 at 16:53:57
+[*11/20/2022 02:02:07.2596] miibus get eec9d000!
+[*11/20/2022 02:02:07.2996]
+[*11/20/2022 02:02:07.3096] boot 21 build T-ea744460b77c6aa805022a071636bbe91bfbef81-gea744460-vipendya board corsica mac A0:F8:49:78:05:E8
+[*11/20/2022 02:02:07.3096] Module: mbedtls  .text=0xbf000000        data=0xbf007e18        bss=0xbf008070
+[*11/20/2022 02:02:07.3096] Module: aptrace  .text=0xbf00c000        data=0xbf014044        bss=0xbf014448
+[*11/20/2022 02:02:07.3096] Module: led_module  .text=0xbf01b000        data=0xbf01b3cc        bss=0xbf01ba34
+[*11/20/2022 02:02:07.3096] Module: qca_nss_gmac  .text=0xbf01f000        data=0xbf025be0        bss=0xbf0260a4
+[*11/20/2022 02:02:07.3096] Module: qca_nss_drv  .text=0xbf02f000        data=0xbf04a050        bss=0xbf04ae00
+[*11/20/2022 02:02:07.3096] Module: qca_nss_capwapmgr  .text=0xbf06b000        data=0xbf06fa88        bss=0xbf06fbd8
+[*11/20/2022 02:02:07.3096] Module: nssmgrctl  .text=0xbf076000        data=0xbf077730        bss=0xbf077a54
+[*11/20/2022 02:02:07.3096] Module: proclikefs  .text=0xbf07d000        data=        bss=0xbf07db40
+[*11/20/2022 02:02:07.3096] Module: stile_lm_ft  .text=        data=        bss=
+[*11/20/2022 02:02:07.3096] Module: stile_lm_dp  .text=        data=        bss=
+[*11/20/2022 02:02:07.3096] Module: ipv6  .text=0xbf9c8000        data=0xbf9f8fc0        bss=0xbf9fa86c
+[*11/20/2022 02:02:07.3096] Module: bonding  .text=0xbfa14000        data=0xbfa25644        bss=0xbfa25a70
+[*11/20/2022 02:02:07.3096] Module: lowmemorykiller  .text=0xbfa32000        data=0xbfa322c0        bss=0xbfa3244c
+[*11/20/2022 02:02:07.3096] Module: qca_nss_profile_drv  .text=0xbfa36000        data=0xbfa37320        bss=0xbfa37494
+[*11/20/2022 02:02:07.3096] Module: ssdk_reg  .text=0xbfa3c000        data=        bss=0xbfa3c838
+[*11/20/2022 02:02:07.7894] Last reload reason : 1: reload command
+[*11/20/2022 02:02:07.9694] set led_patteren 12
+[*11/20/2022 02:02:09.3789] __mm_init_module
+[*11/20/2022 02:02:09.4289]
+[*11/20/2022 02:02:09.4289] __ol_ath_attach() Allocated scn edfc0480
+[*11/20/2022 02:02:09.4389] ol_ath_attach interface_id 0
+[*11/20/2022 02:02:09.4389] Chip id: 0x9, chip version: 0x1000000
+[*11/20/2022 02:02:09.4389]
+[*11/20/2022 02:02:09.4389]  Target Version is 1000000
+[*11/20/2022 02:02:09.4389]
+[*11/20/2022 02:02:09.4389]  Flash Download Address  c0000
+[*11/20/2022 02:02:09.4389] ol_transfer_bin_file: flash data file defined
+[*11/20/2022 02:02:09.4389] Cal location [0]: 00000000
+[*11/20/2022 02:02:09.4389]
+[*11/20/2022 02:02:09.4389]  Wifi0 NAND FLASH Select OFFSET 0x1000
+[*11/20/2022 02:02:09.4589] qc98xx_verify_checksum: flash checksum passed: 0xe39d
+[*11/20/2022 02:02:09.4589] ol_transfer_bin_file 3754: Download Flash data len 12064
+[*11/20/2022 02:02:09.4789]
+[*11/20/2022 02:02:09.4789]  Board data initialized
+[*11/20/2022 02:02:09.5289] ol_ath_download_firmware :First OTP download and Execute is good address:0xa000 return param 4660
+[*11/20/2022 02:02:09.5289] ol_ath_download_firmware:##Board Id 8 , CHIP Id 1
+[*11/20/2022 02:02:09.5289] ol_transfer_bin_file: Board Data File download to address=0xc0000 file name=AR900B/hw.2/boardData_AR900B_CUS260_negative_pwr_offset_2G_v2_008.bin
+[*11/20/2022 02:02:09.6089]
+[*11/20/2022 02:02:09.6089]  [Flash] : Ignore Module param
+[*11/20/2022 02:02:09.6089] ol_ath_download_firmware : Second OTP download and Execute is good, param=0x0
+[*11/20/2022 02:02:09.6389] ol_transfer_bin_file: Downloading firmware file: AR900B/hw.2/athwlan.bin
+[*11/20/2022 02:02:10.7385] HTC Rx: insufficient length, got:4 expected =8
+[*11/20/2022 02:02:10.7485] Startup Mode-0 set
+[*11/20/2022 02:02:10.7485] HTC Service:0x0300 ep:1 TX flow control disabled
+[*11/20/2022 02:02:10.7485] HTC Service:0x0100 ep:2 TX flow control disabled
+[*11/20/2022 02:02:10.7485] Firmware_Build_Number:70
+[*11/20/2022 02:02:10.7485] num_rf_chain:0x00000004  ht_cap_info:0x0000185b  vht_cap_info:0x339a79b2  vht_supp_mcs:0x0000ffaa
+[*11/20/2022 02:02:10.7485]
+[*11/20/2022 02:02:10.7485]  RES CFG Support wmi_service_bitmap 9778
+[*11/20/2022 02:02:10.7485]
+[*11/20/2022 02:02:10.7485]  Sending Ext resource cfg: HOST PLATFORM as 0 and fw_feature_bitmap as 50 to TGT
+[*11/20/2022 02:02:10.7485] ol_ath_service_ready_event: sw_cal_support_check_flag: 1
+[*11/20/2022 02:02:10.8185] wmi_ready_event_rx:  WMI UNIFIED READY event
+[*11/20/2022 02:02:10.8185] htt_h2t_frag_desc_bank_cfg_msg - HTT_H2T_MSG_TYPE_FRAG_DESC_BANK_CFG sent to FW for radio ID = 0
+[*11/20/2022 02:02:10.8285] ACS not enabled
+[*11/20/2022 02:02:10.8285] ol_ath_thermal_mitigation_attach: --
+[*11/20/2022 02:02:10.8685]  pktlog_init: Initializing Pktlog for AR900B, pktlog_hdr_size = 16
+[*11/20/2022 02:02:11.7482] FWLOG: [42875] WAL_DBGID_TX_AC_BUFFER_SET ( 0x3, 0x1e, 0x94c, 0x94c, 0x0 )
+[*11/20/2022 02:02:11.7482] FWLOG: [42875] WAL_DBGID_TX_AC_BUFFER_SET ( 0x12, 0x1e, 0x94c, 0x94c, 0x0 )
+[*11/20/2022 02:02:11.7482] FWLOG: [42875] WAL_DBGID_TX_AC_BUFFER_SET ( 0x45, 0x1e, 0x94c, 0x94c, 0x0 )
+[*11/20/2022 02:02:11.7482] FWLOG: [42875] WAL_DBGID_TX_AC_BUFFER_SET ( 0x67, 0x1e, 0x94c, 0x94c, 0x0 )
+[*11/20/2022 02:02:14.0875] pid 1637's current affinity mask: 3
+[*11/20/2022 02:02:14.0875] pid 1637's new affinity mask: 1
+[*11/20/2022 02:02:17.3165] wmi_dbg_cfg_send: mod[0]00000000 dbgcfg40000000 cfgvalid[0] 00000000 cfgvalid[1] 00000000
+[*11/20/2022 02:02:19.1759] chatter: tohost_srcr6 :: ToHost: device 'srcr6' went down
+[*11/20/2022 02:02:19.2059] chatter: tohost_srcr6 :: ToHost: device 'srcr6' came up
+[*11/20/2022 02:02:19.2059] ip6_port srcr6, ip6local fe80::a2f8:49ff:fe78:5e8, ip6 ::, plen 0, gw6 ::, gw6_mac 00:00:00:00:00:00, mtu 1500, vid 0, mode6 3(slaac)
+[*11/20/2022 02:02:19.5958]
+[*11/20/2022 02:02:19.5958] phy_value=0: org="0x1000" phy_reg="0x1000"
+[*11/20/2022 02:02:30.2325] Loading sha2...
+[*11/20/2022 02:02:30.2325] Dumpping sha1...
+[*11/20/2022 02:02:31.8820] Loading MIC cert and key
+[*11/20/2022 02:02:31.8820] Dumpping sha2...
+[*11/20/2022 02:02:33.5914] Loading MIC cert and key
+[*11/20/2022 02:02:33.9713] Generating key, this may take a while...
+[*11/20/2022 02:02:35.7507] Public key portion is:
+[*11/20/2022 02:02:35.7507] ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCcKr8qdeMqGbhUKEFAILTtB1sFML13cP17izvIxaIHiyEqXRX75ZFEgSOEyyNF4lL3H3lPg/p4XSB54VNksE93bcd9tYfNhWKDNIjZeeCITAHzBqu2KeCAV8fpEaHEXeaX2rK+dnbEaDBJn2kyD0Ey7rw1ig7TUFKaziPemkB4VpDhOfzwSEXTDhibCd2XA73/14wrCgngmViFVhPjH5zp4bSTimiuNhPnYahIMYzoCueEs6+NJQ4oEMtHq1vk6Rk1gse+t7EhxT37GSTLBdhXJbthWvpYiKzk/KdoECxwL+HXt2lqpIEL0JAzp5jlN2fBEyx42Tg/Yxt9Rn2eN8gn root@mA0F8497805E8
+[*11/20/2022 02:02:35.7507] Fingerprint: md5 53:21:08:54:76:9f:19:12:40:29:6b:f7:da:71:c1:40
+[*11/20/2022 02:02:35.8207] pid 2863's current affinity mask: 3
+[*11/20/2022 02:02:35.8207] pid 2863's new affinity mask: 1
+[*11/20/2022 02:02:36.2606] gzip -dc /etc/wcp.usermodule.template.gz | sed  -e 's/__TX_POWER_2G_FILE__/\/radio_fw\/R2.csv/g' -e 's/__TX_POWER_5G_FILE__/\/radio_fw\/R5.csv/g' -e 's/__EVM_POWER_2G_FILE__/\/radio_fw\/EVM_2.csv/g' -e 's/__EVM_POWER_5G_FILE__/\/radio_fw\/EVM_5.csv/g' -e 's/__DOMAIN_2G__/1/g' -e 's/__DOMAIN_5G__/14/g' -e 's/__PRODUCT_ID__/AIR-AP1852E-S-K9/g' -e 's/__AP_TYPE__/47/g' -e 's/__WIRELESS_MAC__/A0:F8:49:78:72:80/g' -e 's/__WIRED_MAC__/A0:F8:49:78:05:E8/g' -e 's/__WIRED1_MAC__/A0:F8:49:78:05:E8/g' | DMALLOC_OPTIONS=debug=0x03,inter=1000,log=/tmp/wcp.dmalloc.log,limit=40000000 wcpd &
+[*11/20/2022 02:02:36.7504] Password for 'Cisco' changed
+[*11/20/2022 02:02:37.8401] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11BaseDriver get_vap_if_index ioctl SIOCGIFINDEX failed for apr1v0 error No such device
+[*11/20/2022 02:02:37.8401] wcpd: /san/BUILD/workspace/8.4ME_CCO/c8_4_throttle_170517205434/router/base/../elts-meraki/elements/wcp/wcp_db.cc: 1311: void WcpDb::populate_if_index_table(): Assertion `if_index >= 0 && if_index < 64' failed.
+[*11/20/2022 02:03:11.4696]
+[*11/20/2022 02:03:11.4696] !!!!! {watchdogd} Process wcpd no heartbeat for 60s
+[*11/20/2022 02:03:11.4696]
+[*11/20/2022 02:03:11.4696] !!!!! {watchdogd} Process capwapd no heartbeat for 60s
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] waiting for WCP to initialize
+[*11/20/2022 02:03:36.8017] Socket Invalid Element wcp/wcp_db Handler has_rlan Data 0 Length 10
+[*11/20/2022 02:03:36.8017] Failed to load flex AP config from file. Default config will be used.
+[*11/20/2022 02:03:40.8004] Waiting for uplink IPv4 configuration
+[*11/20/2022 02:03:45.8089] Waiting for uplink IPv4 configuration
+[*11/20/2022 02:03:50.8173] Waiting for uplink IPv4 configuration
+[*11/20/2022 02:03:51.8170] Resetting wired0 and srcr6, ifconfig down up
+[*11/20/2022 02:03:51.8170]
+[*11/20/2022 02:03:51.8270] chatter: tohost_srcr6 :: ToHost: device 'srcr6' went down
+[*11/20/2022 02:03:53.8363] ADDRCONF(NETDEV_UP): wired0: link is not ready
+[*11/20/2022 02:03:53.8363] chatter: tohost_srcr6 :: ToHost: device 'srcr6' came up
+[*11/20/2022 02:03:57.8351] Waiting for uplink IPv4 configuration
+[*11/20/2022 02:04:02.8335] Waiting for uplink IPv4 configuration
+[*11/20/2022 02:04:07.8420] Waiting for uplink IPv4 configuration
+[*11/20/2022 02:04:08.8417] Resetting wired0 and srcr6, ifconfig down up
+[*11/20/2022 02:04:08.8417]
+[*11/20/2022 02:04:08.8517] chatter: tohost_srcr6 :: ToHost: device 'srcr6' went down
+[*11/20/2022 02:04:10.8610] ADDRCONF(NETDEV_UP): wired0: link is not ready
+[*11/20/2022 02:04:10.8610] chatter: tohost_srcr6 :: ToHost: device 'srcr6' came up
+[*11/20/2022 02:04:14.8598] Waiting for uplink IPv4 configuration
+[*11/20/2022 02:04:15.5296]
+[*11/20/2022 02:04:15.5296] !!!!! {watchdogd} Process wcpd no heartbeat for 120s
+[*11/20/2022 02:04:19.8682] Waiting for uplink IPv4 configuration
+[*11/20/2022 02:04:24.8766] Waiting for uplink IPv4 configuration
+[*11/20/2022 02:04:25.8763] Resetting wired0 and srcr6, ifconfig down up
+[*11/20/2022 02:04:25.8763]
+[*11/20/2022 02:04:25.8863] chatter: tohost_srcr6 :: ToHost: device 'srcr6' went down
+[*11/20/2022 02:04:27.8957] ADDRCONF(NETDEV_UP): wired0: link is not ready
+[*11/20/2022 02:04:27.8957] chatter: tohost_srcr6 :: ToHost: device 'srcr6' came up
+[*11/20/2022 02:04:31.8945] Waiting for uplink IPv4 configuration
+[*11/20/2022 02:04:36.8929] Waiting for uplink IPv4 configuration
+[*11/20/2022 02:04:41.9013] Waiting for uplink IPv4 configuration
+[*11/20/2022 02:04:42.9010] Resetting wired0 and srcr6, ifconfig down up
+[*11/20/2022 02:04:42.9010]
+[*11/20/2022 02:04:42.9110] chatter: tohost_srcr6 :: ToHost: device 'srcr6' went down
+[*11/20/2022 02:04:44.9204] ADDRCONF(NETDEV_UP): wired0: link is not ready
+[*11/20/2022 02:04:44.9204] chatter: tohost_srcr6 :: ToHost: device 'srcr6' came up
+[*11/20/2022 02:04:48.9191] Waiting for uplink IPv4 configuration
+[*11/20/2022 02:04:53.9276] Waiting for uplink IPv4 configuration
+[*11/20/2022 02:04:58.9260] Waiting for uplink IPv4 configuration
+[*11/20/2022 02:04:59.9257] Resetting wired0 and srcr6, ifconfig down up
+[*11/20/2022 02:04:59.9257]
+[*11/20/2022 02:04:59.9357] chatter: tohost_srcr6 :: ToHost: device 'srcr6' went down
+[*11/20/2022 02:05:01.9451] ADDRCONF(NETDEV_UP): wired0: link is not ready
+[*11/20/2022 02:05:01.9551] chatter: tohost_srcr6 :: ToHost: device 'srcr6' came up
+[*11/20/2022 02:05:05.9538] Waiting for uplink IPv4 configuration
+[*11/20/2022 02:05:10.9522] Waiting for uplink IPv4 configuration
+[*11/20/2022 02:05:15.9507] Waiting for uplink IPv4 configuration
+[*11/20/2022 02:05:16.9504] Resetting wired0 and srcr6, ifconfig down up
+[*11/20/2022 02:05:16.9504]
+[*11/20/2022 02:05:16.9604] chatter: tohost_srcr6 :: ToHost: device 'srcr6' went down
+[*11/20/2022 02:05:18.9697] ADDRCONF(NETDEV_UP): wired0: link is not ready
+[*11/20/2022 02:05:18.9797] chatter: tohost_srcr6 :: ToHost: device 'srcr6' came up
+[*11/20/2022 02:05:19.5895]
+[*11/20/2022 02:05:19.5895] !!!!! {watchdogd} Process wcpd no heartbeat for 180s
+[*11/20/2022 02:05:22.9785] Waiting for uplink IPv4 configuration
+[*11/20/2022 02:05:25.0079] chatter: tohost_virtual :: ToHost: device 'virtual' went down
+[*11/20/2022 02:05:25.0079] chatter: tohost_vlan0 :: ToHost: device 'vlan0' went down
+[*11/20/2022 02:05:25.0179] chatter: tohost_vlan1 :: ToHost: device 'vlan1' went down
+[*11/20/2022 02:05:25.0179] chatter: tohost_vlan2 :: ToHost: device 'vlan2' went down
+[*11/20/2022 02:05:25.0278] chatter: tohost_vlan3 :: ToHost: device 'vlan3' went down
+[*11/20/2
+Cryptographic library self-test....
+Testing SHA1 Short Message 1
+Testing SHA256 Short Message 1
+Testing SHA384 Short Message 1
+SHA1 POST PASSED
+Testing HMAC SHA1 Short Message 1
+Testing HMAC SHA2 Short Message 1
+Testing HMAC SHA384 Short Message 1
+passed!
+
+XML config selected
+Validating XML configuration
+Cisco is a trademark of Cisco Systems, Inc.
+Software Copyright Cisco Systems, Inc. All rights reserved.
+
+Cisco AireOS Version 8.4.100.0
+Initializing OS Services: ok
+Initializing Serial Services: ok
+Initializing Network Services: ok
+Starting SSHD: ok
+Starting Statistics Service: ok
+Starting ARP Services: ok
+Starting Trap Manager: ok
+Starting Network Interface Management Services: ok
+Starting System Services: ok
+Starting SNMP services: ok
+Starting Fastpath Hardware Acceleration: ok
+Starting Switching Services: ok
+Starting QoS Services: ok
+Starting Policy Manager: ok
+Starting Data Transport Link Layer: ok
+Starting Access Control List Services: ok
+Starting System Interfaces: ok
+Starting Client Troubleshooting Service: ok
+Starting Certificate Database: ok
+Starting VPN Services: ok
+Starting Management Frame Protection: ok
+Starting DNS Services: ok
+ok
+Starting LWAPP: ok
+Starting CAPWAP: ok
+Starting LOCP: ok
+Starting Security Services: ok
+Starting Policy Manager: ok
+Starting Authentication Engine: ok
+Starting Mobility Management: ok
+Starting Capwap Ping Component: ok
+Starting AVC Services: ok
+Starting AVC Flex Services: ok
+Starting Virtual AP Services: ok
+Starting AireWave Director: ok
+Starting Network Time Services: ok
+Starting Cisco Discovery Protocol: ok
+Starting Broadcast Services: ok
+Starting DHCP Server: ok
+Starting IDS Signature Manager: ok
+Starting RFID Tag Tracking: ok
+Starting RF Profiles: ok
+Starting Mesh Services:  ok
+Starting TSM: ok
+Starting CIDS Services: ok
+Starting Ethernet-over-IP: ok
+Starting DTLS server:  enabled in CAPWAP
+Starting CleanAir: ok
+Starting WIPS: ok
+Starting SSHPM LSC PROV LIST: ok
+Starting RRC Services: ok
+Starting SXP Services: ok
+Starting Alarm Services: ok
+Starting FMC HS: ok
+Starting FLEXEXPRESS ConfigSync Task: ok
+Starting HTTP Image Download Task: ok
+Starting Tunnel Services New: ok
+Starting Portal Server Services: ok
+Starting Management Services:
+   Web Server:    CLI:    Secure Web: ok
+Starting IPSec Profiles component: ok
+
+(Cisco Controller)
+
+Enter User Name (or 'Recover-Config' this one-time only to reset configuration to factory defaults)
+
+User:  admin
+Password:**********
+ Warning: Missing TFTP/CCO params, Please Configure the Image Download Params
+
+Welcome to the Cisco Mobility Express command line interface.
+Only commands which are listed in the command reference guide for this release are supported.
+http://www.cisco.com/c/en/us/support/wireless/mobility-express/products-command-reference-list.html
+(Cisco Controller) >en
+
+Incorrect usage.  Use the '?' or <TAB> key to list commands.
+
+(Cisco Controller) >?
+
+apciscoshell   Go to AP Console
+clear          Clear selected configuration elements.
+config         Configure switch options and settings.
+cping          Send capwap echo packets to a specified mobility peer IP address.
+debug          Manages system debug options.
+eping          Send Ethernet-over-IP echo packets to a specified mobility peer IP address.
+grep           Print lines matching a pattern.
+help           Help
+linktest       Perform a link test to a specified MAC address.
+logout         Exit this session. Any unsaved changes are lost.
+mping          Send Mobility echo packets to a specified mobility peer IP address.
+ping           Send ICMP echo packets to a specified IP address.
+reset          Reboot (hard reload) options.
+save           Save switch configurations.
+show           Display switch options and settings.
+test           Test trigger commands
+transfer       Transfer a file to or from the switch.
+
+(Cisco Controller) >config
+(Cisco Controller) config>?
+
+802.11-a49     Configures 802.11a 4.9 subband parameters.
+802.11-a58     Configures 802.11a 5.8 subband parameters.
+802.11-abgn    Configures 802.11 dual-band parameters.
+802.11a        Configures 802.11a parameters.
+802.11b        Configures 802.11b parameters.
+802.11h        Configures 802.11h parameters.
+aaa            Configures AAA related items.
+acl            Configures Access Control Lists.
+advanced       Advanced Configuration.
+ap             Configures Cisco APs
+assisted-roaming Configures Assisted Roaming Global Parameters.
+atf            Configures global Air Time Fairness parameters
+auth-list      Configures ap authorization list.
+auto-configure Single command to auto-configure.
+avc            Configures AVC (Application Visibility and Control).
+band-select    Configures Band Select.
+boot           Configures the default boot image.
+ccx-lite       Enable or disable CCX-lite feature
+cdp            Configure Cisco Discovery Protocol
+certificate    Configures SSL Certificates.
+client         Configures a client.
+cloud-services Configures the Cloud Server
+
+--More-- or (q)uit
+coredump       Configures the Core Dump Setting
+countries-list Configure the countries of operation.
+country        Configure the countries of operation.
+custom-web     Configures the custom web authentication page.
+database       Configures the local database
+dhcp           Configures system dhcp server.
+exclusionlist  Manages exclusion-list.
+flexconnect    Configure controller flexconnect parameters.
+flow           Configure flow.
+guest-lan      Configures the Wireless LAN Network.
+icons          Configures the ICON details.
+interface      Configures system interfaces.
+ipsec-profile  Configure IPSEC profile parametners.
+ipv6           Configure IPv6 related parameters.
+ldap           Configures LDAP servers (ipv4 or ipv6).
+linktest       Configures linktest frame size and number of frames to send.
+load-balancing Configures Aggressive Load Balancing.
+local-auth     Configures Local EAP Authentication.
+location       Configure Location parameters
+logging        Configures Logger parameters.
+loginsession   Manage User Connections to the Switch.
+macfilter      Configure static MAC filtering.
+mdns           Configures mDNS Services/Profiles
+
+--More-- or (q)uit
+media-stream   Configure Media Stream
+memory          Configures memory monitoring for certain types of errors/leaks.
+mesh           Config mesh ap parameters.
+mgmtuser       Manages local management user accounts.
+mobility       Configures the Inter-Switch Mobility Manager
+msglog         Configures the system msglog parameters.
+netuser        Configures network user policies and local network user accounts.
+network        Configuration for inband connectivity.
+nmheartbeat    Configures the network manager heartbeat Setting
+nmsp           Configure NMSP parameters.
+oeap-acl       Configures Access Control Lists for OEAP Split Tunnel.
+paging         enable or disable scrolling the page.
+passwd-cleartext Enable or Disable the showing of passwd in cleartext
+policy         Configure native profiling policy.
+port           Configures port mode and physical settings.
+prompt         Change the system prompt.
+qos            Configure qos parameter.
+radius         Configures RADIUS Servers.
+remote-lan     Configures Remote LAN Connections.
+rf-profile     Configures RF Profile parameters.
+rfid           Configure options for RFID tag tracking
+rogue          Configures rogue devices.
+serial         EIA-232 parameters and serial port inactivity timeout.
+
+--More-- or (q)uit
+service        Modify network based services.
+sessions       Configure CLI session parameters.
+slot           Configures the slot
+snmp           Configures SNMP.
+split-tunnel-network-list Configure split tunnel network lists. Only become active in split tunnel mode 2.
+stats-timer    Configures system stats timer.
+switchconfig   Configure parameters that apply to the switch.
+sys-nas        Configures the system nas id.
+syslog         Configures the system syslog mode.
+sysname        Configures the system name.
+tacacs         Configures TACACS+ Servers.
+time           Configures system time or servers.
+trapflags      Enable or Disable trap flags that apply to the switch.
+wgb            Configure WGB related parameters
+wlan           Configures the Wireless LAN Network.
+wps            Configures WPS settings.
+
+(Cisco Controller) config>a?
+aaa            acl            advanced       ap             assisted-roaming
+atf            auth-list      auto-configure avc
+(Cisco Controller) config>ap ?
+
+802.1Xuser     Configures the dot1x user for AP.
+SSH            Configures SSH operation.
+antenna-band-mode Configures an AP's antenna band mode.
+atf            Configures Air Time Fairness (ATF) on a radio
+beacons        Configures AP's Beacons
+bhrate         Configures Cisco Bridge Backhaul Tx Rate.
+bhvhtrate      Configures Cisco Bridge Backhaul Tx Rate with VHT MCS(m0..,m9) for 802.11ac.
+bridgegroupname Configure bridge group name settings.
+bridging       Enables/Disables Ethernet-to-Ethernet bridging.
+cdp            Enable/Disable CDP on Cisco AP.
+cert-expiry-ignore Configures cert-expiry-ignore check operation.
+client-trace   Configure AP Client Trace parameters
+core-dump      Configures the AP's memory core dump.
+country        Configures the country of operation.
+crash-file     Manages crash data and radio core files.
+daisy-chaining Enables/Disables Daisy-Chain Mode of the AP.
+dhcp           Configures AP's DHCP Options
+disable        Disables Cisco APs
+dse-location   Configures the DSE Registered Location.
+dtls-cipher-suite Configures DTLS Cipher suite
+dtls-version   Configures DTLS Version
+
+--More-- or (q)uit
+dtls-wlc-mic   Configures DTLS MIC for WLC
+enable         Enables Cisco APs
+ethernet       Configures Ethernet Port of the AP
+ext-logging    Configures the AP's logging to external server.
+flexconnect    Enables/Disables VLAN on the flexconnect.
+group-name     Configures the group name.
+hotspot        Configures Hotspot configs on the AP.
+image          Configure image.
+lag-mode       Configure the AP-LAG feature
+lan            configures AP's LAN ports
+led-state      Enables/Disables the LED-State or configure LED flash
+link-encryption Capwap Data Link encryption options
+link-latency   Configures Link Latency Feature.
+location       Configures the Location.
+logging        Configures the AP logging.
+mgmtuser       Configures the user for AP management.
+migrate        Migrates radio frequencies.
+mode           Configures an AP's  mode of operation.
+module3G       Configures an AP's module3G.
+monitor-mode   Configures an AP's monitor-mode channel optimization.
+name           Configures the Name of an AP.
+next-preferred-master Configure AP to become master when current controller fails
+packet-dump    Configure AP Packet Capture parameters
+
+--More-- or (q)uit
+pakseq-jump-delba Configure AP radio to send DELBA on packet seq jump of X by Wireless Client
+power          Configures Cisco Power over Ethernet (PoE) feature for an AP
+preferred-mode configures preferred mode
+primary-base   Configures the Primary Cisco Switch for an AP.
+priority       Configure the AP's priority.
+radio-core     Configure radio-core dump mode
+reporting-period Configures the AP's rogue/error reporting period
+reset          Resets an AP
+retransmit     Configures AP Control packet retransmission parameters.
+role           Configures an AP's  Bridge role of operation.
+rst-button     Enables or disables the Reset Button.
+secondary-base Configures the Secondary Cisco Switch for an AP.
+secondary-ethernet-bridging Capwap Data Link encryption options
+sniff          Enables/Disables sniffing on a radio.
+static-IP      Enables/Disables/Changes an AP's static IP address configuration
+stats-mode     Configures the mode(realtime vs normal) in which statistics are sent from an AP
+stats-monitor  Configures the stats monitoring setting for an AP
+stats-timer    Configures the frequency at which statistics are sent from an AP
+syslog         Configures th
+(Cisco Controller) config>ap enable ?
+
+<Cisco AP>     Enter the name of the Cisco AP.
+
+(Cisco Controller) config>ap enable
+
+Incorrect input! Use 'config ap [enable/disable] <Cisco AP>'
+
+(Cisco Controller) config>ap enable TESTVIETIS
+
+Cisco AP name is invalid.
+
+(Cisco Controller) config>ap enable TEST
+
+Cisco AP name is invalid.
+
+(Cisco Controller) config>ap enable ?
+
+<Cisco AP>     Enter the name of the Cisco AP.
+
+(Cisco Controller) config>ap enable 1
+
+Cisco AP name is invalid.
+
+(Cisco Controller) config>ap enable
+
+Incorrect input! Use 'config ap [enable/disable] <Cisco AP>'
+
+(Cisco Controller) config>ap enable cisco
+
+Cisco AP name is invalid.
+
+(Cisco Controller) config>ap enable Vietis
+
+Cisco AP name is invalid.
+
+(Cisco Controller) config>
+
+[
+
+
+
+Primary Boot Image............................... 8.4.100.0 (default) (active)
+Backup Boot Image................................ 8.10.151.0
+
+
+
+U-Boot 2012.07 (btldr release 38) (Oct 29 2019 - 06:39:45)
+
+This product contains some software licensed under the
+"GNU General Public License, version 2" provided with
+ABSOLUTELY NO WARRANTY under the terms of
+"GNU General Public License, version 2", available here:
+http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+
+DRAM:  1 GiB
+NAND (ONFI): Detected SPANSION S34MS02G1 [256 MiB]
+SF: Detected Macronix MX25U3235F [4 MiB]
+MFG data loaded
+Scanning shenv data blocks
+Total valid parts=4
+Active shenv part[1:0], write_counter=59
+PCI0 Link Intialized
+Net:
+PHY ID = 0x4dd074, eth0 found AR8033 PHY
+PHY ID = 0x4dd074, eth1 found AR8033 PHY
+Valid I2C chip addresses: 51 52
+AP 1832/1852 detected...
+Power Type: Power Brick detected...
+Signature returns 0
+BL signing verification success, continue to run...
+Auto boot mode, use bootipq directly
+Hit ESC key to stop autoboot:  0
+Specified BOOT: part2
+UBI: empty MTD device detected
+UBI: create volume table (copy #1)
+UBI: create volume table (copy #2)
+
+Booting from part2
+
+Volume part2 not found!
+Volume part2 not found!
+
+Booting failed, try boot on part1
+
+Volume part1 not found!
+Volume part1 not found!
+(RNAQ-C7) # tftpboot
+No such device:
+No such device:
+Full duplex link
+Port:2 speed 1000Mbps
+Using eth0 device
+TFTP from server 192.168.100.100; our IP address is 192.168.100.234
+Filename 'part.bin'.
+Load address: 0x44000000
+Loading: #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         ####################
+done
+Bytes transferred = 63260149 (3c545f5 hex)
+(RNAQ-C7) # saveenv
+Saving Environment to SPI Flash...
+Erasing SPI Flash...
+Erasing at 0x17f000 -- 100% complete.
+Writing to SPI Flash... done
+(RNAQ-C7) # printenv
+boot=part1
+bootcmd=bootipq
+bootdelay=5
+bootfile=part.bin
+ethact=eth0
+fileaddr=44000000
+filesize=3C545F5
+ipaddr=192.168.100.234
+machid=1260
+mtddevname=fs
+mtddevnum=0
+m▒netmask=255.255.255.0
+nand_erasesize=20000
+nand_oobsize=40
+nand_writesize=800
+netmak=255.255.255.0
+partition=nand0,0
+serverip=192.168.100.100
+stderr=serial
+stdin=serial
+stdout=serial
+
+Environment size: 393/65532 bytes
+(RNAQ-C7) # set
+  setenv setshenv
+(RNAQ-C7) # setenv boot part1
+(RNAQ-C7) # save
+Unknown command 'save' - try 'help'
+(RNAQ-C7) # saveenv
+Saving Environment to SPI Flash...
+Erasing SPI Flash...
+Erasing at 0x17f000 -- 100% complete.
+Writing to SPI Flash... done
+(RNAQ-C7) # reset
+resetting ...
+
+
+U-Boot 2012.07 (btldr release 38) (Oct 29 2019 - 06:39:45)
+
+This product contains some software licensed under the
+"GNU General Public License, version 2" provided with
+ABSOLUTELY NO WARRANTY under the terms of
+"GNU General Public License, version 2", available here:
+http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+
+DRAM:  1 GiB
+NAND (ONFI): Detected SPANSION S34MS02G1 [256 MiB]
+SF: Detected Macronix MX25U3235F [4 MiB]
+MFG data loaded
+Scanning shenv data blocks
+Total valid parts=4
+Active shenv part[1:0], write_counter=59
+PCI0 Link Intialized
+Net:
+PHY ID = 0x4dd074, eth0 found AR8033 PHY
+PHY ID = 0x4dd074, eth1 found AR8033 PHY
+Valid I2C chip addresses: 51 52
+AP 1832/1852 detected...
+Power Type: Power Brick detected...
+Signature returns 0
+BL signing verification success, continue to run...
+Auto boot mode, use bootipq directly
+Hit ESC key to stop autoboot:  0
+Specified BOOT: part2
+
+Booting from part2
+
+Volume part2 not found!
+Volume part2 not found!
+
+Booting failed, try boot on part1
+
+Volume part1 not found!
+Volume part1 not found!
+(RNAQ-C7) # boot part 2
+Specified BOOT: part2
+UBI: mtd2 is detached from ubi0
+
+Booting from part2
+
+Volume part2 not found!
+Volume part2 not found!
+
+Booting failed, try boot on part1
+
+Volume part1 not found!
+Volume part1 not found!
+(RNAQ-C7) # boot part1
+Specified BOOT: part2
+UBI: mtd2 is detached from ubi0
+
+Booting from part2
+
+Volume part2 not found!
+Volume part2 not found!
+
+Booting failed, try boot on part1
+
+Volume part1 not found!
+Volume part1 not found!
+(RNAQ-C7) # tftp
+No such device:
+No such device:
+Full duplex link
+Port:2 speed 1000Mbps
+Using eth0 device
+TFTP from server 192.168.100.100; our IP address is 192.168.100.234
+Filename 'part.bin'.
+Load address: 0x44000000
+Loading: #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         ####################
+done
+Bytes transferred = 63260149 (3c545f5 hex)
+(RNAQ-C7) # save
+  saveenv saveshenv
+(RNAQ-C7) # saveenv
+Saving Environment to SPI Flash...
+Erasing SPI Flash...
+Erasing at 0x17f000 -- 100% complete.
+Writing to SPI Flash... done
+(RNAQ-C7) # bootipq
+Specified BOOT: part2
+UBI: mtd2 is detached from ubi0
+
+Booting from part2
+
+Volume part2 not found!
+Volume part2 not found!
+
+Booting failed, try boot on part1
+
+Volume part1 not found!
+Volume part1 not found!
+(RNAQ-C7) # UBI: mtd2 is detached from ubi0
+Unknown command 'UBI:' - try 'help'
+(RNAQ-C7) # reset
+resetting ...
+
+
+U-Boot 2012.07 (btldr release 38) (Oct 29 2019 - 06:39:45)
+
+This product contains some software licensed under the
+"GNU General Public License, version 2" provided with
+ABSOLUTELY NO WARRANTY under the terms of
+"GNU General Public License, version 2", available here:
+http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+
+DRAM:  1 GiB
+NAND (ONFI): Detected SPANSION S34MS02G1 [256 MiB]
+SF: Detected Macronix MX25U3235F [4 MiB]
+MFG data loaded
+Scanning shenv data blocks
+Total valid parts=4
+Active shenv part[1:0], write_counter=59
+PCI0 Link Intialized
+Net:
+PHY ID = 0x4dd074, eth0 found AR8033 PHY
+PHY ID = 0x4dd074, eth1 found AR8033 PHY
+Valid I2C chip addresses: 51 52
+AP 1832/1852 detected...
+Power Type: Power Brick detected...
+Signature returns 0
+BL signing verification success, continue to run...
+Auto boot mode, use bootipq directly
+Hit ESC key to stop autoboot:  0
+Specified BOOT: part2
+
+Booting from part2
+
+Volume part2 not found!
+Volume part2 not found!
+
+Booting failed, try boot on part1
+
+Volume part1 not found!
+Volume part1 not found!
+(RNAQ-C7) # bootipq boot part1
+Specified BOOT: part2
+UBI: mtd2 is detached from ubi0
+
+Booting from part2
+
+Volume part2 not found!
+Volume part2 not found!
+
+Booting failed, try boot on part1
+
+Volume part1 not found!
+Volume part1 not found!
+(RNAQ-C7) # <INTERRUPT>
+(RNAQ-C7) # bootipq
+Specified BOOT: part2
+UBI: mtd2 is detached from ubi0
+
+Booting from part2
+
+Volume part2 not found!
+Volume part2 not found!
+
+Booting failed, try boot on part1
+
+Volume part1 not found!
+Volume part1 not found!
+(RNAQ-C7) # nand ?
+nand - NAND sub-system
+
+Usage:
+nand info - show available NAND devices
+nand device [dev] - show or set current device
+nand read - addr off|partition size
+nand write - addr off|partition size
+    read/write 'size' bytes starting at offset 'off'
+    to/from memory address 'addr', skipping bad blocks.
+nand read.raw - addr off|partition [count]
+nand write.raw - addr off|partition [count]
+    Use read.raw/write.raw to avoid ECC and access the flash as-is.
+nand write.yaffs - addr off|partition size
+    write 'size' bytes starting at offset 'off' with yaffs format
+    from memory address 'addr', skipping bad blocks.
+nand erase[.spread] [clean] off size - erase 'size' bytes from offset 'off'
+    With '.spread', erase enough for given file size, otherwise,
+    'size' includes skipped bad blocks.
+nand erase.part [clean] partition - erase entire mtd partition'
+nand erase.chip [clean] - erase entire chip'
+nand bad - show bad blocks
+nand dump[.oob] off - dump page
+nand scrub [-y] off size | scrub.part partition | scrub.chip
+    really clean NAND erasing bad blocks (UNSAFE)
+nand markbad off [...] - mark bad block(s) at offset (UNSAFE)
+nand biterr off - make a bit error at offset (UNSAFE)
+(RNAQ-C7) # e
+  echo ethreg exit env
+(RNAQ-C7) exit
+exit not allowed from main input shell.
+(RNAQ-C7) #
+
+U-Boot 2012.07 (btldr release 38) (Oct 29 2019 - 06:39:45)
+
+This product contains some software licensed under the
+"GNU General Public License, version 2" provided with
+ABSOLUTELY NO WARRANTY under the terms of
+"GNU General Public License, version 2", available here:
+http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+
+DRAM:  1 GiB
+NAND (ONFI): Detected SPANSION S34MS02G1 [256 MiB]
+SF: Detected Macronix MX25U3235F [4 MiB]
+MFG data loaded
+Scanning shenv data blocks
+Total valid parts=4
+Active shenv part[1:0], write_counter=59
+PCI0 Link Intialized
+Net:
+PHY ID = 0x4dd074, eth0 found AR8033 PHY
+PHY ID = 0x4dd074, eth1 found AR8033 PHY
+Valid I2C chip addresses: 51 52
+AP 1832/1852 detected...
+Power Type: Power Brick detected...
+
+
+Button is pressed. Configuration reset activated..
+Keep the button pressed for > 20 seconds for full reset
+
+Wait for the button to be released ....
+Button pressed for  22 seconds
+
+Setting env for full reset..
+Writing to SPI Flash... done
+Signature returns 0
+BL signing verification success, continue to run...
+Auto boot mode, use bootipq directly
+Hit ESC key to stop autoboot:  0
+Specified BOOT: part2
+
+Booting from part2
+
+Volume part2 not found!
+Volume part2 not found!
+
+Booting failed, try boot on part1
+
+Volume part1 not found!
+Volume part1 not found!
+(RNAQ-C7) # setenv boot part2
+(RNAQ-C7) # save
+  saveenv saveshenv
+(RNAQ-C7) # saveenv
+Saving Environment to SPI Flash...
+Erasing SPI Flash...
+Erasing at 0x17f000 -- 100% complete.
+Writing to SPI Flash... done
+(RNAQ-C7) # reset
+Unknown command 'r▒▒eset' - try 'help'
+(RNAQ-C7) # reset
+resetting ...
+
+
+U-Boot 2012.07 (btldr release 38) (Oct 29 2019 - 06:39:45)
+
+This product contains some software licensed under the
+"GNU General Public License, version 2" provided with
+ABSOLUTELY NO WARRANTY under the terms of
+"GNU General Public License, version 2", available here:
+http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+
+DRAM:  1 GiB
+NAND (ONFI): Detected SPANSION S34MS02G1 [256 MiB]
+SF: Detected Macronix MX25U3235F [4 MiB]
+MFG data loaded
+Scanning shenv data blocks
+Total valid parts=4
+Active shenv part[1:1], write_counter=60
+PCI0 Link Intialized
+Net:
+PHY ID = 0x4dd074, eth0 found AR8033 PHY
+PHY ID = 0x4dd074, eth1 found AR8033 PHY
+Valid I2C chip addresses: 51 52
+AP 1832/1852 detected...
+Power Type: Power Brick detected...
+Signature returns 0
+BL signing verification success, continue to run...
+Auto boot mode, use bootipq directly
+Hit ESC key to stop autoboot:  0
+Specified BOOT: part2
+
+Booting from part2
+
+Volume part2 not found!
+Volume part2 not found!
+
+Booting failed, try boot on part1
+
+Volume part1 not found!
+Volume part1 not found!
+(RNAQ-C7) # printshenv
+BAUDRATE=9600
+BOOT=part2
+ENABLE_BREAK=1
+FACTORY_RESET=2
+MANUAL_BOOT=0
+MEMORY_DEBUG=0
+
+Shared environment size: 98/16384 bytes, write counter: 60, active 1:1
+(RNAQ-C7) # boot
+Specified BOOT: part2
+UBI: mtd2 is detached from ubi0
+
+Booting from part2
+
+Volume part2 not found!
+Volume part2 not found!
+
+Booting failed, try boot on part1
+
+Volume part1 not found!
+Volume part1 not found!
+(RNAQ-C7) # setenv boot part1
+(RNAQ-C7) # save
+  saveenv saveshenv
+(RNAQ-C7) # saveshenv
+Writing to SPI Flash...
+Erasing block 0x1c0000
+Erasing at 0x1c7000 -- 100% complete.
+done
+(RNAQ-C7) # save
+  saveenv saveshenv
+(RNAQ-C7) # saveenv
+Saving Environment to SPI Flash...
+Erasing SPI Flash...
+Erasing at 0x17f000 -- 100% complete.
+Writing to SPI Flash... done
+(RNAQ-C7) # bootipq
+Specified BOOT: part2
+UBI: mtd2 is detached from ubi0
+
+Booting from part2
+
+Volume part2 not found!
+Volume part2 not found!
+
+Booting failed, try boot on part1
+
+Volume part1 not found!
+Volume part1 not found!
+(RNAQ-C7) # bootipq tftp
+Specified BOOT: part2
+
+Booting from tftp
+
+No such device:
+No such device:
+Full duplex link
+Port:2 speed 1000Mbps
+Using eth0 device
+TFTP from server 192.168.100.100; our IP address is 192.168.100.234
+Filename 'part.bin'.
+Load address: 0x45000000
+Loading: #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         ####################
+done
+Bytes transferred = 63260149 (3c545f5 hex)
+Signature returns 0
+Image signing verification success, continue to run...
+Using machid 0x1260 from environment
+
+Starting image ...
+
+[01/01/1970 00:00:00.0000] CPU: ARMv7 Processor [512f04d0] revision 0 (ARMv7), cr=10c5387d
+[01/01/1970 00:00:00.0000] CPU: PIPT / VIPT nonaliasing data cache, PIPT instruction cache
+[01/01/1970 00:00:00.0000] Machine: Cisco Systems 11ac Wave2 Wifi Access Point
+[01/01/1970 00:00:00.0000] Memory policy: ECC disabled, Data cache writealloc
+[01/01/1970 00:00:00.0000] Kernel command line: ubi.mtd=0 crashkernel=500M-:64M@1280M usbcore.authorized_default=0 console=ttyHSL1,9600n8 activepart=tftp activeboot=0 wdgtriggered=0
+[01/01/1970 00:00:00.1500] CPU1: Booted secondary processor
+[01/01/1970 00:00:00.2200]
+[01/01/1970 00:00:00.2200] +++ hydra_ap_gpio_value =3
+[01/01/1970 00:00:39.9177] ACPU PVS: 1
+[01/01/1970 00:00:41.7271] buginf tty flushing thread started, ttyport=eec91290
+[*01/01/1970 00:00:47.4753] buginf() enabled.
+[*01/01/1970 00:00:47.4853] Made it into bootsh: Sep 24 2022 12:18:05 T-4c5f8686fbb28f68f382e737f1c2f929d0ab5eb9-g4c5f8686-aut
+[*01/01/1970 00:00:48.4850] mount_ubifs: mounting ubifs storage: Invalid argument
+
+Welcome to Cisco.
+
+Usage of this device is governed by Cisco's End User License Agreement,
+available at:
+http://www.cisco.com/c/en/us/td/docs/general/warranty/English/EU1KEN_.html.
+
+
+             Restricted Rights Legend
+
+Use, duplication, or disclosure by the Government is subject to
+restrictions as set forth in subparagraph (c) of the Commercial
+Computer Software - Restricted Rights clause at FAR sec. 52.227-19 and
+subparagraph (c) (1) (ii) of the Rights in Technical Data and Computer
+Software clause at DFARS sec. 252.227-7013.
+
+            Cisco Systems, Inc.
+            170 West Tasman Drive
+            San Jose, California 95134-1706
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+
+This product contains some software licensed under the
+"GNU General Public License, version 2" provided with
+ABSOLUTELY NO WARRANTY under the terms of
+"GNU General Public License, version 2", available here:
+http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+
+
+This product contains some software licensed under the
+"GNU Library General Public License, version 2" provided
+with ABSOLUTELY NO WARRANTY under the terms of "GNU Library
+General Public License, version 2", available here:
+http://www.gnu.org/licenses/old-licenses/lgpl-2.0.html
+
+
+This product contains some software licensed under the
+"GNU Lesser General Public License, version 2.1" provided
+with ABSOLUTELY NO WARRANTY under the terms of "GNU Lesser
+General Public License, version 2.1", available here:
+http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html
+
+
+This product contains some software licensed under the
+"GNU General Public License, version 3" provided with
+ABSOLUTELY NO WARRANTY under the terms of
+"GNU General Public License, Version 3", available here:
+http://www.gnu.org/licenses/gpl.html.
+
+
+This product contains some software licensed under the
+"GNU Affero General Public License, version 3" provided
+with ABSOLUTELY NO WARRANTY under the terms of
+"GNU Affero General Public License, version 3", available here:
+http://www.gnu.org/licenses/agpl-3.0.html.
+
+Factory full reset detected...
+Full Factory Reset triggered: clear all files from storage..
+[*01/01/1970 00:00:50.2145] /init: ioctl(SIOCGIFHWADDR): wired0: No such device
+[*01/01/1970 00:00:50.2245] /init: ioctl(SIOCGIFHWADDR): wired0: No such device
+error: open /dev/board-config
+error: open /dev/board-config
+error: open /dev/board-config
+error: open /dev/board-config
+[  OK  ] Reached target Cisco File Systems (Pre).
+[  OK  ] Reached target Timers.
+[  OK  ] Created slice -.slice.
+[  OK  ] Created slice system.slice.
+[  OK  ] Reached target Slices.
+[  OK  ] Created slice system-sshd\x2dkeygen.slice.
+[  OK  ] Created slice system-serial\x2dgetty.slice.
+         Starting Cisco UBIFS reformat/mount...
+[  OK  ] Listening on Delayed Shutdown Socket.
+[  OK  ] Reached target Sockets.
+[  OK  ] Started Cisco UBIFS reformat/mount.
+         Starting Cisco early mount...
+[  OK  ] Started Cisco early mount.
+[  OK  ] Reached target Local File Systems (Pre).
+         Starting Cisco seed generation...
+         Starting Cisco system time setup...
+[*01/01/1970 00:00:53.6634] Build time is: Sep 24 12:20:21 2022
+[*01/01/1970 00:00:53.6634] Storing the build time in reload time as the reload and mfg time stamp were not present
+[*09/24/2022 12:20:21.0000] Setting system time Sat Sep 24 12:20:21 UTC 2022
+         Starting Cisco platform file generation...
+         Starting Cisco fips check...
+[  OK  ] Started Cisco seed generation.
+[*09/24/2022 12:20:21.5698] GCM-128 POST passed
+[*09/24/2022 12:20:21.5698] GCM-256 POST passed
+[  OK  ] Started Cisco system time setup.
+[  OK  ] Started Cisco platform file generation.
+[  OK  ] Started Cisco fips check.
+[  OK  ] Reached target Local File Systems.
+         Starting Cisco S10 boot service...
+[  OK  ] Started Cisco system time saving.
+[*09/24/2022 12:20:22.2596] ubinfo: error!: cannot get information about UBI volume 0 on ubi0
+[*09/24/2022 12:20:22.2596]         error 2 (No such file or directory)
+[*09/24/2022 12:20:22.3496] ===   5G radio doma         Starting Cisco system time saving...
+         Starting Cisco pkg install service...
+[*09/24/2022 12:20:22.7295] Active version: 8.10.181.0
+[*09/24/2022 12:20:22.7295] Backup version: 0.0.0.0
+[*09/24/2022 12:20:22.8494]
+[*09/24/2022 12:20:22.8494]  led pattern module start
+[*09/24/2022 12:20:22.8994] AP1852I
+[09/24/2022 12:20:21.0899] sysctl link missing during unregister: /net/ipv4/neigh//eth0
+[09/24/2022 12:20:21.2599] sysctl link missing during unregister: /net/ipv4/neigh//eth1
+[  OK  ] Started Cisco S10 boot service.
+         Starting Cisco nss service...
+         Starting Cisco nolan service...
+         Starting Cisco watchdog...
+[  OK  ] Started Cisco nss service.
+[  OK  ] Started Cisco nolan service.
+[  OK  ] Started Cisco watchdog.
+[  OK  ] Started Cisco pkg install service.
+         Starting Cisco nolan USB service...
+         Starting Cisco Kclick...
+[*09/24/2022 12:20:23.0194] nss_driver - Turbo Support 1
+[*09/24/2022 12:20:23.0194] Supported Frequencies - 110Mhz 550Mhz 733Mhz
+[*09/24/2022 12:20:23.0594] NSS firmware booted
+[*09/24/2022 12:20:23.0793] NSS firmware booted
+[*09/24/2022 12:20:23.2093] sh: open: unknown operand
+[*09/24/2022 12:20:23.3693] error: open /dev/board-config
+[*09/24/2022 12:20:23.3693] error: open /dev/board-config
+[*09/24/2022 12:20:23.5192] Current value of FACTORY_RESET=0
+[*09/24/2022 12:20:23.5492] Last reload time: Sep 24 12:20:21 2022
+[*09/24/2022 12:20:21.0000] Setting system time Sat Sep 24 12:20:21 UTC 2022
+[*09/24/2022 12:20:21.1799] ifconfig: invalid hw-addr error:
+[*09/24/2022 12:20:21.1899] device wired0 entered promiscuous mode
+[*09/24/2022 12:20:21.1999] ifconfig: invalid hw-addr error:
+[*09/24/2022 12:20:21.3399] device wired1 entered promiscuous mode
+[*09/24/2022 12:20:21.5698] error: open /dev/board-config
+[*09/24/2022 12:20:21.5698] error: open /dev/board-config
+[*09/24/2022 12:20:22.0097] Last reload reason : 0: unknown
+[*09/24/2022 12:20:25.2087] stile module dp init successfully
+[*09/24/2022 12:20:25.2087] NBAR Label:BLD_POLARIS_DEV_LATEST_20200414_053707 Module timestamp: Sep 24 2022 at 12:08:15 User: ttaichol
+         Starting Cisco S15platform...
+[  OK  ] Started Cisco nolan USB service.
+[  OK  ] Started Cisco Kclick.
+[  OK  ] Started Cisco S15platform.
+         Starting Cisco certificate create service...
+         Starting Cisco Kclick...
+         Starting Cisco ME service...
+[*09/24/2022 12:20:27.2181] Loading sha2...
+[*09/24/2022 12:20:27.2281] Dumpping sha1...
+[*09/24/2022 12:20:27.3180] grep: /storage/config.mobexp: No such file or directory
+[  OK  ] Started Cisco Kclick.
+         Starting rsyslog client...
+[*09/24/2022 12:20:27.5280] miibus get eeda2400!
+[*09/24/2022 12:20:27.5679] /etc/init.d/S16mod_load: line 98: can't create /storage/syslogs/1.modlog: nonexistent directory
+[*09/24/2022 12:20:27.7279] Creating default base capwap config.
+         Starting Cisco S16platfomm...
+         Starting Cisco syslog service...
+[  OK  ] Started Cisco ME service.
+[  OK  ] Started rsyslog client.
+[  OK  ] Started Cisco S16platfomm.
+[  OK  ] Started Cisco syslog service.
+         Starting Cisco synclogd...
+[  OK  ] Started Cisco synclogd.
+[  OK  ] Started Cisco certificate create service.
+         Starting Cisco certtime service...
+[  OK  ] Started Cisco certtime service.
+[  OK  ] Reached target System Initialization.
+[*09/24/2022 12:20:28.6576] Loading MIC cert and key
+[*09/24/2022 12:20:28.6576] Dumpping sha2...
+[*09/24/2022 12:20:28.8375] pid 2790's current affinity mask: 3
+[*09/24/2022 12:20:28.8375] pid 2790's new affinity mask: 1
+[*09/24/2022 12:20:30.0972] Loading MIC cert and key
+[  OK  ] Reached target Paths.
+[  OK  ] Reached target Basic System.
+         Starting RSYNC User Key Generation...
+         Starting OpenSSH rsa Server Key Generation...
+         Starting Cisco led service...
+         Starting Cisco kexec...
+         Starting Fast CGI daemon...
+         Starting gRPC server daemon...
+[  OK  ] Started Serial Getty on ttyS0.
+         Starting Serial Getty on ttyS0...
+[  OK  ] Reached target Login Prompts.
+[  OK  ] Started NSS Firmware Monitor daemon.
+         Starting NSS Firmware Monitor daemon...
+         Starting WCPD process...
+         Starting Cisco printkd...
+         Starting AP Trace daemon...
+[  OK  ] Started System Monitor service.
+         Starting System Monitor service...
+         Starting OpenSSH ecdsa Server Key Generation...
+         Starting Cisco rtd service...
+[  OK  ] Started NTP_PROC daemon.
+         Starting NTP_PROC daemon...
+         Starting Cisco klogd...
+         Starting Clean Air daemon...
+         Starting capwapd...
+         Starting Hostapd process...
+         Starting Cisco brain service...
+         Starting OpenSSH ed25519 Server Key Generation...
+[  OK  ] Started Cisco led service.
+[  OK  ] Started Cisco kexec.
+[  OK  ] Started OpenSSH ecdsa Server Key Generation.
+[  OK  ] Started OpenSSH ed25519 Server Key Generation.
+[  OK  ] Started RSYNC User Key Generation.
+[  OK  ] Started Cisco printkd.
+[  OK  ] Started Cisco klogd.
+[  OK  ] Started Fast CGI daemon.
+[  OK  ] Started AP Trace daemon.
+[  OK  ] Started Cisco rtd service.
+[  OK  ] Started OpenSSH rsa Server Key Generation.
+[  OK  ] Started Hostapd process.
+[  OK  ] Started Cisco brain service.
+[*09/24/2022 12:20:35.1756]
+[*09/24/2022 12:20:35.1756] Click sched monitor: schedulers = 1
+[*09/24/2022 12:20:35.2455] pid 2977's current affinity mask: 3
+[*09/24/2022 12:20:35.2455] pid 2977's new affinity mask: 1
+[*09/24/2022 12:20:35.5854] pid 3000's current affinity mask: 3
+[*09/24/2022 12:20:35.5854] pid 3000's new affinity mask: 1
+[*09/24/2022 12:20:35.8654] __mm_init_module
+[*09/24/2022 12:20:35.9353]
+[*09/24/2022 12:20:35.9353] __ol_ath_attach() Allocated scn ee780480
+[*09/24/2022 12:20:35.9453] ol_ath_attach interface_id 0
+[*09/24/2022 12:20:35.9453] Chip id: 0x9, chip version: 0x1000000
+[*09/24/2022 12:20:35.9553]
+[*09/24/2022 12:20:35.9553]  Target Version is 1000000
+[*09/24/2022 12:20:35.9553]
+[*09/24/2022 12:20:35.9553]  Flash Download Address  c0000
+[*09/24/2022 12:20:35.9553] ol_transfer_bin_file: flash data file defined
+[*09/24/2022 12:20:35.9553] Cal location [0]: 00000000
+[*09/24/2022 12:20:35.9553]
+[*09/24/2022 12:20:35.9553]  Wifi0 NAND FLASH Select OFFSET 0x1000
+[*09/24/2022 12:20:35.9753] qc98xx_verify_checksum: flash checksum passed: 0xe39d
+[*09/24/2022 12:20:35.9753] ol_transfer_bin_file 3861: Download Flash data len 12064
+[*09/24/2022 12:20:35.9953]
+[*09/24/2022 12:20:35.9953]  Board data initialized
+[*09/24/2022 12:20:36.0453] ol_ath_download_firmware :First OTP download and Execute is good address:0xa000 return param 4660
+[*09/24/2022 12:20:36.0453] ol_ath_download_firmware:##Board Id 8 , CHIP Id 1
+[*09/24/2022 12:20:36.0453] ol_transfer_bin_file: Board Data File download to address=0xc0000 file name=AR900B/hw.2/boardData_AR900B_CUS260_negative_pwr_offset_2G_v2_008.bin
+[*09/24/2022 12:20:36.1153]
+[*09/24/2022 12:20:36.1153]  [Flash] : Ignore Module param
+[*09/24/2022 12:20:36.1153] ol_ath_download_firmware : Second OTP download and Execute is good, param=0x0
+[*09/24/2022 12:20:36.1353] ol_transfer_bin_file: Downloading firmware file: AR900B/hw.2/athwlan.bin
+[*09/24/2022 12:20:36.9350] pid 3134's current affinity mask: 3
+[*09/24/2022 12:20:36.9350] pid 3134's new affinity mask: 1
+[*09/24/2022 12:20:37.2249]
+[*09/24/2022 12:20:37.2249] ol_ath_copy_tgt_iram() iram read paddr: 0x980000 host paddr 0x44000000 Radio id 0
+[*09/24/2022 12:20:37.3949] HTC Rx: insufficient length, got:4 expected =8
+[*09/24/2022 12:20:37.3949] <---------Dumping 8 Bytes : BAD RX packet length ------>
+[*09/24/2022 12:20:37.3949] [0]: 00 00 00 00 00 00 00 00
+[*09/24/2022 12:20:37.3949] <------------------------------------------------->
+[*09/24/2022 12:20:37.4049] Startup Mode-0 set
+[*09/24/2022 12:20:37.4049] HTC Service:0x0300 ep:1 TX flow control disabled
+[*09/24/2022 12:20:37.4049] HTC Service:0x0100 ep:2 TX flow control disabled
+[*09/24/2022 12:20:37.4049] Firmware_Build_Number:70
+[*09/24/2022 12:20:37.4049] num_rf_chain:0x00000004  ht_cap_info:0x0000185b  vht_cap_info:0x339a79b2  vht_supp_mcs:0x0000ffaa
+[*09/24/2022 12:20:37.4049]
+[*09/24/2022 12:20:37.4049]  RES CFG Support wmi_service_bitmap 9778
+[*09/24/2022 12:20:37.4049]
+[*09/24/2022 12:20:37.4049]  Sending Ext resource cfg: HOST PLATFORM as 0 and fw_feature_bitmap as 50 to TGT
+[*09/24/2022 12:20:37.4049] ol_ath_service_ready_event: sw_cal_support_check_flag: 1
+[*09/24/2022 12:20:37.4748] wmi_ready_event_rx:  WMI UNIFIED READY event
+[*09/24/2022 12:20:37.4748] htt_h2t_frag_desc_bank_cfg_msg - HTT_H2T_MSG_TYPE_FRAG_DESC_BANK_CFG sent to FW for radio ID = 0
+[*09/24/2022 12:20:37.4848] spectral_init_netlink 81 NULL SKB
+[*09/24/2022 12:20:37.4848] ACS not enabled
+[*09/24/2022 12:20:37.4948] ol_ath_thermal_mitigation_attach: --
+[*09/24/2022 12:20:37.5448]  pktlog_init: Initializing Pktlog for AR900B, pktlog_hdr_size = 16
+[*09/24/2022 12:20:38.1746] ol_txrx_set_mesh_mode val 1
+[*09/24/2022 12:20:38.4046] FWLOG: [74227] WAL_DBGID_TX_AC_BUFFER_SET ( 0x3, 0xdeb001, 0x94c, 0x94c, 0x0 )
+[*09/24/2022 12:20:38.4046] FWLOG: [74227] WAL_DBGID_TX_AC_BUFFER_SET ( 0x12, 0x1e, 0x94c, 0x94c, 0x0 )
+[*09/24/2022 12:20:38.4046] FWLOG: [74227] WAL_DBGID_TX_AC_BUFFER_SET ( 0x45, 0x1e, 0x94c, 0x94c, 0x0 )
+[*09/24/2022 12:20:38.4046] FWLOG: [74227] WAL_DBGID_TX_AC_BUFFER_SET ( 0x67, 0x1e, 0x94c, 0x94c, 0x0 )
+
+
+
+User Access Verification
+Username: [*09/24/2022 12:20:40.4539] wmi_dbg_cfg_send: mod[0]00000000 dbgcfg40000000 cfgvalid[0] 00000000 cfgvalid[1] 00000000
+[*09/24/2022 12:20:40.5339]
+[*09/24/2022 12:20:40.5339] !!!!! {/opt/cisco/bin/capwap_brain} failed writing /click/vrrp_elector/preferred_ap_name len 0 data: ""
+[*09/24/2022 12:20:40.9538] ip6_port srcr2, ip6local fe80::a2f8:49ff:fe78:5e8, ip6 ::, plen 0, gw6 ::, gw6_mac 00:00:00:00:00:00, mtu 1500, vid 0, mode6 2(slaac)
+[*09/24/2022 12:20:41.6536]
+[*09/24/2022 12:20:41.6536] phy_value=0: org="0x1000" phy_reg="0x1000"
+[*09/24/2022 12:20:41.6636] device wired1 left promiscuous mode
+[*09/24/2022 12:20:42.3134] pid 3768's current affinity mask: 3
+[*09/24/2022 12:20:42.3134] pid 3768's new affinity mask: 1
+[*09/24/2022 12:20:42.4433] pid 3761's current affinity mask: 3
+[*09/24/2022 12:20:42.4433] pid 3761's new affinity mask: 1
+[*09/24/2022 12:20:42.5733] pid 3772's current affinity mask: 3
+[*09/24/2022 12:20:42.5733] pid 3772's new affinity mask: 1
+[*09/24/2022 12:20:42.6833] device aptrace0 entered promiscuous mode
+[*09/24/2022 12:20:42.7233] device to_container entered promiscuous mode
+[*09/24/2022 12:20:44.7826] chpasswd: password for user changed
+[*09/24/2022 12:20:46.2022] DOT11_TXP[0]:Domain configured: 14 class:S
+[*09/24/2022 12:20:48.2815] DOT11_TXP[0]:Domain configured: 1 class:E
+[*09/24/2022 12:20:48.9113] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL get_vap_if_index ioctl SIOCGIFINDEX failed for apr1v0 error No such device
+[*09/24/2022 12:20:48.9113] populate_if_index_table: if_index -1 out of range for radio 1 vap 0 of 16
+[*09/24/2022 12:20:48.9113] /opt/cisco/bin/wcpd: /san/BUILD/workspace/810_MR8_ME_CCO/corsica/router/base/../elts-meraki/elements/wcp/wcp_common/wcp_db.cc: 3750: void WcpDb::populate_if_index_table(): Assertion `if_index >= 0 && if_index < 64' failed.
+[*09/24/2022 12:20:54.8995] systemd[1]: wcpd.service failed.
+[*09/24/2022 12:20:56.7089] pid 4200's current affinity mask: 3
+[*09/24/2022 12:20:56.7089] pid 4200's new affinity mask: 1
+[*09/24/2022 12:20:59.4880] DOT11_TXP[0]:Domain configured: 1 class:E
+[*09/24/2022 12:20:59.8479] DOT11_TXP[0]:Domain configured: 14 class:S
+[*09/24/2022 12:21:02.2871] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL get_vap_if_index ioctl SIOCGIFINDEX failed for apr1v0 error No such device
+[*09/24/2022 12:21:02.2871] populate_if_index_table: if_index -1 out of range for radio 1 vap 0 of 16
+[*09/24/2022 12:21:02.2871] /opt/cisco/bin/wcpd: /san/BUILD/workspace/810_MR8_ME_CCO/corsica/router/base/../elts-meraki/elements/wcp/wcp_common/wcp_db.cc: 3750: void WcpDb::populate_if_index_table(): Assertion `if_index >= 0 && if_index < 64' failed.
+[*09/24/2022 12:21:08.3652] systemd[1]: wcpd.service failed.
+[*09/24/2022 12:21:09.9547] pid 5026's current affinity mask: 3
+[*09/24/2022 12:21:09.9547] pid 5026's new affinity mask: 1
+[*09/24/2022 12:21:13.0238] DOT11_TXP[0]:Domain configured: 14 class:S
+[*09/24/2022 12:21:15.0931] DOT11_TXP[0]:Domain configured: 1 class:E
+[*09/24/2022 12:21:15.7029] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL get_vap_if_index ioctl SIOCGIFINDEX failed for apr1v0 error No such device
+[*09/24/2022 12:21:15.7029] populate_if_index_table: if_index -1 out of range for radio 1 vap 0 of 16
+[*09/24/2022 12:21:15.7029] /opt/cisco/bin/wcpd: /san/BUILD/workspace/810_MR8_ME_CCO/corsica/router/base/../elts-meraki/elements/wcp/wcp_common/wcp_db.cc: 3750: void WcpDb::populate_if_index_table(): Assertion `if_index >= 0 && if_index < 64' failed.
+[*09/24/2022 12:21:20.3915] systemd[1]: capwapd.service failed.
+[*09/24/2022 12:21:21.8010] systemd[1]: wcpd.service failed.
+[*09/24/2022 12:21:21.9510] pid 5814's current affinity mask: 3
+[*09/24/2022 12:21:21.9510] pid 5814's new affinity mask: 1
+[*09/24/2022 12:21:23.5105] chpasswd: password for user changed
+[*09/24/2022 12:21:23.6805] pid 6047's current affinity mask: 3
+[*09/24/2022 12:21:23.6805] pid 6047's new affinity mask: 1
+[*09/24/2022 12:21:26.5696] DOT11_TXP[0]:Domain configured: 1 class:E
+[*09/24/2022 12:21:26.9294] DOT11_TXP[0]:Domain configured: 14 class:S
+[*09/24/2022 12:21:29.3487] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL get_vap_if_index ioctl SIOCGIFINDEX failed for apr1v0 error No such device
+[*09/24/2022 12:21:29.3487] populate_if_index_table: if_index -1 out of range for radio 1 vap 0 of 16
+[*09/24/2022 12:21:29.3487] /opt/cisco/bin/wcpd: /san/BUILD/workspace/810_MR8_ME_CCO/corsica/router/base/../elts-meraki/elements/wcp/wcp_common/wcp_db.cc: 3750: void WcpDb::populate_if_index_table(): Assertion `if_index >= 0 && if_index < 64' failed.
+[*09/24/2022 12:21:35.6267] systemd[1]: wcpd.service failed.
+[*09/24/2022 12:21:37.3762] pid 7040's current affinity mask: 3
+[*09/24/2022 12:21:37.3762] pid 7040's new affinity mask: 1
+[*09/24/2022 12:21:40.2253] DOT11_TXP[1]:Domain configured: 14 class:S
+[*09/24/2022 12:21:42.3446] DOT11_TXP[0]:Domain configured: 1 class:E
+[*09/24/2022 12:21:42.9744] DOT11_DRV[1]: Init Radio1
+[*09/24/2022 12:21:42.9744] DOT11_DRV[1]: wifi1: Failed to get radio priv parameter (op 4234)
+[*09/24/2022 12:21:42.9844] wifi1     no private ioctls.
+[*09/24/2022 12:21:42.9844]
+[*09/24/2022 12:21:42.9944] wifi1     no private ioctls.
+[*09/24/2022 12:21:42.9944]
+[*09/24/2022 12:21:43.0144] wifi1     no private ioctls.
+[*09/24/2022 12:21:43.0144]
+[*09/24/2022 12:21:43.0144] DOT11_DRV[1]: wifi1 acfg cmd 2 failed for wifi1 errno 19(No such device)
+[*09/24/2022 12:21:43.0144] DOT11_DRV[1]:  acfg_set_radio_param param 0x200b value 0 failed
+[*09/24/2022 12:21:43.0244] DOT11_DRV[1]: wifi1: Failed to set parameter (op 4283 arg 1)
+[*09/24/2022 12:21:43.0244] DOT11_DRV[1]: wifi1 acfg cmd 2 failed for wifi1 errno 19(No such device)
+[*09/24/2022 12:21:43.0244] DOT11_DRV[1]:  acfg_set_radio_param param 0x200d value 1 failed
+[*09/24/2022 12:21:43.0344] DOT11_DRV[1]: wifi1 acfg cmd 2 failed for wifi1 errno 19(No such device)
+[*09/24/2022 12:21:43.0344] DOT11_DRV[1]:  acfg_set_radio_param param 0x2017 value 1 failed
+[*09/24/2022 12:21:43.0444] DOT11_DRV[1]: wifi1 acfg cmd 19 failed for wifi1 errno 19(No such device)
+[*09/24/2022 12:21:43.0444] DOT11_DRV[1]: Radio 1 NF_Calibration request failed !
+[*09/24/2022 12:21:43.0444] DOT11_DRV[1]: wifi1: Failed to set parameter (op 4176 arg 1)
+[*09/24/2022 12:21:43.0544] DOT11_DRV[1]: wifi1: Failed to set parameter (op 4235 arg 1)
+[*09/24/2022 12:21:43.0544] DOT11_DRV[1]: wifi1: Failed to set parameter (op 4432 arg 2790)
+[*09/24/2022 12:21:43.0644] DOT11_DRV[1]: wifi1 acfg cmd 16 failed for wifi1 errno 19(No such device)
+[*09/24/2022 12:21:43.0744] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v0 error No such device
+[*09/24/2022 12:21:43.0744] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:8F
+[*09/24/2022 12:21:43.0744] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v1 error No such device
+[*09/24/2022 12:21:43.0744] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:8E
+[*09/24/2022 12:21:43.0844] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v2 error No such device
+[*09/24/2022 12:21:43.0844] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:8D
+[*09/24/2022 12:21:43.0844] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v3 error No such device
+[*09/24/2022 12:21:43.0844] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:8C
+[*09/24/2022 12:21:43.0944] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v4 error No such device
+[*09/24/2022 12:21:43.0944] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:8B
+[*09/24/2022 12:21:43.0944] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v5 error No such device
+[*09/24/2022 12:21:43.0944] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:8A
+[*09/24/2022 12:21:43.1044] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v6 error No such device
+[*09/24/2022 12:21:43.1044] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:89
+[*09/24/2022 12:21:43.1144] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v7 error No such device
+[*09/24/2022 12:21:43.1144] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:88
+[*09/24/2022 12:21:43.1244] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v8 error No such device
+[*09/24/2022 12:21:43.1244] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:87
+[*09/24/2022 12:21:43.1344] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v9 error No such device
+[*09/24/2022 12:21:43.1344] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:86
+[*09/24/2022 12:21:43.1344] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v10 error No such device
+[*09/24/2022 12:21:43.1344] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:85
+[*09/24/2022 12:21:43.1444] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v11 error No such device
+[*09/24/2022 12:21:43.1444] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:84
+[*09/24/2022 12:21:43.1544] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v12 error No such device
+[*09/24/2022 12:21:43.1544] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:83
+[*09/24/2022 12:21:43.1544] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v13 error No such device
+[*09/24/2022 12:21:43.1544] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:82
+[*09/24/2022 12:21:43.1644] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v14 error No such device
+[*09/24/2022 12:21:43.1644] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:81
+[*09/24/2022 12:21:43.1744] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v15 error No such device
+[*09/24/2022 12:21:43.1744] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:80
+[*09/24/2022 12:21:43.1744] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_stop_radio ioctl SIOCGIFFLAGS failed for wifi1 error -1
+[*09/24/2022 12:21:43.1744] DOT11_DRV[1]: Failure to Stop radio during Base Driver Initialization
+[*09/24/2022 12:21:43.1844] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v0 error No such device
+[*09/24/2022 12:21:43.1844] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v1 error No such device
+[*09/24/2022 12:21:43.1944] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v2 error No such device
+[*09/24/2022 12:21:43.1944] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v3 error No such device
+[*09/24/2022 12:21:43.2044] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v4 error No such device
+[*09/24/2022 12:21:43.2144] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v5 error No such device
+[*09/24/2022 12:21:43.2243] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v6 error No such device
+[*09/24/2022 12:21:43.2243] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v7 error No such device
+[*09/24/2022 12:21:43.2343] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v8 error No such device
+[*09/24/2022 12:21:43.2343] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v9 error No such device
+[*09/24/2022 12:21:43.2643] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v10 error No such device
+[*09/24/2022 12:21:43.2643] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v11 error No such device
+[*09/24/2022 12:21:43.2743] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v12 error No such device
+[*09/24/2022 12:21:43.2743] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v13 error No such device
+[*09/24/2022 12:21:43.2843] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v14 error No such device
+[*09/24/2022 12:21:43.2943] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v15 error No such device
+[*09/24/2022 12:21:43.2943] DOT11_DRV[1]:  mon1 ioctl op=0x8bf2 len=4 failed: 19 (No such device)
+[*09/24/2022 12:21:43.2943] DOT11_DRV[1]: set mode_str 11A to mon1 failed
+[*09/24/2022 12:21:43.3043] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v0 error No such device
+[*09/24/2022 12:21:43.3043] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v1 error No such device
+[*09/24/2022 12:21:43.3143] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v2 error No such device
+[*09/24/2022 12:21:43.3143] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v3 error No such device
+[*09/24/2022 12:21:43.3243] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v4 error No such device
+[*09/24/2022 12:21:43.3343] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v5 error No such device
+[*09/24/2022 12:21:43.3343] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v6 error No such device
+[*09/24/2022 12:21:43.3443] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v7 error No such device
+[*09/24/2022 12:21:43.3443] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v8 error No such device
+[*09/24/2022 12:21:43.3543] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v9 error No such device
+[*09/24/2022 12:21:43.3543] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v10 error No such device
+[*09/24/2022 12:21:43.3643] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v11 error No such device
+[*09/24/2022 12:21:43.3643] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v12 error No such device
+[*09/24/2022 12:21:43.3743] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v13 error No such device
+[*09/24/2022 12:21:43.3743] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v14 error No such device
+[*09/24/2022 12:21:43.3843] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v15 error No such device
+[*09/24/2022 12:21:43.3843] DOT11_DRV[1]: set_channel Channel set to 36
+[*09/24/2022 12:21:43.3943] DOT11_DRV[1]: wifi1 acfg cmd 17 failed for wifi1 errno 19(No such device)
+[*09/24/2022 12:21:43.3943] DOT11_DRV[1]: wifi1: Failed to set parameter (op 4242 arg 0)
+[*09/24/2022 12:21:43.4043] DOT11_DRV[1]: wifi1: Failed to set parameter (op 4241 arg 0)
+[*09/24/2022 12:21:43.4143] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v0 error No such device
+[*09/24/2022 12:21:43.4143] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v1 error No such device
+[*09/24/2022 12:21:43.4243] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v2 error No such device
+[*09/24/2022 12:21:43.4243] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v3 error No such device
+[*09/24/2022 12:21:43.4343] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v4 error No such device
+[*09/24/2022 12:21:43.4343] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v5 error No such device
+[*09/24/2022 12:21:43.4443] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v6 error No such device
+[*09/24/2022 12:21:43.4443] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v7 error No such device
+[*09/24/2022 12:21:43.4543] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v8 error No such device
+[*09/24/2022 12:21:43.4543] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v9 error No such device
+[*09/24/2022 12:21:43.4643] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v10 error No such device
+[*09/24/2022 12:21:43.4643] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v11 error No such device
+[*09/24/2022 12:21:43.4743] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v12 error No such device
+[*09/24/2022 12:21:43.4743] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v13 error No such device
+[*09/24/2022 12:21:43.4843] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v14 error No such device
+[*09/24/2022 12:21:43.4843] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v15 error No such device
+[*09/24/2022 12:21:43.5243] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL get_vap_if_index ioctl SIOCGIFINDEX failed for apr1v0 error No such device
+[*09/24/2022 12:21:43.5243] populate_if_index_table: if_index -1 out of range for radio 1 vap 0 of 16
+[*09/24/2022 12:21:43.5243] /opt/cisco/bin/wcpd: /san/BUILD/workspace/810_MR8_ME_CCO/corsica/router/base/../elts-meraki/elements/wcp/wcp_common/wcp_db.cc: 3750: void WcpDb::populate_if_index_table(): Assertion `if_index >= 0 && if_index < 64' failed.
+[*09/24/2022 12:21:49.5824] systemd[1]: wcpd.service failed.
+[*09/24/2022 12:21:50.6320] systemd[1]: start request repeated too quickly for wcpd.service
+[*09/24/2022 12:21:50.6320] systemd[1]: Failed to start WCPD process.
+[*09/24/2022 12:21:50.6320] systemd[1]: wcpd.service failed.
+[*09/24/2022 12:21:50.7420]
+[*09/24/2022 12:21:50.7420]
+[*09/24/2022 12:21:50.7420] Critical process has crashed repeatedly, This will result in reboot of system
+[*09/24/2022 12:21:50.7420] You have 20 seconds to run this to stop the reboot. Good luck
+[*09/24/2022 12:21:50.7420]
+[*09/24/2022 12:21:50.7420] freeze -w
+[*09/24/2022 12:21:50.7420]
+[*09/24/2022 12:21:53.6511] systemd[1]: capwapd.service failed.
+[*09/24/2022 12:21:55.1206] pid 8793's current affinity mask: 3
+[*09/24/2022 12:21:55.1206] pid 8793's new affinity mask: 1
+[*09/24/2022 12:21:56.3303] chpasswd: password for user changed
+
+Username: cisco
+Password:          Stopping Cisco rtd service...
+[  OK  ] Stopped target Timers.
+         Stopping Cisco brain service...
+[  OK  ] Removed slice system-sshd\x2dkeygen.slice.
+         Stopping Cisco led service...
+         Stopping DHCPv6 client...
+[  OK  ] Stopped target Multi-User System.
+[  OK  ] Stopped Cisco kexec.
+         Stopping Cisco kexec...
+         Stopping Hostapd process...
+         Stopping NSS Firmware Monitor daemon...
+[  OK  ] Stopped target Login Prompts.
+         Stopping System Monitor service...
+         Stopping capwapd...
+         Stopping Cisco printkd...
+         Stopping NTP_PROC daemon...
+         Stopping AP Trace daemon...
+         Stopping Fast CGI daemon...
+         Stopping Clean Air daemon...
+[*09/24/2022 12:22:10.8657] netlink socket init done, pnl->spectral_fd=4
+         Stopping OpenSSH server daemon...
+         Stopping Cisco klogd...
+         Stopping gRPC server daemon...
+         Stopping DNSmasq...
+         Stopping Serial Getty on ttyS0...
+[  OK  ] Stopped Cisco led service.
+[  OK  ] Stopped Serial Getty on ttyS0.
+[  OK  ] Stopped NSS Firmware Monitor daemon.
+[  OK  ] Stopped Cisco printkd.
+[  OK  ] Stopped System Monitor service.
+[  OK  ] Stopped NTP_PROC daemon.
+[  OK  ] Stopped Cisco klogd.
+[  OK  ] Stopped Fast CGI daemon.
+[  OK  ] Stopped AP Trace daemon.
+[  OK  ] Stopped Cisco rtd service.
+[  OK  ] Stopped Hostapd process.
+[  OK  ] Stopped Cisco brain service.
+[  OK  ] Stopped OpenSSH server daemon.
+[  OK  ] Stopped Clean Air daemon.
+[  OK  ] Stopped DHCPv6 client.
+[  OK  ] Stopped DNSmasq.
+[  OK  ] Stopped AP process failure for .
+[  OK  ] Stopped capwapd.
+[  OK  ] Stopped gRPC server daemon.
+[  OK  ] Stopped target sshd-keygen.target.
+[  OK  ] Removed slice system-serial\x2dgetty.slice.
+[  OK  ] Stopped target Basic System.
+[  OK  ] Stopped target Slices.
+[  OK  ] Removed slice -.slice.
+[  OK  ] Stopped target Sockets.
+[  OK  ] Stopped target Paths.
+[  OK  ] Reached target Shutdown.
+[09/24/2022 12:22:19.1931] Restarting system.
+
+
+U-Boot 2012.07 (btldr release 38) (Oct 29 2019 - 06:39:45)
+
+This product contains some software licensed under the
+"GNU General Public License, version 2" provided with
+ABSOLUTELY NO WARRANTY under the terms of
+"GNU General Public License, version 2", available here:
+http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+
+DRAM:  1 GiB
+NAND (ONFI): Detected SPANSION S34MS02G1 [256 MiB]
+SF: Detected Macronix MX25U3235F [4 MiB]
+MFG data loaded
+Scanning shenv data blocks
+Total valid parts=4
+Active shenv part[0:1], write_counter=62
+PCI0 Link Intialized
+Net:
+PHY ID = 0x4dd074, eth0 found AR8033 PHY
+PHY ID = 0x4dd074, eth1 found AR8033 PHY
+Valid I2C chip addresses: 51 52
+AP 1832/1852 detected...
+Power Type: Power Brick detected...
+Signature returns 0
+BL signing verification success, continue to run...
+Auto boot mode, use bootipq directly
+Hit ESC key to stop autoboot:  0
+Specified BOOT: part2
+
+Booting from part2
+
+Volume part2 not found!
+Volume part2 not found!
+
+Booting failed, try boot on part1
+
+Volume part1 not found!
+Volume part1 not found!
+(RNAQ-C7) # bootipq tftp
+Specified BOOT: part2
+
+Booting from tftp
+
+No such device:
+No such device:
+Full duplex link
+Port:2 speed 1000Mbps
+Using eth0 device
+TFTP from server 192.168.100.100; our IP address is 192.168.100.234
+Filename 'part.bin'.
+Load address: 0x45000000
+Loading: T #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         ####################
+done
+Bytes transferred = 63260149 (3c545f5 hex)
+Signature returns 0
+Image signing verification success, continue to run...
+Using machid 0x1260 from environment
+
+Starting image ...
+
+[01/01/1970 00:00:00.0000] CPU: ARMv7 Processor [512f04d0] revision 0 (ARMv7), cr=10c5387d
+[01/01/1970 00:00:00.0000] CPU: PIPT / VIPT nonaliasing data cache, PIPT instruction cache
+[01/01/1970 00:00:00.0000] Machine: Cisco Systems 11ac Wave2 Wifi Access Point
+[01/01/1970 00:00:00.0000] Memory policy: ECC disabled, Data cache writealloc
+[01/01/1970 00:00:00.0000] Kernel command line: ubi.mtd=0 crashkernel=500M-:64M@1280M usbcore.authorized_default=0 console=ttyHSL1,9600n8 activepart=tftp activeboot=0 wdgtriggered=0
+[01/01/1970 00:00:00.1500] CPU1: Booted secondary processor
+[01/01/1970 00:00:00.2200]
+[01/01/1970 00:00:00.2200] +++ hydra_ap_gpio_value =3
+[01/01/1970 00:00:39.9277] ACPU PVS: 1
+[01/01/1970 00:00:41.7271] buginf tty flushing thread started, ttyport=eec99e90
+[*01/01/1970 00:00:47.4853] buginf() enabled.
+[*01/01/1970 00:00:47.4953] Made it into bootsh: Sep 24 2022 12:18:05 T-4c5f8686fbb28f68f382e737f1c2f929d0ab5eb9-g4c5f8686-aut
+^C^[^[[*01/01/1970 00:00:48.4950] mount_ubifs: mounting ubifs storage: Invalid argument
+
+Welcome to Cisco.
+
+Usage of this device is governed by Cisco's End User License Agreement,
+available at:
+http://www.cisco.com/c/en/us/td/docs/general/warranty/English/EU1KEN_.html.
+
+
+             Restricted Rights Legend
+
+Use, duplication, or disclosure by the Government is subject to
+restrictions as set forth in subparagraph (c) of the Commercial
+Computer Software - Restricted Rights clause at FAR sec. 52.227-19 and
+subparagraph (c) (1) (ii) of the Rights in Technical Data and Computer
+Software clause at DFARS sec. 252.227-7013.
+
+            Cisco Systems, Inc.
+            170 West Tasman Drive
+            San Jose, California 95134-1706
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+
+This product contains some software licensed under the
+"GNU General Public License, version 2" provided with
+ABSOLUTELY NO WARRANTY under the terms of
+"GNU General Public License, version 2", available here:
+http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+
+
+This product contains some software licensed under the
+"GNU Library General Public License, version 2" provided
+with ABSOLUTELY NO WARRANTY under the terms of "GNU Library
+General Public License, version 2", available here:
+http://www.gnu.org/licenses/old-licenses/lgpl-2.0.html
+
+
+This product contains some software licensed under the
+"GNU Lesser General Public License, version 2.1" provided
+with ABSOLUTELY NO WARRANTY under the terms of "GNU Lesser
+General Public License, version 2.1", available here:
+http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html
+
+
+This product contains some software licensed under the
+"GNU General Public License, version 3" provided with
+ABSOLUTELY NO WARRANTY under the terms of
+"GNU General Public License, Version 3", available here:
+http://www.gnu.org/licenses/gpl.html.
+
+
+This product contains some software licensed under the
+"GNU Affero General Public License, version 3" provided
+with ABSOLUTELY NO WARRANTY under the terms of
+"GNU Affero General Public License, version 3", available here:
+http://www.gnu.org/licenses/agpl-3.0.html.
+
+^[[*01/01/1970 00:00:48.6750] /init: ioctl(SIOCGIFHWADDR): wired0: No such device
+[*01/01/1970 00:00:48.6850] /init: ioctl(SIOCGIFHWADDR): wired0: No such device
+error: open /dev/board-config
+error: open /dev/board-config
+error: open /dev/board-config
+error: open /dev/board-config
+[  OK  ] Created slice -.slice.
+[  OK  ] Reached target Timers.
+[  OK  ] Created slice system.slice.
+[  OK  ] Reached target Slices.
+         Starting Cisco UBIFS reformat/mount...
+[  OK  ] Created slice system-sshd\x2dkeygen.slice.
+[  OK  ] Created slice system-serial\x2dgetty.slice.
+[  OK  ] Reached target Cisco File Systems (Pre).
+[  OK  ] Listening on Delayed Shutdown Socket.
+[  OK  ] Reached target Sockets.
+[  OK  ] Started Cisco UBIFS reformat/mount.
+         Starting Cisco early mount...
+[  OK  ] Started Cisco early mount.
+[  OK  ] Reached target Local File Systems (Pre).
+         Starting Cisco fips check...
+         Starting Cisco system time setup...
+[*01/01/1970 00:00:53.5334] GCM-128 POST passed
+[*01/01/1970 00:00:53.5334] GCM-256 POST passed
+[*01/01/1970 00:00:53.5634] Build time is: Sep 24 12:20:21 2022
+[*01/01/1970 00:00:53.5634] Storing the build time in reload time as the reload and mfg time stamp were not present
+[*09/24/2022 12:20:21.0000] Setting system time Sat Sep 24 12:20:21 UTC 2022
+         Starting Cisco seed generation...
+         Starting Cisco platform file generation...
+[  OK  ] Started Cisco fips check.
+[  OK  ] Started Cisco system time setup.
+[  OK  ] Started Cisco seed generation.
+[  OK  ] Started Cisco platform file generation.
+[  OK  ] Reached target Local File Systems.
+[  OK  ] Started Cisco system time saving.
+         Starting Cisco system time saving...
+         Starting Cisco S10 boot service...
+         Starting Cisco pkg install service...
+[*09/24/2022 12:20:22.3096] ubinfo: error!: cannot get information about UBI volume 0 on ubi0
+[*09/24/2022 12:20:22.3096]         error 2 (No such file or directory)
+[*09/24/2022 12:20:22.3996] ===   5G radio domain is 14, COPY 5G BDF files from non_ETSI_BDF folder   ===
+[*09/24/2022 12:20:22.4096] df: /storage: can't find mount point
+[*09/24/2022 12:20:22.4196] sh: Capacity: bad number
+[*09/24/2022 12:20:22.4196] df: /storage: can't find [09/24/2022 12:20:21.0699] sysctl link missing during unregister: /net/ipv4/neigh//eth0
+[09/24/2022 12:20:21.2799] sysctl link missing during unregister: /net/ipv4/neigh//eth1
+[  OK  ] Started Cisco S10 boot service.
+         Starting Cisco nolan service...
+[*09/24/2022 12:20:22.7994] Active version: 8.10.181.0
+[*09/24/2022 12:20:22.7994] Backup version: 0.0.0.0
+[*09/24/2022 12:20:22.9194]
+[*09/24/2022 12:20:22.9194]  led pattern module start
+[*09/24/2022 12:20:22.9594] AP1852I
+[*09/24/2022 12:20:23.0893] nss_driver - Turbo Support 1
+[*09/24/2022 12:20:23.0893] Supported Frequencies - 110Mhz 550Mhz 733Mhz
+[*09/24/2022 12:20:23.1293] NSS firmware booted
+[*09/24/2022 12:20:23.1693] NSS firmware booted
+[*09/24/2022 12:20:23.3293] sh: open: unknown operand
+[*09/24/2022 12:20:23.5192] error: open /dev/board-config
+[*09/24/2022 12:20:23.5192] error: open /dev/board-config
+[*09/24/2022 12:20:23.6892] Current value of FACTORY_RESET=0
+[*09/24/2022 12:20:23.7191] Last reload time: Sep 24 12:20:21 2022
+[*09/24/2022 12:20:21.0000] Setting system time Sat Sep 24 12:20:21 UTC 2022
+[*09/24/2022 12:20:21.1699] ifconfig: invalid hw-addr error:
+[*09/24/2022 12:20:21.1699] device wired0 entered promiscuous mode
+[*09/24/2022 12:20:21.2099] ifconfig: invalid hw-addr error:
+[*09/24/2022 12:20:21.3599] device wired1 entered promiscuous mode
+[*09/24/2022 12:20:21.5498] error: open /dev/board-config
+[*09/24/2022 12:20:21.5498] error: open /dev/board-config
+[*09/24/2022 12:20:22.1396] Last reload reason : 0: unknown
+         Starting Cisco watchdog...
+         Starting Cisco nss service...
+[  OK  ] Started Cisco nolan service.
+[  OK  ] Started Cisco watchdog.
+[  OK  ] Started Cisco nss service.
+[  OK  ] Started Cisco pkg install service.
+         Starting Cisco nolan USB service...
+         Starting Cisco Kclick...
+         Starting Cisco S15platform...
+[  OK  ] Started Cisco nolan USB service.
+[*09/24/2022 12:20:24.6689] stile module dp init successfully
+[*09/24/2022 12:20:24.6689] NBAR Label:BLD_POLARIS_DEV_LATEST_20200414_053707 Module timestamp: Sep 24 2022 at 12:08:15 User: ttaichol
+[  OK  ] Started Cisco Kclick.
+[  OK  ] Started Cisco S15platform.
+         Starting Cisco Kclick...
+         Starting Cisco certificate create service...
+         Starting Cisco ME service...
+[  OK  ] Started Cisco Kclick.
+         Starting Cisco S16platfomm...
+         Starting rsyslog client...
+[*09/24/2022 12:20:25.6086] grep: /storage/config.mobexp: No such file or directory
+[*09/24/2022 12:20:25.7085] Loading sha2...
+[*09/24/2022 12:20:25.7085] Dumpping sha1...
+[*09/24/2022 12:20:25.7385] miibus get eed53c00!
+[*09/24/2022 12:20:25.7885] /etc/init.d/S16mod_load: line 98: can't create /storage/syslogs/1.modlog: nonexistent directory
+[*09/24/2022 12:20:26.0484] Creating default base capwap config.
+         Starting Cisco syslog service...
+[  OK  ] Started Cisco ME service.
+[  OK  ] Started Cisco S16platfomm.
+[  OK  ] Started rsyslog client.
+[  OK  ] Started Cisco syslog service.
+         Starting Cisco synclogd...
+[  OK  ] Started Cisco synclogd.
+[  OK  ] Started Cisco certificate create service.
+         Starting Cisco certtime service...
+[  OK  ] Started Cisco certtime service.
+[  OK  ] Reached target System Initialization.
+[  OK  ] Reached target Paths.
+[  OK  ] Reached target Basic System.
+         Starting WCPD process...
+         Starting Cisco rtd service...
+         Starting Hostapd process...
+         Starting Cisco led service...
+         Starting gRPC server daemon...
+[  OK  ] Started System Monitor service.
+         Starting System Monitor service...
+         Starting Cisco brain service...
+[  OK  ] Started NSS Firmware Monitor daemon.
+         Starting NSS Firmware Monitor daemon...
+[*09/24/2022 12:20:27.1781] Loading MIC cert and key
+[*09/24/2022 12:20:27.1881] Dumpping sha2...
+[*09/24/2022 12:20:27.2281] pid 2745's current affinity mask: 3
+[*09/24/2022 12:20:27.2281] pid 2745's new affinity mask: 1
+[*09/24/2022 12:20:28.6476] Loading MIC cert and key
+         Starting OpenSSH ed25519 Server Key Generation...
+         Starting RSYNC User Key Generation...
+         Starting Cisco kexec...
+         Starting Cisco printkd...
+         Starting OpenSSH ecdsa Server Key Generation...
+[  OK  ] Started Serial Getty on ttyS0.
+         Starting Serial Getty on ttyS0...
+[  OK  ] Reached target Login Prompts.
+         Starting AP Trace daemon...
+[  OK  ] Started NTP_PROC daemon.
+         Starting NTP_PROC daemon...
+         Starting OpenSSH rsa Server Key Generation...
+         Starting Cisco klogd...
+         Starting Clean Air daemon...
+         Starting Fast CGI daemon...
+         Starting capwapd...
+[  OK  ] Started Cisco led service.
+[  OK  ] Started OpenSSH ed25519 Server Key Generation.
+[  OK  ] Started Cisco kexec.
+[  OK  ] Started OpenSSH ecdsa Server Key Generation.
+[  OK  ] Started RSYNC User Key Generation.
+[  OK  ] Started Cisco printkd.
+[  OK  ] Started Cisco klogd.
+[  OK  ] Started Cisco rtd service.
+[  OK  ] Started AP Trace daemon.
+[  OK  ] Started Hostapd process.
+[  OK  ] Started Cisco brain service.
+[*09/24/2022 12:20:33.7560] pid 2943's current affinity mask: 3
+[*09/24/2022 12:20:33.7560] pid 2943's new affinity mask: 1
+[*09/24/2022 12:20:33.9460] pid 2960's current affinity mask: 3
+[*09/24/2022 12:20:33.9460] pid 2960's new affinity mask: 1
+[*09/24/2022 12:20:34.5558] __mm_init_module
+[*09/24/2022 12:20:34.6257]
+[*09/24/2022 12:20:34.6257] Click sched monitor: schedulers = 1
+[*09/24/2022 12:20:34.6257]
+[*09/24/2022 12:20:34.6257] __ol_ath_attach() Allocated scn ee4c0480
+[*09/24/2022 12:20:34.6357] ol_ath_attach interface_id 0
+[*09/24/2022 12:20:34.6357] Chip id: 0x9, chip version: 0x1000000
+[*09/24/2022 12:20:34.6457]
+[*09/24/2022 12:20:34.6457]  Target Version is 1000000
+[*09/24/2022 12:20:34.6457]
+[*09/24/2022 12:20:34.6457]  Flash Download Address  c0000
+[*09/24/2022 12:20:34.6457] ol_transfer_bin_file: flash data file defined
+[*09/24/2022 12:20:34.6457] Cal location [0]: 00000000
+[*09/24/2022 12:20:34.6457]
+[*09/24/2022 12:20:34.6457]  Wifi0 NAND FLASH Select OFFSET 0x1000
+[*09/24/2022 12:20:34.6657] qc98xx_verify_checksum: flash checksum passed: 0xe39d
+[*09/24/2022 12:20:34.6657] ol_transfer_bin_file 3861: Download Flash data len 12064
+[*09/24/2022 12:20:34.6857]
+[*09/24/2022 12:20:34.6857]  Board data initialized
+[*09/24/2022 12:20:34.7357] ol_ath_download_firmware :First OTP download and Execute is good address:0xa000 return param 4660
+[*09/24/2022 12:20:34.7357] ol_ath_download_firmware:##Board Id 8 , CHIP Id 1
+[*09/24/2022 12:20:34.7357] ol_transfer_bin_file: Board Data File download to address=0xc0000 file name=AR900B/hw.2/boardData_AR900B_CUS260_negative_pwr_offset_2G_v2_008.bin
+[*09/24/2022 12:20:34.8057]
+[*09/24/2022 12:20:34.8057]  [Flash] : Ignore Module param
+[*09/24/2022 12:20:34.8057] ol_ath_download_firmware : Second OTP download and Execute is good, param=0x0
+[*09/24/2022 12:20:34.8257] ol_transfer_bin_file: Downloading firmware file: AR900B/hw.2/athwlan.bin
+[*09/24/2022 12:20:35.9153]
+[*09/24/2022 12:20:35.9153] ol_ath_copy_tgt_iram() iram read paddr: 0x980000 host paddr 0x44000000 Radio id 0
+[*09/24/2022 12:20:36.0853] HTC Rx: insufficient length, got:4 expected =8
+[*09/24/2022 12:20:36.0853] <---------Dumping 8 Bytes : BAD RX packet length ------>
+[*09/24/2022 12:20:36.0853] [0]: 00 00 00 00 38 00 00 00
+[*09/24/2022 12:20:36.0853] <------------------------------------------------->
+[*09/24/2022 12:20:36.0953] Startup Mode-0 set
+[*09/24/2022 12:20:36.0953] HTC Service:0x0300 ep:1 TX flow control disabled
+[*09/24/2022 12:20:36.0953] HTC Service:0x0100 ep:2 TX flow control disabled
+[*09/24/2022 12:20:36.0953] Firmware_Build_Number:70
+[*09/24/2022 12:20:36.0953] num_rf_chain:0x00000004  ht_cap_info:0x0000185b  vht_cap_info:0x339a79b2  vht_supp_mcs:0x0000ffaa
+[*09/24/2022 12:20:36.0953]
+[*09/24/2022 12:20:36.0953]  RES CFG Support wmi_service_bitmap 9778
+[*09/24/2022 12:20:36.0953]
+[*09/24/2022 12:20:36.0953]  Sending Ext resource cfg: HOST PLATFORM as 0 and fw_feature_bitmap as 50 to TGT
+[*09/24/2022 12:20:36.0953] ol_ath_service_ready_event: sw_cal_support_check_flag: 1
+[*09/24/2022 12:20:36.1653] wmi_ready_event_rx:  WMI UNIFIED READY event
+[*09/24/2022 12:20:36.1653] htt_h2t_frag_desc_bank_cfg_msg - HTT_H2T_MSG_TYPE_FRAG_DESC_BANK_CFG sent to FW for radio ID = 0
+[*09/24/2022 12:20:36.1753] spectral_init_netlink 81 NULL SKB
+[*09/24/2022 12:20:36.1753] ACS not enabled
+[*09/24/2022 12:20:36.1753] ol_ath_thermal_mitigation_attach: --
+[*09/24/2022 12:20:36.2152]  pktlog_init: Initializing Pktlog for AR900B, pktlog_hdr_size = 16
+[*09/24/2022 12:20:36.6351] ol_txrx_set_mesh_mode val 1
+[*09/24/2022 12:20:37.0950] FWLOG: [72957] WAL_DBGID_TX_AC_BUFFER_SET ( 0x3, 0xdeb001, 0x94c, 0x94c, 0x0 )
+[*09/24/2022 12:20:37.0950] FWLOG: [72957] WAL_DBGID_TX_AC_BUFFER_SET ( 0x12, 0x1e, 0x94c, 0x94c, 0x0 )
+[*09/24/2022 12:20:37.0950] FWLOG: [72957] WAL_DBGID_TX_AC_BUFFER_SET ( 0x45, 0x1e, 0x94c, 0x94c, 0x0 )
+[*09/24/2022 12:20:37.0950] FWLOG: [72957] WAL_DBGID_TX_AC_BUFFER_SET ( 0x67, 0x1e, 0x94c, 0x94c, 0x0 )
+[*09/24/2022 12:20:38.6645] wmi_dbg_cfg_send: mod[0]00000000 dbgcfg40000000 cfgvalid[0] 00000000 cfgvalid[1] 00000000
+[*09/24/2022 12:20:38.7445]
+[*09/24/2022 12:20:38.7445] !!!!! {/opt/cisco/bin/capwap_brain} failed writing /click/vrrp_elector/preferred_ap_name len 0 data: ""
+[*09/24/2022 12:20:39.1843] ip6_port srcr2, ip6local fe80::a2f8:49ff:fe78:5e8, ip6 ::, plen 0, gw6 ::, gw6_mac 00:00:00:00:00:00, mtu 1500, vid 0, mode6 2(slaac)
+[  OK  ] Started OpenSSH rsa Server Key Generation.
+^C[  OK  ] Started Fast CGI daemon.
+[  OK  ] Stopped Serial Getty on ttyS0.
+[  OK  ] Started Serial Getty on ttyS0.
+         Starting Serial Getty on ttyS0...
+         Starting dnsmasq watcher...
+[*09/24/2022 12:20:39.8941]
+[*09/24/2022 12:20:39.8941] phy_value=0: org="0x1000" phy_reg="0x1000"
+[*09/24/2022 12:20:39.8941] device wired1 left promiscuous mode
+[*09/24/2022 12:20:41.3137] pid 3697's current affinity mask: 3
+[*09/24/2022 12:20:41.3137] pid 3697's new affinity mask: 1
+[*09/24/2022 12:20:41.3637] pid 3695's current affinity mask: 3
+[*09/24/2022 12:20:41.3637] pid 3695's new affinity mask: 1
+[*09/24/2022 12:20:41.8635] device aptrace0 entered promiscuous mode
+[*09/24/2022 12:20:41.9135] device to_container entered promiscuous mode
+         Starting dhcpv6 client watcher...
+         Starting Lighttpd Watcher...
+[  OK  ] Reached target sshd-keygen.target.
+[*09/24/2022 12:20:42.7333] chpasswd: password for user changed
+         Starting OpenSSH server daemon...
+[*09/24/2022 12:20:42.9332] pid 3755's current affinity mask: 3
+[*09/24/2022 12:20:42.9332] pid 3755's new affinity mask: 1
+[  OK  ] Started OpenSSH server daemon.
+[  OK  ] Started WCPD process.
+         Starting DHCPv6 client...
+[*09/24/2022 12:20:43.4630] pid 3761's current affinity mask: 3
+[*09/24/2022 12:20:43.4630] pid 3761's new affinity mask: 1
+         Starting DNSmasq...
+[  OK  ] Started Lighttpd Watcher.
+[  OK  ] Started DNSmasq.
+[  OK  ] Started DHCPv6 client.
+[  OK  ] Started dnsmasq watcher.
+[  OK  ] Started dhcpv6 client watcher.
+[  OK  ] Reached target Multi-User System.
+
+
+
+User Access Verification
+Username: [*09/24/2022 12:20:45.8423] DOT11_TXP[0]:Domain configured: 1 class:E
+[*09/24/2022 12:20:46.2022] DOT11_TXP[1]:Domain configured: 14 class:S
+[*09/24/2022 12:20:48.7414] DOT11_DRV[1]: Init Radio1
+[*09/24/2022 12:20:48.7414] DOT11_DRV[1]: wifi1: Failed to get radio priv parameter (op 4234)
+[*09/24/2022 12:20:48.7614] wifi1     no private ioctls.
+[*09/24/2022 12:20:48.7614]
+[*09/24/2022 12:20:48.7714] wifi1     no private ioctls.
+[*09/24/2022 12:20:48.7714]
+[*09/24/2022 12:20:48.7814] wifi1     no private ioctls.
+[*09/24/2022 12:20:48.7814]
+[*09/24/2022 12:20:48.7914] DOT11_DRV[1]: wifi1 acfg cmd 2 failed for wifi1 errno 19(No such device)
+[*09/24/2022 12:20:48.7914] DOT11_DRV[1]:  acfg_set_radio_param param 0x200b value 0 failed
+[*09/24/2022 12:20:48.8014] DOT11_DRV[1]: wifi1: Failed to set parameter (op 4283 arg 1)
+[*09/24/2022 12:20:48.8014] DOT11_DRV[1]: wifi1 acfg cmd 2 failed for wifi1 errno 19(No such device)
+[*09/24/2022 12:20:48.8014] DOT11_DRV[1]:  acfg_set_radio_param param 0x200d value 1 failed
+[*09/24/2022 12:20:48.8114] DOT11_DRV[1]: wifi1 acfg cmd 2 failed for wifi1 errno 19(No such device)
+[*09/24/2022 12:20:48.8114] DOT11_DRV[1]:  acfg_set_radio_param param 0x2017 value 1 failed
+[*09/24/2022 12:20:48.8213] DOT11_DRV[1]: wifi1 acfg cmd 19 failed for wifi1 errno 19(No such device)
+[*09/24/2022 12:20:48.8213] DOT11_DRV[1]: Radio 1 NF_Calibration request failed !
+[*09/24/2022 12:20:48.8213] DOT11_DRV[1]: wifi1: Failed to set parameter (op 4176 arg 1)
+[*09/24/2022 12:20:48.8313] DOT11_DRV[1]: wifi1: Failed to set parameter (op 4235 arg 1)
+[*09/24/2022 12:20:48.8313] DOT11_DRV[1]: wifi1: Failed to set parameter (op 4432 arg 2745)
+[*09/24/2022 12:20:48.8413] DOT11_DRV[1]: wifi1 acfg cmd 16 failed for wifi1 errno 19(No such device)
+[*09/24/2022 12:20:48.8513] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v0 error No such device
+[*09/24/2022 12:20:48.8513] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:8F
+[*09/24/2022 12:20:48.8513] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v1 error No such device
+[*09/24/2022 12:20:48.8513] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:8E
+[*09/24/2022 12:20:48.8613] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v2 error No such device
+[*09/24/2022 12:20:48.8613] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:8D
+[*09/24/2022 12:20:48.8713] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v3 error No such device
+[*09/24/2022 12:20:48.8713] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:8C
+[*09/24/2022 12:20:48.8713] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v4 error No such device
+[*09/24/2022 12:20:48.8713] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:8B
+[*09/24/2022 12:20:48.8813] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v5 error No such device
+[*09/24/2022 12:20:48.8813] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:8A
+[*09/24/2022 12:20:48.8913] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v6 error No such device
+[*09/24/2022 12:20:48.8913] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:89
+[*09/24/2022 12:20:48.8913] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v7 error No such device
+[*09/24/2022 12:20:48.8913] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:88
+[*09/24/2022 12:20:48.9013] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v8 error No such device
+[*09/24/2022 12:20:48.9013] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:87
+[*09/24/2022 12:20:48.9013] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v9 error No such device
+[*09/24/2022 12:20:48.9013] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:86
+[*09/24/2022 12:20:48.9113] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v10 error No such device
+[*09/24/2022 12:20:48.9113] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:85
+[*09/24/2022 12:20:48.9213] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v11 error No such device
+[*09/24/2022 12:20:48.9213] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:84
+[*09/24/2022 12:20:48.9213] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v12 error No such device
+[*09/24/2022 12:20:48.9213] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:83
+[*09/24/2022 12:20:48.9313] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v13 error No such device
+[*09/24/2022 12:20:48.9313] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:82
+[*09/24/2022 12:20:48.9313] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v14 error No such device
+[*09/24/2022 12:20:48.9313] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:81
+[*09/24/2022 12:20:48.9413] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v15 error No such device
+[*09/24/2022 12:20:48.9413] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:80
+[*09/24/2022 12:20:48.9513] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_stop_radio ioctl SIOCGIFFLAGS failed for wifi1 error -1
+[*09/24/2022 12:20:48.9513] DOT11_DRV[1]: Failure to Stop radio during Base Driver Initialization
+[*09/24/2022 12:20:48.9713] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v0 error No such device
+[*09/24/2022 12:20:48.9813] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v1 error No such device
+ DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v2 error No such device
+[*09/24/2022 12:20:48.9913] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v3 error No such device
+[*09/24/2022 12:20:49.0013] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v4 error No such device
+[*09/24/2022 12:20:49.0013] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v5 error No such device
+[*09/24/2022 12:20:49.0113] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v6 error No such device
+[*09/24/2022 12:20:49.0113] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v7 error No such device
+[*09/24/2022 12:20:49.0213] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v8 error No such device
+[*09/24/2022 12:20:49.0313] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v9 error No such device
+[*09/24/2022 12:20:49.0313] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v10 error No such device
+[*09/24/2022 12:20:49.0413] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v11 error No such device
+[*09/24/2022 12:20:49.0413] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v12 error No such device
+[*09/24/2022 12:20:49.0513] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v13 error No such device
+[*09/24/2022 12:20:49.0513] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v14 error No such device
+[*09/24/2022 12:20:49.0613] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v15 error No such device
+[*09/24/2022 12:20:49.0713] DOT11_DRV[1]:  mon1 ioctl op=0x8bf2 len=4 failed: 19 (No such device)
+[*09/24/2022 12:20:49.0713] DOT11_DRV[1]: set mode_str 11A to mon1 failed
+[*09/24/2022 12:20:49.0713] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v0 error No such device
+[*09/24/2022 12:20:49.0813] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v1 error No such device
+[*09/24/2022 12:20:49.0913] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v2 error No such device
+[*09/24/2022 12:20:49.0913] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v3 error No such device
+[*09/24/2022 12:20:49.1013] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v4 error No such device
+[*09/24/2022 12:20:49.1013] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v5 error No such device
+[*09/24/2022 12:20:49.1113] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v6 error No such device
+[*09/24/2022 12:20:49.1213] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v7 error No such device
+[*09/24/2022 12:20:49.1213] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v8 error No such device
+[*09/24/2022 12:20:49.1313] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v9 error No such device
+[*09/24/2022 12:20:49.1313] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v10 error No such device
+[*09/24/2022 12:20:49.1412] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v11 error No such device
+[*09/24/2022 12:20:49.1412] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v12 error No such device
+[*09/24/2022 12:20:49.1512] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v13 error No such device
+[*09/24/2022 12:20:49.1612] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v14 error No such device
+[*09/24/2022 12:20:49.1612] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v15 error No such device
+[*09/24/2022 12:20:49.1712] DOT11_DRV[1]: set_channel Channel set to 36
+[*09/24/2022 12:20:49.1712] DOT11_DRV[1]: wifi1 acfg cmd 17 failed for wifi1 errno 19(No such device)
+[*09/24/2022 12:20:49.1812] DOT11_DRV[1]: wifi1: Failed to set parameter (op 4242 arg 0)
+[*09/24/2022 12:20:49.1912] DOT11_DRV[1]: wifi1: Failed to set parameter (op 4241 arg 0)
+[*09/24/2022 12:20:49.1912] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v0 error No such device
+[*09/24/2022 12:20:49.2012] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v1 error No such device
+[*09/24/2022 12:20:49.2112] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v2 error No such device
+
+
+rror: Maximum input length exceeded
+[*09/24/2022 12:20:49.2112] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v3 error No such device
+[*09/24/2022 12:20:49.2212] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v4 error No such device
+[*09/24/2022 12:20:49.2212] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v5 error No such device
+[*09/24/2022 12:20:49.2312] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v6 error No such device
+[*09/24/2022 12:20:49.2412] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v7 error No such device
+[*09/24/2022 12:20:49.2412] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v8 error No such device
+[*09/24/2022 12:20:49.2512] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v9 error No such device
+[*09/24/2022 12:20:49.2512] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v10 error No such device
+[*09/24/2022 12:20:49.2612] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v11 error No such device
+[*09/24/2022 12:20:49.2712] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v12 error No such device
+[*09/24/2022 12:20:49.2712] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v13 error No such device
+[*09/24/2022 12:20:49.2812] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v14 error No such device
+[*09/24/2022 12:20:49.2912] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v15 error No such device
+[*09/24/2022 12:20:49.3112] DOT11_DRV[0]: Init Radio0
+[*09/24/2022 12:20:49.3412] DOT11_DRV[0]: set_channel Channel set to 6
+[*09/24/2022 12:20:49.3812] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL get_vap_if_index ioctl SIOCGIFINDEX failed for apr1v0 error No such device
+[*09/24/2022 12:20:49.3812] populate_if_index_table: if_index -1 out of range for radio 1 vap 0 of 16
+[*09/24/2022 12:20:49.3812] /opt/cisco/bin/wcpd: /san/BUILD/workspace/810_MR8_ME_CCO/corsica/router/base/../elts-meraki/elements/wcp/wcp_common/wcp_db.cc: 3750: void WcpDb::populate_if_index_table(): Assertion `if_index >= 0 && if_index < 64' failed.
+[*09/24/2022 12:20:55.5892] systemd[1]: wcpd.service failed.
+[*09/24/2022 12:20:57.4087] pid 4502's current affinity mask: 3
+[*09/24/2022 12:20:57.4087] pid 4502's new affinity mask: 1
+[*09/24/2022 12:21:00.0179] DOT11_TXP[0]:Domain configured: 14 class:S
+[*09/24/2022 12:21:02.0872] DOT11_TXP[0]:Domain configured: 1 class:E
+[*09/24/2022 12:21:02.8470] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL get_vap_if_index ioctl SIOCGIFINDEX failed for apr1v0 error No such device
+[*09/24/2022 12:21:02.8470] populate_if_index_table: if_index -1 out of range for radio 1 vap 0 of 16
+[*09/24/2022 12:21:02.8470] /opt/cisco/bin/wcpd: /san/BUILD/workspace/810_MR8_ME_CCO/corsica/router/base/../elts-meraki/elements/wcp/wcp_common/wcp_db.cc: 3750: void WcpDb::populate_if_index_table(): Assertion `if_index >= 0 && if_index < 64' failed.
+
+Error: failed to get username!
+^C^C^C
+^C[  OK  ] Removed slice system-sshd\x2dkeygen.slice.
+         Stopping Cisco led service...
+         Stopping Cisco brain service...
+[  OK  ] Removed slice system-serial\x2dgetty.slice.
+[  OK  ] Stopped target Multi-User System.
+         Stopping Cisco printkd...
+         Stopping Fast CGI daemon...
+[*09/24/2022 12:21:07.7054] systemd[1]: start request repeated too quickly for serial-getty@ttyS0.service
+[*09/24/2022 12:21:07.7054] systemd[1]: Failed to start Serial Getty on ttyS0.
+[*09/24/2022 12:21:07.7054] systemd[1]: serial-getty@ttyS0.service failed.
+[*09/24/2022 12:21:09.1350] systemd[1]: wcpd.service failed.
+[*09/24/2022 12:21:11.0244] pid 5437's current affinity mask: 3
+[*09/24/2022 12:21:11.0244] pid 5437's new affinity mask: 1
+[*09/24/2022 12:21:13.6636] DOT11_TXP[0]:Domain configured: 1 class:E
+[*09/24/2022 12:21:14.0035] DOT11_TXP[1]:Domain configured: 14 class:S
+[*09/24/2022 12:21:16.4727] DOT11_DRV[1]: Init Radio1
+[*09/24/2022 12:21:16.4727] DOT11_DRV[1]: wifi1: Failed to get radio priv parameter (op 4234)
+[*09/24/2022 12:21:16.4927] wifi1     no private ioctls.
+[*09/24/2022 12:21:16.4927]
+[*09/24/2022 12:21:16.5027] wifi1     no private ioctls.
+[*09/24/2022 12:21:16.5027]
+[*09/24/2022 12:21:16.5227] wifi1     no private ioctls.
+[*09/24/2022 12:21:16.5227]
+[*09/24/2022 12:21:16.5327] DOT11_DRV[1]: wifi1 acfg cmd 2 failed for wifi1 errno 19(No such device)
+[*09/24/2022 12:21:16.5327] DOT11_DRV[1]:  acfg_set_radio_param param 0x200b value 0 failed
+[*09/24/2022 12:21:16.5427] DOT11_DRV[1]: wifi1: Failed to set parameter (op 4283 arg 1)
+[*09/24/2022 12:21:16.5427] DOT11_DRV[1]: wifi1 acfg cmd 2 failed for wifi1 errno 19(No such device)
+[*09/24/2022 12:21:16.5427] DOT11_DRV[1]:  acfg_set_radio_param param 0x200d value 1 failed
+[*09/24/2022 12:21:16.5527] DOT11_DRV[1]: wifi1 acfg cmd 2 failed for wifi1 errno 19(No such device)
+[*09/24/2022 12:21:16.5527] DOT11_DRV[1]:  acfg_set_radio_param param 0x2017 value 1 failed
+[*09/24/2022 12:21:16.5627] DOT11_DRV[1]: wifi1 acfg cmd 19 failed for wifi1 errno 19(No such device)
+[*09/24/2022 12:21:16.5627] DOT11_DRV[1]: Radio 1 NF_Calibration request failed !
+[*09/24/2022 12:21:16.5627] DOT11_DRV[1]: wifi1: Failed to set parameter (op 4176 arg 1)
+[*09/24/2022 12:21:16.5727] DOT11_DRV[1]: wifi1: Failed to set parameter (op 4235 arg 1)
+[*09/24/2022 12:21:16.5727] DOT11_DRV[1]: wifi1: Failed to set parameter (op 4432 arg 2745)
+[*09/24/2022 12:21:16.5827] DOT11_DRV[1]: wifi1 acfg cmd 16 failed for wifi1 errno 19(No such device)
+[*09/24/2022 12:21:16.5927] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v0 error No such device
+[*09/24/2022 12:21:16.5927] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:8F
+[*09/24/2022 12:21:16.5927] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v1 error No such device
+[*09/24/2022 12:21:16.5927] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:8E
+[*09/24/2022 12:21:16.6027] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v2 error No such device
+[*09/24/2022 12:21:16.6027] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:8D
+[*09/24/2022 12:21:16.6127] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v3 error No such device
+[*09/24/2022 12:21:16.6127] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:8C
+[*09/24/2022 12:21:16.6127] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v4 error No such device
+[*09/24/2022 12:21:16.6127] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:8B
+[*09/24/2022 12:21:16.6227] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v5 error No such device
+[*09/24/2022 12:21:16.6227] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:8A
+[*09/24/2022 12:21:16.6327] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v6 error No such device
+[*09/24/2022 12:21:16.6327] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:89
+[*09/24/2022 12:21:16.6327] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v7 error No such device
+[*09/24/2022 12:21:16.6327] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:88
+[*09/24/2022 12:21:16.6427] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v8 error No such device
+[*09/24/2022 12:21:16.6427] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:87
+[*09/24/2022 12:21:16.6527] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v9 error No such device
+[*09/24/2022 12:21:16.6527] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:86
+[*09/24/2022 12:21:16.6527] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v10 error No such device
+[*09/24/2022 12:21:16.6527] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:85
+[*09/24/2022 12:21:16.6626] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v11 error No such device
+[*09/24/2022 12:21:16.6626] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:84
+[*09/24/2022 12:21:16.6626] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v12 error No such device
+[*09/24/2022 12:21:16.6726] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:83
+[*09/24/2022 12:21:16.6726] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v13 error No such device
+[*09/24/2022 12:21:16.6726] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:82
+[*09/24/2022 12:21:16.6826] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v14 error No such device
+[*09/24/2022 12:21:16.6826] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:81
+[*09/24/2022 12:21:16.6826] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v15 error No such device
+[*09/24/2022 12:21:16.6826] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:80
+[*09/24/2022 12:21:16.6926] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_stop_radio ioctl SIOCGIFFLAGS failed for wifi1 error -1
+[*09/24/2022 12:21:16.6926] DOT11_DRV[1]: Failure to Stop radio during Base Driver Initialization
+[*09/24/2022 12:21:16.7026] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v0 error No such device
+[*09/24/2022 12:21:16.7026] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v1 error No such device
+[*09/24/2022 12:21:16.7126] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v2 error No such device
+[*09/24/2022 12:21:16.7226] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v3 error No such device
+[*09/24/2022 12:21:16.7226] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v4 error No such device
+[*09/24/2022 12:21:16.7326] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v5 error No such device
+[*09/24/2022 12:21:16.7326] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v6 error No such device
+[*09/24/2022 12:21:16.7426] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v7 error No such device
+[*09/24/2022 12:21:16.7526] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v8 error No such device
+[*09/24/2022 12:21:16.7526] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v9 error No such device
+[*09/24/2022 12:21:16.7626] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v10 error No such device
+[*09/24/2022 12:21:16.7826] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v11 error No such device
+[*09/24/2022 12:21:16.7926] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v12 error No such device
+[*09/24/2022 12:21:16.8026] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v13 error No such device
+[*09/24/2022 12:21:16.8026] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v14 error No such device
+[*09/24/2022 12:21:16.8126] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v15 error No such device
+[*09/24/2022 12:21:16.8226] DOT11_DRV[1]:  mon1 ioctl op=0x8bf2 len=4 failed: 19 (No such device)
+[*09/24/2022 12:21:16.8226] DOT11_DRV[1]: set mode_str 11A to mon1 failed
+[*09/24/2022 12:21:16.8226] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v0 error No such device
+[*09/24/2022 12:21:16.8326] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v1 error No such device
+[*09/24/2022 12:21:16.8326] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v2 error No such device
+[*09/24/2022 12:21:16.8426] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v3 error No such device
+[*09/24/2022 12:21:16.8526] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v4 error No such device
+[*09/24/2022 12:21:16.8526] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v5 error No such device
+[*09/24/2022 12:21:16.8626] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v6 error No such device
+[*09/24/2022 12:21:16.8626] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v7 error No such device
+[*09/24/2022 12:21:16.8726] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v8 error No such device
+[*09/24/2022 12:21:16.8826] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v9 error No such device
+[*09/24/2022 12:21:16.8826] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v10 error No such device
+[*09/24/2022 12:21:16.8926] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v11 error No such device
+[*09/24/2022 12:21:16.8926] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v12 error No such device
+[*09/24/2022 12:21:16.9026] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v13 error No such device
+[*09/24/2022 12:21:16.9126] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v14 error No such device
+[*09/24/2022 12:21:16.9126] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL is_vap_present ioctl SIOCGIFFLAGS failed for apr1v15 error No such device
+[*09/24/2022 12:21:16.9226] DOT11_DRV[1]: set_channel Channel set to 36
+[*09/24/2022 12:21:16.9326] DOT11_DRV[1]: wifi1 acfg cmd 17 failed for wifi1 errno 19(No such device)
+[*09/24/2022 12:21:16.9326] DOT11_DRV[1]: wifi1: Failed to set parameter (op 4242 arg 0)
+[*09/24/2022 12:21:16.9426] DOT11_DRV[1]: wifi1: Failed to set parameter (op 4241 arg 0)
+[*09/24/2022 12:21:16.9426] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v0 error No such device
+[*09/24/2022 12:21:16.9526] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v1 error No such device
+[*09/24/2022 12:21:16.9626] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v2 error No such device
+[*09/24/2022 12:21:16.9626] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v3 error No such device
+[*09/24/2022 12:21:16.9726] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v4 error No such device
+[*09/24/2022 12:21:16.9726] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v5 error No such device
+[*09/24/2022 12:21:16.9825] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v6 error No such device
+[*09/24/2022 12:21:16.9925] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v7 error No such device
+[*09/24/2022 12:21:16.9925] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v8 error No such device
+[*09/24/2022 12:21:17.0025] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v9 error No such device
+[*09/24/2022 12:21:17.0025] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v10 error No such device
+[*09/24/2022 12:21:17.0125] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v11 error No such device
+[*09/24/2022 12:21:17.0225] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v12 error No such device
+[*09/24/2022 12:21:17.0225] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v13 error No such device
+[*09/24/2022 12:21:17.0325] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v14 error No such device
+[*09/24/2022 12:21:17.0425] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v15 error No such device
+[*09/24/2022 12:21:17.0625] DOT11_DRV[0]: Init Radio0
+[*09/24/2022 12:21:17.0925] DOT11_DRV[0]: set_channel Channel set to 6
+[*09/24/2022 12:21:17.1025] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL get_vap_if_index ioctl SIOCGIFINDEX failed for apr1v0 error No such device
+[*09/24/2022 12:21:17.1025] populate_if_index_table: if_index -1 out of range for radio 1 vap 0 of 16
+[*09/24/2022 12:21:17.1025] /opt/cisco/bin/wcpd: /san/BUILD/workspace/810_MR8_ME_CCO/corsica/router/base/../elts-meraki/elements/wcp/wcp_common/wcp_db.cc: 3750: void WcpDb::populate_if_index_table(): Assertion `if_index >= 0 && if_index < 64' failed.
+[*09/24/2022 12:21:18.5721] systemd[1]: capwapd.service failed.
+[*09/24/2022 12:21:20.0416] pid 6392's current affinity mask: 3
+[*09/24/2022 12:21:20.0416] pid 6392's new affinity mask: 1
+[*09/24/2022 12:21:21.2812] chpasswd: password for user changed
+[*09/24/2022 12:21:23.2906] systemd[1]: wcpd.service failed.
+[*09/24/2022 12:21:25.5699] pid 6780's current affinity mask: 3
+[*09/24/2022 12:21:25.5699] pid 6780's new affinity mask: 1
+[*09/24/2022 12:21:28.2990] DOT11_TXP[0]:Domain configured: 14 class:S
+[*09/24/2022 12:21:30.4483] DOT11_TXP[0]:Domain configured: 1 class:E
+[*09/24/2022 12:21:31.1681] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL get_vap_if_index ioctl SIOCGIFINDEX failed for apr1v0 error No such device
+[*09/24/2022 12:21:31.1681] populate_if_index_table: if_index -1 out of range for radio 1 vap 0 of 16
+[*09/24/2022 12:21:31.1681] /opt/cisco/bin/wcpd: /san/BUILD/workspace/810_MR8_ME_CCO/corsica/router/base/../elts-meraki/elements/wcp/wcp_common/wcp_db.cc: 3750: void WcpDb::populate_if_index_table(): Assertion `if_index >= 0 && if_index < 64' failed.
+[*09/24/2022 12:21:37.3862] systemd[1]: wcpd.service failed.
+[*09/24/2022 12:21:39.6255] pid 7758's current affinity mask: 3
+[*09/24/2022 12:21:39.6255] pid 7758's new affinity mask: 1
+[*09/24/2022 12:21:42.2047] DOT11_TXP[1]:Domain configured: 14 class:S
+[*09/24/2022 12:21:44.2440] DOT11_TXP[0]:Domain configured: 1 class:E
+[*09/24/2022 12:21:45.0038] DOT11_DRV[1]: Init Radio1
+[*09/24/2022 12:21:45.0038] DOT11_DRV[1]: wifi1: Failed to get radio priv parameter (op 4234)
+[*09/24/2022 12:21:45.0238] wifi1     no private ioctls.
+[*09/24/2022 12:21:45.0238]
+[*09/24/2022 12:21:45.0338] wifi1     no private ioctls.
+[*09/24/2022 12:21:45.0338]
+[*09/24/2022 12:21:45.0438] wifi1     no private ioctls.
+[*09/24/2022 12:21:45.0438]
+[*09/24/2022 12:21:45.0538] DOT11_DRV[1]: wifi1 acfg cmd 2 failed for wifi1 errno 19(No such device)
+[*09/24/2022 12:21:45.0538] DOT11_DRV[1]:  acfg_set_radio_param param 0x200b value 0 failed
+[*09/24/2022 12:21:45.0638] DOT11_DRV[1]: wifi1: Failed to set parameter (op 4283 arg 1)
+[*09/24/2022 12:21:45.0638] DOT11_DRV[1]: wifi1 acfg cmd 2 failed for wifi1 errno 19(No such device)
+[*09/24/2022 12:21:45.0638] DOT11_DRV[1]:  acfg_set_radio_param param 0x200d value 1 failed
+[*09/24/2022 12:21:45.0738] DOT11_DRV[1]: wifi1 acfg cmd 2 failed for wifi1 errno 19(No such device)
+[*09/24/2022 12:21:45.0738] DOT11_DRV[1]:  acfg_set_radio_param param 0x2017 value 1 failed
+[*09/24/2022 12:21:45.0738] DOT11_DRV[1]: wifi1 acfg cmd 19 failed for wifi1 errno 19(No such device)
+[*09/24/2022 12:21:45.0738] DOT11_DRV[1]: Radio 1 NF_Calibration request failed !
+[*09/24/2022 12:21:45.0838] DOT11_DRV[1]: wifi1: Failed to set parameter (op 4176 arg 1)
+[*09/24/2022 12:21:45.0938] DOT11_DRV[1]: wifi1: Failed to set parameter (op 4235 arg 1)
+[*09/24/2022 12:21:45.0938] DOT11_DRV[1]: wifi1: Failed to set parameter (op 4432 arg 2745)
+[*09/24/2022 12:21:45.1038] DOT11_DRV[1]: wifi1 acfg cmd 16 failed[09/24/2022 12:22:33.3887] Restarting system.
+ for wifi1 errno 19(No such device)
+[*09/24/2022 12:21:45.1038] DOT11_DRV[1]: wcp/RadDrv1 :: Dot11AthDriverIOCTL vendor_get_bssid ioctl SIOCGIFHWADDR failed for apr1v0 error No such device
+[*09/24/2022 12:21:45.1038] DOT11_DRV[1]: ERROR: Radio BSSID Addr: 00:00:00:00:00:00 does not match with driver BSSID Addr:  A0:F8:49:78:72:8F
+[*09/24/2022 12:21:45.1138] DOT11_DRV
+
+U-Boot 2012.07 (btldr release 38) (Oct 29 2019 - 06:39:45)
+
+This product contains some software licensed under the
+"GNU General Public License, version 2" provided with
+ABSOLUTELY NO WARRANTY under the terms of
+"GNU General Public License, version 2", available here:
+http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+
+DRAM:  1 GiB
+NAND (ONFI): Detected SPANSION S34MS02G1 [256 MiB]
+SF: Detected Macronix MX25U3235F [4 MiB]
+MFG data loaded
+Scanning shenv data blocks
+Total valid parts=4
+Active shenv part[0:1], write_counter=62
+PCI0 Link Intialized
+Net:
+PHY ID = 0x4dd074, eth0 found AR8033 PHY
+PHY ID = 0x4dd074, eth1 found AR8033 PHY
+Valid I2C chip addresses: 51 52
+AP 1832/1852 detected...
+Power Type: Power Brick detected...
+Signature returns 0
+BL signing verification success, continue to run...
+Auto boot mode, use bootipq directly
+Hit ESC key to stop autoboot:  0
+Specified BOOT: part2
+
+Booting from part2
+
+Volume part2 not found!
+Volume part2 not found!
+
+Booting failed, try boot on part1
+
+Volume part1 not found!
+Volume part1 not found!
+(RNAQ-C7) # ?
+?       - alias for 'help'
+base    - print or set address offset
+bootipq - bootipq from flash device
+chpart  - change active partition
+cmp     - memory compare
+cp      - memory copy
+crc32   - checksum calculation
+echo    - echo args to console
+env     - environment handling commands
+ethreg  - ethreg    - Switch/PHY Reg rd/wr  utility
+
+exit    - exit script
+false   - do nothing, unsuccessfully
+go      - start application at address 'addr'
+help    - print command description/usage
+i2c     - I2C sub-system
+iminfo  - print header information for application image
+imxtract- extract a part of a multi-image
+ipq_nand- Switch between SBL and Linux kernel page layout.
+loadb   - load binary file over serial line (kermit mode)
+loady   - load binary file over serial line (ymodem mode)
+loop    - infinite loop on address range
+md      - memory display
+mii     - MII utility commands
+mm      - memory modify (auto-incrementing address)
+mtdparts- define flash/nand partitions
+mtest   - simple RAM read/write test
+mw      - memory write (fill)
+nand    - NAND sub-system
+nm      - memory modify (constant address)
+pci     - list and access PCI Configuration Space
+ping    - send ICMP ECHO_REQUEST to network host
+printenv- print environment variables
+printmfgenv- Print manufacture information data
+printshenv- printshenv- print shared environment variables
+
+reset   - Perform RESET of the CPU
+run     - run commands in an environment variable
+saveenv - save environment variables to persistent storage
+saveshenv- saveshenv - save shared environment variables to persistent storage
+
+setenv  - set environment variables
+setshenv- setshenv  - set shared environment variables
+
+sf      - SPI flash sub-system
+showvar - print local hushshell variables
+smeminfo- print SMEM FLASH information
+source  - run script from memory
+test    - minimal test like /bin/sh
+tftpboot- boot image via network using TFTP protocol
+true    - do nothing, successfully
+ubi     - ubi commands
+usb     - USB sub-system
+verify_bl- Cisco Bootloader signature verify
+verify_lx- Cisco Image signature verify
+version - print monitor, compiler and linker version
+(RNAQ-C7) # bootipq
+Specified BOOT: part2
+UBI: mtd2 is detached from ubi0
+
+Booting from part2
+
+Volume part2 not found!
+Volume part2 not found!
+
+Booting failed, try boot on part1
+
+Volume part1 not found!
+Volume part1 not found!
+(RNAQ-C7) # bootipq part1
+Specified BOOT: part2
+UBI: mtd2 is detached from ubi0
+
+Booting from part2
+
+Volume part2 not found!
+Volume part2 not found!
+
+Booting failed, try boot on part1
+
+Volume part1 not found!
+Volume part1 not found!
+(RNAQ-C7) # set
+  setenv setshenv
+(RNAQ-C7) # showvar
+HUSH_VERSION=0.01
+(RNAQ-C7) # printenv
+boot=part1
+bootcmd=bootipq
+bootdelay=5
+bootfile=part.bin
+ethact=eth0
+fileaddr=44000000
+filesize=3C545F5
+ipaddr=192.168.100.234
+machid=1260
+mtddevname=fs
+mtddevnum=0
+m▒netmask=255.255.255.0
+nand_erasesize=20000
+nand_oobsize=40
+nand_writesize=800
+netmak=255.255.255.0
+partition=nand0,0
+serverip=192.168.100.100
+stderr=serial
+stdin=serial
+stdout=serial
+
+Environment size: 393/65532 bytes
+(RNAQ-C7) # setenv boot part2
+(RNAQ-C7) # save
+  saveenv saveshenv
+(RNAQ-C7) # saveenv
+Saving Environment to SPI Flash...
+Erasing SPI Flash...
+Erasing at 0x17f000 -- 100% complete.
+Writing to SPI Flash... done
+(RNAQ-C7) #
+
+
+
+Monica, here is an expanded version of step number 7:
+
+U-Boot# nand erase.chip
+U-Boot# loadb 0x81000000
+<transfer MLO>
+U-Boot# cp.b 0x81000000 0x81020000 20000
+U-Boot# cp.b 0x81000000 0x81040000 20000
+U-Boot# cp.b 0x81000000 0x81060000 20000
+U-Boot# loadb 0x81080000
+<transfer u-boot.img>
+U-Boot# loadb 0x81280000
+<transfer uImage>
+U-Boot# loadb 0x81780000
+<transfer ubi.img>
+U-Boot# nand write 0x81000000 0x0 0x2000000
+
+
+The expected NAND layout is shown on the AM335x U-Boot User's Guide page I posted above.
+
+Here it is:
+
+    +------------+-->0x00000000-> SPL start         (SPL copy on 1st block)
+    |            |
+    |            |-->0x0001FFFF-> SPL end 
+    |            |-->0x00020000-> SPL.backup1 start (SPL copy on 2nd block)
+    |            |
+    |            |-->0x0003FFFF-> SPL.backup1 end 
+    |            |-->0x00040000-> SPL.backup2 start (SPL copy on 3rd block)
+    |            |
+    |            |-->0x0005FFFF-> SPL.backup2 end 
+    |            |-->0x00060000-> SPL.backup3 start (SPL copy on 4th block)
+    |            |
+    |            |-->0x0007FFFF-> SPL.backup3 end
+    |            |-->0x00080000-> U-Boot start
+    |            |                                    
+    |            |-->0x002BFFFF-> U-Boot end 
+    |            |-->0x00260000-> ENV start
+    |            |
+    |            |
+    |            |-->0x0027FFFF-> ENV end
+    |            |-->0x00280000-> Linux Kernel start
+    |            |
+    |            |
+    |            |
+    |            |
+    |            |-->0x0077FFFF-> Linux Kernel end
+    |            |-->0x00780000-> File system start
+    |            |
+    |            |
+    |            |
+    |            |
+    |            |
+    |            |
+    |            |
+    |            |
+    |            |
+    |            |
+    |            |
+    |            |
+    +------------+-->0x10000000-> NAND end (Free end)

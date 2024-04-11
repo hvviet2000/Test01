@@ -1,0 +1,57 @@
+2. Guideline_Backup List_03-2022.xlsx => file này thay đổi cái j vậy, History ko thấy mô tả
+==> updated: Add GLPI config to backup list																				
+
+3. Hướng dẫn sử dụng hệ thống Pfsense.docx => dùng ko đúng template, file chưa cấp mã (mã mới: 016G-IS/VIETIS), ko có mục "Lịch sử thay đổi"
+==> updated
+
+4. Huong dan_Cai dat cac thiet bi_2022 => điền phần "Lịch sử thay đổi", nâng version
+==> Updated: 4. Cấu hình triển khai hệ thống wifi Unifi
+
+5. Huong dan_Cai dat he thong giam sat_2022 => điền phần "Lịch sử thay đổi", nâng version
+==> updated
+
+6. Quy Dinh_Bao mat thong tin v1.4 => thêm qui định "ko sử dụng email cá nhân để test"
+==> updated
+
+7. Quy Dinh_Giam sat va quan ly hieu nang dung luong he thong 2022 => điền phần "Lịch sử thay đổi", nâng version
+==> updated
+
+
+8. Quy Dinh_Kiem soat ma doc hai_2022 => điền phần "Lịch sử thay đổi", nâng version
+==> updated
+
+9. Quy Dinh_Lam viec tu xa_2022 (1) => phần lịch sử đang ghi mục thay đổi là Phụ lục nhưng tài liệu này ko có mục này
+==> updated
+
+10. Quy dinh_Noi quy Cong ty 1.2 =>  file này thay đổi cái j vậy, file này hiện không lấy đúng file gốc trên \\192.168.100.6\isms\Regulation nên đang sai cả format
+==> update giờ làm việc
+-	Giờ làm việc từ 8h30 đến 12h00 và từ 13h00 đến 17h30 hàng ngày từ Thứ Hai đến hết Thứ Sáu.
+Cái này sếp QA tự update nhé
+
+
+11. Quy Dinh_Quan ly ma hoa_2022  => điền phần "Lịch sử thay đổi", nâng version
+==> updated
+
+
+12. Quy Dinh_Quan ly may chu - may tram_2022  => điền phần "Lịch sử thay đổi"
+==> updated
+==> Updated phần tên vào phụ lục theo template
+
+13. Quy Dinh_Quan ly truy cap_2022  => điền phần "Lịch sử thay đổi", nâng version. Nhiều file chả điền j cả nên chả hiểu là update cái j nữa
+==> updated
+
+
+14. Quy Dinh_Van hanh he thong_2022
+- điền phần "Lịch sử thay đổi", nâng version
+- mục 6. Hồ sơ điền mã biểu mẫu. 
+VD: Daily log server room => bản cứng
+(in ra từ template rồi ký hàng ngày thì gọi là bản cứng)
+
+15. Quy Dinh_VIETIS COMPUTER NAME POLICY_2022 (hủy luôn tài liệu này)
+- sai hoàn toàn về template luôn nên chắc phải làm lại
+
+
+16. Request tài liệu hủy: Quy Dinh_VIETIS COMPUTER NAME POLICY_2022
+
+
+

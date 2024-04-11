@@ -1,0 +1,68 @@
+/*
+Function to get existing Group Members. Their email address and role.
+Paste results into a Google Sheet.
+*/
+
+function getGroupMembers() {
+  
+  // create empty array to push members details into
+  var memberDetails = [];
+  
+  
+  // get Google Group by email address
+  try {
+    var group = GroupsApp.getGroupByEmail('YOUR GROUP EMAIL ADDRESS HERE');
+  }
+  catch(e) {
+    // issues getting Google Group
+    
+    // set var to false to code does not continue
+    var group = false;
+  }
+  
+  
+  // check if getting Group was successful before proceeding
+  if (group) {
+    
+    // get array of all members in Google Group and length of the array
+    var members = group.getUsers();
+    var membersLength = members.length;
+    
+    // loop through members to get their Email Address & Role ******************
+    for (var i=0; i<membersLength; i++) {
+      
+      // get Email Address
+      var memberEmailAddress = members[i].getEmail();
+      
+      // get Role and set as lowercase
+      var memberRole = group.getRole(memberEmailAddress).toString().toLowerCase();
+      
+      // push details into array for later pasting into Google Sheet
+      memberDetails.push([memberEmailAddress, memberRole]);
+      
+    }
+    // loop through members to get their Email Address & Role ******************
+
+    
+    // paste collated details into Google Sheet ********************
+    //get 'Group Members' sheet
+    var groupMembersSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Group Members');
+    
+    // get last row of data
+    var lastRow = groupMembersSheet.getLastRow();
+    
+    // clear current sheet content
+    groupMembersSheet.getRange(2, 1, lastRow, 2).clearContent();
+    
+    // paste in collated members details from array
+    groupMembersSheet.getRange(2, 1, memberDetails.length, 2).setValues(memberDetails);
+    // paste collated details into Google Sheet ********************
+
+    
+  }
+  else {
+    // problem getting Google Group
+  }
+
+  
+}
